@@ -1,0 +1,418 @@
+.title {
+    padding-left: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+    font-weight: 900;
+}
+
+.section-title {
+    padding-bottom: 1rem;
+    font-weight: 900;
+}
+
+.cards {
+    width: 100%;
+    display: flex;
+}
+
+.cards__column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.cards__row {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.card--right {
+    padding-left: 2rem;
+}
+
+.card--wide {
+    width: 100%;
+}
+
+.card--top {
+    padding-bottom: 2rem;
+}
+
+.card--bottom {
+    @media screen and (min-width: 700px) {
+        padding-top: 2rem;
+    }
+
+    @media screen and (max-width: 700px) {
+        padding-top: 1.5rem;
+    }
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.list__child {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: space-around;
+    padding-left: 1rem;
+    padding-right: 2rem;
+    padding-bottom: 0.75rem;
+
+    @media screen and (max-width: 650) {
+        padding-top: 2rem;
+    }
+}
+
+.list__child__text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 5%;
+}
+
+.calendar-card {
+    @media screen and (min-width: 1400px) {
+        padding-right: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    @media screen and (max-width: 1400px) {
+        padding-right: 2rem;
+        padding-bottom: 0;
+    }
+}
+
+.calendar {
+    display: flex;
+    justify-content: center;
+}
+
+.calendar-card-content {
+    padding-left: 1.5rem;
+}
+
+.legend-item {
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.legend-item__icon {
+    width: 16px;
+    height: 16px;
+    padding-right: 0.5rem;
+}
+
+.legend-item__icon--purple {
+    color: #A100C2;
+}
+
+.legend-item__icon--information {
+    color: #0070F2;
+}
+
+.legend-item__icon--message {
+    color: #7BCFFF;
+}
+
+.footer-button {
+    width: 62px;
+}
+
+.central-icon {
+    margin: 0 auto;
+}
+
+.progress-bars {
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-right: 1rem;
+}
+
+.progress-bars__last {
+    padding-bottom: 1.25rem;
+}
+
+.message {
+    // position: fixed;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    // bottom: 0;
+    width: 100%;
+}
+
+.message__strip__emphasized {
+    color: #0070F2;
+    font-weight: 700;
+}
+
+.refresh {
+    color: #0070F2;
+}
+
+.refresh-icon {
+    padding-right: 10px;
+}
+
+.text-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+}
+
+.text-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+
+    //paige
+    @media screen and (max-width: 1440px) and (min-width: 650px) {
+        align-items: center;
+    }
+}
+
+.text-column--tall {
+    padding-bottom: 2rem;
+}
+
+.large-text {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 37px;
+    letter-spacing: 0px;
+    padding-right: 1.1rem;
+}
+
+.large-text--green {
+    color: #256F3A;
+}
+
+.large-text--blue {
+    color: #0070F2;
+}
+
+.card-details__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 700;
+    font-size: 14px;
+    padding-bottom: 0.5rem;
+    justify-content: space-between;
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #E5E5E5 !important;
+}
+
+.card-details__section--first {
+    padding-inline-start: 0.75rem;
+}
+
+// .card-details__section--end {
+//     padding-inline-end: 0.75rem;
+// }
+
+.card-details__long {
+    width: 30%;
+}
+
+.card-details__short {
+    width: 20%
+}
+
+.card-details__footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 400;
+    font-size: 14px;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    justify-content: space-between;
+}
+
+.flight-details__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding-bottom: 2rem;
+}
+
+.flight-details__content__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.flight-details__content__text--right {
+    align-items: flex-start;
+    padding-left: 10%;
+}
+
+.flight-details__content__text--left {
+    align-items: flex-end;
+    padding-right: 10%;
+}
+
+.show-at-tablet {
+    display: none;
+
+    @media screen and (max-width: 1025px) {
+        display: block
+    }
+}
+
+.hidden-at-tablet {
+    @media screen and (max-width: 1025px) {
+        display: none;
+    }
+}
+
+.hidden-at-mobile {
+    @media screen and (max-width: 500px) {
+        display: none;
+    }
+}
+
+.hidden-at-mobile--larger {
+    @media screen and (max-width: 650px) and (min-width: 600px) {
+        display: none;
+    }
+}
+
+.show-at-mobile {
+    @media screen and (max-width: 500px) {
+        display: block;
+    }
+}
+
+.hidden-at-desktop {
+    @media screen and (min-width: 1050px) {
+        display: none;
+    }
+}
+
+
+.daily-flight {
+    height: 50%;
+}
+
+.remove-padding {
+    padding: 0 0 0 0 !important;
+}
+
+.flight-details-card {
+    @media screen and (min-width: 1025px) {
+        padding-bottom: 2rem;
+    }
+}
+
+.passenger-details-card {
+    height: fit-content;
+
+    @media screen and (min-width: 1451px) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    @media screen and (max-width: 1450px) and (min-width: 600px) {
+        padding-left: 0;
+        padding-right: 2rem;
+        padding-top: 1.5rem;
+    }
+
+    @media screen and (max-width: 600px) {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 1.5rem;
+    }
+}
+
+.payment-details-card {
+    @media screen and (min-width: 1450px) {
+        padding-left: 2rem;
+        padding-top: 2rem;
+    }
+
+    @media screen and (max-width: 1450px) {
+        padding-left: 0;
+        padding-top: 1.5rem;
+    }
+}
+
+.flight-status-card {
+    @media screen and (max-width: 1450px) and (min-width: 600px) {
+        padding-top: 1.5rem;
+    }
+
+    @media screen and (max-width: 600px) {
+        padding-top: 2rem;
+    }
+}
+
+.your-seats-card {
+    @media screen and (max-width: 1023px) {
+        padding-right: 2rem;
+    }
+
+    @media screen and (max-width: 1450px) and (min-width: 1024px) {
+        padding-top: 1.5rem;
+    }
+
+    @media screen and (max-width: 600px) {
+        padding-top: 1.5rem;
+        padding-right: 0;
+    }
+}
+
+.your-seats-card-content {
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-right: 1rem;
+}
+
+.your-seats-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.your-seats-layout__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 1rem;
+    align-items: center;
+}
+
+.your-seats-layout__column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.your-seats-layout__column--wide {
+    width: 30%;
+    padding-right: 0.7rem;
+}
+
+.available-seat {
+    color: #7BCFFF;
+}

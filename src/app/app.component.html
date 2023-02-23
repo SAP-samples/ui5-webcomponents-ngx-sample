@@ -1,0 +1,595 @@
+<ui5-shellbar primary-title="Airlines" show-notifications notifications-count="2">
+  <ui5-avatar slot="profile">
+    <img src="../assets/avatar_small.jpeg" />
+  </ui5-avatar>
+  <img slot="logo" src="../assets/SAP_logo.png" />
+  <ui5-input slot="searchField" placeholder="Search everything"></ui5-input>
+</ui5-shellbar>
+
+<ui5-title class="title" level="H2">
+  Welcome, Janice Smith!
+</ui5-title>
+
+<ui5-tabcontainer class="hidden-at-tablet" header-background-design="Solid" content-background-design="Solid"
+  [fixed]="true" [collapsed]="true">
+  <ui5-tab text="Flight Info"></ui5-tab>
+  <ui5-tab text="Plan a Trip"></ui5-tab>
+  <ui5-tab text="Past Trips"></ui5-tab>
+  <ui5-tab text="About Us"></ui5-tab>
+  <ui5-tab text="Contacts"></ui5-tab>
+</ui5-tabcontainer>
+
+<ui5-tabcontainer class="hidden-at-desktop show-at-tablet hidden-at-mobile" [collapsed]=" true" [fixed]="true">
+  <ui5-tab text="Flight Info">
+    <ui5-tab slot="subTabs" text="Flight 1"></ui5-tab>
+  </ui5-tab>
+  <ui5-tab text="Phones" slot="subTabs">
+    <ui5-tab text="Smartphones" slot="subTabs">
+      Smartphones go here ...
+    </ui5-tab>
+    <ui5-tab text="Tablets" slot="subTabs">
+      Tablets go here ...
+    </ui5-tab>
+    Phones go here ...
+  </ui5-tab>
+  <ui5-tab text="Plan a Trip">
+    <ui5-tab slot="subTabs" text="Find a Destination"></ui5-tab>
+  </ui5-tab>
+  <ui5-tab text="Past Trips">
+    <ui5-tab slot="subTabs" text="Domestic Trips">
+      <ui5-tab slot="subTabs" text="YVR to YYZ"></ui5-tab>
+      <ui5-tab slot="subTabs" text="YYZ to YVR"></ui5-tab>
+    </ui5-tab>
+    <ui5-tab slot="subTabs" text="International Trips">
+      <ui5-tab slot="subTabs" text="Germany">
+        <ui5-tab slot="subTabs" text="YUL to MUC">
+          <ui5-tab slot="subTabs" text="YUL to YYZ"></ui5-tab>
+          <ui5-tab slot="subTabs" text="YYZ to MUC"></ui5-tab>
+        </ui5-tab>
+      </ui5-tab>
+      <ui5-tab slot="subTabs" text="United States of America">
+        <ui5-tab slot="subTabs" text="YUL to BOS"></ui5-tab>
+        <ui5-tab slot="subTabs" text="BOS to YVR"></ui5-tab>
+      </ui5-tab>
+    </ui5-tab>
+  </ui5-tab>
+</ui5-tabcontainer>
+
+<ui5-tabcontainer class="hidden-at-desktop hidden-at-tablet show-at-mobile" header-background-design="Solid"
+  content-background-design="Solid" [fixed]="true" [collapsed]="true">
+  <ui5-tab text="Flight Info"></ui5-tab>
+  <ui5-tab text="Plan a Trip"></ui5-tab>
+</ui5-tabcontainer>
+
+<section class="app-content">
+  <!-- Message Strip section -->
+  <section class="message">
+    <ui5-message-strip class="message__strip" design="Information">
+      Your flight is ready for boarding at Gate E8.
+      <span class="message__strip__emphasized">
+        How to find your gate.
+      </span>
+    </ui5-message-strip>
+  </section>
+
+  <ui5-title level="H4" class="section-title">
+    Your Flight Information
+  </ui5-title>
+
+  <fd-layout-grid class="remove-padding">
+
+    <div fdLayoutGridRow class="cards remove-padding">
+
+      <!-- Your Itinerary /  Calendar section -->
+      <div class="remove-padding hidden-at-tablet" [fdLayoutGridCol]="12" [colMd]="12" [colLg]="6" [colXl]="3">
+        <div class="calendar-card">
+          <ui5-card>
+
+            <ui5-card-header slot="header" title-text="Your Itinerary"></ui5-card-header>
+            <section class="calendar">
+              <ui5-calendar hide-week-numbers></ui5-calendar>
+            </section>
+            <section class="calendar-card-content">
+              <div class="legend-item">
+                <ui5-icon class="legend-item__icon legend-item__icon--purple" name="border"></ui5-icon>
+                Today
+              </div>
+              <div class="legend-item">
+                <ui5-icon class="legend-item__icon legend-item__icon--information" name="border"></ui5-icon>
+                Trip
+                Dates
+              </div>
+
+              <ui5-timeline>
+                <ui5-timeline-item id="test-item" title-text="called" timestamp="1487583000000" icon="phone"
+                  name="John Smith" name-clickable></ui5-timeline-item>
+                <ui5-timeline-item title-text="Weekly Sync - CP Design" timestamp="1517349600000" icon="calendar">
+                  MR SOF02 2.43
+                </ui5-timeline-item>
+                <ui5-timeline-item title-text="Video Converence Call - UI5" timestamp="1485813600000" icon="calendar">
+                  Online meeting
+                </ui5-timeline-item>
+              </ui5-timeline>
+            </section>
+          </ui5-card>
+        </div>
+      </div>
+
+      <!-- Your Seats section -->
+      <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="6" [colXl]="4" class="hidden-at-tablet remove-padding">
+        <fd-layout-grid>
+          <div fdLayoutGridRow>
+            <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+              <div class="flight-details-card">
+                <ui5-card>
+                  <ui5-card-header slot="header" title-text="Flight Details" status="1 of 2">
+                  </ui5-card-header>
+                  <div class="flight-details__content">
+                    <span class="flight-details__content__text flight-details__content__text--left">
+                      <ui5-label>Departure</ui5-label>
+                      <span>Apr 17 / 12:00</span>
+                    </span>
+                    <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar>
+                    <span class="flight-details__content__text flight-details__content__text--right">
+                      <ui5-label>Arrival</ui5-label>
+                      <span>Apr 17 / 17:30</span>
+                    </span>
+                  </div>
+                </ui5-card>
+              </div>
+            </div>
+          </div>
+
+          <div fdLayoutGridRow>
+            <div [fdLayoutGridCol]="12" [colMd]="0" [colLg]="12" [colXl]="12" class="remove-padding">
+              <div class="">
+                <ui5-card class="">
+                  <ui5-card-header slot="header" title-text="Your Seats"
+                    subtitle-text="From Vancouver (YVR) to Montreal (YUL)" status="Flight 1 of 2">
+                  </ui5-card-header>
+                  <section class="your-seats-card-content">
+                    <div class="your-seats-layout">
+
+                      <div class="your-seats-layout__column your-seats-layout__column--narrow">
+                        <div class="your-seats-layout__row"><ui5-label style="visibility:hidden;">A</ui5-label></div>
+                        <div class="your-seats-layout__row"><ui5-label>1</ui5-label></div>
+                        <div class="your-seats-layout__row"><ui5-label>2</ui5-label></div>
+                        <div class="your-seats-layout__row"><ui5-label>3</ui5-label></div>
+                        <div class="your-seats-layout__row"><ui5-label>4</ui5-label></div>
+                        <div class="your-seats-layout__row"><ui5-label>5</ui5-label></div>
+                        <div class="your-seats-layout__row"><ui5-label>6</ui5-label></div>
+                        <div class="your-seats-layout__row"><ui5-label>7</ui5-label></div>
+                        <div class="your-seats-layout__row"><ui5-label>8</ui5-label></div>
+                      </div>
+
+                      <!-- COLUMN 1 -->
+                      <div class="your-seats-layout__column your-seats-layout__column--wide">
+                        <div class="your-seats-layout__row">
+                          <ui5-label>A</ui5-label>
+                          <ui5-label>B</ui5-label>
+                          <ui5-label>C</ui5-label>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2" class="available-seat"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2" class="available-seat"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                      </div>
+
+                      <!-- COLUMN 2 -->
+                      <div class="your-seats-layout__column your-seats-layout__column--wide">
+                        <div class="your-seats-layout__row">
+                          <ui5-label>D</ui5-label>
+                          <ui5-label>E</ui5-label>
+                          <ui5-label>F</ui5-label>
+                          <ui5-label>G</ui5-label>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2" design="Information"></ui5-icon>
+                          <ui5-icon name="circle-task-2" design="Information"></ui5-icon>
+                          <ui5-icon name="circle-task-2" design="Information"></ui5-icon>
+                          <ui5-icon name="circle-task-2" design="Information"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2" class="available-seat"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2" class="available-seat"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                      </div>
+
+                      <!-- COLUMN 3 -->
+                      <div class="your-seats-layout__column your-seats-layout__column--wide">
+                        <div class="your-seats-layout__row">
+                          <ui5-label>H</ui5-label>
+                          <ui5-label>I</ui5-label>
+                          <ui5-label>J</ui5-label>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2" class="available-seat"></ui5-icon>
+                          <ui5-icon name="circle-task-2" class="available-seat"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                        <div class="your-seats-layout__row">
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                          <ui5-icon name="circle-task-2"></ui5-icon>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="display:flex; flex-direction:row;">
+                      <div class="legend-item" style="padding-right: 4.2rem;">
+                        <ui5-icon class="legend-item__icon legend-item__icon--information"
+                          name="circle-task-2"></ui5-icon>
+                        Your Seats
+                      </div>
+                      <div class="legend-item">
+                        <ui5-icon class="legend-item__icon" name="circle-task-2"></ui5-icon>
+                        Taken
+                      </div>
+                    </div>
+                    <div class="legend-item">
+                      <ui5-icon class="legend-item__icon legend-item__icon--message" name="circle-task-2"></ui5-icon>
+                      Available
+                    </div>
+                  </section>
+
+
+                  <ui5-bar design="Footer">
+                    <ui5-button design="Emphasized" slot="endContent">Upgrade</ui5-button>
+                  </ui5-bar>
+                </ui5-card>
+              </div>
+            </div>
+          </div>
+        </fd-layout-grid>
+      </div>
+
+      <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="show-at-tablet remove-padding">
+        <ui5-card class="">
+          <ui5-card-header slot="header" title-text="Flight Details" status="1 of 2">
+          </ui5-card-header>
+          <div class="flight-details__content">
+            <span class="flight-details__content__text flight-details__content__text--left">
+              <ui5-label>Departure</ui5-label>
+              <span>Apr 17 / 12:00</span>
+            </span>
+            <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar>
+            <span class="flight-details__content__text flight-details__content__text--right">
+              <ui5-label>Arrival</ui5-label>
+              <span>Apr 17 / 17:30</span>
+            </span>
+          </div>
+        </ui5-card>
+      </div>
+
+
+      <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="5" class="remove-padding">
+        <div class="cards__column--whole">
+          <fd-layout-grid>
+
+            <div fdLayoutGridRow class="remove-padding">
+              <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="7" class="remove-padding">
+                <div class="cards__row passenger-details-card">
+
+                  <!-- Passenger Details card -->
+                  <ui5-card>
+                    <ui5-card-header slot="header" title-text="Passenger Details">
+                      <ui5-button design="Transparent" slot="action">
+                        <ui5-icon name="edit"></ui5-icon>
+                      </ui5-button>
+
+                    </ui5-card-header>
+
+                    <div class="list">
+
+                      <div class="list__child">
+                        <div slot="imageContent" class="list__child__avatar">
+                          <ui5-avatar class="hidden-at-tablet" size="M">
+                            <img src="../assets/avatar_small.jpeg">
+                          </ui5-avatar>
+                          <ui5-avatar class="show-at-tablet hidden-at-mobile--larger" size="S">
+                            <img src="../assets/avatar_small.jpeg">
+                          </ui5-avatar>
+                        </div>
+                        <div class="list__child__text">
+                          Martha Marie Smith
+                          <ui5-label>42 Wallaby Way, Sydney</ui5-label>
+                        </div>
+                      </div>
+
+                      <div class="list__child">
+                        <div slot="imageContent">
+                          <ui5-avatar class="hidden-at-tablet" size="M">
+                            <img src="../assets/avatar_small.jpeg">
+                          </ui5-avatar>
+                          <ui5-avatar class="show-at-tablet hidden-at-mobile--larger" size="S">
+                            <img src="../assets/avatar_small.jpeg">
+                          </ui5-avatar>
+                        </div>
+                        <div class="list__child__text">
+                          Christine Sally Smith
+                          <ui5-label>42 Wallaby Way, Sydney</ui5-label>
+                        </div>
+                      </div>
+
+                      <div class="list__child">
+                        <div slot="imageContent">
+                          <ui5-avatar class="hidden-at-tablet" size="M">
+                            <img src="../assets/avatar_small.jpeg">
+                          </ui5-avatar>
+                          <ui5-avatar class="show-at-tablet hidden-at-mobile--larger" size="S">
+                            <img src="../assets/avatar_small.jpeg">
+                          </ui5-avatar>
+                        </div>
+                        <div class="list__child__text">
+                          John Martin Smith
+                          <ui5-label>42 Wallaby Way, Sydney</ui5-label>
+                        </div>
+                      </div>
+
+                      <div class="list__child">
+                        <div slot="imageContent">
+                          <ui5-avatar class="hidden-at-tablet" size="M">
+                            <img src="../assets/avatar_small.jpeg">
+                          </ui5-avatar>
+                          <ui5-avatar class="show-at-tablet hidden-at-mobile--larger" size="S">
+                            <img src="../assets/avatar_small.jpeg">
+                          </ui5-avatar>
+                        </div>
+                        <div class="list__child__text">
+                          Donna Paulsen
+                          <ui5-label>186 Fleet Street, London</ui5-label>
+                        </div>
+                      </div>
+
+                      <div class="list__child">
+                        <div slot="imageContent">
+                          <ui5-avatar class="hidden-at-tablet" size="M">
+                            <img src="../assets/avatar_small.jpeg">
+                          </ui5-avatar>
+                          <ui5-avatar class="show-at-tablet hidden-at-mobile--larger" size="S">
+                            <img src="../assets/avatar_small.jpeg">
+                          </ui5-avatar>
+                        </div>
+                        <div class="list__child__text">
+                          Christine Sally Smith
+                          <ui5-label>42 Wallaby Way, Sydney</ui5-label>
+                        </div>
+                      </div>
+                    </div>
+
+                  </ui5-card>
+                </div>
+              </div>
+
+
+              <!-- Daily Flight Status card -->
+              <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="5" class="remove-padding">
+
+
+                <!-- Your Flight Status card -->
+                <fd-layout-grid>
+                  <div fdLayoutGridRow class="remove-padding">
+                    <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+                      <div class="flight-status-card">
+                        <ui5-card>
+                          <ui5-card-header slot="header" title-text="Your Flight Status" subtitle-text="Boarding at:">
+                          </ui5-card-header>
+                          <div class="text-column text-column--tall">
+                            <span class="text-row">
+                              <span class="large-text large-text--green">
+                                11:58
+                              </span>
+                              <ui5-label class="hidden-at-mobile">2 min early</ui5-label>
+                            </span>
+                            <span class="refresh text-row">
+                              <ui5-icon class="refresh-icon" name="refresh" design="Information"></ui5-icon> 5 min. ago
+                            </span>
+                          </div>
+
+                        </ui5-card>
+                      </div>
+                    </div>
+                  </div>
+                </fd-layout-grid>
+
+                <fd-layout-grid>
+                  <div fdLayoutGridRow class="remove-padding">
+                    <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+                      <!-- <div class="cards__column"> -->
+                      <ui5-card class="card--bottom">
+                        <ui5-card-header slot="header" title-text="Daily Flight Status">
+                        </ui5-card-header>
+                        <div class="progress-bars">
+                          <ui5-progress-indicator display-value="Late" value-state="Error"
+                            value="20"></ui5-progress-indicator>
+                          <ui5-progress-indicator display-value="Early" value-state="Warning"
+                            value="15"></ui5-progress-indicator>
+                          <ui5-progress-indicator class="progress-bars__last" display-value="On Time"
+                            value-state="Success" value="60"></ui5-progress-indicator>
+                        </div>
+                      </ui5-card>
+                    </div>
+                  </div>
+                </fd-layout-grid>
+              </div>
+            </div>
+          </fd-layout-grid>
+        </div>
+
+
+        <!-- Your Seats section -->
+        <fd-layout-grid>
+          <div fdLayoutGridRow class="remove-padding">
+            <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12"
+              class="show-at-tablet hidden-at-desktop remove-padding">
+              <div class="your-seats-card">
+                <ui5-card>
+                  <ui5-card-header slot="header" title-text="Your Seats" subtitle-text="From YVR to YUL">
+                  </ui5-card-header>
+                  <div class="text-column">
+                    <span class="large-text large-text--blue">
+                      D2-G2
+                    </span>
+                  </div>
+                  <ui5-bar design="Footer">
+                    <ui5-button design="Emphasized" slot="endContent">Upgrade</ui5-button>
+                  </ui5-bar>
+                </ui5-card>
+              </div>
+            </div>
+            <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12" class="remove-padding">
+              <div class="payment-details-card">
+                <ui5-card class="card--wide">
+                  <ui5-card-header slot="header" title-text="Payment Details" subtitle-text="Monday, April 1, 10:56">
+                  </ui5-card-header>
+
+                  <div class="list__child">
+                    <div slot="imageContent">
+                      <!-- <ui5-avatar initials="SAP"></ui5-avatar> -->
+                      <ui5-avatar initials="SA"></ui5-avatar>
+                    </div>
+                    <div class="list__child__text">
+                      <ui5-label>Company Name</ui5-label>
+                      SAP Airlines
+                    </div>
+                  </div>
+
+                  <span class="card-details__header hidden-at-tablet">
+                    <span class="card-details__section--first card-details__long">
+                      Payment Method
+                    </span>
+                    <span class="card-details__long">
+                      Card Number</span>
+                    <span class="card-details__short">
+                      CVV</span>
+                    <span class="card-details__short">
+                      Expiry Date
+                    </span>
+                  </span>
+
+                  <span class="card-details__footer hidden-at-tablet">
+                    <ui5-title level="H6" class="card-details__section--first card-details__long">MasterCard</ui5-title>
+                    <ui5-title level="H6" class="card-details__long">**** **** **** 1234</ui5-title>
+                    <ui5-title level="H6" class="card-details__short">604</ui5-title>
+                    <ui5-title level="H6" class="card-details__section--end card-details__short">12/34</ui5-title>
+                  </span>
+                </ui5-card>
+              </div>
+            </div>
+          </div>
+        </fd-layout-grid>
+
+
+      </div>
+
+
+    </div>
+  </fd-layout-grid>
+  <!-- </section> -->
+
+
+
+</section>

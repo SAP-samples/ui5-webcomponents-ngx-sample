@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+.app-content {
+    height: 100%;
+    padding: 0 3rem 3rem 3rem;
+    background-color: #f5f6f7;
+
+    @media screen and (max-width: 600px) {
+        padding: 0 2rem 2rem 2rem;
+    }
+}
