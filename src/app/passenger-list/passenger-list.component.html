@@ -1,0 +1,16 @@
+<div class="list">
+    <div *ngFor="let passenger of passengers" class="list__child">
+        <div slot="imageContent">
+            <ui5-avatar class="hidden-at-tablet" size="M">
+                <img src="../assets/avatar_small.jpeg">
+            </ui5-avatar>
+            <ui5-avatar class="show-at-tablet hidden-at-mobile--larger" size="S">
+                <img src="../assets/avatar_small.jpeg">
+            </ui5-avatar>
+        </div>
+        <div class="list__child__text">
+            {{passenger.name}}
+            <ui5-label>{{passenger.address}}</ui5-label>
+        </div>
+    </div>
+</div>

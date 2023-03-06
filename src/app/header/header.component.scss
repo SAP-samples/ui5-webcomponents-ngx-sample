@@ -1,0 +1,10 @@
+.title {
+    padding-left: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+    font-weight: 900;
+
+    @media screen and (max-width: 1440px) {
+        padding-left: 2rem;
+    }
+}

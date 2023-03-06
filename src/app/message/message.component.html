@@ -1,0 +1,8 @@
+<div *ngFor="let message of messages" class="message">
+    <ui5-message-strip class="message__strip" design="Information">
+        {{message.base}}
+        <span class="message__strip__emphasized">
+            {{message.emphasized}}
+        </span>
+    </ui5-message-strip>
+</div>
