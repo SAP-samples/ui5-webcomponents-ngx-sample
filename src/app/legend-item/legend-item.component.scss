@@ -1,0 +1,23 @@
+.legend-item {
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.legend-item__icon {
+    width: 16px;
+    height: 16px;
+    padding-right: 0.5rem;
+}
+
+.legend-item__icon--purple {
+    color: #A100C2;
+}
+
+.legend-item__icon--information {
+    color: #0070F2;
+}
+
+.legend-item__icon--message {
+    color: #7BCFFF;
+}

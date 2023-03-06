@@ -1,0 +1,38 @@
+.your-seats-card-content {
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-right: 1rem;
+}
+
+.your-seats-card-content-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.your-seats-card-content-layout__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 1rem;
+    align-items: center;
+}
+
+.your-seats-card-content-layout__column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.your-seats-card-content-layout__column--wide {
+    width: 30%;
+    padding-right: 0.7rem;
+}
+
+.seat--available {
+    color: #7BCFFF;
+}
+
+.seat--yours {
+    color: #0070F2;
+}

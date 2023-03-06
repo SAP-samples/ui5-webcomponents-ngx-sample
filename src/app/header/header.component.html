@@ -1,0 +1,48 @@
+<ui5-shellbar primary-title="Airlines" show-notifications notifications-count="2">
+    <ui5-avatar slot="profile">
+        <img src="../assets/avatar_small.jpeg" />
+    </ui5-avatar>
+    <img slot="logo" src="../assets/SAP_logo.png" />
+    <ui5-input slot="searchField" placeholder="Search everything"></ui5-input>
+</ui5-shellbar>
+
+<ui5-title class="title" level="H2" style="overflow-wrap: break-word;">
+    Welcome, {{user.firstName}}
+    <span class="hidden-at-mobile"> {{user.lastName}}</span>
+    !
+</ui5-title>
+
+<ui5-tabcontainer class="hidden-at-tablet" header-background-design=" Solid" content-background-design="Solid"
+    [fixed]="true" [collapsed]="true">
+    <ui5-tab text="Flight Info"></ui5-tab>
+    <ui5-tab text="Plan a Trip"></ui5-tab>
+    <ui5-tab text="Past Trips"></ui5-tab>
+    <ui5-tab text="About Us"></ui5-tab>
+    <ui5-tab text="Contacts"></ui5-tab>
+</ui5-tabcontainer>
+
+<ui5-tabcontainer class="hidden-at-desktop show-at-tablet hidden-at-mobile" [collapsed]=" true" [fixed]="true">
+    <ui5-tab text="Flight Info">
+        <ui5-tab slot="subTabs" text="Flight 1"></ui5-tab>
+    </ui5-tab>
+    <ui5-tab text="Plan a Trip">
+        <ui5-tab slot="subTabs" text="Find a Destination"></ui5-tab>
+    </ui5-tab>
+    <ui5-tab text="Past Trips">
+        <ui5-tab slot="subTabs" text="Domestic Trips">
+            <ui5-tab *ngFor="let trip of domestic" slot="subTabs" text="{{trip.departureAbb}} to {{trip.arrivalAbb}}">
+            </ui5-tab>
+        </ui5-tab>
+        <ui5-tab slot="subTabs" text="International Trips">
+            <ui5-tab *ngFor="let trip of international" slot="subTabs"
+                text="{{trip.departureAbb}} to {{trip.arrivalAbb}}">
+            </ui5-tab>
+        </ui5-tab>
+    </ui5-tab>
+</ui5-tabcontainer>
+
+<ui5-tabcontainer class="show-at-mobile" header-background-design="Solid" content-background-design="Solid"
+    [fixed]="true" [collapsed]="true">
+    <ui5-tab text="Flight Info"></ui5-tab>
+    <ui5-tab text="Plan a Trip"></ui5-tab>
+</ui5-tabcontainer>

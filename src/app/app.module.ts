@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,20 +8,23 @@ import { FundamentalNgxCoreModule } from '@fundamental-ngx/core';
 import { Ui5AngularModule } from '@ui5/webcomponents-ngx';
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 
-// import Avatar from '@ui5/webcomponents/dist/Avatar';
-
-// const oldUpdateAttribute = Avatar.prototype._updateAttribute;
-
-// Avatar.prototype._updateAttribute = function (name, value) {
-//   console.log({ name, value })
-//   if (name === 'icon') {
-//     debugger;
-//   }
-//   oldUpdateAttribute.call(this, name, value);
-// };
+import { HeaderComponent } from './header/header.component';
+import { MessageComponent } from './message/message.component';
+import { LegendItemComponent } from './legend-item/legend-item.component';
+import { PassengerListComponent } from './passenger-list/passenger-list.component';
+import { SeatsChartComponent } from './seats-chart/seats-chart.component';
+import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    MessageComponent,
+    LegendItemComponent,
+    PassengerListComponent,
+    SeatsChartComponent,
+    PaymentDetailsComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,5 +34,6 @@ import '@ui5/webcomponents-icons/dist/AllIcons.js';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  // schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
