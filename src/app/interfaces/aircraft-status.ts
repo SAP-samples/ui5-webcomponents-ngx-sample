@@ -5,4 +5,6 @@ export interface AircraftStatus {
     estimatedBoardingTime: Date;
     currentBoardingTime: Date;
     lastRefresh: Date;
+    gate: string | "TBA";
+    gateOpenTime: Date;
 }

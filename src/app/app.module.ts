@@ -14,6 +14,7 @@ import { LegendItemComponent } from './legend-item/legend-item.component';
 import { PassengerListComponent } from './passenger-list/passenger-list.component';
 import { SeatsChartComponent } from './seats-chart/seats-chart.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
+import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PaymentDetailsComponent } from './payment-details/payment-details.compo
     LegendItemComponent,
     PassengerListComponent,
     SeatsChartComponent,
-    PaymentDetailsComponent
+    PaymentDetailsComponent,
+    TripCalendarComponent
   ],
   imports: [
     BrowserModule,

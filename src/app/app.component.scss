@@ -20,16 +20,8 @@
     flex-direction: row;
 }
 
-.card--right {
-    padding-left: 2rem;
-}
-
 .card--wide {
     width: 100%;
-}
-
-.card--top {
-    padding-bottom: 2rem;
 }
 
 .card--bottom {
@@ -40,27 +32,6 @@
     @media screen and (max-width: 700px) {
         padding-top: 1.5rem;
     }
-}
-
-.calendar-card {
-    @media screen and (min-width: 1400px) {
-        padding-right: 2rem;
-        padding-bottom: 2rem;
-    }
-
-    @media screen and (max-width: 1400px) {
-        padding-right: 2rem;
-        padding-bottom: 0;
-    }
-}
-
-.calendar {
-    display: flex;
-    justify-content: center;
-}
-
-.calendar-card-content {
-    padding-left: 1.5rem;
 }
 
 .footer-button {
@@ -168,6 +139,18 @@
 .flight-details-card {
     @media screen and (min-width: 1025px) {
         padding-bottom: 2rem;
+    }
+}
+
+.calendar-card {
+    @media screen and (min-width: 1400px) {
+        padding-right: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    @media screen and (max-width: 1400px) {
+        padding-right: 2rem;
+        padding-bottom: 0;
     }
 }
 
