@@ -19,24 +19,7 @@
         <div class="calendar-card">
           <ui5-card>
             <ui5-card-header slot="header" title-text="Your Itinerary"></ui5-card-header>
-            <section class="calendar">
-              <ui5-calendar hide-week-numbers selection-mode="Range" timestamp="1903046400" selected-dates-change="">
-              </ui5-calendar>
-            </section>
-            <section class="calendar-card-content">
-              <app-legend-item icon="border" color="legend-item__icon--purple" text="Today"></app-legend-item>
-              <app-legend-item icon="border" color="legend-item__icon--information" text="Trip Dates"></app-legend-item>
-              <ui5-timeline>
-                <ui5-timeline-item id="test-item" title-text="called" timestamp="1487583000000" icon="phone"
-                  name="John Smith" name-clickable></ui5-timeline-item>
-                <ui5-timeline-item title-text="Weekly Sync - CP Design" timestamp="1517349600000" icon="calendar">
-                  MR SOF02 2.43
-                </ui5-timeline-item>
-                <ui5-timeline-item title-text="Video Converence Call - UI5" timestamp="1485813600000" icon="calendar">
-                  Online meeting
-                </ui5-timeline-item>
-              </ui5-timeline>
-            </section>
+            <app-trip-calendar></app-trip-calendar>
           </ui5-card>
         </div>
       </div>
@@ -53,14 +36,12 @@
                   <div class="flight-details__content">
                     <span class="flight-details__content__text flight-details__content__text--left">
                       <ui5-label>Departure</ui5-label>
-                      <span> {{months[trip.departureTime.getUTCMonth()]}} {{trip.departureTime.getDate()}} /
-                        {{trip.departureTime.getHours()}}:{{addZeroToTime(trip.departureTime.getMinutes())}}</span>
+                      <span> {{departureDateTimeString}} </span>
                     </span>
                     <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar>
                     <span class="flight-details__content__text flight-details__content__text--right">
                       <ui5-label>Arrival</ui5-label>
-                      <span>{{months[trip.arrivalTime.getUTCMonth()]}} {{trip.arrivalTime.getDate()}} /
-                        {{trip.arrivalTime.getHours()}}:{{addZeroToTime(trip.arrivalTime.getMinutes())}}</span>
+                      <span>{{arrivalDateTimeString}}</span>
                     </span>
                   </div>
                 </ui5-card>
@@ -97,14 +78,12 @@
           <div class="flight-details__content">
             <span class="flight-details__content__text flight-details__content__text--left">
               <ui5-label>Departure</ui5-label>
-              <span> {{months[trip.departureTime.getUTCMonth()]}} {{trip.departureTime.getDate()}} /
-                {{trip.departureTime.getHours()}}:{{addZeroToTime(trip.departureTime.getMinutes())}}</span>
+              <span> {{departureDateTimeString}}</span>
             </span>
             <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar>
             <span class="flight-details__content__text flight-details__content__text--right">
               <ui5-label>Arrival</ui5-label>
-              <span>{{months[trip.arrivalTime.getUTCMonth()]}} {{trip.arrivalTime.getDate()}} /
-                {{trip.arrivalTime.getHours()}}:{{addZeroToTime(trip.arrivalTime.getMinutes())}}</span>
+              <span>{{arrivalDateTimeString}}</span>
             </span>
           </div>
         </ui5-card>

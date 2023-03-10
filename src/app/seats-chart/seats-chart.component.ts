@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { ALPHABETS } from 'src/assets/constant-querries';
 import { CURRENT_TRIP } from 'src/assets/mock-data/mock-trips';
-import { AIRCRAFT_STATUS } from "src/assets/mock-data/mock-aircraft-status"
+import { DEPARTURE_AIRCRAFT_STATUS } from "src/assets/mock-data/mock-aircraft-status"
 import { LegendItem } from '../interfaces/legend-item';
 
 @Component({
@@ -33,10 +33,10 @@ export class SeatsChartComponent {
         return false;
     }
 
-    rows = AIRCRAFT_STATUS.rows;
-    columns = AIRCRAFT_STATUS.columns;
+    rows = DEPARTURE_AIRCRAFT_STATUS.rows;
+    columns = DEPARTURE_AIRCRAFT_STATUS.columns;
     columnLabelIndex = this.sumPrefix(this.columns);
-    availableSeats = AIRCRAFT_STATUS.availableSeats;
+    availableSeats = DEPARTURE_AIRCRAFT_STATUS.availableSeats;
     yourSeats = CURRENT_TRIP.seatsSelected;
     chars = ALPHABETS;
     legendItems: LegendItem[] = [

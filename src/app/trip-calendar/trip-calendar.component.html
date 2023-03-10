@@ -1,0 +1,27 @@
+<section class="calendar">
+    <ui5-calendar selection-mode="Range" timestamp="1903046400" format-pattern="dd/MM/yyyy" date="04/04/2030">
+        <ui5-date *ngFor="let date of datesBetween" value="{{formatDate(date)}}" aria-selected="true"></ui5-date>
+    </ui5-calendar>
+</section>
+
+<section class="calendar-card-content">
+    <app-legend-item icon="border" color="legend-item__icon--purple" text="Today"></app-legend-item>
+    <app-legend-item icon="border" color="legend-item__icon--information" text="Trip Dates"></app-legend-item>
+    <ui5-timeline style="padding-top: 0">
+        <ui5-timeline-item title-text="Gate Opens" icon="calendar">
+            {{departureBoardingDateTimeString}} <ui5-label> - Gate {{departureGate}}</ui5-label>
+        </ui5-timeline-item>
+
+        <ui5-timeline-item title-text="Flight Leaves" icon="calendar">
+            {{departureDateTimeString}} <ui5-label> - Gate {{returnGate}}</ui5-label>
+        </ui5-timeline-item>
+
+        <ui5-timeline-item title-text="Return Gate Opens" icon="calendar">
+            {{returnBoardingDateTimeString}} <ui5-label> - Gate {{returnGate}}</ui5-label>
+        </ui5-timeline-item>
+
+        <ui5-timeline-item title-text="Return Flight Leaves" icon="calendar">
+            {{returnDateTimeString}} <ui5-label> - Gate {{returnGate}}</ui5-label>
+        </ui5-timeline-item>
+    </ui5-timeline>
+</section>

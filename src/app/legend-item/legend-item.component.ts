@@ -9,9 +9,7 @@ export class LegendItemComponent {
     constructor() {
     }
 
-    ngOnInit() {
-        console.log(this.icon);
-    }
+    ngOnInit() { }
 
     @Input() icon: string = '';
     @Input() color: string = '';

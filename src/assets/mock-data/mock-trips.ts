@@ -61,8 +61,19 @@ export const CURRENT_TRIP: Trip = {
     arrivalTo: "Montreal",
     departureAbb: "YVR",
     arrivalAbb: "YUL",
-    departureTime: new Date(2023, 0o3, 17, 12, 0o0),
-    arrivalTime: new Date(2023, 0o3, 17, 17, 30),
+    departureTime: new Date(2030, 0o3, 17, 12, 0o0),
+    arrivalTime: new Date(2030, 0o3, 17, 17, 30),
+    seats: "D2-G2",
+    seatsSelected: [[1, 3], [1, 4], [1, 5], [1, 6]],
+};
+
+export const RETURN_TRIP: Trip = {
+    departureFrom: "Montreal",
+    arrivalTo: "Vancouver",
+    departureAbb: "YUL",
+    arrivalAbb: "YVR",
+    departureTime: new Date(2030, 0o3, 22, 12, 0o0),
+    arrivalTime: new Date(2030, 0o3, 22, 17, 30),
     seats: "D2-G2",
     seatsSelected: [[1, 3], [1, 4], [1, 5], [1, 6]],
 };
