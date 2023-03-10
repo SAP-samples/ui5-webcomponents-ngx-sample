@@ -15,7 +15,7 @@ Angular 15 or higher. Other versions might work, but are not tested.
 ## Download and Installation
 Run `npm install` for package installation.
 Run `ng serve` or `npm start` for a dev server. 
-Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Navigate to `http://localhost:4200/ui5-webcomponents-ngx-sample`. The application will automatically reload if you change any of the source files.
 
 ## How to obtain support
 [Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
