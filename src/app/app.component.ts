@@ -11,6 +11,12 @@ import { DEPARTURE_AIRCRAFT_STATUS } from 'src/assets/mock-data/mock-aircraft-st
 })
 export class AppComponent {
 
+  ngOnInit() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 4000);
+  }
+
   earlyOrLate(actual: Date, estimated: Date): string {
     var difference = actual.getTime() - estimated.getTime();
     var minutes = Math.floor((Math.abs(difference) / 1000) / 60);
@@ -22,6 +28,8 @@ export class AppComponent {
   }
 
   title = 'mock-project';
+
+  loading = true;
 
   trip = CURRENT_TRIP;
   months = ABB_MONTHS;

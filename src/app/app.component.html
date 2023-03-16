@@ -1,209 +1,211 @@
-<app-header></app-header>
+<ui5-busy-indicator [active]="loading" size="Large" style="width:100%; padding-top: 40%;"
+  [style.display]="loading? 'block' : 'none'"></ui5-busy-indicator>
 
-<section class="app-content">
-  <!-- Message Strip section -->
-  <section>
-    <app-message></app-message>
-  </section>
+<div *ngIf="!loading" [style.display]="loading? 'none' : 'block'">
+  <app-header></app-header>
 
-  <ui5-title level="H4" class="section-title">
-    Your Flight Information
-  </ui5-title>
+  <section class="app-content">
+    <!-- Message Strip section -->
+    <section>
+      <app-message></app-message>
+    </section>
 
-  <fd-layout-grid class="remove-padding">
+    <ui5-title level="H4" class="section-title">
+      Your Flight Information
+    </ui5-title>
 
-    <div fdLayoutGridRow class="cards remove-padding">
+    <fd-layout-grid class="remove-padding">
+      <div fdLayoutGridRow class="cards remove-padding">
 
-      <!-- Your Itinerary /  Calendar section -->
-      <div class="remove-padding hidden-at-tablet" [fdLayoutGridCol]="12" [colMd]="12" [colLg]="6" [colXl]="3">
-        <div class="calendar-card">
-          <ui5-card>
-            <ui5-card-header slot="header" title-text="Your Itinerary"></ui5-card-header>
-            <app-trip-calendar></app-trip-calendar>
-          </ui5-card>
+        <!-- Your Itinerary /  Calendar section -->
+        <div class="remove-padding hidden-at-tablet" [fdLayoutGridCol]="12" [colMd]="12" [colLg]="6" [colXl]="3">
+          <div class="calendar-card">
+            <ui5-card>
+              <ui5-card-header slot="header" title-text="Your Itinerary"></ui5-card-header>
+              <app-trip-calendar></app-trip-calendar>
+            </ui5-card>
+          </div>
         </div>
-      </div>
 
-      <!-- Flight Details section -->
-      <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="6" [colXl]="4" class="hidden-at-tablet remove-padding">
-        <fd-layout-grid>
-          <div fdLayoutGridRow>
-            <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
-              <div class="flight-details-card">
-                <ui5-card>
-                  <ui5-card-header slot="header" title-text="Flight Details" status="1 of 2">
-                  </ui5-card-header>
-                  <div class="flight-details__content">
-                    <span class="flight-details__content__text flight-details__content__text--left">
-                      <ui5-label>Departure</ui5-label>
-                      <span> {{departureDateTimeString}} </span>
-                    </span>
-                    <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar>
-                    <span class="flight-details__content__text flight-details__content__text--right">
-                      <ui5-label>Arrival</ui5-label>
-                      <span>{{arrivalDateTimeString}}</span>
-                    </span>
-                  </div>
-                </ui5-card>
-              </div>
-            </div>
-          </div>
-
-          <div fdLayoutGridRow>
-            <div [fdLayoutGridCol]="12" [colMd]="0" [colLg]="12" [colXl]="12" class="remove-padding">
-              <ui5-card>
-                <ui5-card-header slot="header" title-text="Your Seats" status="Flight 1 of 2">
-                </ui5-card-header>
-                <div style="padding-left: 1rem">
-                  <ui5-label>
-                    From {{trip.departureFrom}} ({{trip.departureAbb}})
-                    to {{trip.arrivalTo}} ({{trip.arrivalAbb}})
-                  </ui5-label>
-                </div>
-
-                <app-seats-chart> </app-seats-chart>
-                <ui5-bar design="Footer">
-                  <ui5-button design="Emphasized" slot="endContent">Upgrade</ui5-button>
-                </ui5-bar>
-              </ui5-card>
-            </div>
-          </div>
-        </fd-layout-grid>
-      </div>
-
-      <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="show-at-tablet remove-padding">
-        <ui5-card class="">
-          <ui5-card-header slot="header" title-text="Flight Details" status="1 of 2">
-          </ui5-card-header>
-          <div class="flight-details__content">
-            <span class="flight-details__content__text flight-details__content__text--left">
-              <ui5-label>Departure</ui5-label>
-              <span> {{departureDateTimeString}}</span>
-            </span>
-            <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar>
-            <span class="flight-details__content__text flight-details__content__text--right">
-              <ui5-label>Arrival</ui5-label>
-              <span>{{arrivalDateTimeString}}</span>
-            </span>
-          </div>
-        </ui5-card>
-      </div>
-
-
-      <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="5" class="remove-padding">
-        <div class="cards__column--whole">
+        <!-- Flight Details section desktop-->
+        <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="6" [colXl]="4" class="hidden-at-tablet remove-padding">
           <fd-layout-grid>
-
-            <div fdLayoutGridRow class="remove-padding">
-              <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="7" class="remove-padding">
-                <div class="cards__row passenger-details-card">
-
-                  <!-- Passenger Details card -->
+            <div fdLayoutGridRow>
+              <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+                <div class="flight-details-card">
                   <ui5-card>
-                    <ui5-card-header slot="header" title-text="Passenger Details">
-                      <ui5-button design="Transparent" slot="action">
-                        <ui5-icon name="edit"></ui5-icon>
-                      </ui5-button>
-
+                    <ui5-card-header slot="header" title-text="Flight Details" status="1 of 2">
                     </ui5-card-header>
-
-                    <app-passenger-list></app-passenger-list>
-
+                    <div class="flight-details__content">
+                      <span class="flight-details__content__text flight-details__content__text--left">
+                        <ui5-label>Departure</ui5-label>
+                        <span> {{departureDateTimeString}} </span>
+                      </span>
+                      <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar>
+                      <span class="flight-details__content__text flight-details__content__text--right">
+                        <ui5-label>Arrival</ui5-label>
+                        <span>{{arrivalDateTimeString}}</span>
+                      </span>
+                    </div>
                   </ui5-card>
                 </div>
               </div>
-
-              <!-- Daily Flight Status card -->
-              <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="5" class="remove-padding">
-
-
-                <!-- Your Flight Status card -->
-                <fd-layout-grid>
-                  <div fdLayoutGridRow class="remove-padding">
-                    <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
-                      <div class="flight-status-card">
-                        <ui5-card>
-                          <ui5-card-header slot="header" title-text="Your Flight Status" subtitle-text="Boarding at:">
-                          </ui5-card-header>
-                          <div class="text-column text-column--tall">
-                            <span class="text-row">
-                              <span class="large-text large-text--green">
-                                {{boardingTime}}
-                              </span>
-                              <ui5-label class="hidden-at-mobile">{{boardingTimeDifference}}</ui5-label>
-                            </span>
-                            <span class="refresh text-row">
-                              <ui5-icon class="refresh-icon" name="refresh" design="Information"></ui5-icon>
-                              {{boardingLastRefresh}} min. ago
-                            </span>
-                          </div>
-
-                        </ui5-card>
-                      </div>
-                    </div>
-                  </div>
-                </fd-layout-grid>
-
-                <fd-layout-grid>
-                  <div fdLayoutGridRow class="remove-padding">
-                    <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
-                      <ui5-card class="card--bottom">
-                        <ui5-card-header slot="header" title-text="Daily Flight Status">
-                        </ui5-card-header>
-                        <div class="progress-bars">
-                          <ui5-progress-indicator display-value="Late" value-state="Error"
-                            value="20"></ui5-progress-indicator>
-                          <ui5-progress-indicator display-value="Early" value-state="Warning"
-                            value="15"></ui5-progress-indicator>
-                          <ui5-progress-indicator class="progress-bars__last" display-value="On Time"
-                            value-state="Success" value="60"></ui5-progress-indicator>
-                        </div>
-                      </ui5-card>
-                    </div>
-                  </div>
-                </fd-layout-grid>
-              </div>
             </div>
-          </fd-layout-grid>
-        </div>
 
-
-        <!-- Your Seats section -->
-        <fd-layout-grid>
-          <div fdLayoutGridRow class="remove-padding">
-            <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12"
-              class="show-at-tablet hidden-at-desktop remove-padding">
-              <div class="your-seats-card">
+            <!-- Your Seats section desktop -->
+            <div fdLayoutGridRow>
+              <div [fdLayoutGridCol]="12" [colMd]="0" [colLg]="12" [colXl]="12" class="remove-padding">
                 <ui5-card>
-                  <ui5-card-header slot="header" title-text="Your Seats">
+                  <ui5-card-header slot="header" title-text="Your Seats" status="Flight 1 of 2">
                   </ui5-card-header>
-                  <div style="padding-left: 1rem; padding-bottom: 0.5rem;">
+                  <div style="padding-left: 1rem">
                     <ui5-label>
-                      From {{trip.departureAbb}} to {{trip.arrivalAbb}}
+                      From {{trip.departureFrom}} ({{trip.departureAbb}})
+                      to {{trip.arrivalTo}} ({{trip.arrivalAbb}})
                     </ui5-label>
                   </div>
-                  <div class="text-column">
-                    <span class="large-text large-text--blue">
-                      {{trip.seats}}
-                    </span>
-                  </div>
+                  <app-seats-chart> </app-seats-chart>
                   <ui5-bar design="Footer">
                     <ui5-button design="Emphasized" slot="endContent">Upgrade</ui5-button>
                   </ui5-bar>
                 </ui5-card>
               </div>
             </div>
-            <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12" class="remove-padding">
-              <div class="payment-details-card">
-                <ui5-card class="card--wide">
-                  <ui5-card-header slot="header" title-text="Payment Details"></ui5-card-header>
-                  <app-payment-details></app-payment-details>
-                </ui5-card>
-              </div>
+          </fd-layout-grid>
+        </div>
+
+        <!-- Flight Details section tablet and mobile-->
+        <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="show-at-tablet remove-padding">
+          <ui5-card class="">
+            <ui5-card-header slot="header" title-text="Flight Details" status="1 of 2">
+            </ui5-card-header>
+            <div class="flight-details__content">
+              <span class="flight-details__content__text flight-details__content__text--left">
+                <ui5-label>Departure</ui5-label>
+                <span> {{departureDateTimeString}}</span>
+              </span>
+              <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar>
+              <span class="flight-details__content__text flight-details__content__text--right">
+                <ui5-label>Arrival</ui5-label>
+                <span>{{arrivalDateTimeString}}</span>
+              </span>
             </div>
+          </ui5-card>
+        </div>
+
+        <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="5" class="remove-padding">
+          <div class="cards__column--whole">
+            <fd-layout-grid>
+              <div fdLayoutGridRow class="remove-padding">
+
+                <!-- Passenger Details card -->
+                <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="7" class="remove-padding">
+                  <div class="cards__row passenger-details-card">
+                    <ui5-card>
+                      <ui5-card-header slot="header" title-text="Passenger Details">
+                        <ui5-button design="Transparent" slot="action">
+                          <ui5-icon name="edit"></ui5-icon>
+                        </ui5-button>
+                      </ui5-card-header>
+                      <app-passenger-list></app-passenger-list>
+                    </ui5-card>
+                  </div>
+                </div>
+
+                <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="5" class="remove-padding">
+
+                  <!-- Your Flight Status card -->
+                  <fd-layout-grid>
+                    <div fdLayoutGridRow class="remove-padding">
+                      <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+                        <div class="flight-status-card">
+                          <ui5-card>
+                            <ui5-card-header slot="header" title-text="Your Flight Status" subtitle-text="Boarding at:">
+                            </ui5-card-header>
+                            <div class="text-column text-column--tall">
+                              <span class="text-row">
+                                <span class="large-text large-text--green">
+                                  {{boardingTime}}
+                                </span>
+                                <ui5-label class="hidden-at-mobile">{{boardingTimeDifference}}</ui5-label>
+                              </span>
+                              <span class="refresh text-row">
+                                <ui5-icon class="refresh-icon" name="refresh" design="Information"></ui5-icon>
+                                {{boardingLastRefresh}} min. ago
+                              </span>
+                            </div>
+                          </ui5-card>
+                        </div>
+                      </div>
+                    </div>
+                  </fd-layout-grid>
+
+                  <!-- Daily Flight Status section -->
+                  <fd-layout-grid>
+                    <div fdLayoutGridRow class="remove-padding">
+                      <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+                        <ui5-card class="card--bottom">
+                          <ui5-card-header slot="header" title-text="Daily Flight Status">
+                          </ui5-card-header>
+                          <div class="progress-bars">
+                            <ui5-progress-indicator display-value="Late" value-state="Error"
+                              value="20"></ui5-progress-indicator>
+                            <ui5-progress-indicator display-value="Early" value-state="Warning"
+                              value="15"></ui5-progress-indicator>
+                            <ui5-progress-indicator class="progress-bars__last" display-value="On Time"
+                              value-state="Success" value="60"></ui5-progress-indicator>
+                          </div>
+                        </ui5-card>
+                      </div>
+                    </div>
+                  </fd-layout-grid>
+
+                </div>
+              </div>
+            </fd-layout-grid>
           </div>
-        </fd-layout-grid>
+
+          <fd-layout-grid>
+            <div fdLayoutGridRow class="remove-padding">
+
+              <!-- Your Seats section tablet and mobile-->
+              <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12"
+                class="show-at-tablet hidden-at-desktop remove-padding">
+                <div class="your-seats-card">
+                  <ui5-card>
+                    <ui5-card-header slot="header" title-text="Your Seats">
+                    </ui5-card-header>
+                    <div style="padding-left: 1rem; padding-bottom: 0.5rem;">
+                      <ui5-label>
+                        From {{trip.departureAbb}} to {{trip.arrivalAbb}}
+                      </ui5-label>
+                    </div>
+                    <div class="text-column">
+                      <span class="large-text large-text--blue">
+                        {{trip.seats}}
+                      </span>
+                    </div>
+                    <ui5-bar design="Footer">
+                      <ui5-button design="Emphasized" slot="endContent">Upgrade</ui5-button>
+                    </ui5-bar>
+                  </ui5-card>
+                </div>
+              </div>
+
+              <!-- Payment Details section -->
+              <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12" class="remove-padding">
+                <div class="payment-details-card">
+                  <ui5-card class="card--wide">
+                    <ui5-card-header slot="header" title-text="Payment Details"></ui5-card-header>
+                    <app-payment-details></app-payment-details>
+                  </ui5-card>
+                </div>
+              </div>
+
+            </div>
+          </fd-layout-grid>
+        </div>
       </div>
-    </div>
-  </fd-layout-grid>
-</section>
+    </fd-layout-grid>
+  </section>
+</div>
