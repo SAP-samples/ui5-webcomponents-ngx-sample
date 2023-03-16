@@ -5,23 +5,20 @@
 </section>
 
 <section class="calendar-card-content">
-    <app-legend-item icon="border" color="legend-item__icon--purple" text="Today"></app-legend-item>
-    <app-legend-item icon="border" color="legend-item__icon--information" text="Trip Dates"></app-legend-item>
+    <app-legend-item name="border" color="legend-item__icon--purple" text="Today"></app-legend-item>
+    <app-legend-item name="border" color="legend-item__icon--information" text="Trip Dates"></app-legend-item>
     <ui5-timeline style="padding-top: 0">
-        <ui5-timeline-item title-text="Gate Opens" icon="calendar">
-            {{departureBoardingDateTimeString}} <ui5-label> - Gate {{departureGate}}</ui5-label>
+        <ui5-timeline-item title-text="Gate Opens"
+            subtitle-text="{{departureBoardingDateTimeString}} - Gate {{departureGate}}" icon="calendar">
         </ui5-timeline-item>
-
-        <ui5-timeline-item title-text="Flight Leaves" icon="calendar">
-            {{departureDateTimeString}} <ui5-label> - Gate {{returnGate}}</ui5-label>
+        <ui5-timeline-item title-text="Flight Leaves"
+            subtitle-text="{{departureDateTimeString}} - Gate {{departureGate}}" icon="calendar">
         </ui5-timeline-item>
-
-        <ui5-timeline-item title-text="Return Gate Opens" icon="calendar">
-            {{returnBoardingDateTimeString}} <ui5-label> - Gate {{returnGate}}</ui5-label>
+        <ui5-timeline-item title-text="Return Gate Opens"
+            subtitle-text="{{returnBoardingDateTimeString}} - Gate {{returnGate}}" icon="calendar">
         </ui5-timeline-item>
-
-        <ui5-timeline-item title-text="Return Flight Leaves" icon="calendar">
-            {{returnDateTimeString}} <ui5-label> - Gate {{returnGate}}</ui5-label>
+        <ui5-timeline-item title-text="Return Flight Leaves"
+            subtitle-text="{{returnDateTimeString}} - Gate {{returnGate}}" icon="calendar">
         </ui5-timeline-item>
     </ui5-timeline>
 </section>

@@ -13,8 +13,7 @@ export function getDateAsddMMyyyy(date: Date) {
 };
 
 export function getDateAsAbbStringMMddtttt(date: Date) {
-    return `${MONTHS[date.getUTCMonth()]} ${date.getDate()} /
-${date.getHours()}:${addZeroToTime(date.getMinutes())}`
+    return `${MONTHS[date.getUTCMonth()]} ${date.getDate()} / ${date.getHours()}:${addZeroToTime(date.getMinutes())}`
 };
 
 export function getDatesArray(startDate: Date, stopDate: Date) {

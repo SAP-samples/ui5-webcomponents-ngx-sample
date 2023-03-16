@@ -1,8 +1,8 @@
-<ui5-shellbar primary-title="Airlines" show-notifications notifications-count="2">
+<ui5-shellbar primary-title="Airlines" [show-notifications]="true" notifications-count="2">
     <ui5-avatar slot="profile">
-        <img src="assets/images/avatar_small.jpeg" />
+        <img src="assets/images/avatar_small.webp" alt="User profile photo" />
     </ui5-avatar>
-    <img slot="logo" src="assets/images/SAP_logo.png" />
+    <img slot="logo" src="assets/images/SAP_logo.webp" style="width:64px; height:32px" alt="SAP logo" />
     <ui5-input slot="searchField" placeholder="Search everything"></ui5-input>
 </ui5-shellbar>
 
@@ -12,7 +12,7 @@
     !
 </ui5-title>
 
-<ui5-tabcontainer class="hidden-at-tablet" header-background-design=" Solid" content-background-design="Solid"
+<ui5-tabcontainer class="hidden-at-tablet" header-background-design="Solid" content-background-design="Solid"
     [fixed]="true" [collapsed]="true">
     <ui5-tab text="Flight Info"></ui5-tab>
     <ui5-tab text="Plan a Trip"></ui5-tab>
