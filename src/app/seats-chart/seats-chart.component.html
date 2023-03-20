@@ -31,27 +31,9 @@
         </div>
     </div>
 
-    <!-- <div style="display:flex; flex-direction:row;">
-
-        <div class="legend-item" style="padding-right: 4.2rem;">
-            <ui5-icon class="legend-item__icon legend-item__icon--information" name="circle-task-2"></ui5-icon>
-            Your Seats
-        </div>
-        <div class="legend-item">
-            <ui5-icon class="legend-item__icon" name="circle-task-2"></ui5-icon>
-            Taken
-        </div>
-    </div>
-    <div class="legend-item">
-        <ui5-icon class="legend-item__icon legend-item__icon--message" name="circle-task-2"></ui5-icon>
-        Available
-    </div> -->
-
     <div *ngFor="let legendItem of legendItems">
         <app-legend-item icon="{{legendItem.icon}}" color="{{legendItem.color}}"
             text="{{legendItem.text}}"></app-legend-item>
     </div>
-
-
 
 </section>
