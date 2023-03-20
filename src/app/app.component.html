@@ -1,4 +1,4 @@
-<ui5-busy-indicator [active]="loading" size="Large" style="width:100%; padding-top: 40%;"
+<ui5-busy-indicator [active]="loading" size="Large" style="width:100%; padding-top:30%"
   [style.display]="loading? 'block' : 'none'"></ui5-busy-indicator>
 
 <div *ngIf="!loading" [style.display]="loading? 'none' : 'block'">
@@ -149,11 +149,11 @@
                           </ui5-card-header>
                           <div class="progress-bars">
                             <ui5-progress-indicator display-value="Late" value-state="Error"
-                              value="20"></ui5-progress-indicator>
+                              [value]="20"></ui5-progress-indicator>
                             <ui5-progress-indicator display-value="Early" value-state="Warning"
-                              value="15"></ui5-progress-indicator>
+                              [value]="15"></ui5-progress-indicator>
                             <ui5-progress-indicator class="progress-bars__last" display-value="On Time"
-                              value-state="Success" value="60"></ui5-progress-indicator>
+                              value-state="Success" [value]="60"></ui5-progress-indicator>
                           </div>
                         </ui5-card>
                       </div>
