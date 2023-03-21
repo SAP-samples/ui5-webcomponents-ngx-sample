@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { Ui5ThemingModule } from '@ui5/theming-ngx';
 import { FundamentalNgxCoreModule } from '@fundamental-ngx/core';
 import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
-// import { Ui5AngularModule } from '@ui5/webcomponents-ngx';
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
+import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 
 import { HeaderComponent } from './header/header.component';
 import { MessageComponent } from './message/message.component';
@@ -31,12 +31,12 @@ import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    Ui5ThemingModule.forRoot({ defaultTheme: 'sap_horizon' }),
+    Ui5ThemingModule.forRoot({
+      defaultTheme: "sap_horizon"
+    }),
     Ui5WebcomponentsModule,
-    // Ui5AngularModule,
     FundamentalNgxCoreModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
