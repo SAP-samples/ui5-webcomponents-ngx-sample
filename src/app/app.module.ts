@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Ui5ThemingModule } from "@ui5/theming-ngx";
+import { Ui5ThemingModule } from '@ui5/theming-ngx';
 import { FundamentalNgxCoreModule } from '@fundamental-ngx/core';
 import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
-import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";
+import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 
 import { HeaderComponent } from './header/header.component';
 import { MessageComponent } from './message/message.component';
