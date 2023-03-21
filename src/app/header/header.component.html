@@ -11,13 +11,15 @@
     <div id="themeRadioGroup">
         <div *ngFor="let theme of themes">
             <ui5-radio-button #themeRadioValue text="{{theme.displayName}}" value="{{theme.usageName}}"
-                value-state="None" [checked]="theme.displayName===currentTheme"
+                value-state="None" [checked]="theme.usageName===currentTheme"
                 (change)="setSelectedTheme(themeRadioValue.value)" name="ThemeGroup"></ui5-radio-button>
         </div>
     </div>
     <div slot="footer"
         style="display: flex; align-items: center; justify-content: end; width: 100%; box-sizing: border-box;">
         <ui5-button design="Emphasized" (click)="applyTheme()">Apply</ui5-button>
+        <ui5-button style="margin: 0 0 0 0.5rem;" (click)=" setThemeDialogOpen()">Cancel</ui5-button>
+
     </div>
 </ui5-dialog>
 

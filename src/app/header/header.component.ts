@@ -16,8 +16,8 @@ export class HeaderComponent {
     constructor(private ui5ThemingService: Ui5ThemingService) { }
 
     applyTheme() {
-        this.setThemeDialogOpen();
         this.switchTheme();
+        this.setThemeDialogOpen();
     }
 
     switchTheme() {
@@ -27,6 +27,7 @@ export class HeaderComponent {
 
     setThemeDialogOpen() {
         this.themeDialogOpen = !this.themeDialogOpen;
+        this.selectedTheme = this.currentTheme;
     }
 
     setSelectedTheme(themeName: string | undefined) {
@@ -35,8 +36,8 @@ export class HeaderComponent {
         }
     }
 
-    selectedTheme = "Morning Horizon";
-    currentTheme = "Morning Horizon";
+    selectedTheme = "sap_horizon";
+    currentTheme = "sap_horizon";
     themeDialogOpen = false;
     themes = THEMES;
     user = USER;
