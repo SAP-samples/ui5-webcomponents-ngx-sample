@@ -23,9 +23,12 @@ Navigate to `http://localhost:4200/ui5-webcomponents-ngx-sample`. The applicatio
 For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
 
 ## Contributing
-If you wish to contribute code, offer fixes or improvements, please send a pull request. Due to legal reasons, contributors will be asked to accept a DCO when they create the first pull request to this project. This happens in an automated fashion during the submission process. SAP uses [the standard DCO text of the Linux Foundation](https://developercertificate.org/).
+This project is open to feature requests/suggestions, bug reports etc.
+via [GitHub issues](https://github.com/SAP/ui5-webcomponents-ngx-sample/issues). Contribution and feedback are encouraged and
+always welcome. For more information about how to contribute, the project structure, as well as additional contribution
+information, see our [Contribution Guidelines](https://github.com/SAP/ui5-webcomponents-ngx-sample/blob/main/CONTRIBUTING.md).
 
-## Contributing
+## Code of Conduct
 We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone. By participating in this project, you agree to abide by its [Code of Conduct](CODE_OF_CONDUCT.md) at all times.
 
 ## License
