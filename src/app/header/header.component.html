@@ -4,7 +4,22 @@
     </ui5-avatar>
     <img slot="logo" src="assets/images/SAP_logo.webp" style="width:64px; height:32px" alt="SAP logo" />
     <ui5-input slot="searchField" placeholder="Search everything"></ui5-input>
+    <ui5-shellbar-item icon="palette" text="Change themes" (click)="setThemeDialogOpen()"></ui5-shellbar-item>
 </ui5-shellbar>
+
+<ui5-dialog header-text="Choose a theme" [open]="themeDialogOpen" accessible-name="Choose a theme">
+    <div id="themeRadioGroup">
+        <div *ngFor="let theme of themes">
+            <ui5-radio-button #themeRadioValue text="{{theme.displayName}}" value="{{theme.usageName}}"
+                value-state="None" [checked]="theme.displayName===currentTheme"
+                (change)="setSelectedTheme(themeRadioValue.value)" name="ThemeGroup"></ui5-radio-button>
+        </div>
+    </div>
+    <div slot="footer"
+        style="display: flex; align-items: center; justify-content: end; width: 100%; box-sizing: border-box;">
+        <ui5-button design="Emphasized" (click)="applyTheme()">Apply</ui5-button>
+    </div>
+</ui5-dialog>
 
 <ui5-title class="title" level="H2" style="overflow-wrap: break-word;">
     Welcome, {{user.firstName}}
