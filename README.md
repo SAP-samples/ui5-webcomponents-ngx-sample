@@ -24,9 +24,9 @@ For additional support, [ask a question in SAP Community](https://answers.sap.co
 
 ## Contributing
 This project is open to feature requests/suggestions, bug reports etc.
-via [GitHub issues](https://github.com/SAP/ui5-webcomponents-ngx-sample/issues). Contribution and feedback are encouraged and
+via [GitHub issues](https://github.com/SAP-samples/ui5-webcomponents-ngx-sample/issues). Contribution and feedback are encouraged and
 always welcome. For more information about how to contribute, the project structure, as well as additional contribution
-information, see our [Contribution Guidelines](https://github.com/SAP/ui5-webcomponents-ngx-sample/blob/main/CONTRIBUTING.md).
+information, see our [Contribution Guidelines](https://github.com/SAP-samples/ui5-webcomponents-ngx-sample/blob/main/CONTRIBUTING.md).
 
 ## Code of Conduct
 We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone. By participating in this project, you agree to abide by its [Code of Conduct](CODE_OF_CONDUCT.md) at all times.
