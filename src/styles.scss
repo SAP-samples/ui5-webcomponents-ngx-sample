@@ -2,7 +2,7 @@
 .app-content {
     height: 100%;
     padding: 0 3rem 3rem 3rem;
-    background-color: #f5f6f7;
+    background-color: var(--sapBackgroundColor);
 
     @media screen and (max-width: 600px) {
         padding: 0 2rem 2rem 2rem;
