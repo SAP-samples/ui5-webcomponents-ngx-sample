@@ -29,7 +29,7 @@ Issue report checklist:
  * Good summary
  * Well-documented
  * Minimal example
- * Use the [template](ISSUE_TEMPLATE.md)
+ * Use the template provided
 
 
 ### Requirements for a bug report
@@ -59,7 +59,7 @@ These eight requirements are the mandatory base of a good bug report:
    * this may not always be possible and sometimes be overkill, but it always helps analyzing a bug
 8. Only one bug per report: open different tickets for different issues
 
-You are encouraged to use [this template](ISSUE_TEMPLATE.md).
+You are encouraged to use the template provided.
 
 Please report bugs in English, so all users can understand them.
 
