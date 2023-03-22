@@ -5,9 +5,7 @@
 -->
 
 ## Description
-This is a demo application for the SAP [@ui5/webcomponents-ngx](https://github.com/SAP/ui5-webcomponents-ngx) project.
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
+This is a demo application for the SAP [@ui5/webcomponents-ngx](https://github.com/SAP/ui5-webcomponents-ngx) project
 
 ## Requirements
 Angular 15 or higher. Other versions might work, but are not tested.
