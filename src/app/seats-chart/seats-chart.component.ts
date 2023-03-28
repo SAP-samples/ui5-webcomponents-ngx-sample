@@ -40,8 +40,8 @@ export class SeatsChartComponent {
     yourSeats = CURRENT_TRIP.seatsSelected;
     chars = ALPHABETS;
     legendItems: LegendItem[] = [
-        { icon: "circle-task-2", color: "legend-item__icon--information", text: "Your Seats" },
+        { icon: "sys-enter-2", color: "legend-item__icon--informative", text: "Your Seats" },
         { icon: "circle-task-2", color: "", text: "Taken" },
-        { icon: "circle-task-2", color: "legend-item__icon--message", text: "Available" }
+        { icon: "circle-task", color: "legend-item__icon--message", text: "Available" }
     ];
 }

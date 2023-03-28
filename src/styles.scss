@@ -1,50 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+@import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
+
 .app-content {
     height: 100%;
-    padding: 0 3rem 3rem 3rem;
+    @include sap-padding-responsive();
     background-color: var(--sapBackgroundColor);
-
-    @media screen and (max-width: 600px) {
-        padding: 0 2rem 2rem 2rem;
-    }
 }
 
 .show-at-mobile {
     display: none;
 
-    @media screen and (max-width: 600px) {
+    @include sap-media-sm() {
         display: block;
     }
+
 }
 
 .show-at-tablet {
     display: none;
 
-    @media screen and (max-width: 1025px) {
-        display: block
+    @include sap-media-range-width(600px, 1023px) {
+        display: block;
+    }
+}
+
+.show-at-desktop {
+    display: none;
+
+    @include sap-media-min-width(1023px) {
+        display: block;
     }
 }
 
 .hidden-at-mobile {
-    @media screen and (max-width: 500px) {
+    @include sap-media-max-width(500px) {
         display: none;
     }
 }
 
 .hidden-at-mobile--larger {
-    @media screen and (max-width: 650px) and (min-width: 600px) {
+    @include sap-media-range-width(600px, 650px) {
         display: none;
     }
 }
 
 .hidden-at-tablet {
-    @media screen and (max-width: 1025px) {
+    @include sap-media-md() {
         display: none;
     }
 }
 
 .hidden-at-desktop {
-    @media screen and (min-width: 1050px) {
+    @include sap-media-min-width(1024px) {
         display: none;
     }
 }

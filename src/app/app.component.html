@@ -1,10 +1,12 @@
-<ui5-busy-indicator [active]="loading" size="Large" style="width:100%; padding-top:30%"
+<ui5-busy-indicator class="busy-indicator" [active]="loading" size="Large"
   [style.display]="loading? 'block' : 'none'"></ui5-busy-indicator>
 
 <div *ngIf="!loading" [style.display]="loading? 'none' : 'block'">
+
   <app-header></app-header>
 
   <section class="app-content">
+
     <!-- Message Strip section -->
     <section>
       <app-message></app-message>
@@ -18,7 +20,8 @@
       <div fdLayoutGridRow class="cards remove-padding">
 
         <!-- Your Itinerary /  Calendar section -->
-        <div class="remove-padding hidden-at-tablet" [fdLayoutGridCol]="12" [colMd]="12" [colLg]="6" [colXl]="3">
+        <div class="remove-padding show-at-desktop hidden-at-tablet hidden-at-mobile" [fdLayoutGridCol]="12"
+          [colMd]="12" [colLg]="6" [colXl]="3">
           <div class="calendar-card">
             <ui5-card>
               <ui5-card-header slot="header" title-text="Your Itinerary"></ui5-card-header>
@@ -42,7 +45,7 @@
                         <span> {{departureDateTimeString}} </span>
                       </span>
                       <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar>
-                      <span class="flight-details__content__text flight-details__content__text--right">
+                      <span class="flight-details__content__text">
                         <ui5-label>Arrival</ui5-label>
                         <span>{{arrivalDateTimeString}}</span>
                       </span>
@@ -54,11 +57,12 @@
 
             <!-- Your Seats section desktop -->
             <div fdLayoutGridRow>
-              <div [fdLayoutGridCol]="12" [colMd]="0" [colLg]="12" [colXl]="12" class="remove-padding">
+              <div [fdLayoutGridCol]="12" [colMd]="0" [colLg]="12" [colXl]="12"
+                class="remove-padding show-at-desktop hidden-at-tablet hidden-at-mobile">
                 <ui5-card>
                   <ui5-card-header slot="header" title-text="Your Seats" status="Flight 1 of 2">
                   </ui5-card-header>
-                  <div style="padding-left: 1rem">
+                  <div class="your-seats-card__content">
                     <ui5-label>
                       From {{trip.departureFrom}} ({{trip.departureAbb}})
                       to {{trip.arrivalTo}} ({{trip.arrivalAbb}})
@@ -85,7 +89,7 @@
                 <span> {{departureDateTimeString}}</span>
               </span>
               <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar>
-              <span class="flight-details__content__text flight-details__content__text--right">
+              <span class="flight-details__content__text">
                 <ui5-label>Arrival</ui5-label>
                 <span>{{arrivalDateTimeString}}</span>
               </span>
@@ -103,7 +107,7 @@
                   <div class="cards__row passenger-details-card">
                     <ui5-card>
                       <ui5-card-header slot="header" title-text="Passenger Details">
-                        <ui5-button design="Transparent" slot="action" title="Edit list">
+                        <ui5-button design="Transparent" slot="action" accessible-name="Edit list">
                           <ui5-icon name="edit"></ui5-icon>
                         </ui5-button>
                       </ui5-card-header>
@@ -144,7 +148,7 @@
                   <fd-layout-grid>
                     <div fdLayoutGridRow class="remove-padding">
                       <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
-                        <ui5-card class="card--bottom">
+                        <ui5-card class="card--bottom daily-flight-card">
                           <ui5-card-header slot="header" title-text="Daily Flight Status">
                           </ui5-card-header>
                           <div class="progress-bars">
@@ -170,12 +174,12 @@
 
               <!-- Your Seats section tablet and mobile-->
               <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12"
-                class="show-at-tablet hidden-at-desktop remove-padding">
+                class="hidden-at-desktop remove-padding">
                 <div class="your-seats-card">
                   <ui5-card>
                     <ui5-card-header slot="header" title-text="Your Seats">
                     </ui5-card-header>
-                    <div style="padding-left: 1rem; padding-bottom: 0.5rem;">
+                    <div class="your-seats-card__content__subheader">
                       <ui5-label>
                         From {{trip.departureAbb}} to {{trip.arrivalAbb}}
                       </ui5-label>

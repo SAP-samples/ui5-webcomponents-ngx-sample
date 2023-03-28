@@ -5,9 +5,13 @@
 </section>
 
 <section class="calendar-card-content">
-    <app-legend-item icon="border" color="legend-item__icon--purple" text="Today"></app-legend-item>
-    <app-legend-item icon="border" color="legend-item__icon--information" text="Trip Dates"></app-legend-item>
-    <ui5-timeline style="padding-top: 0">
+    <app-legend-item icon="color-fill"
+        color="legend-item__icon--background legend-item__icon__border legend-item__icon__border--now"
+        text="Today"></app-legend-item>
+    <app-legend-item icon="color-fill"
+        color="legend-item__icon--selected legend-item__icon__border legend-item__icon__border--selected"
+        text="Trip Dates"></app-legend-item>
+    <ui5-timeline>
         <ui5-timeline-item title-text="Gate Opens"
             subtitle-text="{{departureBoardingDateTimeString}} - Gate {{departureGate}}" icon="calendar">
         </ui5-timeline-item>

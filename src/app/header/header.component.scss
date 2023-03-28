@@ -1,10 +1,33 @@
-.title {
-    padding-left: 3rem;
-    padding-top: 2rem;
-    padding-bottom: 0.5rem;
-    font-weight: 900;
+@import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
 
-    @media screen and (max-width: 1440px) {
-        padding-left: 2rem;
+.title {
+    @include sap-set-padding-top(2rem);
+    @include sap-set-padding-bottom(0.5rem);
+    @include sap-set-padding-x(3rem, 0);
+    background-color: var(--_ui5_tc_header_background);
+
+    @include sap-media-range-width(600px, 1440px) {
+        @include sap-set-padding-x(2rem, 0);
     }
+
+    @include sap-media-sm() {
+        @include sap-set-padding-x(1rem, 0);
+    }
+}
+
+.logo {
+    width: 64px;
+    height: 32px
+}
+
+.dialog__footer {
+    @include sap-display(flex);
+    @include sap-flex-align-items(center);
+    @include sap-flex-justify(end);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dialog__footer__button {
+    @include sap-margin(tiny, begin);
 }

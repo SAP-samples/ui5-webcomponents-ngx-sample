@@ -2,11 +2,12 @@
     <ui5-avatar slot="profile">
         <img src="assets/images/avatar_small.webp" alt="User profile photo" />
     </ui5-avatar>
-    <img slot="logo" src="assets/images/SAP_logo.webp" style="width:64px; height:32px" alt="SAP logo" />
+    <img class="logo" slot="logo" src="assets/images/SAP_logo.webp" alt="SAP logo" />
     <ui5-input slot="searchField" placeholder="Search everything"></ui5-input>
-    <ui5-shellbar-item icon="palette" text="Change themes" (click)="setThemeDialogOpen()"></ui5-shellbar-item>
+    <ui5-shellbar-item icon="palette" (click)="setThemeDialogOpen()"></ui5-shellbar-item>
 </ui5-shellbar>
 
+<!-- Theme select dialog -->
 <ui5-dialog header-text="Choose a theme" [open]="themeDialogOpen" accessible-name="Choose a theme">
     <div id="themeRadioGroup">
         <div *ngFor="let theme of themes">
@@ -15,22 +16,20 @@
                 (change)="setSelectedTheme(themeRadioValue.value)" name="ThemeGroup"></ui5-radio-button>
         </div>
     </div>
-    <div slot="footer"
-        style="display: flex; align-items: center; justify-content: end; width: 100%; box-sizing: border-box;">
+    <div class="dialog__footer" slot="footer">
         <ui5-button design="Emphasized" (click)="applyTheme()">Apply</ui5-button>
-        <ui5-button style="margin: 0 0 0 0.5rem;" (click)=" setThemeDialogOpen()">Cancel</ui5-button>
-
+        <ui5-button class="dialog__footer__button" (click)="setThemeDialogOpen()">Cancel</ui5-button>
     </div>
 </ui5-dialog>
 
-<ui5-title class="title" level="H2" style="overflow-wrap: break-word;">
+<ui5-title class="title" level="H2">
     Welcome, {{user.firstName}}
     <span class="hidden-at-mobile"> {{user.lastName}}</span>
     !
 </ui5-title>
 
-<ui5-tabcontainer class="hidden-at-tablet" header-background-design="Solid" content-background-design="Solid"
-    [fixed]="true" [collapsed]="true">
+<ui5-tabcontainer class="show-at-desktop hidden-at-tablet hidden-at-mobile" header-background-design="Solid"
+    content-background-design="Solid" [fixed]="true" [collapsed]="true">
     <ui5-tab text="Flight Info"></ui5-tab>
     <ui5-tab text="Plan a Trip"></ui5-tab>
     <ui5-tab text="Past Trips"></ui5-tab>
@@ -58,8 +57,8 @@
     </ui5-tab>
 </ui5-tabcontainer>
 
-<ui5-tabcontainer class="show-at-mobile" header-background-design="Solid" content-background-design="Solid"
-    [fixed]="true" [collapsed]="true">
+<ui5-tabcontainer class="hidden-at-desktop hidden-at-tablet show-at-mobile" header-background-design="Solid"
+    content-background-design="Solid" [fixed]="true" [collapsed]="true">
     <ui5-tab text="Flight Info"></ui5-tab>
     <ui5-tab text="Plan a Trip"></ui5-tab>
 </ui5-tabcontainer>
