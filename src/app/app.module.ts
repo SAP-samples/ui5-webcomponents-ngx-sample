@@ -1,14 +1,11 @@
-import { inject, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Ui5ThemingModule } from '@ui5/theming-ngx';
 import { FundamentalNgxCoreModule } from '@fundamental-ngx/core';
 import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
-import { I18nService, Ui5I18nModule } from '@ui5/webcomponents-ngx/i18n';
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 
@@ -39,34 +36,6 @@ import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
     }),
     Ui5WebcomponentsModule,
     FundamentalNgxCoreModule,
-    HttpClientModule,
-    // Ui5I18nModule.forRoot({
-    //   language: 'en',
-    //   fetchDefaultLanguage: true,
-    //   bundle: {
-    //     name: 'root_bundle',
-    //     translations: {
-    //       en: fetch('/assets/i18n/en.json'),
-    //       ua: getUaTranslations(),
-    //     }
-    //   }
-    // })
-    Ui5I18nModule.forRoot({
-      language: 'en',
-      fetchDefaultLanguage: true,
-      bundle: {
-        name: 'root_bundle',
-        translations: {
-          useFactory: () => {
-            const http = inject(HttpClient);
-            return {
-              en: http.get('/assets/i18n/en.json'),
-              ua: http.get('/assets/i18n/messages_ua')
-            }
-          }
-        }
-      }
-    })
   ],
   bootstrap: [AppComponent]
 })
