@@ -1,4 +1,4 @@
-<ui5-label style="padding-left: 1rem; padding-bottom: 1rem;">
+<ui5-label class="payment-subheader">
     {{payment_day}}, {{payment_month}} {{payment_details.date.getDate()}},
     {{payment_hour}}:{{payment_minutes}}
 </ui5-label>
@@ -31,12 +31,12 @@
         <ui5-title level="H6"
             class="card-details__section--first card-details__long">{{payment_details.paymentMethod}}</ui5-title>
         <ui5-title level="H6" class="card-details__long">
-            <span *ngFor="let numbers of payment_details.cardNumber" style="padding-right: 0.1rem">
+            <span class="card-details__long--segment" *ngFor="let numbers of payment_details.cardNumber">
                 {{numbers}}
             </span>
         </ui5-title>
         <ui5-title level="H6" class="card-details__short">{{payment_details.cvv}}</ui5-title>
-        <ui5-title level="H6" class="card-details__section--end card-details__short">
+        <ui5-title level="H6" class="card-details__short">
             {{payment_details.expiry.getFullYear()% 100}} / {{payment_details.expiry.getMonth()}}</ui5-title>
     </span>
 </span>

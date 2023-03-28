@@ -1,8 +1,10 @@
+@import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
+
 .calendar {
-    display: flex;
-    justify-content: center;
+    @include sap-display(flex);
+    @include sap-flex-justify(center);
 }
 
 .calendar-card-content {
-    padding-left: 1.5rem;
+    @include sap-set-margin-begin(1.5rem);
 }

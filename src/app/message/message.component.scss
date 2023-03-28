@@ -1,10 +1,11 @@
+@import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
+
 .message {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    @include sap-set-padding-y-equal(1.5rem);
     width: 100%;
 }
 
 .message__strip__emphasized {
-    color: #0070F2;
-    font-weight: 700;
+    @include sap-font-family(bold);
+    color: var(--sapInformativeTextColor);
 }
