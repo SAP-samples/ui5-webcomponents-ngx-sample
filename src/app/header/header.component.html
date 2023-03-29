@@ -1,14 +1,16 @@
-<ui5-shellbar primary-title="Airlines" [show-notifications]="true" notifications-count="2">
+<ui5-shellbar primary-title="{{'SHELLBAR_TITLE' | ui5I18n}}" [show-notifications]="true" notifications-count="2">
     <ui5-avatar slot="profile">
-        <img src="assets/images/avatar_small.webp" alt="User profile photo" />
+        <img src="assets/images/avatar_small.webp" alt="{{'ALT_PROFILE_PIC' | ui5I18n}}" />
     </ui5-avatar>
-    <img class="logo" slot="logo" src="assets/images/SAP_logo.webp" alt="SAP logo" />
-    <ui5-input slot="searchField" placeholder="Search everything"></ui5-input>
+    <img class="logo" slot="logo" src="assets/images/SAP_logo.webp" alt="{{'ALT_LOGO' | ui5I18n}}" />
+    <ui5-input slot="searchField" placeholder="{{'SEARCH_PLACEHOLDER' | ui5I18n}}"></ui5-input>
     <ui5-shellbar-item icon="palette" (click)="setThemeDialogOpen()"></ui5-shellbar-item>
+    <ui5-shellbar-item icon="translate" (click)="setLanguageDialogOpen()"></ui5-shellbar-item>
 </ui5-shellbar>
 
 <!-- Theme select dialog -->
-<ui5-dialog header-text="Choose a theme" [open]="themeDialogOpen" accessible-name="Choose a theme">
+<ui5-dialog header-text="{{'CHOOSE_THEME' | ui5I18n}}" [open]="themeDialogOpen"
+    accessible-name="{{'CHOOSE_THEME' | ui5I18n}}">
     <div id="themeRadioGroup">
         <div *ngFor="let theme of themes">
             <ui5-radio-button #themeRadioValue text="{{theme.displayName}}" value="{{theme.usageName}}"
@@ -17,41 +19,55 @@
         </div>
     </div>
     <div class="dialog__footer" slot="footer">
-        <ui5-button design="Emphasized" (click)="applyTheme()">Apply</ui5-button>
-        <ui5-button class="dialog__footer__button" (click)="setThemeDialogOpen()">Cancel</ui5-button>
+        <ui5-button design="Emphasized" (click)="applyTheme()">{{'APPLY' | ui5I18n}}</ui5-button>
+        <ui5-button class="dialog__footer__button" (click)="setThemeDialogOpen()">{{'CANCEL' | ui5I18n}}</ui5-button>
+    </div>
+</ui5-dialog>
+
+<!-- Language select dialog -->
+<ui5-dialog header-text="{{'CHOOSE_LANGUAGE' | ui5I18n}}" [open]="languageDialogOpen"
+    accessible-name="{{'CHOOSE_LANGUAGE' | ui5I18n}}">
+    <div id="languageRadioGroup">
+        <div *ngFor="let language of languages">
+            <ui5-radio-button #languageRadioValue text="{{language.displayName}}" value="{{language.usageName}}"
+                value-state="None" [checked]="language.usageName===currentLanguage"
+                (change)="setSelectedLanguage(languageRadioValue.value)" name="languageGroup"></ui5-radio-button>
+        </div>
+    </div>
+    <div class="dialog__footer" slot="footer">
+        <ui5-button design="Emphasized" (click)="switchLanguage()">{{'APPLY' | ui5I18n}}</ui5-button>
+        <ui5-button class="dialog__footer__button" (click)="setLanguageDialogOpen()">{{'CANCEL' | ui5I18n}}</ui5-button>
     </div>
 </ui5-dialog>
 
 <ui5-title class="title" level="H2">
-    Welcome, {{user.firstName}}
+    {{'WELCOME' | ui5I18n}}, {{user.firstName}}
     <span class="hidden-at-mobile"> {{user.lastName}}</span>
     !
 </ui5-title>
 
 <ui5-tabcontainer class="show-at-desktop hidden-at-tablet hidden-at-mobile" header-background-design="Solid"
     content-background-design="Solid" [fixed]="true" [collapsed]="true">
-    <ui5-tab text="Flight Info"></ui5-tab>
-    <ui5-tab text="Plan a Trip"></ui5-tab>
-    <ui5-tab text="Past Trips"></ui5-tab>
-    <ui5-tab text="About Us"></ui5-tab>
-    <ui5-tab text="Contacts"></ui5-tab>
+    <ui5-tab text="{{'FLIGHT_INFO' | ui5I18n}}"></ui5-tab>
+    <ui5-tab text="{{'PLAN_A_TRIP' | ui5I18n}}"></ui5-tab>
+    <ui5-tab text="{{'PAST_TRIPS' | ui5I18n}}"></ui5-tab>
+    <ui5-tab text="{{'ABOUT_US' | ui5I18n}}"></ui5-tab>
+    <ui5-tab text="{{'CONTACTS' | ui5I18n}}"></ui5-tab>
 </ui5-tabcontainer>
 
 <ui5-tabcontainer class="hidden-at-desktop show-at-tablet hidden-at-mobile" [collapsed]=" true" [fixed]="true">
-    <ui5-tab text="Flight Info">
-        <ui5-tab slot="subTabs" text="Flight 1"></ui5-tab>
+    <ui5-tab text="{{'FLIGHT_INFO' | ui5I18n}}"></ui5-tab>
+    <ui5-tab text="{{'PLAN_A_TRIP' | ui5I18n}}">
+        <ui5-tab slot="subTabs" text="{{'FIND_A_DESTINATION' | ui5I18n}}"></ui5-tab>
     </ui5-tab>
-    <ui5-tab text="Plan a Trip">
-        <ui5-tab slot="subTabs" text="Find a Destination"></ui5-tab>
-    </ui5-tab>
-    <ui5-tab text="Past Trips">
-        <ui5-tab slot="subTabs" text="Domestic Trips">
-            <ui5-tab *ngFor="let trip of domestic" slot="subTabs" text="{{trip.departureAbb}} to {{trip.arrivalAbb}}">
+    <ui5-tab text="{{'PAST_TRIPS' | ui5I18n}}">
+        <ui5-tab slot="subTabs" text="{{'DOMESTIC_TRIPS' | ui5I18n}}">
+            <ui5-tab *ngFor="let trip of domestic" slot="subTabs" text="{{trip.departureAbb}} - {{trip.arrivalAbb}}">
             </ui5-tab>
         </ui5-tab>
-        <ui5-tab slot="subTabs" text="International Trips">
+        <ui5-tab slot="subTabs" text="{{'INTERNATIONAL_TRIPS' | ui5I18n}}">
             <ui5-tab *ngFor="let trip of international" slot="subTabs"
-                text="{{trip.departureAbb}} to {{trip.arrivalAbb}}">
+                text="{{trip.departureAbb}} - {{trip.arrivalAbb}}">
             </ui5-tab>
         </ui5-tab>
     </ui5-tab>
@@ -59,6 +75,6 @@
 
 <ui5-tabcontainer class="hidden-at-desktop hidden-at-tablet show-at-mobile" header-background-design="Solid"
     content-background-design="Solid" [fixed]="true" [collapsed]="true">
-    <ui5-tab text="Flight Info"></ui5-tab>
-    <ui5-tab text="Plan a Trip"></ui5-tab>
+    <ui5-tab text="{{'FLIGHT_INFO' | ui5I18n}}"></ui5-tab>
+    <ui5-tab text="{{'PLAN_A_TRIP' | ui5I18n}}"></ui5-tab>
 </ui5-tabcontainer>

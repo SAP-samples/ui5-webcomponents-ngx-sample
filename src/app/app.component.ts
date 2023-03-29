@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { CURRENT_TRIP } from 'src/assets/mock-data/mock-trips';
 import { ABB_MONTHS, addZeroToTime, getDateAsAbbStringMMddtttt } from 'src/assets/constant-querries';

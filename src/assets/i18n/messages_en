@@ -1,0 +1,23 @@
+CHOOSE_LANGUAGE=Change Language
+CHOOSE_THEME=Change Theme
+APPLY=Apply
+CANCEL=Cancel
+
+SECTION_TITLE=Your Flight Information
+SEARCH_PLACEHOLDER=Search everything
+SHELLBAR_TITLE=Airlines
+WELCOME=Welcome
+
+FLIGHT_INFO=Flight Info
+PLAN_A_TRIP=Plan a Trip
+FIND_A_DESTINATION=Find a Destination
+PAST_TRIPS=Past Trips
+DOMESTIC_TRIPS=Domestic Trips
+INTERNATIONAL_TRIPS=International Trips
+ABOUT_US=About Us
+CONTACTS=Contacts
+
+ALT_LOGO=SAP Logo
+ALT_PROFILE_PIC=User profile photo
+
+YOUR_ITINERARY=Your Itinerary

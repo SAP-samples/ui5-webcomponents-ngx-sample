@@ -1,4 +1,5 @@
 import { ThemeValue } from "src/app/interfaces/theme-value";
+import { LanguageValue } from "src/app/interfaces/language-value";
 
 export const ABB_MONTHS: string[] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 export const MONTHS: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -49,6 +50,17 @@ export const THEMES: ThemeValue[] = [
     {
         displayName: "High Contrast White",
         usageName: "sap_belize_hcw"
+    }
+];
+
+export const LANGUAGES: LanguageValue[] = [
+    {
+        displayName: "English",
+        usageName: "en"
+    },
+    {
+        displayName: "繁體中文",
+        usageName: "cn"
     }
 ];
 

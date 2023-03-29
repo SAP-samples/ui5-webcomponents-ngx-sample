@@ -13,7 +13,7 @@
     </section>
 
     <ui5-title level="H4" class="section-title">
-      Your Flight Information
+      {{'SECTION_TITLE' | ui5I18n}}
     </ui5-title>
 
     <fd-layout-grid class="remove-padding">
@@ -24,7 +24,7 @@
           [colMd]="12" [colLg]="6" [colXl]="3">
           <div class="calendar-card">
             <ui5-card>
-              <ui5-card-header slot="header" title-text="Your Itinerary"></ui5-card-header>
+              <ui5-card-header slot="header" title-text="{{'YOUR_ITINERARY' | ui5I18n}}"></ui5-card-header>
               <app-trip-calendar></app-trip-calendar>
             </ui5-card>
           </div>
