@@ -1,8 +1,9 @@
 import { ThemeValue } from "src/app/interfaces/theme-value";
+import { LanguageValue } from "src/app/interfaces/language-value";
 
-export const ABB_MONTHS: string[] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-export const MONTHS: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-export const DAYS: string[] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+export const ABB_MONTHS: string[] = ["JAN", "FEB", "MAR", "APR", "MAY_ABB", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+export const MONTHS: string[] = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+export const DAYS: string[] = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"];
 export const ALPHABETS: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 export const THEMES: ThemeValue[] = [
@@ -52,6 +53,17 @@ export const THEMES: ThemeValue[] = [
     }
 ];
 
+export const LANGUAGES: LanguageValue[] = [
+    {
+        displayName: "English",
+        usageName: "en-CA"
+    },
+    {
+        displayName: "繁體中文",
+        usageName: "zh_TW"
+    }
+];
+
 export function addZeroToTime(i: int) {
     if (i < 10) { return "0" + i }
     return i;
@@ -61,8 +73,8 @@ export function getDateAsddMMyyyy(date: Date) {
     return `${addZeroToTime(date.getDate())}/${date.getMonth() + 1}/${date.getFullYear()}`;
 };
 
-export function getDateAsAbbStringMMddtttt(date: Date) {
-    return `${MONTHS[date.getUTCMonth()]} ${date.getDate()} / ${date.getHours()}:${addZeroToTime(date.getMinutes())}`
+export function getDateAsDDTTTT(date: Date) {
+    return `${date.getDate()} / ${date.getHours()}:${addZeroToTime(date.getMinutes())}`
 };
 
 export function getDatesArray(startDate: Date, stopDate: Date) {

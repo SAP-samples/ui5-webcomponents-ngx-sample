@@ -5,24 +5,26 @@
 </section>
 
 <section class="calendar-card-content">
-    <app-legend-item icon="color-fill"
-        color="legend-item__icon--background legend-item__icon__border legend-item__icon__border--now"
-        text="Today"></app-legend-item>
-    <app-legend-item icon="color-fill"
-        color="legend-item__icon--selected legend-item__icon__border legend-item__icon__border--selected"
-        text="Trip Dates"></app-legend-item>
+    <div *ngFor="let legendItem of legendItems">
+        <app-legend-item icon="{{legendItem.icon}}" color="{{legendItem.color}}"
+            text="{{legendItem.text}}"></app-legend-item>
+    </div>
     <ui5-timeline>
-        <ui5-timeline-item title-text="Gate Opens"
-            subtitle-text="{{departureBoardingDateTimeString}} - Gate {{departureGate}}" icon="calendar">
+        <ui5-timeline-item title-text="{{'GATE_OPENS' | ui5I18n}}"
+            subtitle-text="{{departureBoardingMonth | ui5I18n}} {{departureBoardingDateTimeString}} - {{'GATE' | ui5I18n}} {{departureGate}}"
+            icon="calendar">
         </ui5-timeline-item>
-        <ui5-timeline-item title-text="Flight Leaves"
-            subtitle-text="{{departureDateTimeString}} - Gate {{departureGate}}" icon="calendar">
+        <ui5-timeline-item title-text="{{'FLIGHT_LEAVES' | ui5I18n}}"
+            subtitle-text="{{departureMonth | ui5I18n}} {{departureDateTimeString}} - {{'GATE' | ui5I18n}} {{departureGate}}"
+            icon="travel-itinerary">
         </ui5-timeline-item>
-        <ui5-timeline-item title-text="Return Gate Opens"
-            subtitle-text="{{returnBoardingDateTimeString}} - Gate {{returnGate}}" icon="calendar">
+        <ui5-timeline-item title-text="{{'RETURN_GATE_OPENS' | ui5I18n}}"
+            subtitle-text="{{returnBoardingMonth | ui5I18n}} {{returnBoardingDateTimeString}} - {{'GATE' | ui5I18n}} {{returnGate}}"
+            icon="calendar">
         </ui5-timeline-item>
-        <ui5-timeline-item title-text="Return Flight Leaves"
-            subtitle-text="{{returnDateTimeString}} - Gate {{returnGate}}" icon="calendar">
+        <ui5-timeline-item title-text="{{'RETURN_FLIGHT_LEAVES' | ui5I18n}}"
+            subtitle-text="{{returnMonth | ui5I18n}} {{returnDateTimeString}} - {{'GATE' | ui5I18n}} {{returnGate}}"
+            icon="travel-itinerary">
         </ui5-timeline-item>
     </ui5-timeline>
 </section>
