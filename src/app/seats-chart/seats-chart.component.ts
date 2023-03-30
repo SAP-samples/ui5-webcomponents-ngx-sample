@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { ALPHABETS } from 'src/assets/constant-querries';
 import { CURRENT_TRIP } from 'src/assets/mock-data/mock-trips';
 import { DEPARTURE_AIRCRAFT_STATUS } from "src/assets/mock-data/mock-aircraft-status"
 import { LegendItem } from '../interfaces/legend-item';
+import { I18nService } from '@ui5/webcomponents-ngx/i18n';
 
 @Component({
     selector: 'app-seats-chart',
@@ -33,6 +34,7 @@ export class SeatsChartComponent {
         return false;
     }
 
+    i18nService = inject(I18nService);
     rows = DEPARTURE_AIRCRAFT_STATUS.rows;
     columns = DEPARTURE_AIRCRAFT_STATUS.columns;
     columnLabelIndex = this.sumPrefix(this.columns);
@@ -40,8 +42,8 @@ export class SeatsChartComponent {
     yourSeats = CURRENT_TRIP.seatsSelected;
     chars = ALPHABETS;
     legendItems: LegendItem[] = [
-        { icon: "sys-enter-2", color: "legend-item__icon--informative", text: "Your Seats" },
-        { icon: "circle-task-2", color: "", text: "Taken" },
-        { icon: "circle-task", color: "legend-item__icon--message", text: "Available" }
+        { icon: "sys-enter-2", color: "legend-item__icon--informative", text: "YOUR_SEATS" },
+        { icon: "circle-task-2", color: "", text: "TAKEN" },
+        { icon: "circle-task", color: "legend-item__icon--message", text: "AVAILABLE" }
     ];
 }

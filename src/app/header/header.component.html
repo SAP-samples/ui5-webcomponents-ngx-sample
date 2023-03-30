@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="dialog__footer" slot="footer">
-        <ui5-button design="Emphasized" (click)="applyTheme()">{{'APPLY' | ui5I18n}}</ui5-button>
+        <ui5-button design="Emphasized" (click)="switchTheme()">{{'APPLY' | ui5I18n}}</ui5-button>
         <ui5-button class="dialog__footer__button" (click)="setThemeDialogOpen()">{{'CANCEL' | ui5I18n}}</ui5-button>
     </div>
 </ui5-dialog>
@@ -41,7 +41,7 @@
 </ui5-dialog>
 
 <ui5-title class="title" level="H2">
-    {{'WELCOME' | ui5I18n}}, {{user.firstName}}
+    {{'WELCOME' | ui5I18n}}{{'COMMA' | ui5I18n}}{{user.firstName}}
     <span class="hidden-at-mobile"> {{user.lastName}}</span>
     !
 </ui5-title>

@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { first } from 'rxjs';
-
 import { Ui5ThemingService } from '@ui5/theming-ngx';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
 
@@ -17,21 +16,10 @@ import { LANGUAGES } from 'src/assets/constant-querries';
 export class HeaderComponent {
     constructor(private ui5ThemingService: Ui5ThemingService) { }
 
-    applyLanguage() {
-        this.switchLanguage();
-        this.setLanguageDialogOpen();
-
-        // call change detection
-
-        // this.changeDetector.detectChanges();
-        // this.appRef.tick();
-        // console.log("ticked");
-    }
-
     switchLanguage() {
-        this.i18nService.setLanguage('en');
         this.i18nService.setLanguage(this.selectedLanguage ? this.selectedLanguage : 'en');
-        // this.currentLanguage = this.selectedLanguage;
+        this.currentLanguage = this.selectedLanguage;
+        this.setLanguageDialogOpen();
     }
 
     setLanguageDialogOpen() {
@@ -40,20 +28,15 @@ export class HeaderComponent {
     }
 
     setSelectedLanguage(languageName: string | undefined) {
-        // console.log(languageName);
         if (languageName != undefined) {
             this.selectedLanguage = languageName;
         }
     }
 
-    applyTheme() {
-        this.switchTheme();
-        this.setThemeDialogOpen();
-    }
-
     switchTheme() {
         this.ui5ThemingService.setTheme(this.selectedTheme).pipe(first()).subscribe();
         this.currentTheme = this.selectedTheme;
+        this.setThemeDialogOpen();
     }
 
     setThemeDialogOpen() {

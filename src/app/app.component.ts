@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { CURRENT_TRIP } from 'src/assets/mock-data/mock-trips';
-import { ABB_MONTHS, addZeroToTime, getDateAsAbbStringMMddtttt } from 'src/assets/constant-querries';
+import { addZeroToTime, getDateAsDDTTTT, MONTHS } from 'src/assets/constant-querries';
 import { DEPARTURE_AIRCRAFT_STATUS } from 'src/assets/mock-data/mock-aircraft-status';
 
 @Component({
@@ -18,24 +18,34 @@ export class AppComponent {
   }
 
   earlyOrLate(actual: Date, estimated: Date): string {
-    var difference = actual.getTime() - estimated.getTime();
-    var minutes = Math.floor((Math.abs(difference) / 1000) / 60);
-    var returnString = `${difference == 0 ? "On time" :
-      `${minutes}`}
-    ${minutes == 1 ? " min " : " mins "}
-      ${difference < 0 ? "early" : "late"}`;
+    let difference = actual.getTime() - estimated.getTime();
+    let returnString = `${difference == 0 ? "ON_TIME" :
+      difference < 0 ? "EARLY" : "LATE"}`;
     return returnString;
   }
 
-  title = 'mock-project';
+  minOrMins(actual: Date, estimated: Date): string {
+    let minutes = this.getTimeDifference(actual, estimated);
+    return minutes === "0" ? "" : minutes === "1" ? "MIN" : "MINS";
+  }
+
+  getTimeDifference(actual: Date, estimated: Date): string {
+    let difference = actual.getTime() - estimated.getTime();
+    let minutes = Math.floor((Math.abs(difference) / 1000) / 60);
+    return minutes == 0 ? "" : `${minutes}`;
+  }
 
   loading = true;
 
   trip = CURRENT_TRIP;
-  months = ABB_MONTHS;
   boardingTime = `${DEPARTURE_AIRCRAFT_STATUS.currentBoardingTime.getHours()}:${addZeroToTime(DEPARTURE_AIRCRAFT_STATUS.currentBoardingTime.getMinutes())}`;
-  boardingTimeDifference = this.earlyOrLate(DEPARTURE_AIRCRAFT_STATUS.currentBoardingTime, DEPARTURE_AIRCRAFT_STATUS.estimatedBoardingTime);
+  boardingTimeDifference = this.getTimeDifference(DEPARTURE_AIRCRAFT_STATUS.currentBoardingTime, DEPARTURE_AIRCRAFT_STATUS.estimatedBoardingTime);
+  boardingTimeEarlyOrLate = this.earlyOrLate(DEPARTURE_AIRCRAFT_STATUS.currentBoardingTime, DEPARTURE_AIRCRAFT_STATUS.estimatedBoardingTime);
+  boardingTimeMinOrMins = this.minOrMins(DEPARTURE_AIRCRAFT_STATUS.currentBoardingTime, DEPARTURE_AIRCRAFT_STATUS.estimatedBoardingTime)
   boardingLastRefresh = Math.floor((Math.abs(new Date().getTime() - DEPARTURE_AIRCRAFT_STATUS.lastRefresh.getTime()) / 1000) / 60);
-  departureDateTimeString = getDateAsAbbStringMMddtttt(CURRENT_TRIP.departureTime);
-  arrivalDateTimeString = getDateAsAbbStringMMddtttt(CURRENT_TRIP.arrivalTime);
+
+  departureMonth = MONTHS[CURRENT_TRIP.departureTime.getMonth()];
+  departureDateTimeString = getDateAsDDTTTT(CURRENT_TRIP.departureTime);
+  arrivalMonth = MONTHS[CURRENT_TRIP.arrivalTime.getMonth()];
+  arrivalDateTimeString = getDateAsDDTTTT(CURRENT_TRIP.arrivalTime);
 }
