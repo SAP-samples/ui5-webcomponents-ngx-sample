@@ -61,6 +61,10 @@ export const LANGUAGES: LanguageValue[] = [
     {
         displayName: "繁體中文",
         usageName: "zh_TW"
+    },
+    {
+        displayName: "Български",
+        usageName: "bg-BG"
     }
 ];
 

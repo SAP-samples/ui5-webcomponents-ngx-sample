@@ -49,7 +49,8 @@ import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
             const http = inject(HttpClient);
             return {
               en: http.get('assets/i18n/messages_en.json', { responseType: 'json' }),
-              zh_TW: http.get('assets/i18n/messages_zh_TW.json', { responseType: 'json' })
+              zh_TW: http.get('assets/i18n/messages_zh_TW.json', { responseType: 'json' }),
+              bg: http.get('assets/i18n/messages_bg.json', { responseType: 'json' })
             }
           }
         }
