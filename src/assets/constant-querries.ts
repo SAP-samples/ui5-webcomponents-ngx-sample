@@ -56,7 +56,7 @@ export const THEMES: ThemeValue[] = [
 export const LANGUAGES: LanguageValue[] = [
     {
         displayName: "English",
-        usageName: "en-CA"
+        usageName: "en"
     },
     {
         displayName: "繁體中文",
@@ -64,7 +64,7 @@ export const LANGUAGES: LanguageValue[] = [
     },
     {
         displayName: "Български",
-        usageName: "bg-BG"
+        usageName: "bg"
     }
 ];
 
