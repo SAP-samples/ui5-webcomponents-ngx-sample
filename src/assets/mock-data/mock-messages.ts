@@ -1,5 +1,12 @@
 import { Message } from "src/app/interfaces/message";
+import { DEPARTURE_AIRCRAFT_STATUS } from "./mock-aircraft-status";
 
 export const MESSAGES: Message[] = [
-    { base: "Your flight is ready for boarding at Gate E8.", emphasized: "How to find your gate." },
+    {
+        base_beginning: 'MESSAGE_PART1',
+        base_end: 'MESSAGE_PART2',
+        gate: DEPARTURE_AIRCRAFT_STATUS.gate,
+
+        emphasized: 'MESSAGE_EMPHASIZED'
+    },
 ]
