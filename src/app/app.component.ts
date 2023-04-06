@@ -11,11 +11,7 @@ import { DEPARTURE_AIRCRAFT_STATUS } from 'src/assets/mock-data/mock-aircraft-st
 })
 export class AppComponent {
 
-  ngOnInit() {
-    setTimeout(() => {
-      this.loading = false;
-    }, 4000);
-  }
+  ngOnInit() { }
 
   earlyOrLate(actual: Date, estimated: Date): string {
     let difference = actual.getTime() - estimated.getTime();
@@ -34,8 +30,6 @@ export class AppComponent {
     let minutes = Math.floor((Math.abs(difference) / 1000) / 60);
     return minutes == 0 ? "" : `${minutes}`;
   }
-
-  loading = true;
 
   trip = CURRENT_TRIP;
   boardingTime = `${DEPARTURE_AIRCRAFT_STATUS.currentBoardingTime.getHours()}:${addZeroToTime(DEPARTURE_AIRCRAFT_STATUS.currentBoardingTime.getMinutes())}`;
