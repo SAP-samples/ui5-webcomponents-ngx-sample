@@ -22,13 +22,9 @@
                 class="your-seats-card-content-layout__row">
                 <div *ngFor="let item of [].constructor(column);let columnIndex = index">
                     <!-- Circle icons for seats -->
-                    <ui5-icon [ngClass]="
-                            checkIfSeatMarked([rowIndex,columnIndex+columnLabelIndex[columnNumber]], availableSeats) ? 'seat--available'
-                            : checkIfSeatMarked([rowIndex,columnIndex+columnLabelIndex[columnNumber]], yourSeats) ? 'seat--yours'
-                         : ''" name="{{
-                            checkIfSeatMarked([rowIndex,columnIndex+columnLabelIndex[columnNumber]], availableSeats) ? 'circle-task'
-                            : checkIfSeatMarked([rowIndex,columnIndex+columnLabelIndex[columnNumber]], yourSeats) ? 'sys-enter-2':
-                            'circle-task-2'}}"></ui5-icon>
+                    <ui5-icon
+                        [class]="checkIfSeatMarked([rowIndex,columnIndex+columnLabelIndex[columnNumber]], availableSeats)? 'seat--available' : checkIfSeatMarked([rowIndex,columnIndex+columnLabelIndex[columnNumber]], yourSeats) ? 'seat--yours' : ''"
+                        [name]="checkIfSeatMarked([rowIndex,columnIndex+columnLabelIndex[columnNumber]], availableSeats)? 'circle-task' : checkIfSeatMarked([rowIndex,columnIndex+columnLabelIndex[columnNumber]], yourSeats) ? 'sys-enter-2' : 'circle-task-2'"></ui5-icon>
                 </div>
             </div>
         </div>
