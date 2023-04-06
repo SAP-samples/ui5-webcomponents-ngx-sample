@@ -1,11 +1,5 @@
 @import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
 
-.busy-indicator {
-    width: 100%;
-    top: 50%;
-    position: fixed;
-}
-
 .section-title {
     @include sap-margin(small, bottom)
 }
