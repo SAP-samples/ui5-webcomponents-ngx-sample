@@ -5,7 +5,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Ui5ThemingModule } from '@ui5/theming-ngx';
-import { FundamentalNgxCoreModule } from '@fundamental-ngx/core';
+import { LayoutGridModule } from '@fundamental-ngx/core/layout-grid';
 import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { Ui5I18nModule } from '@ui5/webcomponents-ngx/i18n';
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
@@ -37,7 +37,7 @@ import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
       defaultTheme: "sap_horizon"
     }),
     Ui5WebcomponentsModule,
-    FundamentalNgxCoreModule,
+    LayoutGridModule,
     HttpClientModule,
     Ui5I18nModule.forRoot({
       language: 'en',
