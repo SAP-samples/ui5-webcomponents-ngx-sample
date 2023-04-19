@@ -4,8 +4,8 @@
     </ui5-avatar>
     <img class="logo" slot="logo" src="assets/images/SAP_logo.webp" alt="{{'ALT_LOGO' | ui5I18n}}" />
     <ui5-input slot="searchField" placeholder="{{'SEARCH_PLACEHOLDER' | ui5I18n}}"></ui5-input>
-    <ui5-shellbar-item icon="palette" (click)="setThemeDialogOpen()"></ui5-shellbar-item>
-    <ui5-shellbar-item icon="translate" (click)="setLanguageDialogOpen()"></ui5-shellbar-item>
+    <ui5-shellbar-item icon="palette" (click)="setThemeDialogOpen()" text="Change Theme"></ui5-shellbar-item>
+    <ui5-shellbar-item icon="translate" (click)="setLanguageDialogOpen()" text="Change Language"></ui5-shellbar-item>
 </ui5-shellbar>
 
 <!-- Theme select dialog -->
