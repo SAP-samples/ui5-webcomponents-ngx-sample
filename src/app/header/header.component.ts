@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { THEMES, LANGUAGES } from 'src/app/constants/constants';
 import { Trip } from 'src/app/interfaces/trip';
-import { User } from '../interfaces/user';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
     selector: 'app-header',

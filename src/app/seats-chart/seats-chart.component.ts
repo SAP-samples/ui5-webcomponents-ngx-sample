@@ -6,7 +6,6 @@ import { I18nService } from '@ui5/webcomponents-ngx/i18n';
 import { ALPHABETS } from 'src/app/constants/constants';
 import { LegendItem } from 'src/app/interfaces/legend-item';
 import { AircraftStatus } from 'src/app/interfaces/aircraft-status';
-import BusyIndicator from '@ui5/webcomponents/dist/BusyIndicator';
 
 @Component({
     selector: 'app-seats-chart',

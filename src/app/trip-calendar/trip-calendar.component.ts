@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, switchMap, forkJoin, of } from 'rxjs';
 
 import { LegendItem } from 'src/app/interfaces/legend-item';
+import { AircraftStatus } from 'src/app/interfaces/aircraft-status';
 import { MONTHS } from 'src/app/constants/constants';
 import { getDatesArray, getDateAsddMMyyyy, getDateAsDDTTTT } from 'src/app/utils/utils';
-import { AircraftStatus } from 'src/app/interfaces/aircraft-status';
 
 @Component({
     selector: 'app-trip-calendar',

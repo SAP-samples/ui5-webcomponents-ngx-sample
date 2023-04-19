@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, switchMap, forkJoin, of } from 'rxjs';
 
 import { AircraftStatus } from './interfaces/aircraft-status';
+import { Trip } from './interfaces/trip';
 import { MONTHS } from 'src/app/constants/constants';
 import { addZeroToTime, getDateAsDDTTTT } from 'src/app/utils/utils';
-import { Trip } from './interfaces/trip';
 
 @Component({
   selector: 'app-root',
