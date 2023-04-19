@@ -1,4 +1,4 @@
-<div class="list">
+<div *ngIf="isDataAvailable" class="list">
     <div *ngFor="let passenger of passengers" class="list__child">
         <div slot="imageContent">
             <ui5-avatar class="hidden-at-tablet" size="M">

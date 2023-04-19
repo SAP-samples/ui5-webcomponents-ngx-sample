@@ -1,0 +1,13 @@
+{
+    "date": "2030-04-12T10:56:00",
+    "company": "SAP Airlines",
+    "paymentMethod": "MasterCard",
+    "cardNumber": [
+        "****",
+        "****",
+        "****",
+        "1234"
+    ],
+    "cvv": 604,
+    "expiry": "2034-11-11T01:00:00"
+}

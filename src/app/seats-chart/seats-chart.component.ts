@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
-
-import { ALPHABETS } from 'src/assets/constant-querries';
-import { CURRENT_TRIP } from 'src/assets/mock-data/mock-trips';
-import { DEPARTURE_AIRCRAFT_STATUS } from "src/assets/mock-data/mock-aircraft-status"
-import { LegendItem } from '../interfaces/legend-item';
+import { HttpClient } from '@angular/common/http';
+import { Observable, switchMap, forkJoin, of } from 'rxjs';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
+
+import { ALPHABETS } from 'src/app/constants/constants';
+import { LegendItem } from 'src/app/interfaces/legend-item';
+import { AircraftStatus } from 'src/app/interfaces/aircraft-status';
+import BusyIndicator from '@ui5/webcomponents/dist/BusyIndicator';
 
 @Component({
     selector: 'app-seats-chart',
@@ -12,9 +14,50 @@ import { I18nService } from '@ui5/webcomponents-ngx/i18n';
     styleUrls: ['./seats-chart.component.scss']
 })
 export class SeatsChartComponent {
-    constructor() { }
+    private aircraftStatusUrl = "/assets/mock-data/mockAircraftStatus.json";
+    private tripsUrl = "assets/mock-data/mockTrips.json";
+    isDataAvailable = false;
 
-    ngOnInit() { }
+    i18nService = inject(I18nService);
+
+    departureAircraftStatus: AircraftStatus | undefined;
+    rows: any;
+    columns: any;
+    columnLabelIndex: any;
+    availableSeats: any;
+    yourSeats: any;
+    chars = ALPHABETS;
+    legendItems: LegendItem[] = [
+        { icon: "sys-enter-2", color: "legend-item__icon--informative", text: "YOUR_SEATS" },
+        { icon: "circle-task-2", color: "", text: "TAKEN" },
+        { icon: "circle-task", color: "legend-item__icon--message", text: "AVAILABLE" }
+    ];
+
+    constructor(private http: HttpClient) { }
+
+    ngOnInit() {
+        this.getJSON(this.tripsUrl).pipe(
+            switchMap((data) => {
+                return forkJoin({
+                    trips: of(data),
+                    aircraftStatus: this.getJSON(this.aircraftStatusUrl)
+                });
+            })
+        ).subscribe(({ trips, aircraftStatus }) => {
+            this.yourSeats = <Array<Array<number>>>trips.currentTrip.seatsSelected;
+            this.departureAircraftStatus = <AircraftStatus>aircraftStatus.departureAircraftStatus;
+            this.rows = this.departureAircraftStatus.rows;
+            this.columns = this.departureAircraftStatus.columns;
+            this.columnLabelIndex = this.sumPrefix(this.columns);
+            this.availableSeats = this.departureAircraftStatus.availableSeats;
+
+            this.isDataAvailable = true;
+        });
+    }
+
+    private getJSON(url: string): Observable<any> {
+        return this.http.get(url);
+    }
 
     sumPrefix(array: int[]) {
         let new_arr: int[] = [0];
@@ -33,17 +76,4 @@ export class SeatsChartComponent {
         }
         return false;
     }
-
-    i18nService = inject(I18nService);
-    rows = DEPARTURE_AIRCRAFT_STATUS.rows;
-    columns = DEPARTURE_AIRCRAFT_STATUS.columns;
-    columnLabelIndex = this.sumPrefix(this.columns);
-    availableSeats = DEPARTURE_AIRCRAFT_STATUS.availableSeats;
-    yourSeats = CURRENT_TRIP.seatsSelected;
-    chars = ALPHABETS;
-    legendItems: LegendItem[] = [
-        { icon: "sys-enter-2", color: "legend-item__icon--informative", text: "YOUR_SEATS" },
-        { icon: "circle-task-2", color: "", text: "TAKEN" },
-        { icon: "circle-task", color: "legend-item__icon--message", text: "AVAILABLE" }
-    ];
 }

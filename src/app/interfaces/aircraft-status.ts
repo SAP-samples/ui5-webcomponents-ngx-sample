@@ -4,6 +4,8 @@ export interface AircraftStatus {
     availableSeats: int[][];
     estimatedBoardingTime: Date;
     currentBoardingTime: Date;
+    departureTime: Date,
+    arrivalTime: Date,
     lastRefresh: Date;
     gate: string | "TBA";
     gateOpenTime: Date;

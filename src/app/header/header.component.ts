@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { first } from 'rxjs';
+import { first, Observable, switchMap, forkJoin, of } from 'rxjs';
 import { Ui5ThemingService } from '@ui5/theming-ngx';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
+import { HttpClient } from '@angular/common/http';
 
-import { USER } from 'src/assets/mock-data/mock-user';
-import { DOMESTIC_TRIPS, INTERNATIONAL_TRIPS } from 'src/assets/mock-data/mock-trips';
-import { THEMES } from 'src/assets/constant-querries';
-import { LANGUAGES } from 'src/assets/constant-querries';
+import { THEMES, LANGUAGES } from 'src/app/constants/constants';
+import { Trip } from 'src/app/interfaces/trip';
+import { User } from '../interfaces/user';
 
 @Component({
     selector: 'app-header',
@@ -14,7 +14,50 @@ import { LANGUAGES } from 'src/assets/constant-querries';
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-    constructor(private ui5ThemingService: Ui5ThemingService) { }
+
+    private tripsUrl = "/assets/mock-data/mockTrips.json";
+    private userUrl = "/assets/mock-data/mockUser.json";
+    isDataAvailable = false;
+
+    selectedTheme = "sap_horizon";
+    currentTheme = "sap_horizon";
+    themeDialogOpen = false;
+    themes = THEMES;
+    i18nService = inject(I18nService);
+
+    selectedLanguage = this.i18nService.currentLanguage();
+    currentLanguage = this.i18nService.currentLanguage();
+    languageDialogOpen = false;
+    languages = LANGUAGES;
+
+    user: any;
+
+    domestic: any;
+    international: any;
+
+    constructor(private http: HttpClient, private ui5ThemingService: Ui5ThemingService) { }
+
+    ngOnInit() {
+        this.getJSON(this.tripsUrl).pipe(
+            switchMap((data) => {
+                return forkJoin({
+                    trips: of(data),
+                    user: this.getJSON(this.userUrl)
+                });
+            })
+        ).subscribe(({ trips, user }) => {
+            this.domestic = <Trip[]>trips.domesticTrips;
+            this.international = <Trip[]>trips.internationalTrips;
+            this.user = <User>user;
+
+            this.isDataAvailable = true;
+        });
+    }
+
+    private getJSON(url: string): Observable<any> {
+        return this.http.get(url);
+    }
+
 
     switchLanguage() {
         this.i18nService.setLanguage(this.selectedLanguage ? this.selectedLanguage : 'en');
@@ -49,17 +92,4 @@ export class HeaderComponent {
             this.selectedTheme = themeName;
         }
     }
-
-    selectedTheme = "sap_horizon";
-    currentTheme = "sap_horizon";
-    themeDialogOpen = false;
-    themes = THEMES;
-    i18nService = inject(I18nService);
-    selectedLanguage = this.i18nService.currentLanguage();
-    currentLanguage = this.i18nService.currentLanguage();
-    languageDialogOpen = false;
-    languages = LANGUAGES;
-    user = USER;
-    domestic = DOMESTIC_TRIPS;
-    international = INTERNATIONAL_TRIPS;
 }

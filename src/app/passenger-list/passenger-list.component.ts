@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-import { PASSENGERS } from '../../assets/mock-data/mock-passengers';
+import { Passenger } from "src/app/interfaces/passenger"
 
 @Component({
     selector: 'app-passenger-list',
@@ -8,9 +10,23 @@ import { PASSENGERS } from '../../assets/mock-data/mock-passengers';
     styleUrls: ['./passenger-list.component.scss']
 })
 export class PassengerListComponent {
-    constructor() { }
 
-    ngOnInit() { }
+    private passengersUrl = "/assets/mock-data/mockPassengers.json";
 
-    passengers = PASSENGERS;
+    isDataAvailable = false;
+
+    passengers: any;
+
+    constructor(private http: HttpClient) { }
+
+    ngOnInit() {
+        this.getJSON(this.passengersUrl).subscribe((data) => {
+            this.passengers = <Passenger[]>data.passengers;
+            this.isDataAvailable = true;
+        })
+    }
+
+    private getJSON(url: string): Observable<any> {
+        return this.http.get(url);
+    }
 }

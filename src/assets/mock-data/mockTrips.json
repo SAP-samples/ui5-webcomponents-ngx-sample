@@ -1,0 +1,110 @@
+{
+    "domesticTrips": [
+        {
+            "departureFrom": "Vancouver",
+            "arrivalTo": "Toronto",
+            "departureAbb": "YVR",
+            "arrivalAbb": "YYZ",
+            "departureTime": "2030-04-22T20:20",
+            "arrivalTime": "2030-04-22T20:20",
+            "seats": "",
+            "seatsSelected": []
+        },
+        {
+            "departureFrom": "Toronto",
+            "arrivalTo": "Vancouver",
+            "departureAbb": "YYZ",
+            "arrivalAbb": "YVR",
+            "departureTime": "2030-04-22T20:20",
+            "arrivalTime": "2030-04-22T20:20",
+            "seats": "",
+            "seatsSelected": []
+        }
+    ],
+    "internationalTrips": [
+        {
+            "departureFrom": "Toronto",
+            "arrivalTo": "Munich",
+            "departureAbb": "YYZ",
+            "arrivalAbb": "MUC",
+            "departureTime": "2030-04-22T20:20",
+            "arrivalTime": "2030-04-22T20:20",
+            "seats": "",
+            "seatsSelected": []
+        },
+        {
+            "departureFrom": "Montreal",
+            "arrivalTo": "Boston",
+            "departureAbb": "YUL",
+            "arrivalAbb": "BOS",
+            "departureTime": "2030-04-22T20:20",
+            "arrivalTime": "2030-04-22T20:20",
+            "seats": "",
+            "seatsSelected": []
+        },
+        {
+            "departureFrom": "Boston",
+            "arrivalTo": "Vancouver",
+            "departureAbb": "BOS",
+            "arrivalAbb": "YVR",
+            "departureTime": "2030-04-22T20:20",
+            "arrivalTime": "2030-04-22T20:20",
+            "seats": "",
+            "seatsSelected": []
+        }
+    ],
+    "currentTrip": {
+        "departureFrom": "Vancouver",
+        "arrivalTo": "Montreal",
+        "departureAbb": "YVR",
+        "arrivalAbb": "YUL",
+        "departureTime": "2030-04-17T12:00",
+        "arrivalTime": "2030-04-17T17:30",
+        "seats": "D2-G2",
+        "seatsSelected": [
+            [
+                1,
+                3
+            ],
+            [
+                1,
+                4
+            ],
+            [
+                1,
+                5
+            ],
+            [
+                1,
+                6
+            ]
+        ]
+    },
+    "returnTrip": {
+        "departureFrom": "Montreal",
+        "arrivalTo": "Vancouver",
+        "departureAbb": "YUL",
+        "arrivalAbb": "YVR",
+        "departureTime": "2030-04-22T12:00",
+        "arrivalTime": "2030-04-22T17:30",
+        "seats": "D2-G2",
+        "seatsSelected": [
+            [
+                1,
+                3
+            ],
+            [
+                1,
+                4
+            ],
+            [
+                1,
+                5
+            ],
+            [
+                1,
+                6
+            ]
+        ]
+    }
+}

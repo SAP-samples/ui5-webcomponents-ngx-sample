@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="isDataAvailable">
 
   <app-header></app-header>
 
@@ -6,7 +6,7 @@
 
     <!-- Message Strip section -->
     <section>
-      <app-message></app-message>
+      <app-message gate="{{boardingGate}}"></app-message>
     </section>
 
     <ui5-title level="H4" class="section-title">
@@ -129,7 +129,7 @@
                             <div class="text-column text-column--tall">
                               <span class="text-row">
                                 <span class="large-text large-text--green">
-                                  {{boardingTime}}
+                                  {{boardingTimeString}}
                                 </span>
                                 <ui5-label class="hidden-at-mobile">{{boardingTimeDifference}} {{boardingTimeMinOrMins |
                                   ui5I18n}}

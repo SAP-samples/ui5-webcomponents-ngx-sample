@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-
-import { MESSAGES } from '../../assets/mock-data/mock-messages'
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'app-message',
@@ -12,5 +10,5 @@ export class MessageComponent {
 
     ngOnInit() { }
 
-    messages = MESSAGES;
+    @Input() gate: string = '';
 }
