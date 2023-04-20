@@ -7,6 +7,7 @@ import { USER } from 'src/assets/mock-data/mock-user';
 import { DOMESTIC_TRIPS, INTERNATIONAL_TRIPS } from 'src/assets/mock-data/mock-trips';
 import { THEMES } from 'src/assets/constant-querries';
 import { LANGUAGES } from 'src/assets/constant-querries';
+import { ShellBarComponent } from '@ui5/webcomponents-ngx';
 
 @Component({
     selector: 'app-header',
@@ -20,6 +21,7 @@ export class HeaderComponent {
         this.i18nService.setLanguage(this.selectedLanguage ? this.selectedLanguage : 'en');
         this.currentLanguage = this.selectedLanguage;
         this.setLanguageDialogOpen();
+        this.shellbarMenuClicked();
     }
 
     setLanguageDialogOpen() {
@@ -37,6 +39,7 @@ export class HeaderComponent {
         this.ui5ThemingService.setTheme(this.selectedTheme).pipe(first()).subscribe();
         this.currentTheme = this.selectedTheme;
         this.setThemeDialogOpen();
+        this.shellbarMenuClicked();
     }
 
     setThemeDialogOpen() {
@@ -48,6 +51,11 @@ export class HeaderComponent {
         if (themeName != undefined) {
             this.selectedTheme = themeName;
         }
+    }
+
+    shellbarMenuClicked() {
+        var element = document.getElementById('shellbar') as ShellBarComponent;
+        if (element.closeOverflow) element.closeOverflow();
     }
 
     selectedTheme = "sap_horizon";
