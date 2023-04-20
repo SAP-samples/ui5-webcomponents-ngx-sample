@@ -1,0 +1,22 @@
+[
+    {
+        "departureFrom": "Vancouver",
+        "arrivalTo": "Toronto",
+        "departureAbb": "YVR",
+        "arrivalAbb": "YYZ",
+        "departureTime": "2030-04-22T20:20",
+        "arrivalTime": "2030-04-22T20:20",
+        "seats": "",
+        "seatsSelected": []
+    },
+    {
+        "departureFrom": "Toronto",
+        "arrivalTo": "Vancouver",
+        "departureAbb": "YYZ",
+        "arrivalAbb": "YVR",
+        "departureTime": "2030-04-22T20:20",
+        "arrivalTime": "2030-04-22T20:20",
+        "seats": "",
+        "seatsSelected": []
+    }
+]

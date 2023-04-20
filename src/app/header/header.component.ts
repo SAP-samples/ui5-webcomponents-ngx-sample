@@ -1,13 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { first, Observable, switchMap, forkJoin, of } from 'rxjs';
+import { first, combineLatest } from 'rxjs';
 import { Ui5ThemingService } from '@ui5/theming-ngx';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
-import { HttpClient } from '@angular/common/http';
-
-import { THEMES, LANGUAGES } from 'src/app/constants/constants';
-import { Trip } from 'src/app/interfaces/trip';
-import { User } from 'src/app/interfaces/user';
+import { AppService } from '../services/services';
 import { ShellBarComponent } from '@ui5/webcomponents-ngx';
+
+import { THEMES, LANGUAGES } from '../constants/constants';
 
 @Component({
     selector: 'app-header',
@@ -15,9 +13,6 @@ import { ShellBarComponent } from '@ui5/webcomponents-ngx';
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-
-    private tripsUrl = "/assets/mock-data/mockTrips.json";
-    private userUrl = "/assets/mock-data/mockUser.json";
     isDataAvailable = false;
 
     selectedTheme = "sap_horizon";
@@ -36,29 +31,18 @@ export class HeaderComponent {
     domestic: any;
     international: any;
 
-    constructor(private http: HttpClient, private ui5ThemingService: Ui5ThemingService) { }
+    constructor(private appService: AppService, private ui5ThemingService: Ui5ThemingService) { }
 
     ngOnInit() {
-        this.getJSON(this.tripsUrl).pipe(
-            switchMap((data) => {
-                return forkJoin({
-                    trips: of(data),
-                    user: this.getJSON(this.userUrl)
-                });
-            })
-        ).subscribe(({ trips, user }) => {
-            this.domestic = <Trip[]>trips.domesticTrips;
-            this.international = <Trip[]>trips.internationalTrips;
-            this.user = <User>user;
+        combineLatest([
+            this.appService.getDomesticTrips(), this.appService.getInternationalTrips(), this.appService.getUser()]).subscribe(([domesticTrips, internationalTrips, user]) => {
+                this.domestic = domesticTrips;
+                this.international = internationalTrips;
+                this.user = user;
 
-            this.isDataAvailable = true;
-        });
+                this.isDataAvailable = true;
+            });
     }
-
-    private getJSON(url: string): Observable<any> {
-        return this.http.get(url);
-    }
-
 
     switchLanguage() {
         this.i18nService.setLanguage(this.selectedLanguage ? this.selectedLanguage : 'en');
@@ -95,7 +79,7 @@ export class HeaderComponent {
             this.selectedTheme = themeName;
         }
     }
-    
+
     shellbarMenuClicked() {
         var element = document.getElementById('shellbar') as ShellBarComponent;
         if (element.closeOverflow) element.closeOverflow();

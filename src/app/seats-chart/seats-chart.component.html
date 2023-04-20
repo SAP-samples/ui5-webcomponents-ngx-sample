@@ -31,7 +31,6 @@
     </div>
 
     <div *ngFor="let legendItem of legendItems">
-        <app-legend-item icon="{{legendItem.icon}}" color="{{legendItem.color}}"
-            text="{{legendItem.text}}"></app-legend-item>
+        <app-legend-item [icon]="legendItem.icon" [color]="legendItem.color" [text]="legendItem.text"></app-legend-item>
     </div>
 </section>

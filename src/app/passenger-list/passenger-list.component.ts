@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-import { Passenger } from "src/app/interfaces/passenger"
+import { AppService } from '../services/services';
 
 @Component({
     selector: 'app-passenger-list',
@@ -11,22 +8,16 @@ import { Passenger } from "src/app/interfaces/passenger"
 })
 export class PassengerListComponent {
 
-    private passengersUrl = "/assets/mock-data/mockPassengers.json";
-
     isDataAvailable = false;
 
     passengers: any;
 
-    constructor(private http: HttpClient) { }
+    constructor(private appService: AppService) { }
 
     ngOnInit() {
-        this.getJSON(this.passengersUrl).subscribe((data) => {
-            this.passengers = <Passenger[]>data.passengers;
+        this.appService.getPassengers().subscribe((passengers) => {
+            this.passengers = passengers;
             this.isDataAvailable = true;
         })
-    }
-
-    private getJSON(url: string): Observable<any> {
-        return this.http.get(url);
     }
 }

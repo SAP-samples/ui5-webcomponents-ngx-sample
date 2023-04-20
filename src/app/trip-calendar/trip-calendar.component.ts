@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, switchMap, forkJoin, of } from 'rxjs';
+import { AppService } from '../services/services';
+import { combineLatest } from 'rxjs';
 
-import { LegendItem } from 'src/app/interfaces/legend-item';
-import { AircraftStatus } from 'src/app/interfaces/aircraft-status';
-import { MONTHS } from 'src/app/constants/constants';
-import { getDatesArray, getDateAsddMMyyyy, getDateAsDDTTTT } from 'src/app/utils/utils';
+import { LegendItem } from '../interfaces/legend-item';
+import { MONTHS } from '../constants/constants';
+import { getDatesArray, getDateAsddMMyyyy, getDateAsDDTTTT } from '../utils/utils';
 
 @Component({
     selector: 'app-trip-calendar',
@@ -13,13 +12,10 @@ import { getDatesArray, getDateAsddMMyyyy, getDateAsDDTTTT } from 'src/app/utils
     styleUrls: ['./trip-calendar.component.scss']
 })
 export class TripCalendarComponent {
-
-    private aircraftStatusUrl = "/assets/mock-data/mockAircraftStatus.json";
-    private tripsUrl = "assets/mock-data/mockTrips.json";
     isDataAvailable = false;
 
-    departureAircraftStatus: AircraftStatus | undefined;
-    returnAircraftStatus: AircraftStatus | undefined;
+    departureAircraftStatus: any;
+    returnAircraftStatus: any;
 
     startDate: any;
     endDate: any;
@@ -43,42 +39,31 @@ export class TripCalendarComponent {
         { icon: "color-fill", color: "legend-item__icon--selected legend-item__icon__border legend-item__icon__border--selected", text: "TRIP_DATES" }
     ];
 
-    constructor(private http: HttpClient) { }
+    constructor(private appService: AppService) { }
 
     async ngOnInit() {
+        combineLatest([this.appService.getCurrentTrip(), this.appService.getReturnTrip(), this.appService.getDepartureAircraftStatus(), this.appService.getReturnAircraftStatus()])
+            .subscribe(([currentTrip, returnTrip, departureAircraftStatus, returnAircraftStatus]) => {
+                this.startDate = new Date(currentTrip.departureTime);
+                this.endDate = new Date(returnTrip.arrivalTime);
+                this.datesBetween = getDatesArray(this.startDate, this.endDate);
 
-        this.getJSON(this.tripsUrl).pipe(
-            switchMap((data) => {
-                return forkJoin({
-                    trips: of(data),
-                    aircraftStatus: this.getJSON(this.aircraftStatusUrl)
-                });
-            })
-        ).subscribe(({ trips, aircraftStatus }) => {
-            this.startDate = new Date(trips.currentTrip.departureTime);
-            this.endDate = new Date(trips.returnTrip.arrivalTime);
-            this.datesBetween = getDatesArray(this.startDate, this.endDate);
+                this.departureAircraftStatus = departureAircraftStatus;
+                this.returnAircraftStatus = returnAircraftStatus;
 
-            this.departureAircraftStatus = <AircraftStatus>aircraftStatus.departureAircraftStatus;
-            this.returnAircraftStatus = <AircraftStatus>aircraftStatus.returnAircraftStatus;
+                this.departureBoardingMonth = MONTHS[new Date(this.departureAircraftStatus.gateOpenTime).getMonth()];
+                this.departureBoardingDateTimeString = getDateAsDDTTTT(new Date(this.departureAircraftStatus.gateOpenTime));
+                this.departureMonth = MONTHS[new Date(this.departureAircraftStatus.departureTime).getMonth()];
+                this.departureDateTimeString = getDateAsDDTTTT(new Date(this.departureAircraftStatus.departureTime));
+                this.departureGate = this.departureAircraftStatus.gate;
 
-            this.departureBoardingMonth = MONTHS[new Date(this.departureAircraftStatus.gateOpenTime).getMonth()];
-            this.departureBoardingDateTimeString = getDateAsDDTTTT(new Date(this.departureAircraftStatus.gateOpenTime));
-            this.departureMonth = MONTHS[new Date(this.departureAircraftStatus.departureTime).getMonth()];
-            this.departureDateTimeString = getDateAsDDTTTT(new Date(this.departureAircraftStatus.departureTime));
-            this.departureGate = this.departureAircraftStatus.gate;
+                this.returnBoardingMonth = MONTHS[new Date(this.returnAircraftStatus.gateOpenTime).getMonth()];
+                this.returnBoardingDateTimeString = getDateAsDDTTTT(new Date(this.returnAircraftStatus.gateOpenTime));
+                this.returnMonth = MONTHS[new Date(this.returnAircraftStatus.estimatedBoardingTime).getMonth()];
+                this.returnDateTimeString = getDateAsDDTTTT(new Date(this.returnAircraftStatus.estimatedBoardingTime));
+                this.returnGate = this.returnAircraftStatus.gate;
 
-            this.returnBoardingMonth = MONTHS[new Date(this.returnAircraftStatus.gateOpenTime).getMonth()];
-            this.returnBoardingDateTimeString = getDateAsDDTTTT(new Date(this.returnAircraftStatus.gateOpenTime));
-            this.returnMonth = MONTHS[new Date(this.returnAircraftStatus.estimatedBoardingTime).getMonth()];
-            this.returnDateTimeString = getDateAsDDTTTT(new Date(this.returnAircraftStatus.estimatedBoardingTime));
-            this.returnGate = this.returnAircraftStatus.gate;
-
-            this.isDataAvailable = true;
-        });
-    }
-
-    private getJSON(url: string): Observable<any> {
-        return this.http.get(url);
+                this.isDataAvailable = true;
+            });
     }
 }

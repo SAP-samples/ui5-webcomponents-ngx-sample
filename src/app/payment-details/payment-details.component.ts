@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { AppService } from '../services/services';
 
-import { PaymentDetails } from "src/app/interfaces/payment-details";
-import { MONTHS, DAYS } from 'src/app/constants/constants';
-import { addZeroToTime } from 'src/app/utils/utils';
+import { MONTHS, DAYS } from '../constants/constants';
+import { addZeroToTime } from '../utils/utils';
 
 @Component({
     selector: 'app-payment-details',
@@ -12,8 +10,6 @@ import { addZeroToTime } from 'src/app/utils/utils';
     styleUrls: ['./payment-details.component.scss']
 })
 export class PaymentDetailsComponent {
-
-    private paymentDetailsURL = "/assets/mock-data/mockPaymentDetails.json";
 
     isDataAvailable = false;
 
@@ -25,11 +21,11 @@ export class PaymentDetailsComponent {
     payment_hour: any;
     payment_minutes: any;
 
-    constructor(private http: HttpClient) { }
+    constructor(private appService: AppService) { }
 
     ngOnInit() {
-        this.getJSON(this.paymentDetailsURL).subscribe((data: PaymentDetails) => {
-            this.payment_details = data;
+        this.appService.getPaymentDetails().subscribe((paymentDetails) => {
+            this.payment_details = paymentDetails;
             this.payment_date = new Date(this.payment_details.date);
             this.payment_expiry = new Date(this.payment_details.expiry);
             this.payment_month = MONTHS[this.payment_date.getMonth()];
@@ -38,10 +34,6 @@ export class PaymentDetailsComponent {
             this.payment_minutes = addZeroToTime(this.payment_date.getMinutes());
             this.isDataAvailable = true;
         })
-    }
-
-    private getJSON(url: string): Observable<any> {
-        return this.http.get(url);
     }
 
     getInitials(name: string) {

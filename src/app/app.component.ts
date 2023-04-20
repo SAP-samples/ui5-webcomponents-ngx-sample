@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, switchMap, forkJoin, of } from 'rxjs';
+import { combineLatest } from 'rxjs';
 
-import { AircraftStatus } from './interfaces/aircraft-status';
-import { Trip } from './interfaces/trip';
-import { MONTHS } from 'src/app/constants/constants';
-import { addZeroToTime, getDateAsDDTTTT } from 'src/app/utils/utils';
+import { AppService } from './services/services';
+import { MONTHS } from './constants/constants';
+import { addZeroToTime, getDateAsDDTTTT } from './utils/utils';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +12,11 @@ import { addZeroToTime, getDateAsDDTTTT } from 'src/app/utils/utils';
 })
 export class AppComponent {
 
-  private aircraftStatusUrl = "/assets/mock-data/mockAircraftStatus.json";
-  private tripsUrl = "assets/mock-data/mockTrips.json";
   isDataAvailable = false;
 
-  departureAircraftStatus: AircraftStatus | undefined;
+  trip: any;
+
+  departureAircraftStatus: any;
   currentBoardingTime: any;
   estimatedBoardingTime: any;
   boardingTimeString: any;
@@ -28,27 +26,18 @@ export class AppComponent {
   boardingLastRefresh: any;
   boardingGate: any;
 
-  trip: any;
-
   departureMonth: any;
   departureDateTimeString: any;
   arrivalMonth: any;
   arrivalDateTimeString: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
-    this.getJSON(this.tripsUrl).pipe(
-      switchMap((data) => {
-        return forkJoin({
-          trips: of(data),
-          aircraftStatus: this.getJSON(this.aircraftStatusUrl)
-        });
-      })
-    ).subscribe(({ trips, aircraftStatus }) => {
-      this.trip = <Trip>trips.currentTrip;
+    combineLatest([this.appService.getCurrentTrip(), this.appService.getDepartureAircraftStatus()]).subscribe(([trip, aircraftStatus]) => {
+      this.trip = trip;
 
-      this.departureAircraftStatus = <AircraftStatus>aircraftStatus.departureAircraftStatus;
+      this.departureAircraftStatus = aircraftStatus;
       this.currentBoardingTime = new Date(this.departureAircraftStatus.currentBoardingTime);
       this.estimatedBoardingTime = new Date(this.departureAircraftStatus.estimatedBoardingTime);
       this.boardingTimeString = `${this.currentBoardingTime.getHours()}:${addZeroToTime(this.currentBoardingTime.getMinutes())}`;
@@ -64,14 +53,7 @@ export class AppComponent {
       this.arrivalDateTimeString = getDateAsDDTTTT(new Date(this.departureAircraftStatus.arrivalTime));
 
       this.isDataAvailable = true;
-    });
-    this.getJSON(this.aircraftStatusUrl).subscribe((data) => {
-
     })
-  }
-
-  private getJSON(url: string): Observable<any> {
-    return this.http.get(url);
   }
 
   earlyOrLate(actual: Date, estimated: Date): string {

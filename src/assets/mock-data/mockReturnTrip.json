@@ -1,0 +1,27 @@
+{
+    "departureFrom": "Montreal",
+    "arrivalTo": "Vancouver",
+    "departureAbb": "YUL",
+    "arrivalAbb": "YVR",
+    "departureTime": "2030-04-22T12:00",
+    "arrivalTime": "2030-04-22T17:30",
+    "seats": "D2-G2",
+    "seatsSelected": [
+        [
+            1,
+            3
+        ],
+        [
+            1,
+            4
+        ],
+        [
+            1,
+            5
+        ],
+        [
+            1,
+            6
+        ]
+    ]
+}

@@ -6,7 +6,7 @@
 
     <div class="payment-profile">
         <div slot="imageContent">
-            <ui5-avatar initials="{{getInitials(payment_details.company)}}"></ui5-avatar>
+            <ui5-avatar [initials]="getInitials(payment_details.company)"></ui5-avatar>
         </div>
         <div class="payment-profile__text">
             <ui5-label>{{'COMPANY_NAME' | ui5I18n}}</ui5-label>

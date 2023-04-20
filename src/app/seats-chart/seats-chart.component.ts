@@ -1,11 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, switchMap, forkJoin, of } from 'rxjs';
+import { AppService } from '../services/services';
+import { combineLatest } from 'rxjs';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
 
-import { ALPHABETS } from 'src/app/constants/constants';
-import { LegendItem } from 'src/app/interfaces/legend-item';
-import { AircraftStatus } from 'src/app/interfaces/aircraft-status';
+import { ALPHABETS } from '../constants/constants';
+import { LegendItem } from '../interfaces/legend-item';
 
 @Component({
     selector: 'app-seats-chart',
@@ -13,13 +12,11 @@ import { AircraftStatus } from 'src/app/interfaces/aircraft-status';
     styleUrls: ['./seats-chart.component.scss']
 })
 export class SeatsChartComponent {
-    private aircraftStatusUrl = "/assets/mock-data/mockAircraftStatus.json";
-    private tripsUrl = "assets/mock-data/mockTrips.json";
     isDataAvailable = false;
 
     i18nService = inject(I18nService);
 
-    departureAircraftStatus: AircraftStatus | undefined;
+    departureAircraftStatus: any;
     rows: any;
     columns: any;
     columnLabelIndex: any;
@@ -32,19 +29,12 @@ export class SeatsChartComponent {
         { icon: "circle-task", color: "legend-item__icon--message", text: "AVAILABLE" }
     ];
 
-    constructor(private http: HttpClient) { }
+    constructor(private appService: AppService) { }
 
     ngOnInit() {
-        this.getJSON(this.tripsUrl).pipe(
-            switchMap((data) => {
-                return forkJoin({
-                    trips: of(data),
-                    aircraftStatus: this.getJSON(this.aircraftStatusUrl)
-                });
-            })
-        ).subscribe(({ trips, aircraftStatus }) => {
-            this.yourSeats = <Array<Array<number>>>trips.currentTrip.seatsSelected;
-            this.departureAircraftStatus = <AircraftStatus>aircraftStatus.departureAircraftStatus;
+        combineLatest([this.appService.getCurrentTrip(), this.appService.getDepartureAircraftStatus()]).subscribe(([currentTrip, departureAircraftStatus]) => {
+            this.yourSeats = currentTrip.seatsSelected;
+            this.departureAircraftStatus = departureAircraftStatus;
             this.rows = this.departureAircraftStatus.rows;
             this.columns = this.departureAircraftStatus.columns;
             this.columnLabelIndex = this.sumPrefix(this.columns);
@@ -52,10 +42,6 @@ export class SeatsChartComponent {
 
             this.isDataAvailable = true;
         });
-    }
-
-    private getJSON(url: string): Observable<any> {
-        return this.http.get(url);
     }
 
     sumPrefix(array: int[]) {
