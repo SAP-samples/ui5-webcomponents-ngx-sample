@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { THEMES, LANGUAGES } from 'src/app/constants/constants';
 import { Trip } from 'src/app/interfaces/trip';
 import { User } from 'src/app/interfaces/user';
+import { ShellBarComponent } from '@ui5/webcomponents-ngx';
 
 @Component({
     selector: 'app-header',
@@ -63,6 +64,7 @@ export class HeaderComponent {
         this.i18nService.setLanguage(this.selectedLanguage ? this.selectedLanguage : 'en');
         this.currentLanguage = this.selectedLanguage;
         this.setLanguageDialogOpen();
+        this.shellbarMenuClicked();
     }
 
     setLanguageDialogOpen() {
@@ -80,6 +82,7 @@ export class HeaderComponent {
         this.ui5ThemingService.setTheme(this.selectedTheme).pipe(first()).subscribe();
         this.currentTheme = this.selectedTheme;
         this.setThemeDialogOpen();
+        this.shellbarMenuClicked();
     }
 
     setThemeDialogOpen() {
@@ -91,5 +94,10 @@ export class HeaderComponent {
         if (themeName != undefined) {
             this.selectedTheme = themeName;
         }
+    }
+    
+    shellbarMenuClicked() {
+        var element = document.getElementById('shellbar') as ShellBarComponent;
+        if (element.closeOverflow) element.closeOverflow();
     }
 }
