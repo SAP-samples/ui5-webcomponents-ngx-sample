@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AppService } from '../services/services';
 import { combineLatest } from 'rxjs';
 
+import { AppService } from '../services/services';
 import { LegendItem } from '../interfaces/legend-item';
 import { MONTHS } from '../constants/constants';
 import { getDatesArray, getDateAsddMMyyyy, getDateAsDDTTTT } from '../utils/utils';

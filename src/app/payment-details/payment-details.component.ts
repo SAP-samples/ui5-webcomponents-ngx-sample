@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AppService } from '../services/services';
 
+import { AppService } from '../services/services';
 import { MONTHS, DAYS } from '../constants/constants';
 import { addZeroToTime } from '../utils/utils';
 

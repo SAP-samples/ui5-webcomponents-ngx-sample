@@ -2,9 +2,9 @@ import { Component, inject } from '@angular/core';
 import { first, combineLatest } from 'rxjs';
 import { Ui5ThemingService } from '@ui5/theming-ngx';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
-import { AppService } from '../services/services';
 import { ShellBarComponent } from '@ui5/webcomponents-ngx';
 
+import { AppService } from '../services/services';
 import { THEMES, LANGUAGES } from '../constants/constants';
 
 @Component({
@@ -35,7 +35,8 @@ export class HeaderComponent {
 
     ngOnInit() {
         combineLatest([
-            this.appService.getDomesticTrips(), this.appService.getInternationalTrips(), this.appService.getUser()]).subscribe(([domesticTrips, internationalTrips, user]) => {
+            this.appService.getDomesticTrips(), this.appService.getInternationalTrips(), this.appService.getUser()])
+            .subscribe(([domesticTrips, internationalTrips, user]) => {
                 this.domestic = domesticTrips;
                 this.international = internationalTrips;
                 this.user = user;

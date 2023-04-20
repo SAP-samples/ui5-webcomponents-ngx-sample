@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { AppService } from '../services/services';
 import { combineLatest } from 'rxjs';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
 
+import { AppService } from '../services/services';
 import { ALPHABETS } from '../constants/constants';
 import { LegendItem } from '../interfaces/legend-item';
 
@@ -32,16 +32,17 @@ export class SeatsChartComponent {
     constructor(private appService: AppService) { }
 
     ngOnInit() {
-        combineLatest([this.appService.getCurrentTrip(), this.appService.getDepartureAircraftStatus()]).subscribe(([currentTrip, departureAircraftStatus]) => {
-            this.yourSeats = currentTrip.seatsSelected;
-            this.departureAircraftStatus = departureAircraftStatus;
-            this.rows = this.departureAircraftStatus.rows;
-            this.columns = this.departureAircraftStatus.columns;
-            this.columnLabelIndex = this.sumPrefix(this.columns);
-            this.availableSeats = this.departureAircraftStatus.availableSeats;
+        combineLatest([this.appService.getCurrentTrip(), this.appService.getDepartureAircraftStatus()])
+            .subscribe(([currentTrip, departureAircraftStatus]) => {
+                this.yourSeats = currentTrip.seatsSelected;
+                this.departureAircraftStatus = departureAircraftStatus;
+                this.rows = this.departureAircraftStatus.rows;
+                this.columns = this.departureAircraftStatus.columns;
+                this.columnLabelIndex = this.sumPrefix(this.columns);
+                this.availableSeats = this.departureAircraftStatus.availableSeats;
 
-            this.isDataAvailable = true;
-        });
+                this.isDataAvailable = true;
+            });
     }
 
     sumPrefix(array: int[]) {

@@ -34,26 +34,27 @@ export class AppComponent {
   constructor(private appService: AppService) { }
 
   ngOnInit() {
-    combineLatest([this.appService.getCurrentTrip(), this.appService.getDepartureAircraftStatus()]).subscribe(([trip, aircraftStatus]) => {
-      this.trip = trip;
+    combineLatest([this.appService.getCurrentTrip(), this.appService.getDepartureAircraftStatus()])
+      .subscribe(([trip, aircraftStatus]) => {
+        this.trip = trip;
 
-      this.departureAircraftStatus = aircraftStatus;
-      this.currentBoardingTime = new Date(this.departureAircraftStatus.currentBoardingTime);
-      this.estimatedBoardingTime = new Date(this.departureAircraftStatus.estimatedBoardingTime);
-      this.boardingTimeString = `${this.currentBoardingTime.getHours()}:${addZeroToTime(this.currentBoardingTime.getMinutes())}`;
-      this.boardingTimeDifference = this.getTimeDifference(this.currentBoardingTime, this.estimatedBoardingTime);
-      this.boardingTimeEarlyOrLate = this.earlyOrLate(this.currentBoardingTime, this.estimatedBoardingTime);
-      this.boardingTimeMinOrMins = this.minOrMins(this.currentBoardingTime, this.estimatedBoardingTime)
-      this.boardingLastRefresh = Math.floor((Math.abs(new Date().getTime() - new Date().getTime()) / 1000) / 60);
-      this.boardingGate = this.departureAircraftStatus.gate;
+        this.departureAircraftStatus = aircraftStatus;
+        this.currentBoardingTime = new Date(this.departureAircraftStatus.currentBoardingTime);
+        this.estimatedBoardingTime = new Date(this.departureAircraftStatus.estimatedBoardingTime);
+        this.boardingTimeString = `${this.currentBoardingTime.getHours()}:${addZeroToTime(this.currentBoardingTime.getMinutes())}`;
+        this.boardingTimeDifference = this.getTimeDifference(this.currentBoardingTime, this.estimatedBoardingTime);
+        this.boardingTimeEarlyOrLate = this.earlyOrLate(this.currentBoardingTime, this.estimatedBoardingTime);
+        this.boardingTimeMinOrMins = this.minOrMins(this.currentBoardingTime, this.estimatedBoardingTime)
+        this.boardingLastRefresh = Math.floor((Math.abs(new Date().getTime() - new Date().getTime()) / 1000) / 60);
+        this.boardingGate = this.departureAircraftStatus.gate;
 
-      this.departureMonth = MONTHS[new Date(this.departureAircraftStatus.departureTime).getMonth()];
-      this.departureDateTimeString = getDateAsDDTTTT(new Date(this.departureAircraftStatus.departureTime));
-      this.arrivalMonth = MONTHS[new Date(this.departureAircraftStatus.arrivalTime).getMonth()];
-      this.arrivalDateTimeString = getDateAsDDTTTT(new Date(this.departureAircraftStatus.arrivalTime));
+        this.departureMonth = MONTHS[new Date(this.departureAircraftStatus.departureTime).getMonth()];
+        this.departureDateTimeString = getDateAsDDTTTT(new Date(this.departureAircraftStatus.departureTime));
+        this.arrivalMonth = MONTHS[new Date(this.departureAircraftStatus.arrivalTime).getMonth()];
+        this.arrivalDateTimeString = getDateAsDDTTTT(new Date(this.departureAircraftStatus.arrivalTime));
 
-      this.isDataAvailable = true;
-    })
+        this.isDataAvailable = true;
+      })
   }
 
   earlyOrLate(actual: Date, estimated: Date): string {
