@@ -1,40 +1,42 @@
-<ui5-label class="payment-subheader">
-    {{payment_day | ui5I18n}}{{'COMMA' | ui5I18n}}{{payment_month | ui5I18n}} {{payment_details.date.getDate()}}
-    {{'DATE' | ui5I18n}}{{'COMMA' | ui5I18n}}{{payment_hour}}:{{payment_minutes}}
-</ui5-label>
+<div *ngIf="isDataAvailable">
+    <ui5-label class="payment-subheader">
+        {{payment_day | ui5I18n}}{{'COMMA' | ui5I18n}}{{payment_month | ui5I18n}} {{payment_date.getDate()}}
+        {{'DATE' | ui5I18n}}{{'COMMA' | ui5I18n}}{{payment_hour}}:{{payment_minutes}}
+    </ui5-label>
 
-<div class="payment-profile">
-    <div slot="imageContent">
-        <ui5-avatar initials="{{getInitials(payment_details.company)}}"></ui5-avatar>
+    <div class="payment-profile">
+        <div slot="imageContent">
+            <ui5-avatar [initials]="getInitials(payment_details.company)"></ui5-avatar>
+        </div>
+        <div class="payment-profile__text">
+            <ui5-label>{{'COMPANY_NAME' | ui5I18n}}</ui5-label>
+            {{payment_details.company}}
+        </div>
     </div>
-    <div class="payment-profile__text">
-        <ui5-label>{{'COMPANY_NAME' | ui5I18n}}</ui5-label>
-        {{payment_details.company}}
-    </div>
+
+    <span class="hidden-at-tablet">
+        <span class="card-details__header">
+            <span class="card-details__section--first card-details__long">
+                {{'PAYMENT_DETAILS' | ui5I18n}}</span>
+            <span class="card-details__long">
+                {{'CARD_NUMBER' | ui5I18n}}</span>
+            <span class="card-details__short">
+                CVV</span>
+            <span class="card-details__short">
+                {{'EXPIRY_DATE' | ui5I18n}}</span>
+        </span>
+
+        <span class="card-details__footer hidden-at-tablet">
+            <ui5-title level="H6"
+                class="card-details__section--first card-details__long">{{payment_details.paymentMethod}}</ui5-title>
+            <ui5-title level="H6" class="card-details__long">
+                <span class="card-details__long--segment" *ngFor="let numbers of payment_details.cardNumber">
+                    {{numbers}}
+                </span>
+            </ui5-title>
+            <ui5-title level="H6" class="card-details__short">{{payment_details.cvv}}</ui5-title>
+            <ui5-title level="H6" class="card-details__short">
+                {{payment_expiry.getFullYear()% 100}} / {{payment_expiry.getMonth()}}</ui5-title>
+        </span>
+    </span>
 </div>
-
-<span class="hidden-at-tablet">
-    <span class="card-details__header">
-        <span class="card-details__section--first card-details__long">
-            {{'PAYMENT_DETAILS' | ui5I18n}}</span>
-        <span class="card-details__long">
-            {{'CARD_NUMBER' | ui5I18n}}</span>
-        <span class="card-details__short">
-            CVV</span>
-        <span class="card-details__short">
-            {{'EXPIRY_DATE' | ui5I18n}}</span>
-    </span>
-
-    <span class="card-details__footer hidden-at-tablet">
-        <ui5-title level="H6"
-            class="card-details__section--first card-details__long">{{payment_details.paymentMethod}}</ui5-title>
-        <ui5-title level="H6" class="card-details__long">
-            <span class="card-details__long--segment" *ngFor="let numbers of payment_details.cardNumber">
-                {{numbers}}
-            </span>
-        </ui5-title>
-        <ui5-title level="H6" class="card-details__short">{{payment_details.cvv}}</ui5-title>
-        <ui5-title level="H6" class="card-details__short">
-            {{payment_details.expiry.getFullYear()% 100}} / {{payment_details.expiry.getMonth()}}</ui5-title>
-    </span>
-</span>

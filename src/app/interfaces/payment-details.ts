@@ -3,6 +3,6 @@ export interface PaymentDetails {
     company: string,
     paymentMethod: "MasterCard" | "VISA" | "AmericanExpress",
     cardNumber: string[],
-    cvv: int,
+    cvv: number,
     expiry: Date,
 }

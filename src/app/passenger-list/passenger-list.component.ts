@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 
-import { PASSENGERS } from '../../assets/mock-data/mock-passengers';
+import { AppService } from '../services/services';
+import { Passenger } from '../interfaces/passenger';
 
 @Component({
     selector: 'app-passenger-list',
@@ -8,9 +10,25 @@ import { PASSENGERS } from '../../assets/mock-data/mock-passengers';
     styleUrls: ['./passenger-list.component.scss']
 })
 export class PassengerListComponent {
-    constructor() { }
 
-    ngOnInit() { }
+    componentUnsubscribe: Subject<boolean> = new Subject();
+    isDataAvailable = false;
 
-    passengers = PASSENGERS;
+    passengers!: Passenger[];
+
+    constructor(private appService: AppService) { }
+
+    ngOnInit() {
+        this.appService.getPassengers()
+            .pipe(takeUntil(this.componentUnsubscribe))
+            .subscribe((passengers) => {
+                this.passengers = passengers;
+                this.isDataAvailable = true;
+            })
+    }
+
+    ngOnDestroy() {
+        this.componentUnsubscribe.next(true);
+        this.componentUnsubscribe.complete();
+    }
 }

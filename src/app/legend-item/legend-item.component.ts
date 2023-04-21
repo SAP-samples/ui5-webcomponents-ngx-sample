@@ -6,8 +6,7 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./legend-item.component.scss']
 })
 export class LegendItemComponent {
-    constructor() {
-    }
+    constructor() { }
 
     ngOnInit() { }
 

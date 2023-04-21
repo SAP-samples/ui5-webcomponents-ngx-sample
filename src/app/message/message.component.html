@@ -1,10 +1,10 @@
-<div *ngFor="let message of messages" class="message">
+<div class="message">
     <ui5-message-strip class="message__strip" design="Information">
-        {{message.base_beginning | ui5I18n}}
-        {{message.gate}}
-        {{message.base_end | ui5I18n}}
+        {{"MESSAGE_PART1" | ui5I18n}}
+        {{gate}}
+        {{"MESSAGE_PART2" | ui5I18n}}
         <span class="message__strip__emphasized">
-            {{message.emphasized | ui5I18n}}
+            {{"MESSAGE_EMPHASIZED" | ui5I18n}}
         </span>
     </ui5-message-strip>
 </div>

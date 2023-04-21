@@ -1,9 +1,11 @@
 export interface AircraftStatus {
-    rows: int;
-    columns: int[];
-    availableSeats: int[][];
+    rows: number;
+    columns: number[];
+    availableSeats: number[][];
     estimatedBoardingTime: Date;
     currentBoardingTime: Date;
+    departureTime: Date,
+    arrivalTime: Date,
     lastRefresh: Date;
     gate: string | "TBA";
     gateOpenTime: Date;

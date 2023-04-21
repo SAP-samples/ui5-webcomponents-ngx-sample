@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { first } from 'rxjs';
+import { Subject, takeUntil, zip } from 'rxjs';
 import { Ui5ThemingService } from '@ui5/theming-ngx';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
-
-import { USER } from 'src/assets/mock-data/mock-user';
-import { DOMESTIC_TRIPS, INTERNATIONAL_TRIPS } from 'src/assets/mock-data/mock-trips';
-import { THEMES } from 'src/assets/constant-querries';
-import { LANGUAGES } from 'src/assets/constant-querries';
 import { ShellBarComponent } from '@ui5/webcomponents-ngx';
+
+import { AppService } from '../services/services';
+import { THEMES, LANGUAGES } from '../constants/constants';
+import { User } from '../interfaces/user';
+import { Trip } from '../interfaces/trip';
 
 @Component({
     selector: 'app-header',
@@ -15,7 +15,44 @@ import { ShellBarComponent } from '@ui5/webcomponents-ngx';
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-    constructor(private ui5ThemingService: Ui5ThemingService) { }
+
+    componentUnsubscribe: Subject<boolean> = new Subject();
+    isDataAvailable = false;
+
+    selectedTheme = "sap_horizon";
+    currentTheme = "sap_horizon";
+    themeDialogOpen = false;
+    themes = THEMES;
+    i18nService = inject(I18nService);
+
+    selectedLanguage = this.i18nService.currentLanguage();
+    currentLanguage = this.i18nService.currentLanguage();
+    languageDialogOpen = false;
+    languages = LANGUAGES;
+
+    user!: User;
+
+    domestic!: Trip[];
+    international!: Trip[];
+
+    constructor(private appService: AppService, private ui5ThemingService: Ui5ThemingService) { }
+
+    ngOnInit() {
+        zip([this.appService.getDomesticTrips(), this.appService.getInternationalTrips(), this.appService.getUser()])
+            .pipe(takeUntil(this.componentUnsubscribe))
+            .subscribe(([domesticTrips, internationalTrips, user]) => {
+                this.domestic = domesticTrips;
+                this.international = internationalTrips;
+                this.user = user;
+
+                this.isDataAvailable = true;
+            });
+    }
+
+    ngOnDestroy() {
+        this.componentUnsubscribe.next(true);
+        this.componentUnsubscribe.complete();
+    }
 
     switchLanguage() {
         this.i18nService.setLanguage(this.selectedLanguage ? this.selectedLanguage : 'en');
@@ -36,7 +73,7 @@ export class HeaderComponent {
     }
 
     switchTheme() {
-        this.ui5ThemingService.setTheme(this.selectedTheme).pipe(first()).subscribe();
+        this.ui5ThemingService.setTheme(this.selectedTheme).pipe(takeUntil(this.componentUnsubscribe)).subscribe();
         this.currentTheme = this.selectedTheme;
         this.setThemeDialogOpen();
         this.shellbarMenuClicked();
@@ -57,17 +94,4 @@ export class HeaderComponent {
         var element = document.getElementById('shellbar') as ShellBarComponent;
         if (element.closeOverflow) element.closeOverflow();
     }
-
-    selectedTheme = "sap_horizon";
-    currentTheme = "sap_horizon";
-    themeDialogOpen = false;
-    themes = THEMES;
-    i18nService = inject(I18nService);
-    selectedLanguage = this.i18nService.currentLanguage();
-    currentLanguage = this.i18nService.currentLanguage();
-    languageDialogOpen = false;
-    languages = LANGUAGES;
-    user = USER;
-    domestic = DOMESTIC_TRIPS;
-    international = INTERNATIONAL_TRIPS;
 }

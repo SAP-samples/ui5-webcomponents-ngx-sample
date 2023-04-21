@@ -1,9 +1,9 @@
-<section class="your-seats-card-content">
-
+<section class="your-seats-card-content" *ngIf="isDataAvailable">
     <div class="your-seats-card-content-layout">
         <!-- Row labels -->
         <div class="your-seats-card-content-layout__column">
-            <div class="your-seats-card-content-layout__row"><ui5-label style="visibility:hidden;">A</ui5-label></div>
+            <div class="your-seats-card-content-layout__row"><ui5-label style="visibility:hidden;">A</ui5-label>
+            </div>
             <ui5-label *ngFor="let item of [].constructor(rows); let i = index"
                 class="your-seats-card-content-layout__row">{{i+1}}</ui5-label>
         </div>
@@ -31,8 +31,6 @@
     </div>
 
     <div *ngFor="let legendItem of legendItems">
-        <app-legend-item icon="{{legendItem.icon}}" color="{{legendItem.color}}"
-            text="{{legendItem.text}}"></app-legend-item>
+        <app-legend-item [icon]="legendItem.icon" [color]="legendItem.color" [text]="legendItem.text"></app-legend-item>
     </div>
-
 </section>

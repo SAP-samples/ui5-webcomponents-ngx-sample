@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 
-import { PAYMENT_DETAILS } from '../../assets/mock-data/mock-payment-details';
-import { MONTHS, DAYS, addZeroToTime } from 'src/assets/constant-querries';
+import { AppService } from '../services/services';
+import { MONTHS, DAYS } from '../constants/constants';
+import { addZeroToTime } from '../utils/utils';
+import { PaymentDetails } from '../interfaces/payment-details';
 
 @Component({
     selector: 'app-payment-details',
@@ -9,9 +12,39 @@ import { MONTHS, DAYS, addZeroToTime } from 'src/assets/constant-querries';
     styleUrls: ['./payment-details.component.scss']
 })
 export class PaymentDetailsComponent {
-    constructor() { }
 
-    ngOnInit() { }
+    componentUnsubscribe: Subject<boolean> = new Subject();
+    isDataAvailable = false;
+
+    payment_details!: PaymentDetails;
+    payment_date!: Date;
+    payment_expiry!: Date;
+    payment_month!: string;
+    payment_day!: string;
+    payment_hour!: string;
+    payment_minutes!: string;
+
+    constructor(private appService: AppService) { }
+
+    ngOnInit() {
+        this.appService.getPaymentDetails()
+            .pipe(takeUntil(this.componentUnsubscribe))
+            .subscribe((paymentDetails) => {
+                this.payment_details = paymentDetails;
+                this.payment_date = new Date(this.payment_details.date);
+                this.payment_expiry = new Date(this.payment_details.expiry);
+                this.payment_month = MONTHS[this.payment_date.getMonth()];
+                this.payment_day = DAYS[this.payment_date.getDay()];
+                this.payment_hour = addZeroToTime(this.payment_date.getHours());
+                this.payment_minutes = addZeroToTime(this.payment_date.getMinutes());
+                this.isDataAvailable = true;
+            })
+    }
+
+    ngOnDestroy() {
+        this.componentUnsubscribe.next(true);
+        this.componentUnsubscribe.complete();
+    }
 
     getInitials(name: string) {
         var names = name.split(' '),
@@ -21,10 +54,4 @@ export class PaymentDetailsComponent {
         }
         return initials;
     };
-
-    payment_details = PAYMENT_DETAILS;
-    payment_month = MONTHS[this.payment_details.date.getMonth()];
-    payment_day = DAYS[this.payment_details.date.getDay()];
-    payment_hour = addZeroToTime(this.payment_details.date.getHours());
-    payment_minutes = addZeroToTime(this.payment_details.date.getMinutes());
 }
