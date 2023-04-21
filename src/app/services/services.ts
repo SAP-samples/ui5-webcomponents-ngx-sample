@@ -2,65 +2,53 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { AircraftStatus } from 'src/app/interfaces/aircraft-status';
-import { Trip } from 'src/app/interfaces/trip';
-import { User } from 'src/app/interfaces/user';
-import { Passenger } from 'src/app/interfaces/passenger';
-import { PaymentDetails } from 'src/app/interfaces/payment-details';
+import { AircraftStatus } from '../interfaces/aircraft-status';
+import { Trip } from '../interfaces/trip';
+import { User } from '../interfaces/user';
+import { Passenger } from '../interfaces/passenger';
+import { PaymentDetails } from '../interfaces/payment-details';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AppService {
-    private departureAircraftStatusUrl = "/assets/mock-data/mockDepartureAircraftStatus.json";
-    private returnAircraftStatusUrl = "/assets/mock-data/mockReturnAircraftStatus.json";
-    private currentTripUrl = "assets/mock-data/mockCurrentTrip.json";
-    private returnTripUrl = "assets/mock-data/mockReturnTrip.json";
-    private domesticTripsUrl = "/assets/mock-data/mockPastDomesticTrips.json";
-    private internationalTripsUrl = "/assets/mock-data/mockPastInternationalTrips.json";
-    private userUrl = "/assets/mock-data/mockUser.json";
-    private passengersUrl = "/assets/mock-data/mockPassengers.json";
-    private paymentDetailsURL = "/assets/mock-data/mockPaymentDetails.json";
+    private _baseUrl = '/assets/mock-data';
 
     constructor(private http: HttpClient) { }
 
-    private getJSON<T = unknown>(url: string): Observable<T> {
-        return this.http.get<T>(url);
-    }
-
     getDepartureAircraftStatus(): Observable<AircraftStatus> {
-        return this.getJSON(this.departureAircraftStatusUrl);
+        return this.http.get<AircraftStatus>(`${this._baseUrl}/mockDepartureAircraftStatus.json`);
     }
 
     getReturnAircraftStatus(): Observable<AircraftStatus> {
-        return this.getJSON(this.returnAircraftStatusUrl);
+        return this.http.get<AircraftStatus>(`${this._baseUrl}/mockReturnAircraftStatus.json`);
     }
 
     getCurrentTrip(): Observable<Trip> {
-        return this.getJSON(this.currentTripUrl);
+        return this.http.get<Trip>(`${this._baseUrl}/mockCurrentTrip.json`);
     }
 
     getReturnTrip(): Observable<Trip> {
-        return this.getJSON(this.returnTripUrl);
+        return this.http.get<Trip>(`${this._baseUrl}/mockReturnTrip.json`);
     }
 
     getDomesticTrips(): Observable<Trip[]> {
-        return this.getJSON(this.domesticTripsUrl);
+        return this.http.get<Trip[]>(`${this._baseUrl}/mockPastDomesticTrips.json`);
     }
 
     getInternationalTrips(): Observable<Trip[]> {
-        return this.getJSON(this.internationalTripsUrl);
+        return this.http.get<Trip[]>(`${this._baseUrl}/mockPastInternationalTrips.json`);
     }
 
     getUser(): Observable<User> {
-        return this.getJSON(this.userUrl);
+        return this.http.get<User>(`${this._baseUrl}/mockUser.json`);
     }
 
     getPassengers(): Observable<Passenger[]> {
-        return this.getJSON(this.passengersUrl);
+        return this.http.get<Passenger[]>(`${this._baseUrl}/mockPassengers.json`);
     }
 
     getPaymentDetails(): Observable<PaymentDetails> {
-        return this.getJSON(this.paymentDetailsURL);
+        return this.http.get<PaymentDetails>(`${this._baseUrl}/mockPaymentDetails.json`);
     }
 }

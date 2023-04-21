@@ -1,6 +1,6 @@
-export function addZeroToTime(i: int) {
+export function addZeroToTime(i: number) {
     if (i < 10) { return "0" + i }
-    return i;
+    return `${i}`;
 };
 
 export function getDateAsddMMyyyy(date: Date) {
@@ -12,7 +12,7 @@ export function getDateAsDDTTTT(date: Date) {
 };
 
 export function getDatesArray(startDate: Date, stopDate: Date) {
-    let dateArray = new Array();
+    const dateArray: Date[] = [];
     let currentDate = startDate;
     while (currentDate <= stopDate) {
         dateArray.push(new Date(currentDate));
@@ -21,7 +21,7 @@ export function getDatesArray(startDate: Date, stopDate: Date) {
     return dateArray;
 };
 
-function addDays(currentDate: Date, numDays: int) {
+function addDays(currentDate: Date, numDays: number) {
     let date = new Date(currentDate);
     date.setDate(date.getDate() + numDays);
     return date;

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 
 import { AppService } from '../services/services';
 import { MONTHS, DAYS } from '../constants/constants';
 import { addZeroToTime } from '../utils/utils';
+import { PaymentDetails } from '../interfaces/payment-details';
 
 @Component({
     selector: 'app-payment-details',
@@ -11,29 +13,37 @@ import { addZeroToTime } from '../utils/utils';
 })
 export class PaymentDetailsComponent {
 
+    componentUnsubscribe: Subject<boolean> = new Subject();
     isDataAvailable = false;
 
-    payment_details: any;
-    payment_date: any;
-    payment_expiry: any;
-    payment_month: any;
-    payment_day: any;
-    payment_hour: any;
-    payment_minutes: any;
+    payment_details!: PaymentDetails;
+    payment_date!: Date;
+    payment_expiry!: Date;
+    payment_month!: string;
+    payment_day!: string;
+    payment_hour!: string;
+    payment_minutes!: string;
 
     constructor(private appService: AppService) { }
 
     ngOnInit() {
-        this.appService.getPaymentDetails().subscribe((paymentDetails) => {
-            this.payment_details = paymentDetails;
-            this.payment_date = new Date(this.payment_details.date);
-            this.payment_expiry = new Date(this.payment_details.expiry);
-            this.payment_month = MONTHS[this.payment_date.getMonth()];
-            this.payment_day = DAYS[this.payment_date.getDay()];
-            this.payment_hour = addZeroToTime(this.payment_date.getHours());
-            this.payment_minutes = addZeroToTime(this.payment_date.getMinutes());
-            this.isDataAvailable = true;
-        })
+        this.appService.getPaymentDetails()
+            .pipe(takeUntil(this.componentUnsubscribe))
+            .subscribe((paymentDetails) => {
+                this.payment_details = paymentDetails;
+                this.payment_date = new Date(this.payment_details.date);
+                this.payment_expiry = new Date(this.payment_details.expiry);
+                this.payment_month = MONTHS[this.payment_date.getMonth()];
+                this.payment_day = DAYS[this.payment_date.getDay()];
+                this.payment_hour = addZeroToTime(this.payment_date.getHours());
+                this.payment_minutes = addZeroToTime(this.payment_date.getMinutes());
+                this.isDataAvailable = true;
+            })
+    }
+
+    ngOnDestroy() {
+        this.componentUnsubscribe.next(true);
+        this.componentUnsubscribe.complete();
     }
 
     getInitials(name: string) {

@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { first, combineLatest } from 'rxjs';
+import { Subject, takeUntil, zip } from 'rxjs';
 import { Ui5ThemingService } from '@ui5/theming-ngx';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
 import { ShellBarComponent } from '@ui5/webcomponents-ngx';
 
 import { AppService } from '../services/services';
 import { THEMES, LANGUAGES } from '../constants/constants';
+import { User } from '../interfaces/user';
+import { Trip } from '../interfaces/trip';
 
 @Component({
     selector: 'app-header',
@@ -13,6 +15,8 @@ import { THEMES, LANGUAGES } from '../constants/constants';
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+
+    componentUnsubscribe: Subject<boolean> = new Subject();
     isDataAvailable = false;
 
     selectedTheme = "sap_horizon";
@@ -26,16 +30,16 @@ export class HeaderComponent {
     languageDialogOpen = false;
     languages = LANGUAGES;
 
-    user: any;
+    user!: User;
 
-    domestic: any;
-    international: any;
+    domestic!: Trip[];
+    international!: Trip[];
 
     constructor(private appService: AppService, private ui5ThemingService: Ui5ThemingService) { }
 
     ngOnInit() {
-        combineLatest([
-            this.appService.getDomesticTrips(), this.appService.getInternationalTrips(), this.appService.getUser()])
+        zip([this.appService.getDomesticTrips(), this.appService.getInternationalTrips(), this.appService.getUser()])
+            .pipe(takeUntil(this.componentUnsubscribe))
             .subscribe(([domesticTrips, internationalTrips, user]) => {
                 this.domestic = domesticTrips;
                 this.international = internationalTrips;
@@ -43,6 +47,11 @@ export class HeaderComponent {
 
                 this.isDataAvailable = true;
             });
+    }
+
+    ngOnDestroy() {
+        this.componentUnsubscribe.next(true);
+        this.componentUnsubscribe.complete();
     }
 
     switchLanguage() {
@@ -64,7 +73,7 @@ export class HeaderComponent {
     }
 
     switchTheme() {
-        this.ui5ThemingService.setTheme(this.selectedTheme).pipe(first()).subscribe();
+        this.ui5ThemingService.setTheme(this.selectedTheme).pipe(takeUntil(this.componentUnsubscribe)).subscribe();
         this.currentTheme = this.selectedTheme;
         this.setThemeDialogOpen();
         this.shellbarMenuClicked();

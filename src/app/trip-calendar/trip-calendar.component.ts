@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { combineLatest } from 'rxjs';
+import { Subject, takeUntil, zip } from 'rxjs';
 
 import { AppService } from '../services/services';
 import { LegendItem } from '../interfaces/legend-item';
 import { MONTHS } from '../constants/constants';
 import { getDatesArray, getDateAsddMMyyyy, getDateAsDDTTTT } from '../utils/utils';
+import { AircraftStatus } from '../interfaces/aircraft-status';
 
 @Component({
     selector: 'app-trip-calendar',
@@ -12,27 +13,29 @@ import { getDatesArray, getDateAsddMMyyyy, getDateAsDDTTTT } from '../utils/util
     styleUrls: ['./trip-calendar.component.scss']
 })
 export class TripCalendarComponent {
+
+    componentUnsubscribe: Subject<boolean> = new Subject();
     isDataAvailable = false;
 
-    departureAircraftStatus: any;
-    returnAircraftStatus: any;
+    departureAircraftStatus!: AircraftStatus;
+    returnAircraftStatus!: AircraftStatus;
 
-    startDate: any;
-    endDate: any;
-    datesBetween: any;
+    startDate!: Date;
+    endDate!: Date;
+    datesBetween!: Date[];
     formatDate = getDateAsddMMyyyy;
 
-    departureBoardingMonth: any;
-    departureBoardingDateTimeString: any;
-    departureMonth: any;
-    departureDateTimeString: any;
-    departureGate: any;
+    departureBoardingMonth!: string;
+    departureBoardingDateTimeString!: string;
+    departureMonth!: string;
+    departureDateTimeString!: string;
+    departureGate!: string;
 
-    returnBoardingMonth: any;
-    returnBoardingDateTimeString: any;
-    returnMonth: any;
-    returnDateTimeString: any;
-    returnGate: any;
+    returnBoardingMonth!: string;
+    returnBoardingDateTimeString!: string;
+    returnMonth!: string;
+    returnDateTimeString!: string;
+    returnGate!: string;
 
     legendItems: LegendItem[] = [
         { icon: "color-fill", color: "legend-item__icon--background legend-item__icon__border legend-item__icon__border--now", text: "TODAY" },
@@ -42,7 +45,8 @@ export class TripCalendarComponent {
     constructor(private appService: AppService) { }
 
     async ngOnInit() {
-        combineLatest([this.appService.getCurrentTrip(), this.appService.getReturnTrip(), this.appService.getDepartureAircraftStatus(), this.appService.getReturnAircraftStatus()])
+        zip([this.appService.getCurrentTrip(), this.appService.getReturnTrip(), this.appService.getDepartureAircraftStatus(), this.appService.getReturnAircraftStatus()])
+            .pipe(takeUntil(this.componentUnsubscribe))
             .subscribe(([currentTrip, returnTrip, departureAircraftStatus, returnAircraftStatus]) => {
                 this.startDate = new Date(currentTrip.departureTime);
                 this.endDate = new Date(returnTrip.arrivalTime);
@@ -65,5 +69,10 @@ export class TripCalendarComponent {
 
                 this.isDataAvailable = true;
             });
+    }
+
+    ngOnDestroy() {
+        this.componentUnsubscribe.next(true);
+        this.componentUnsubscribe.complete();
     }
 }

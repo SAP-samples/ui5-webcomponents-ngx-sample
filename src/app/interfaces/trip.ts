@@ -6,5 +6,5 @@ export interface Trip {
     departureTime: Date;
     arrivalTime: Date;
     seats: string;
-    seatsSelected: int[][];
+    seatsSelected: number[][];
 }

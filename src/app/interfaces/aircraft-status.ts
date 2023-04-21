@@ -1,7 +1,7 @@
 export interface AircraftStatus {
-    rows: int;
-    columns: int[];
-    availableSeats: int[][];
+    rows: number;
+    columns: number[];
+    availableSeats: number[][];
     estimatedBoardingTime: Date;
     currentBoardingTime: Date;
     departureTime: Date,
