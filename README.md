@@ -7,6 +7,8 @@
 ## Description
 This is a demo application for the SAP [@ui5/webcomponents-ngx](https://github.com/SAP/ui5-webcomponents-ngx) project
 
+The following Repository is licensed under the Apache License, Version 2.0 - see [LICENSE](https://github.com/SAP-samples/ui5-webcomponents-ngx-sample/blob/main/LICENSE). It also contains third-party open source modules. Third-party module license information is available in machine-readable format in the [.reuse/dep5](https://github.com/SAP-samples/ui5-webcomponents-ngx-sample/blob/main/.reuse/dep5) file.
+
 ## Requirements
 Angular 15 or higher. Other versions might work, but are not tested.
 
