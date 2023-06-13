@@ -1,0 +1,18 @@
+<fd-layout-grid>
+    <div fdLayoutGridRow class="remove-padding">
+      <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+        <ui5-card class="card--bottom daily-flight-card">
+          <ui5-card-header slot="header" [title-text]="'DAILY_FLIGHT_STATUS' | ui5I18n">
+          </ui5-card-header>
+          <div class="progress-bars">
+            <ui5-progress-indicator [display-value]="'LATE_UPPERCASE' | ui5I18n" value-state="Error"
+              [value]="20"></ui5-progress-indicator>
+            <ui5-progress-indicator [display-value]="'EARLY_UPPERCASE' | ui5I18n" value-state="Warning"
+              [value]="15"></ui5-progress-indicator>
+            <ui5-progress-indicator class="progress-bars__last" [display-value]="'ON_TIME' | ui5I18n"
+              value-state="Success" [value]="60"></ui5-progress-indicator>
+          </div>
+        </ui5-card>
+      </div>
+    </div>
+  </fd-layout-grid>

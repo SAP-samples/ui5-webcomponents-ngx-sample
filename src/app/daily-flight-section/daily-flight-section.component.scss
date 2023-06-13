@@ -1,0 +1,210 @@
+@import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
+
+.section-title {
+    @include sap-margin(small, bottom)
+}
+
+.cards {
+    width: 100%;
+    @include sap-display(flex);
+}
+
+.cards__column {
+    @include sap-display(flex);
+    @include sap-flex(column);
+    @include sap-flex-align-items(flex-start);
+}
+
+.cards__row {
+    height: 100%;
+    @include sap-display(flex);
+    @include sap-flex(row);
+}
+
+.card--wide {
+    width: 100%;
+}
+
+.card--bottom {
+    @include sap-media-min-width(700px) {
+        @include sap-margin(medium, top);
+    }
+
+    @include sap-media-max-width(700px) {
+        @include sap-margin(small, top);
+    }
+}
+
+.footer-button {
+    width: 62px;
+}
+
+.central-icon {
+    @include sap-set-margin-y-equal(auto);
+}
+
+.progress-bars {
+    @include sap-margin(small, top);
+    @include sap-margin(small, x);
+}
+
+.progress-bars__last {
+    @include sap-margin(small, bottom);
+}
+
+.refresh {
+    color: var(--sapLinkColor);
+}
+
+.refresh-icon {
+    @include sap-margin(tiny, end);
+}
+
+.text-row {
+    @include sap-display(flex);
+    @include sap-flex(row);
+    @include sap-flex-align-items(center);
+    @include sap-flex-justify(flex-start);
+    @include sap-margin(tiny, bottom);
+}
+
+.text-column {
+    @include sap-margin(small, x);
+    @include sap-margin(small, bottom);
+
+    @include sap-media-range-width(650px, 1440px) {
+        text-align: center;
+    }
+}
+
+.text-column--tall {
+    @include sap-margin(medium, bottom);
+}
+
+.large-text {
+    @include sap-font-size(header-2);
+    line-height: 37px;
+    letter-spacing: 0px;
+    @include sap-margin(small, end);
+}
+
+.large-text--green {
+    color: var(--sapPositiveColor);
+}
+
+.large-text--blue {
+    color: var(--sapContent_BusyColor);
+}
+
+.flight-details__content {
+    @include sap-display(flex);
+    @include sap-flex(row);
+    @include sap-flex-align-items(center);
+    @include sap-flex-justify(center);
+    @include sap-flex-align-content(center);
+    @include sap-margin(medium, bottom);
+}
+
+.flight-details__content__text {
+    @include sap-display(grid);
+    @include sap-margin(small, x);
+}
+
+.flight-details__content__text--left {
+    text-align: end;
+}
+
+.daily-flight-card {
+    @include sap-media-range-width(600px, 650px) {
+        @include sap-margin(small, top);
+    }
+
+    @include sap-media-sm() {
+        @include sap-margin(medium, top);
+    }
+}
+
+.remove-padding {
+    @include sap-padding(0);
+}
+
+.flight-details-card {
+    @include sap-media-min-width(1025px) {
+        @include sap-margin(medium, bottom);
+    }
+}
+
+.calendar-card {
+    @include sap-media-xl() {
+        @include sap-margin(medium, end);
+        @include sap-margin(medium, bottom);
+    }
+
+    @include sap-media-range-width(600px, 1439px) {
+        @include sap-margin(medium, end);
+        @include sap-margin(tiny, bottom);
+    }
+}
+
+.passenger-details-card {
+    height: fit-content;
+
+    @include sap-media-xl() {
+        @include sap-margin(medium, x);
+    }
+
+    @include sap-media-range-width(600px, 1440px) {
+        @include sap-margin(medium, end);
+        @include sap-margin(medium, top);
+    }
+
+    @include sap-media-sm() {
+        @include sap-margin(medium, top);
+    }
+}
+
+.payment-details-card {
+    @include sap-media-xl() {
+        @include sap-margin(medium, begin);
+        @include sap-margin(medium, top);
+    }
+
+    @include sap-media-max-width(1440px) {
+        @include sap-margin(medium, y);
+    }
+}
+
+.flight-status-card {
+    @include sap-media-max-width(1440px) {
+        @include sap-margin(medium, top);
+    }
+}
+
+.your-seats-card {
+    @include sap-media-sm() {
+        @include sap-margin(medium, top);
+    }
+
+    @include sap-media-range-width(600px, 649px) {
+        @include sap-margin(medium, end);
+    }
+
+    @include sap-media-range-width(650px, 1439px) {
+        @include sap-set-margin-top(-1rem);
+        @include sap-margin(medium, end);
+    }
+
+    @include sap-media-lg() {
+        @include sap-margin(medium, top)
+    }
+}
+
+.your-seats-card__content {
+    @include sap-margin(small, x);
+}
+
+.your-seats-card__content__subheader {
+    @include sap-margin(small, x);
+    @include sap-margin(tiny, bottom);
+    @include sap-set-margin-top(-0.5rem);
+}
