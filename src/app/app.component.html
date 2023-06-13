@@ -183,10 +183,11 @@
 
               <!-- Payment Details section -->
               <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12" class="remove-padding">
-                <div class="payment-details-card">
+                <div class="payment-details-card" (mouseover)="showPaymentDetails = true" (mouseleave)=" showPaymentDetails = false">
                   <ui5-card class="card--wide">
                     <ui5-card-header slot="header" [title-text]="'PAYMENT_DETAILS' | ui5I18n"></ui5-card-header>
-                    <app-payment-details></app-payment-details>
+                    <app-payment-details *ngIf = "showPaymentDetails"></app-payment-details>
+                  
                   </ui5-card>
                 </div>
               </div>

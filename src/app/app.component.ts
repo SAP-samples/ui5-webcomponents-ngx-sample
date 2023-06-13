@@ -13,6 +13,7 @@ import { AircraftStatus } from './interfaces/aircraft-status';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  showPaymentDetails = false;
 
   componentUnsubscribe: Subject<boolean> = new Subject();
   isDataAvailable = false;
