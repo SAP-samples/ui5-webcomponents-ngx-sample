@@ -32,8 +32,26 @@
     @include sap-margin(tiny, begin);
 }
 
-.userEdit {
-width: 300px;
-height: 400px;
+.container {
+ 
 
+}
+
+.leftbox{
+    text-align: center;
+    float:left;
+    top: 10%;
+    left: 5%;
+    position:absolute;
+    width: 15%;
+    height: 100%;
+    background: rgb(43, 136, 180);
+    box-shadow: 2px 5px 20px
+    rgba(119,119,119,.5);
+
+}
+
+.rightbox{
+    width: 60%;
+    margin-left: 27%;
 }

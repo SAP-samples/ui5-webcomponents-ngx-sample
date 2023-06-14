@@ -46,53 +46,52 @@
 </ui5-dialog>
 
 <!-- User data -->
-<ui5-dialog [header-text]="'USER ACCOUNT'" [open]="AccountSelected"
-    [accessible-name]="'USER ACCOUNT' ">
-    <div *ngIf = "!editAccountSelected">
-    <div id="userEdit">
-        <ui5-avatar [size]="'XL'">
-            <img [src]="userData.picture" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
-        </ui5-avatar>
-      <h2>{{user.firstName + user.lastName}}</h2>
-      <p>Travel Type: {{userData.typeOfTraveller}} Class: {{userData.class}}</p>
-      <p>Years together: {{userData.yearsOfLoyalty}}</p>
-      <p>Age: {{userData.age}} Gender: {{userData.gender}}</p>
-      <div class="dialog__footer" slot="footer">
-        <ui5-button design="Emphasized" (click)="setEditAccount()">{{'EDDIT' | ui5I18n}}</ui5-button>
-        <ui5-button class="dialog__footer__button" (click)="setEnterAccount()">{{'EXIT' | ui5I18n}}</ui5-button>
+<ui5-dialog [stretch]="true" [header-text]="'USER ACCOUNT'" [open]="!AccountSelected"
+    [accessible-name]="'Personal Info' ">
+
+    <div  *ngIf = "!editAccountSelected" >
+        <nav class = "leftbox">
+            <ui5-avatar [size]="'XL'" id = "user__name">
+                <img [src]="userData.picture" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
+            </ui5-avatar>
+        </nav>
+        <div class = "rightbox">
+            <h2 class = "">{{user.firstName + user.lastName}}</h2>
+            <p class = "">Travel Type: {{userData.typeOfTraveller}} </p>
+            <p class = " "> Class: {{userData.class}}</p>
+            <p class = " ">Years together: {{userData.yearsOfLoyalty}}</p>
+            <p class = "">Age: {{userData.age}} Gender: {{userData.gender}}</p>
+        </div>
     </div>
-    </div>
-</div>
+
+
+
+
+
 <div *ngIf = "editAccountSelected">
     <ui5-avatar [size]="'XL'">
         <img [src]="userData.picture" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
     </ui5-avatar>
     <ui5-input slot="searchField" [placeholder]="user.firstName + user.lastName"></ui5-input>
     <ui5-input slot="searchField" [placeholder]="userData.age.toString()"></ui5-input>
+    <ui5-radio-button
+  
+></ui5-radio-button>
 
-    <ui5-button
-  #openPopoverButton="ui5Button"
-  (ui5Click)="onClickEditGender()"
-  design="Emphasized"
->
-  Gender - {{userData.gender}}
-</ui5-button>
-<ui5-popover [open] = "editGender" header-text="Newsletter subscription">
-  <div class="popover-content">
-    <p>Hi</p>
-  </div>
-</ui5-popover>
-
-    <div class="dialog__footer" slot="footer">
-        <ui5-button design="Negative" (click)="setEditAccount()">{{'APPLY' | ui5I18n}}</ui5-button>
-        <ui5-button class="dialog__footer__button" (click)="setEditAccount()">{{'CANCEL' | ui5I18n}}</ui5-button>
-    </div>
+    
+</div>
+<div class="dialog__footer" slot="footer" *ngIf = "!editAccountSelected">
+    <ui5-button design="Emphasized" (click)="setEditAccount()">{{'Edit' | ui5I18n}}</ui5-button>
+    <ui5-button class="dialog__footer__button" (click)="setEnterAccount()">{{'Exit' | ui5I18n}}</ui5-button>
+</div>
+<div class="dialog__footer" slot="footer" *ngIf = "editAccountSelected">
+    <ui5-button design="Negative" (click)="setEditAccount()">{{'APPLY' | ui5I18n}}</ui5-button>
+    <ui5-button class="dialog__footer__button" (click)="setEditAccount()">{{'CANCEL' | ui5I18n}}</ui5-button>
 </div>
 </ui5-dialog>
 
 
 
-<!-- ////////???????????????????????????????????????......... -->
 
 
 

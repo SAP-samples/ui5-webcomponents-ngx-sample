@@ -1,9 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject} from '@angular/core';
 import { Subject, takeUntil, zip } from 'rxjs';
 import { Ui5ThemingService } from '@ui5/theming-ngx';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
 import { ShellBarComponent } from '@ui5/webcomponents-ngx';
-import { PopoverComponent } from '@ui5/webcomponents-ngx';
+
 
 import { AppService } from '../services/services';
 import { THEMES, LANGUAGES } from '../constants/constants';
@@ -114,4 +114,5 @@ export class HeaderComponent {
         this.editGender = !this.editGender;
 
     }
+
 }
