@@ -3,6 +3,7 @@ import { Subject, takeUntil, zip } from 'rxjs';
 import { Ui5ThemingService } from '@ui5/theming-ngx';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
 import { ShellBarComponent } from '@ui5/webcomponents-ngx';
+import { PopoverComponent } from '@ui5/webcomponents-ngx';
 
 import { AppService } from '../services/services';
 import { THEMES, LANGUAGES } from '../constants/constants';
@@ -19,9 +20,11 @@ export class HeaderComponent {
     componentUnsubscribe: Subject<boolean> = new Subject();
     isDataAvailable = false;
 
+    userData = {age:25,typeOfTraveller:"Buisness",class:"VIP",yearsOfLoyalty:2,gender: "Female",picture:"assets/images/avatar_small.webp"};
+    AccountSelected = false;
     editAccountSelected = false;
-    showNotifications = false;
-
+    editGender = false;
+    // showNotifications = false;
 
     selectedTheme = "sap_horizon";
     currentTheme = "sap_horizon";
@@ -35,7 +38,7 @@ export class HeaderComponent {
     languages = LANGUAGES;
 
     user!: User;
-    userData = {age:25,typeOfTraveller:"Buisness",class:"VIP",yearsOfLoyalty:2,gender: "Female"};
+    
 
     domestic!: Trip[];
     international!: Trip[];
@@ -99,7 +102,16 @@ export class HeaderComponent {
         if (element.closeOverflow) element.closeOverflow();
     }
 
+
+    setEnterAccount(){
+        this.AccountSelected = !this.AccountSelected;
+    }
     setEditAccount(){
         this.editAccountSelected = !this.editAccountSelected;
+    }
+
+    onClickEditGender(){
+        this.editGender = !this.editGender;
+
     }
 }
