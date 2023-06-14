@@ -1,8 +1,10 @@
 <ui5-shellbar id="shellbar" [primary-title]="'SHELLBAR_TITLE' | ui5I18n" [show-notifications]="true"
-    notifications-count="2">
-    <ui5-avatar slot="profile">
-        <img src="assets/images/avatar_small.webp" [alt]="'ALT_PROFILE_PIC' | ui5I18n" />
-    </ui5-avatar>
+    notifications-count="2" >
+   <ui5-shellbar-item slot = "profile" (click) = "setEditAccount()">
+        <ui5-avatar slot = "profile" [interactive]="true">
+            <img src="assets/images/avatar_small.webp" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
+        </ui5-avatar>
+    </ui5-shellbar-item>
     <img class="logo" slot="logo" src="assets/images/SAP_logo.webp" [alt]="'ALT_LOGO' | ui5I18n" />
     <ui5-input slot="searchField" [placeholder]="'SEARCH_PLACEHOLDER' | ui5I18n"></ui5-input>
     <ui5-shellbar-item icon="palette" (click)="setThemeDialogOpen()"
@@ -42,6 +44,33 @@
         <ui5-button class="dialog__footer__button" (click)="setLanguageDialogOpen()">{{'CANCEL' | ui5I18n}}</ui5-button>
     </div>
 </ui5-dialog>
+
+<!-- User data -->
+<ui5-dialog [header-text]="'USER ACCOUNT'" [open]="editAccountSelected"
+    [accessible-name]="'USER ACCOUNT' ">
+    <div id="userEdit">
+        <ui5-avatar [size]="'XL'">
+            <img src="assets/images/avatar_small.webp" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
+        </ui5-avatar>
+      <h2>{{user.firstName + user.lastName}}</h2>
+      <p>Travel Type: {{userData.typeOfTraveller}} Class: {{userData.class}}</p>
+      <p>Years together: {{userData.yearsOfLoyalty}}</p>
+      <p>Age: {{userData.age}} Gender: {{userData.gender}}</p>
+    </div>
+    <div class="dialog__footer" slot="footer">
+        <ui5-button design="Emphasized" (click)="setEditAccount()">{{'APPLY' | ui5I18n}}</ui5-button>
+        <ui5-button class="dialog__footer__button" (click)="setEditAccount()">{{'CANCEL' | ui5I18n}}</ui5-button>
+    </div>
+</ui5-dialog>
+
+
+
+<!-- ////////???????????????????????????????????????......... -->
+
+
+
+
+
 
 <ui5-title class="title" level="H2" *ngIf="isDataAvailable">
     {{'WELCOME' | ui5I18n}}{{'COMMA' | ui5I18n}}{{user.firstName}}

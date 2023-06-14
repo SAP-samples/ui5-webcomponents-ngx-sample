@@ -19,6 +19,10 @@ export class HeaderComponent {
     componentUnsubscribe: Subject<boolean> = new Subject();
     isDataAvailable = false;
 
+    editAccountSelected = false;
+    showNotifications = false;
+
+
     selectedTheme = "sap_horizon";
     currentTheme = "sap_horizon";
     themeDialogOpen = false;
@@ -31,6 +35,7 @@ export class HeaderComponent {
     languages = LANGUAGES;
 
     user!: User;
+    userData = {age:25,typeOfTraveller:"Buisness",class:"VIP",yearsOfLoyalty:2,gender: "Female"};
 
     domestic!: Trip[];
     international!: Trip[];
@@ -44,7 +49,6 @@ export class HeaderComponent {
                 this.domestic = domesticTrips;
                 this.international = internationalTrips;
                 this.user = user;
-
                 this.isDataAvailable = true;
             });
     }
@@ -93,5 +97,9 @@ export class HeaderComponent {
     shellbarMenuClicked() {
         var element = document.getElementById('shellbar') as ShellBarComponent;
         if (element.closeOverflow) element.closeOverflow();
+    }
+
+    setEditAccount(){
+        this.editAccountSelected = !this.editAccountSelected;
     }
 }
