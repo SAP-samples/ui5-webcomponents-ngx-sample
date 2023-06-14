@@ -56,11 +56,17 @@
             </ui5-avatar>
         </nav>
         <div class = "rightbox">
-            <h2 class = "">{{user.firstName + user.lastName}}</h2>
-            <p class = "">Travel Type: {{userData.typeOfTraveller}} </p>
-            <p class = " "> Class: {{userData.class}}</p>
-            <p class = " ">Years together: {{userData.yearsOfLoyalty}}</p>
-            <p class = "">Age: {{userData.age}} Gender: {{userData.gender}}</p>
+            <h1 class = "user__title">{{user.firstName + user.lastName}}</h1>
+            <hr>
+
+            <ul class = "user__contents"> 
+                <li><p class = "user__item"><strong class = "user__item__title">Travel Type:</strong>{{userData.typeOfTraveller}}</p></li>
+                <li><p class = "user__item"><strong class = "user__item__title">Class:</strong>{{userData.class}}</p></li>
+                <li><p class = "user__item"><strong class = "user__item__title">Years together:</strong>{{userData.yearsOfLoyalty}}</p></li>
+                <li><p class = "user__item"><strong class = "user__item__title">Age:</strong>{{userData.age}} Years</p></li>
+                <li><p class = "user__item"><strong class = "user__item__title">Gender:</strong>{{userData.gender}}</p></li>
+                <li><p class = "user__item"><strong class = "user__item__title">Email:</strong>{{userData.email}}</p></li>
+            </ul>
         </div>
     </div>
 
@@ -69,15 +75,19 @@
 
 
 <div *ngIf = "editAccountSelected">
-    <ui5-avatar [size]="'XL'">
-        <img [src]="userData.picture" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
-    </ui5-avatar>
-    <ui5-input slot="searchField" [placeholder]="user.firstName + user.lastName"></ui5-input>
-    <ui5-input slot="searchField" [placeholder]="userData.age.toString()"></ui5-input>
-    <ui5-radio-button
-  
-></ui5-radio-button>
-
+    <nav class = "leftbox">
+        <ui5-avatar [size]="'XL'" id = "user__name">
+            <img [src]="userData.picture" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
+        </ui5-avatar>
+    </nav>
+    <div class = "rightbox">
+        <ui5-input slot="searchField" [placeholder]="user.firstName + user.lastName"></ui5-input>
+        <ui5-input slot="searchField" [placeholder]="userData.age.toString()"></ui5-input>
+        <ui5-input slot="searchField" [placeholder]="userData.age.toString()"></ui5-input>
+        <ui5-input slot="searchField" [placeholder]="userData.age.toString()"></ui5-input>
+        <ui5-radio-button></ui5-radio-button>
+    </div>
+ 
     
 </div>
 <div class="dialog__footer" slot="footer" *ngIf = "!editAccountSelected">

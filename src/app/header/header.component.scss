@@ -32,10 +32,6 @@
     @include sap-margin(tiny, begin);
 }
 
-.container {
- 
-
-}
 
 .leftbox{
     text-align: center;
@@ -53,5 +49,44 @@
 
 .rightbox{
     width: 60%;
-    margin-left: 27%;
+    margin-left: 25%;
 }
+
+.user__contents{
+    list-style-type: none;
+
+    li{
+        margin-bottom: 24 px;
+    }
+
+    .user__item{
+    font-size: 20px;
+    padding: 0;
+    margin-right: 0;
+   
+    &__title{ 
+    font-size: 25px;
+    background: linear-gradient(to right,rgba(128, 128, 128, 0.753) 0%, rgb(0, 0, 0) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: 10px;
+    text-transform: uppercase;
+    
+    }
+
+}
+
+  
+  
+}
+
+.user__title {
+    background: linear-gradient(to right,rgb(16, 140, 182) 0%,rgba(128, 128, 128, 0.753) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+

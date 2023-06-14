@@ -20,7 +20,7 @@ export class HeaderComponent {
     componentUnsubscribe: Subject<boolean> = new Subject();
     isDataAvailable = false;
 
-    userData = {age:25,typeOfTraveller:"Buisness",class:"VIP",yearsOfLoyalty:2,gender: "Female",picture:"assets/images/avatar_small.webp"};
+    userData = {age:25,typeOfTraveller:"Buisness",class:"VIP",yearsOfLoyalty:2,gender: "Female",picture:"assets/images/avatar_small.webp",email:"janice.smith@ui5example.com"};
     AccountSelected = false;
     editAccountSelected = false;
     editGender = false;
