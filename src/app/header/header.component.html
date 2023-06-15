@@ -1,5 +1,5 @@
 <ui5-shellbar id="shellbar" [primary-title]="'SHELLBAR_TITLE' | ui5I18n" [show-notifications]="true"
-    notifications-count="{{notificationCount}}" (notifications-click) = "viewNotifications()" (profile-click) = "onProfileClick($event.target)">
+    notifications-count="{{notificationCount}}" (notifications-click) = "viewNotifications($event.target)" (profile-click) = "onProfileClick($event.target)">
         <ui5-avatar slot = "profile" [interactive]="true" >
             <img [src]="userData.picture" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
         </ui5-avatar> 
@@ -15,12 +15,10 @@
 
 <ui5-popover #profileSettingsPopover
 	id="profile-pop"
-	class="app-bar-profile-popover"
 	placement-type="Bottom"
 	horizontal-align="Right"
 	>
-		
-		<div class="profile-settings-list">
+		<div class="profile__settings__list">
 			<ui5-list mode="SingleSelect" separators="None" (item-click)="handleProfileSettingsSelect($event)" >
 				<ui5-li icon="settings" data-key="settings">Settings</ui5-li>
 				<ui5-li icon="sys-help" data-key="help">Help</ui5-li>
@@ -133,26 +131,18 @@
 
 <!-- notification -->
 
-<ui5-dialog [header-text]="'NOTIFICATIONS' | ui5I18n" [open]="notificationsOn"
-    [accessible-name]="'NOTIFICATIONS' | ui5I18n">
-  <ui5-card class = "medium">
-  <ui5-card-header
-  slot = "header"
-  title-text = "Notification"
-  sttus = "1 of 1">
-</ui5-card-header>
-<div class = "card-content">
-<ui5-list
-separators="None"
-class = "card-content-child"
-style = "width: 100%; margin-bottom:  0.75rem;"
-*ngFor = "let notification of notificationArray">
-<ui5-li
-description="{{notification.notificationInformation}}"></ui5-li>
-</ui5-list>
-</div>
-  </ui5-card>
-</ui5-dialog>
+<ui5-popover #notificationsPopOver
+    class = "notification__form"
+	placement-type="Top"
+	horizontal-align="Right"
+	>
+		
+		<div class="notifications-list">
+			<ui5-list mode="SingleSelect" separators="None" (item-click)="handleNotifications($event)" *ngFor = "let notification of notificationArray; let i = index" >
+				<ui5-li [icon] = "getIcon(notification.typeOfNotification)" data-key = "0" >{{notification.notificationInformation}}</ui5-li>
+			</ui5-list>
+		</div>
+	</ui5-popover>
 
 
 
