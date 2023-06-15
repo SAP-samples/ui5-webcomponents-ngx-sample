@@ -6,6 +6,7 @@
         </ui5-avatar>
     </ui5-shellbar-item>
     <img class="logo" slot="logo" src="assets/images/SAP_logo.webp" [alt]="'ALT_LOGO' | ui5I18n" />
+    <ui5-button icon="nav-back" slot="startButton"></ui5-button>
     <ui5-input slot="searchField" [placeholder]="'SEARCH_PLACEHOLDER' | ui5I18n"></ui5-input>
     <ui5-shellbar-item icon="palette" (click)="setThemeDialogOpen()"
         [text]="'CHOOSE_THEME' | ui5I18n"></ui5-shellbar-item>
@@ -49,6 +50,12 @@
 <ui5-dialog [stretch]="true" [header-text]="'USER ACCOUNT'" [open]="!AccountSelected"
     [accessible-name]="'Personal Info' ">
 
+    <ui5-shellbar>
+        <ui5-shellbar-item icon="add-equipment" [text]="'SIGN OUT'"></ui5-shellbar-item>
+     </ui5-shellbar>
+     
+    <!-- Normal user interface -->
+
     <div  *ngIf = "!editAccountSelected" >
         <nav class = "leftbox">
             <ui5-avatar [size]="'XL'" id = "user__name">
@@ -56,7 +63,7 @@
             </ui5-avatar>
         </nav>
         <div class = "rightbox">
-            <h1 class = "user__title">{{user.firstName + user.lastName}}</h1>
+            <h1 class = "user__title">{{(user.firstName + user.lastName) | ui5I18n}}</h1>
             <hr>
 
             <ul class = "user__contents"> 
@@ -70,10 +77,7 @@
         </div>
     </div>
 
-
-
-
-
+<!-- Edit interface -->
 <div *ngIf = "editAccountSelected">
     <nav class = "leftbox">
         <ui5-avatar [size]="'XL'" id = "user__name">
@@ -81,22 +85,33 @@
         </ui5-avatar>
     </nav>
     <div class = "rightbox">
-        <ui5-input slot="searchField" [placeholder]="user.firstName + user.lastName"></ui5-input>
-        <ui5-input slot="searchField" [placeholder]="userData.age.toString()"></ui5-input>
-        <ui5-input slot="searchField" [placeholder]="userData.age.toString()"></ui5-input>
-        <ui5-input slot="searchField" [placeholder]="userData.age.toString()"></ui5-input>
-        <ui5-radio-button></ui5-radio-button>
+        <div class = "edit__name__section">
+            <h2>First Name:</h2>
+            <ui5-input slot="searchField" [placeholder]="newUserData.firstName" (input) = "updateValue($event,'first-name')"></ui5-input>
+            <h2>Last Name:</h2>
+            <ui5-input slot="searchField" [placeholder]="newUserData.lastName" (input) = "updateValue($event,'last-name')"></ui5-input>
+         </div>
+        <h2>Age:</h2>
+        <ui5-input slot="searchField" type = "Number" [placeholder]="newUserData.age.toString()" (input) = "updateValue($event,'age')" ></ui5-input>
+        <h2>Email:</h2>
+        <ui5-input slot="searchField" type = "Email" [placeholder]="newUserData.email" (input) = "updateValue($event,'email')"></ui5-input>
+        <h2>Gender:</h2>
+        <ui5-radio-button text="Male"  value-state="None" name="GroupA"></ui5-radio-button>
+        <ui5-radio-button text="Female" [checked] =  "true"  value-state="None" name="GroupA"></ui5-radio-button>
+        <ui5-radio-button text="Other" value-state="None" name="GroupA"></ui5-radio-button>
     </div>
  
+    <!-- footer -->
     
 </div>
 <div class="dialog__footer" slot="footer" *ngIf = "!editAccountSelected">
-    <ui5-button design="Emphasized" (click)="setEditAccount()">{{'Edit' | ui5I18n}}</ui5-button>
+    <ui5-button design="Emphasized" (click)="setEditAccount('ACCESS')">{{'Edit' | ui5I18n}}</ui5-button>
     <ui5-button class="dialog__footer__button" (click)="setEnterAccount()">{{'Exit' | ui5I18n}}</ui5-button>
 </div>
 <div class="dialog__footer" slot="footer" *ngIf = "editAccountSelected">
-    <ui5-button design="Negative" (click)="setEditAccount()">{{'APPLY' | ui5I18n}}</ui5-button>
-    <ui5-button class="dialog__footer__button" (click)="setEditAccount()">{{'CANCEL' | ui5I18n}}</ui5-button>
+    <ui5-button design="Negative" (click)="confirmEdit()">{{'APPLY' | ui5I18n}}</ui5-button>
+    <ui5-button class="dialog__footer__button" design = "Attention" (click)="setEditAccount('UNDO')">{{'UNDO' | ui5I18n}}</ui5-button>
+    <ui5-button class="dialog__footer__button" (click)="setEditAccount('ACCESS')">{{'CANCEL' | ui5I18n}}</ui5-button>
 </div>
 </ui5-dialog>
 

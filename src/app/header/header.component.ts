@@ -21,9 +21,10 @@ export class HeaderComponent {
     isDataAvailable = false;
 
     userData = {age:25,typeOfTraveller:"Buisness",class:"VIP",yearsOfLoyalty:2,gender: "Female",picture:"assets/images/avatar_small.webp",email:"janice.smith@ui5example.com"};
+    newUserData = {firstName: "", lastName:"",age:0, email: "",gender: ""};
     AccountSelected = false;
     editAccountSelected = false;
-    editGender = false;
+    
     // showNotifications = false;
 
     selectedTheme = "sap_horizon";
@@ -106,13 +107,44 @@ export class HeaderComponent {
     setEnterAccount(){
         this.AccountSelected = !this.AccountSelected;
     }
-    setEditAccount(){
+    setEditAccount(typeOfEdit:string){
+        this.newUserData.firstName = this.user.firstName;
+        this.newUserData.lastName = this.user.lastName;
+        this.newUserData.age = this.userData.age;
+        this.newUserData.email = this.userData.email;
+        this.newUserData.gender = this.userData.gender;
+        if(typeOfEdit === "ACCESS"){
+        this.editAccountSelected = !this.editAccountSelected;
+        }
+        
+        
+    }
+    
+    confirmEdit(){
+        this.user.firstName = this.newUserData.firstName;
+        this.user.lastName = this.newUserData.lastName;
+        this.userData.age = this.newUserData.age;
+        this.userData.email = this.newUserData.email;
+        this.userData.gender = this.newUserData.gender;
         this.editAccountSelected = !this.editAccountSelected;
     }
 
-    onClickEditGender(){
-        this.editGender = !this.editGender;
+    updateValue(event:any, instanceType:any)
+    {
+        if(instanceType === "first-name"){
+            this.newUserData.firstName = event.target.value;
+        }
+        else if(instanceType === "last-name"){
+            this.newUserData.lastName = event.target.value;
 
+        }else if(instanceType === "age"){
+        this.newUserData.age = event.target.value;
+
+        }else if (instanceType === "email"){
+            this.newUserData.email = event.target.value;
+        }
+      
+  
     }
-
+   
 }
