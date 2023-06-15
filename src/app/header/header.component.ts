@@ -28,11 +28,12 @@ export class HeaderComponent {
     AccountSelected = false;
     editAccountSelected = false;
     
+    @ViewChild('notificationsPopOver',{ read: ElementRef }) notificationsPopOver!: ElementRef;
     notificationArray = [
-    {typeNot: "IMPORTANT",notificationInformation: "Check in for flight", notificationLink: ""},
-    {typeNot: "NORMAL",notificationInformation: "Eddit account", notificationLink: ""}];
+    {typeOfNotification: "IMPORTANT",notificationInformation: "Check in for flight", notificationLink: ""},
+    {typeOfNotification: "NORMAL",notificationInformation: "Eddit account", notificationLink: ""}];
     notificationCount:number = 0;
-    notificationsOn = false;
+   
 
     selectedTheme = "sap_horizon";
     currentTheme = "sap_horizon";
@@ -153,8 +154,12 @@ export class HeaderComponent {
         }
     }
 
-    viewNotifications(){
-        this.notificationsOn = !this.notificationsOn;
+    viewNotifications(event:any){
+        if(this.notificationsPopOver.nativeElement.isOpen() === true){
+            this.notificationsPopOver.nativeElement.close();
+        }else{
+            this.notificationsPopOver.nativeElement.showAt(event);
+        }	
     }
 
     onProfileClick(event:any) {
@@ -176,5 +181,23 @@ export class HeaderComponent {
         }
         this.profileSettingsPopover.nativeElement.close();
 
+    }
+
+    handleNotifications(event:any){
+        const selectedItem = Number(event.detail.item.getAttribute('data-key'));
+        this.notificationArray.splice(selectedItem,1);
+        this.notificationCount = this.notificationArray.length;
+        
+    }
+
+    getIcon(icon:string){
+        if(icon === 'IMPORTANT'){
+            return 'alert';
+        }
+        else if(icon === "NORMAL"){
+            return  "ui-notifications";
+
+        }
+        return "project-definition-triangle";
     }
 }
