@@ -10,6 +10,7 @@ import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { Ui5I18nModule } from '@ui5/webcomponents-ngx/i18n';
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
+import '@ui5/webcomponents/dist/Popover';
 
 import { HeaderComponent } from './header/header.component';
 import { MessageComponent } from './message/message.component';
