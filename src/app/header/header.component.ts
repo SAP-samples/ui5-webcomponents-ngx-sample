@@ -1,4 +1,4 @@
-import { Component, inject} from '@angular/core';
+import { Component, inject, ElementRef,ViewChild} from '@angular/core';
 import { Subject, takeUntil, zip } from 'rxjs';
 import { Ui5ThemingService } from '@ui5/theming-ngx';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
@@ -10,6 +10,8 @@ import { THEMES, LANGUAGES } from '../constants/constants';
 import { User } from '../interfaces/user';
 import { Trip } from '../interfaces/trip';
 
+
+
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -20,12 +22,17 @@ export class HeaderComponent {
     componentUnsubscribe: Subject<boolean> = new Subject();
     isDataAvailable = false;
 
+    @ViewChild('profileSettingsPopover',{ read: ElementRef }) profileSettingsPopover!: ElementRef;
     userData = {age:25,typeOfTraveller:"Buisness",class:"VIP",yearsOfLoyalty:2,gender: "Female",picture:"assets/images/avatar_small.webp",email:"janice.smith@ui5example.com"};
     newUserData = {firstName: "", lastName:"",age:0, email: "",gender: ""};
     AccountSelected = false;
     editAccountSelected = false;
     
-    // showNotifications = false;
+    notificationArray = [
+    {typeNot: "IMPORTANT",notificationInformation: "Check in for flight", notificationLink: ""},
+    {typeNot: "NORMAL",notificationInformation: "Eddit account", notificationLink: ""}];
+    notificationCount:number = 0;
+    notificationsOn = false;
 
     selectedTheme = "sap_horizon";
     currentTheme = "sap_horizon";
@@ -55,6 +62,7 @@ export class HeaderComponent {
                 this.user = user;
                 this.isDataAvailable = true;
             });
+            this.notificationCount = this.notificationArray.length;
     }
 
     ngOnDestroy() {
@@ -143,8 +151,30 @@ export class HeaderComponent {
         }else if (instanceType === "email"){
             this.newUserData.email = event.target.value;
         }
-      
-  
     }
-   
+
+    viewNotifications(){
+        this.notificationsOn = !this.notificationsOn;
+    }
+
+    onProfileClick(event:any) {
+        if(this.profileSettingsPopover.nativeElement.isOpen() === true){
+            this.profileSettingsPopover.nativeElement.close();
+        }else{
+            this.profileSettingsPopover.nativeElement.showAt(event);
+        }		
+	}
+    handleProfileSettingsSelect(event:any){
+        const selectedKey = event.detail.item.getAttribute('data-key');
+		if (selectedKey === 'settings') {
+			this. setEnterAccount();
+		 } else if (selectedKey === 'help') {
+			
+		}
+        else if (selectedKey ==="sign-out"){
+
+        }
+        this.profileSettingsPopover.nativeElement.close();
+
+    }
 }

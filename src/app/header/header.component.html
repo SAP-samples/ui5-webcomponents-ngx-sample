@@ -1,10 +1,8 @@
 <ui5-shellbar id="shellbar" [primary-title]="'SHELLBAR_TITLE' | ui5I18n" [show-notifications]="true"
-    notifications-count="2" >
-   <ui5-shellbar-item slot = "profile" (click) = "setEnterAccount()">
-        <ui5-avatar slot = "profile" [interactive]="true">
+    notifications-count="{{notificationCount}}" (notifications-click) = "viewNotifications()" (profile-click) = "onProfileClick($event.target)">
+        <ui5-avatar slot = "profile" [interactive]="true" >
             <img [src]="userData.picture" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
-        </ui5-avatar>
-    </ui5-shellbar-item>
+        </ui5-avatar> 
     <img class="logo" slot="logo" src="assets/images/SAP_logo.webp" [alt]="'ALT_LOGO' | ui5I18n" />
     <ui5-button icon="nav-back" slot="startButton"></ui5-button>
     <ui5-input slot="searchField" [placeholder]="'SEARCH_PLACEHOLDER' | ui5I18n"></ui5-input>
@@ -13,6 +11,23 @@
     <ui5-shellbar-item icon="translate" (click)="setLanguageDialogOpen()"
         [text]="'CHOOSE_LANGUAGE' | ui5I18n"></ui5-shellbar-item>
 </ui5-shellbar>
+
+
+<ui5-popover #profileSettingsPopover
+	id="profile-pop"
+	class="app-bar-profile-popover"
+	placement-type="Bottom"
+	horizontal-align="Right"
+	>
+		
+		<div class="profile-settings-list">
+			<ui5-list mode="SingleSelect" separators="None" (item-click)="handleProfileSettingsSelect($event)" >
+				<ui5-li icon="settings" data-key="settings">Settings</ui5-li>
+				<ui5-li icon="sys-help" data-key="help">Help</ui5-li>
+				<ui5-li icon="log" data-key="sign-out">Sign out</ui5-li>
+			</ui5-list>
+		</div>
+	</ui5-popover>
 
 <!-- Theme select dialog -->
 <ui5-dialog [header-text]="'CHOOSE_THEME' | ui5I18n" [open]="themeDialogOpen"
@@ -47,13 +62,13 @@
 </ui5-dialog>
 
 <!-- User data -->
-<ui5-dialog [stretch]="true" [header-text]="'USER ACCOUNT'" [open]="!AccountSelected"
+<ui5-dialog [stretch]="true" [header-text]="'USER ACCOUNT'" [open]="AccountSelected"
     [accessible-name]="'Personal Info' ">
 
     <ui5-shellbar>
         <ui5-shellbar-item icon="add-equipment" [text]="'SIGN OUT'"></ui5-shellbar-item>
      </ui5-shellbar>
-     
+
     <!-- Normal user interface -->
 
     <div  *ngIf = "!editAccountSelected" >
@@ -116,8 +131,28 @@
 </ui5-dialog>
 
 
+<!-- notification -->
 
-
+<ui5-dialog [header-text]="'NOTIFICATIONS' | ui5I18n" [open]="notificationsOn"
+    [accessible-name]="'NOTIFICATIONS' | ui5I18n">
+  <ui5-card class = "medium">
+  <ui5-card-header
+  slot = "header"
+  title-text = "Notification"
+  sttus = "1 of 1">
+</ui5-card-header>
+<div class = "card-content">
+<ui5-list
+separators="None"
+class = "card-content-child"
+style = "width: 100%; margin-bottom:  0.75rem;"
+*ngFor = "let notification of notificationArray">
+<ui5-li
+description="{{notification.notificationInformation}}"></ui5-li>
+</ui5-list>
+</div>
+  </ui5-card>
+</ui5-dialog>
 
 
 
@@ -161,3 +196,7 @@
     <ui5-tab [text]="'FLIGHT_INFO' | ui5I18n"></ui5-tab>
     <ui5-tab [text]="'PLAN_A_TRIP' | ui5I18n"></ui5-tab>
 </ui5-tabcontainer>
+
+
+
+
