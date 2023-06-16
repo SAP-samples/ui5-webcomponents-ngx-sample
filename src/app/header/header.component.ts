@@ -23,18 +23,36 @@ export class HeaderComponent {
     isDataAvailable = false;
 
     @ViewChild('profileSettingsPopover',{ read: ElementRef }) profileSettingsPopover!: ElementRef;
-    userData = {age:25,typeOfTraveller:"Buisness",class:"VIP",yearsOfLoyalty:2,gender: "Female",picture:"assets/images/avatar_small.webp",email:"janice.smith@ui5example.com"};
-    newUserData = {firstName: "", lastName:"",age:0, email: "",gender: ""};
+    genderTypes: string [] = ["Male","Female","Other"];
+    userData = {
+        age:25,
+        typeOfTraveller:"Class",
+        class:"BUSINESS",
+        yearsOfLoyalty:2,
+        gender: "Female",
+        picture:"assets/images/avatar_small.webp",
+        telephone: 11111111,
+        password: "password",
+        email:"janice.smith@ui5example.com"};
+    newUserData = {
+        firstName: "",
+         lastName:"",
+         age:0, 
+         gender: "",
+         email: "",
+         telephone: 0};
     AccountSelected = false;
     editAccountSelected = false;
     
     @ViewChild('notificationsPopOver',{ read: ElementRef }) notificationsPopOver!: ElementRef;
+    notificationsTypeArray = [{notificationType: "High", notificationMessage:"Important"},
+    {notificationType: "Medium", notificationMessage:"Attention"},
+    {notificationType: "Low", notificationMessage:"Status"},
+    {notificationType: "None", notificationMessage:"General"}];
     notificationArray = [
-    {typeOfNotification: "IMPORTANT",notificationInformation: "Check in for flight", notificationLink: ""},
-    {typeOfNotification: "NORMAL",notificationInformation: "Eddit account", notificationLink: ""}];
-    notificationCount:number = 0;
+    {notificationPriority: "HIGH",notificationInformation: "Check in for flight", notificationLink: ""},
+    {notificationPriority: "LOW",notificationInformation: "Edit account", notificationLink: ""}];
    
-
     selectedTheme = "sap_horizon";
     currentTheme = "sap_horizon";
     themeDialogOpen = false;
@@ -63,7 +81,6 @@ export class HeaderComponent {
                 this.user = user;
                 this.isDataAvailable = true;
             });
-            this.notificationCount = this.notificationArray.length;
     }
 
     ngOnDestroy() {
@@ -120,8 +137,10 @@ export class HeaderComponent {
         this.newUserData.firstName = this.user.firstName;
         this.newUserData.lastName = this.user.lastName;
         this.newUserData.age = this.userData.age;
-        this.newUserData.email = this.userData.email;
         this.newUserData.gender = this.userData.gender;
+        this.newUserData.email = this.userData.email;
+        this.newUserData.telephone = this.userData.telephone;
+        
         if(typeOfEdit === "ACCESS"){
         this.editAccountSelected = !this.editAccountSelected;
         }
@@ -133,8 +152,9 @@ export class HeaderComponent {
         this.user.firstName = this.newUserData.firstName;
         this.user.lastName = this.newUserData.lastName;
         this.userData.age = this.newUserData.age;
-        this.userData.email = this.newUserData.email;
         this.userData.gender = this.newUserData.gender;
+        this.userData.email = this.newUserData.email;
+        this.userData.telephone = this.newUserData.telephone;
         this.editAccountSelected = !this.editAccountSelected;
     }
 
@@ -152,15 +172,23 @@ export class HeaderComponent {
         }else if (instanceType === "email"){
             this.newUserData.email = event.target.value;
         }
+        else if (instanceType === "telephone"){
+            this.newUserData.telephone = event.target.value;
+        }
+    }
+    changeGender(gender: string|undefined){
+        if(gender != undefined){
+            this.newUserData.gender = gender;
+        }
+    }
+    isGenderChecked(gender:string){
+        if(this.userData.gender === gender){
+            return true;
+        }
+        return false;
     }
 
-    viewNotifications(event:any){
-        if(this.notificationsPopOver.nativeElement.isOpen() === true){
-            this.notificationsPopOver.nativeElement.close();
-        }else{
-            this.notificationsPopOver.nativeElement.showAt(event);
-        }	
-    }
+  
 
     onProfileClick(event:any) {
         if(this.profileSettingsPopover.nativeElement.isOpen() === true){
@@ -169,6 +197,7 @@ export class HeaderComponent {
             this.profileSettingsPopover.nativeElement.showAt(event);
         }		
 	}
+
     handleProfileSettingsSelect(event:any){
         const selectedKey = event.detail.item.getAttribute('data-key');
 		if (selectedKey === 'settings') {
@@ -183,11 +212,13 @@ export class HeaderComponent {
 
     }
 
-    handleNotifications(event:any){
-        const selectedItem = Number(event.detail.item.getAttribute('data-key'));
-        this.notificationArray.splice(selectedItem,1);
-        this.notificationCount = this.notificationArray.length;
-        
+
+    viewNotifications(event:any){
+        if(this.notificationsPopOver.nativeElement.isOpen() === true){
+            this.notificationsPopOver.nativeElement.close();
+        }else{
+            this.notificationsPopOver.nativeElement.showAt(event);
+        }	
     }
 
     getIcon(icon:string){
@@ -200,4 +231,28 @@ export class HeaderComponent {
         }
         return "project-definition-triangle";
     }
+
+
+    isPriorityTheSame(identifier:string,notificationPriority:string){
+        if(identifier.toUpperCase() === notificationPriority.toUpperCase()){
+            return true;
+        }
+        return false;
+    }
+    
+    castToType(item: string){
+        return <"None" | "High" | "Medium" | "Low" | undefined>item;
+    }
+
+    removeNotification(i:number){
+        this.notificationArray.splice(i,i+1);
+    }
+    getNotificationCount(){
+        if(this.notificationArray.length > 0){
+            return this.notificationArray.length;
+        }
+        
+        return "";
+    }
+
 }
