@@ -69,11 +69,13 @@
     font-size: 20px;
     padding: 0;
     margin-right: 0;
+    margin-left: 10px;
    
     &__title{ 
     font-size: 25px;
     margin-right: 10px;
     text-transform: uppercase;
+    letter-spacing: 1px;
     }
 
   
@@ -88,10 +90,25 @@
     display: inline-block;
 }
 
-.edit__name__section{
-    margin-top: 40px;
+.edit__user__main{
+    margin-top: 5px;
     display: flex;
-    justify-content: space-between ;
+    h2{
+        letter-spacing: 1.5px;
+    }    
+    th{
+        display: inline-block;
+        margin-left: 40px;
+        margin-right: 75px;
+        margin-bottom: 20px;
+    }
+
 }
+.remove__box{
+    display: inline;
+}
+
+
+
 
 
