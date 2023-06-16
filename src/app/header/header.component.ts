@@ -23,8 +23,24 @@ export class HeaderComponent {
     isDataAvailable = false;
 
     @ViewChild('profileSettingsPopover',{ read: ElementRef }) profileSettingsPopover!: ElementRef;
-    userData = {age:25,typeOfTraveller:"Buisness",class:"VIP",yearsOfLoyalty:2,gender: "Female",picture:"assets/images/avatar_small.webp",email:"janice.smith@ui5example.com"};
-    newUserData = {firstName: "", lastName:"",age:0, email: "",gender: ""};
+    genderTypes: string [] = ["Male","Female","Other"];
+    userData = {
+        age:25,
+        typeOfTraveller:"Class",
+        class:"BUSINESS",
+        yearsOfLoyalty:2,
+        gender: "Female",
+        picture:"assets/images/avatar_small.webp",
+        telephone: 11111111,
+        password: "password",
+        email:"janice.smith@ui5example.com"};
+    newUserData = {
+        firstName: "",
+         lastName:"",
+         age:0, 
+         gender: "",
+         email: "",
+         telephone: 0};
     AccountSelected = false;
     editAccountSelected = false;
     
@@ -121,8 +137,10 @@ export class HeaderComponent {
         this.newUserData.firstName = this.user.firstName;
         this.newUserData.lastName = this.user.lastName;
         this.newUserData.age = this.userData.age;
-        this.newUserData.email = this.userData.email;
         this.newUserData.gender = this.userData.gender;
+        this.newUserData.email = this.userData.email;
+        this.newUserData.telephone = this.userData.telephone;
+        
         if(typeOfEdit === "ACCESS"){
         this.editAccountSelected = !this.editAccountSelected;
         }
@@ -134,8 +152,9 @@ export class HeaderComponent {
         this.user.firstName = this.newUserData.firstName;
         this.user.lastName = this.newUserData.lastName;
         this.userData.age = this.newUserData.age;
-        this.userData.email = this.newUserData.email;
         this.userData.gender = this.newUserData.gender;
+        this.userData.email = this.newUserData.email;
+        this.userData.telephone = this.newUserData.telephone;
         this.editAccountSelected = !this.editAccountSelected;
     }
 
@@ -153,15 +172,23 @@ export class HeaderComponent {
         }else if (instanceType === "email"){
             this.newUserData.email = event.target.value;
         }
+        else if (instanceType === "telephone"){
+            this.newUserData.telephone = event.target.value;
+        }
+    }
+    changeGender(gender: string|undefined){
+        if(gender != undefined){
+            this.newUserData.gender = gender;
+        }
+    }
+    isGenderChecked(gender:string){
+        if(this.userData.gender === gender){
+            return true;
+        }
+        return false;
     }
 
-    viewNotifications(event:any){
-        if(this.notificationsPopOver.nativeElement.isOpen() === true){
-            this.notificationsPopOver.nativeElement.close();
-        }else{
-            this.notificationsPopOver.nativeElement.showAt(event);
-        }	
-    }
+  
 
     onProfileClick(event:any) {
         if(this.profileSettingsPopover.nativeElement.isOpen() === true){
@@ -183,6 +210,15 @@ export class HeaderComponent {
         }
         this.profileSettingsPopover.nativeElement.close();
 
+    }
+
+
+    viewNotifications(event:any){
+        if(this.notificationsPopOver.nativeElement.isOpen() === true){
+            this.notificationsPopOver.nativeElement.close();
+        }else{
+            this.notificationsPopOver.nativeElement.showAt(event);
+        }	
     }
 
     getIcon(icon:string){
