@@ -63,13 +63,16 @@
 <ui5-dialog [stretch]="true" [header-text]="'USER ACCOUNT'" [open]="AccountSelected"
     [accessible-name]="'Personal Info' ">
 
-    <ui5-shellbar>
-        <ui5-shellbar-item icon="add-equipment" [text]="'SIGN OUT'"></ui5-shellbar-item>
-     </ui5-shellbar>
+  
 
     <!-- Normal user interface -->
 
-    <div  *ngIf = "!editAccountSelected" >
+    <fd-layout-grid  *ngIf = "!editAccountSelected" >
+          <ui5-shellbar>
+        <ui5-shellbar-item icon="account" [text]="'SIGN OUT'" (click)="setEditAccount('ACCESS')"></ui5-shellbar-item>
+        <ui5-shellbar-item icon="addresses" [text]="'PLACEHOLDER'" ></ui5-shellbar-item>
+        <ui5-shellbar-item icon="contacts" [text]="'PLACEHOLDER '" ></ui5-shellbar-item>
+    </ui5-shellbar>
         <nav class = "leftbox">
             <ui5-avatar [size]="'XL'" id = "user__name">
                 <img [src]="userData.picture" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
@@ -78,47 +81,101 @@
         <div class = "rightbox">
             <h1 class = "user__title">{{(user.firstName + user.lastName) | ui5I18n}}</h1>
             <hr>
-
             <ul class = "user__contents"> 
-                <li><p class = "user__item"><strong class = "user__item__title">Travel Type:</strong>{{userData.typeOfTraveller}}</p></li>
+                <ui5-card>
                 <li><p class = "user__item"><strong class = "user__item__title">Class:</strong>{{userData.class}}</p></li>
                 <li><p class = "user__item"><strong class = "user__item__title">Years together:</strong>{{userData.yearsOfLoyalty}}</p></li>
                 <li><p class = "user__item"><strong class = "user__item__title">Age:</strong>{{userData.age}} Years</p></li>
                 <li><p class = "user__item"><strong class = "user__item__title">Gender:</strong>{{userData.gender}}</p></li>
                 <li><p class = "user__item"><strong class = "user__item__title">Email:</strong>{{userData.email}}</p></li>
+                <li><p class = "user__item"><strong class = "user__item__title">Telephone:</strong>+1 {{userData.telephone}}</p></li>
+            </ui5-card>
             </ul>
         </div>
-    </div>
+    </fd-layout-grid >
 
 <!-- Edit interface -->
 <div *ngIf = "editAccountSelected">
+    <fd-layout-grid>
+        <ui5-shellbar>
+            <ui5-shellbar-item icon="add-equipment" [text]="'PLACEHOLDER'" ></ui5-shellbar-item>
+            <ui5-shellbar-item icon="along-stacked-chart" [text]="'PLACEHOLDER '" ></ui5-shellbar-item>
+            <ui5-shellbar-item icon="arrow-down" [text]="'PLACEHOLDER'" ></ui5-shellbar-item>
+         </ui5-shellbar>
     <nav class = "leftbox">
         <ui5-avatar [size]="'XL'" id = "user__name">
             <img [src]="userData.picture" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
         </ui5-avatar>
     </nav>
     <div class = "rightbox">
-        <div class = "edit__name__section">
-            <h2>First Name:</h2>
-            <ui5-input slot="searchField" [placeholder]="newUserData.firstName" (input) = "updateValue($event,'first-name')"></ui5-input>
-            <h2>Last Name:</h2>
-            <ui5-input slot="searchField" [placeholder]="newUserData.lastName" (input) = "updateValue($event,'last-name')"></ui5-input>
-         </div>
-        <h2>Age:</h2>
-        <ui5-input slot="searchField" type = "Number" [placeholder]="newUserData.age.toString()" (input) = "updateValue($event,'age')" ></ui5-input>
-        <h2>Email:</h2>
-        <ui5-input slot="searchField" type = "Email" [placeholder]="newUserData.email" (input) = "updateValue($event,'email')"></ui5-input>
-        <h2>Gender:</h2>
-        <ui5-radio-button text="Male"  value-state="None" name="GroupA"></ui5-radio-button>
-        <ui5-radio-button text="Female" [checked] =  "true"  value-state="None" name="GroupA"></ui5-radio-button>
-        <ui5-radio-button text="Other" value-state="None" name="GroupA"></ui5-radio-button>
+        <h1 class = "user__title">EDITING USER ACCOUNT</h1>
+            <hr>
+        <ui5-card isUi5Element = "true" class = "edit__user__main">
+            <tr>
+                <th>
+                    <h2>First Name:</h2>
+                     <ui5-input  slot="searchField" 
+                     [placeholder]="newUserData.firstName" 
+                     (input) = "updateValue($event,'first-name')">
+                    </ui5-input>
+                </th>
+                <th>
+                    <h2>Last Name:</h2>
+                    <ui5-input slot="searchField" 
+                    [placeholder]="newUserData.lastName" 
+                    (input) = "updateValue($event,'last-name')">
+                </ui5-input>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <h2>Age:</h2>
+                    <ui5-input slot="searchField" 
+                    type = "Number" 
+                    [placeholder]="newUserData.age.toString()" 
+                    (input) = "updateValue($event,'age')" >
+                    </ui5-input>
+                 </th>
+                <th>
+                    <h2>Gender:</h2>
+                    <div class = "remove__box" *ngFor = "let gender of genderTypes">
+                        <ui5-radio-button
+                        #genderRadioValue
+                        [text] = "gender"
+                        [checked]= "isGenderChecked(gender)"
+                        name = "GroupA"
+                        value-state="None"
+                        [value] = "gender"
+                        (change) = "changeGender(genderRadioValue.value)"
+                        ></ui5-radio-button>
+                    </div>
+                </th>
+             </tr>
+             <tr>
+                <th>
+                    <h2>Email:</h2>
+                    <ui5-input slot="searchField" 
+                    [placeholder]="newUserData.email" 
+                    (input) = "updateValue($event,'email')">
+                </ui5-input>   
+                </th>
+                <th>
+                    <h2>Telephone:</h2>
+                    <ui5-input slot="searchField" 
+                    type = "Number" 
+                    [placeholder]="newUserData.telephone.toString()" 
+                    (input) = "updateValue($event,'telephone')">
+                </ui5-input>   
+                </th>
+            </tr>
+         </ui5-card>
     </div>
  
     <!-- footer -->
-    
+</fd-layout-grid>
 </div>
 <div class="dialog__footer" slot="footer" *ngIf = "!editAccountSelected">
-    <ui5-button design="Emphasized" (click)="setEditAccount('ACCESS')">{{'Edit' | ui5I18n}}</ui5-button>
+    <!-- <ui5-button design="Emphasized" (click)="setEditAccount('ACCESS')">{{'Edit' | ui5I18n}}</ui5-button> -->
     <ui5-button class="dialog__footer__button" (click)="setEnterAccount()">{{'Exit' | ui5I18n}}</ui5-button>
 </div>
 <div class="dialog__footer" slot="footer" *ngIf = "editAccountSelected">
