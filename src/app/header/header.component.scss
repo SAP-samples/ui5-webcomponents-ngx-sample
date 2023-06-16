@@ -34,16 +34,22 @@
 
 
 .leftbox{
+    
     text-align: center;
     float:left;
     top: 10%;
     left: 5%;
     position:absolute;
     width: 15%;
-    height: 70%;
+    height: 90%;
     background: rgb(43, 136, 180);
     box-shadow: 2px 5px 20px
     rgba(119,119,119,.5);
+    
+    ui5-avatar {
+        margin-top: 20%;
+
+    }
 
 }
 
@@ -66,13 +72,11 @@
    
     &__title{ 
     font-size: 25px;
-    background: linear-gradient(to right,rgba(128, 128, 128, 0.753) 0%, rgb(0, 0, 0) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
     margin-right: 10px;
     text-transform: uppercase;
     }
+
+  
 }
   
 }
