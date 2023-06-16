@@ -29,12 +29,14 @@ export class HeaderComponent {
     editAccountSelected = false;
     
     @ViewChild('notificationsPopOver',{ read: ElementRef }) notificationsPopOver!: ElementRef;
+    notificationsTypeArray = [{notificationType: "High", notificationMessage:"Important"},
+    {notificationType: "Medium", notificationMessage:"Attention"},
+    {notificationType: "Low", notificationMessage:"Status"},
+    {notificationType: "None", notificationMessage:"General"}];
     notificationArray = [
-    {typeOfNotification: "IMPORTANT",notificationInformation: "Check in for flight", notificationLink: ""},
-    {typeOfNotification: "NORMAL",notificationInformation: "Eddit account", notificationLink: ""}];
-    notificationCount:number = 0;
+    {notificationPriority: "HIGH",notificationInformation: "Check in for flight", notificationLink: ""},
+    {notificationPriority: "LOW",notificationInformation: "Edit account", notificationLink: ""}];
    
-
     selectedTheme = "sap_horizon";
     currentTheme = "sap_horizon";
     themeDialogOpen = false;
@@ -63,7 +65,6 @@ export class HeaderComponent {
                 this.user = user;
                 this.isDataAvailable = true;
             });
-            this.notificationCount = this.notificationArray.length;
     }
 
     ngOnDestroy() {
@@ -169,6 +170,7 @@ export class HeaderComponent {
             this.profileSettingsPopover.nativeElement.showAt(event);
         }		
 	}
+
     handleProfileSettingsSelect(event:any){
         const selectedKey = event.detail.item.getAttribute('data-key');
 		if (selectedKey === 'settings') {
@@ -183,13 +185,6 @@ export class HeaderComponent {
 
     }
 
-    handleNotifications(event:any){
-        const selectedItem = Number(event.detail.item.getAttribute('data-key'));
-        this.notificationArray.splice(selectedItem,1);
-        this.notificationCount = this.notificationArray.length;
-        
-    }
-
     getIcon(icon:string){
         if(icon === 'IMPORTANT'){
             return 'alert';
@@ -200,4 +195,28 @@ export class HeaderComponent {
         }
         return "project-definition-triangle";
     }
+
+
+    isPriorityTheSame(identifier:string,notificationPriority:string){
+        if(identifier.toUpperCase() === notificationPriority.toUpperCase()){
+            return true;
+        }
+        return false;
+    }
+    
+    castToType(item: string){
+        return <"None" | "High" | "Medium" | "Low" | undefined>item;
+    }
+
+    removeNotification(i:number){
+        this.notificationArray.splice(i,i+1);
+    }
+    getNotificationCount(){
+        if(this.notificationArray.length > 0){
+            return this.notificationArray.length;
+        }
+        
+        return "";
+    }
+
 }

@@ -1,5 +1,5 @@
 <ui5-shellbar id="shellbar" [primary-title]="'SHELLBAR_TITLE' | ui5I18n" [show-notifications]="true"
-    notifications-count="{{notificationCount}}" (notifications-click) = "viewNotifications($event.target)" (profile-click) = "onProfileClick($event.target)">
+    notifications-count="{{getNotificationCount()}}" (notifications-click) = "viewNotifications($event.target)" (profile-click) = "onProfileClick($event.target)">
         <ui5-avatar slot = "profile" [interactive]="true" >
             <img [src]="userData.picture" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
         </ui5-avatar> 
@@ -136,13 +136,27 @@
 	placement-type="Top"
 	horizontal-align="Right"
 	>
-		
-		<div class="notifications-list">
-			<ui5-list mode="SingleSelect" separators="None" (item-click)="handleNotifications($event)" *ngFor = "let notification of notificationArray; let i = index" >
-				<ui5-li [icon] = "getIcon(notification.typeOfNotification)" data-key = "0" >{{notification.notificationInformation}}</ui5-li>
-			</ui5-list>
-		</div>
-	</ui5-popover>
+  
+   <div *ngFor = "let item of notificationsTypeArray">
+    <div *ngFor = "let notification of notificationArray; let i =index;">
+        <ui5-li-notification 
+        *ngIf = "isPriorityTheSame(item.notificationType,notification.notificationPriority)"
+        [show-close] ="true"
+        [priority] = "castToType(item.notificationType)"
+        title-text="Important"
+        (close) = "removeNotification(i)">
+        {{notification.notificationInformation}}
+        </ui5-li-notification>
+    </div>
+   </div>
+
+   <ui5-li-notification *ngIf = "notificationArray.length === 0"
+        priority = "None"
+        title-text="NO NEW NOTIFICATIONS"
+        >
+   </ui5-li-notification>
+   
+</ui5-popover>
 
 
 
