@@ -35,6 +35,9 @@ export class AppComponent {
   arrivalMonth!: string;
   arrivalDateTimeString!: string;
 
+  // passenger list
+  isPassengerListInEdit:boolean = true;
+
   constructor(private appService: AppService) { }
 
   ngOnInit() {
@@ -84,4 +87,14 @@ export class AppComponent {
     const minutes = Math.floor((Math.abs(difference) / 1000) / 60);
     return minutes == 0 ? "" : `${minutes}`;
   }
+
+    onPassengerListEditClick(){
+      this.isPassengerListInEdit = !this.isPassengerListInEdit;
+    }
+
+    isInEditModeChange(state:boolean){
+      this.isPassengerListInEdit = state;
+
+    }
+
 }

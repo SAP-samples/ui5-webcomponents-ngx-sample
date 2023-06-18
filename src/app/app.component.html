@@ -106,11 +106,13 @@
                   <div class="cards__row passenger-details-card">
                     <ui5-card>
                       <ui5-card-header slot="header" [title-text]="'PASSENGER_DETAILS' | ui5I18n">
-                        <ui5-button design="Transparent" slot="action" [accessible-name]="'ALT_EDIT' | ui5I18n">
+                        <ui5-button design="Transparent" slot="action" 
+                        [accessible-name]="'ALT_EDIT' | ui5I18n"
+                        (click) = "onPassengerListEditClick()">
                           <ui5-icon name="edit"></ui5-icon>
                         </ui5-button>
                       </ui5-card-header>
-                      <app-passenger-list></app-passenger-list>
+                      <app-passenger-list [isInEditMode]="isPassengerListInEdit" (isInEditModeChange)="isInEditModeChange($event)"></app-passenger-list>
                     </ui5-card>
                   </div>
                 </div>

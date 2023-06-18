@@ -14,3 +14,30 @@
         </div>
     </div>
 </div>
+
+<ui5-dialog [stretch]="true" [header-text]="'PASSENGER LIST'" [open]="isInEditMode"
+    [accessible-name]="'Personal Info' ">
+
+    <fd-layout-grid>
+        <div class = "leftbox"> </div>
+        <ui5-card class = "full__list__content">
+            <div *ngFor="let passenger of passengers; index as i" class="list__child">
+                <div slot="imageContent">
+                    <ui5-avatar class="hidden-at-tablet" size="M">
+                        <img src="assets/images/avatar_small.webp" alt="Passenger profile photo">
+                    </ui5-avatar>
+                    <ui5-avatar class="show-at-tablet hidden-at-mobile--larger" size="S">
+                        <img src="assets/images/avatar_small.webp" alt="Passenger profile photo">
+                    </ui5-avatar>
+                </div>
+                <div class="list__child__text" *ngIf = "isInCurrentPage(i)">
+                    {{passenger.name}}
+                    <ui5-label>{{passenger.address}}</ui5-label>
+                </div>
+            </div>
+        </ui5-card>
+    </fd-layout-grid>
+    <div class = "edit__footer" slot = "footer">
+        <ui5-button class = "edit__footer_button" (click) = "onEditExit()">Exit</ui5-button>
+    </div>
+</ui5-dialog>

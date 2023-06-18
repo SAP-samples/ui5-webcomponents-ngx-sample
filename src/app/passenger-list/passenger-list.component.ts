@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input, Output, EventEmitter} from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 
 import { AppService } from '../services/services';
@@ -18,6 +18,9 @@ export class PassengerListComponent {
 
     // monitors current passenger list page
     @Input() passengersIndex:number = 1;      
+
+    @Input() isInEditMode:boolean = false;
+    @Output() isInEditModeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor(private appService: AppService) { }
 
@@ -44,4 +47,10 @@ export class PassengerListComponent {
         }
         return false;
     }
+
+    onEditExit(){
+        this.isInEditModeChange.emit(!this.isInEditMode);
+        this.isInEditMode = !this.isInEditMode;
+    }
+
 }

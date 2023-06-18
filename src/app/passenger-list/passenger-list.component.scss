@@ -23,3 +23,31 @@
     @include sap-display(grid);
     @include sap-set-margin-begin(5%);
 }
+
+.edit__footer{
+    @include sap-display(flex);
+    @include sap-flex-align-items(center);
+    @include sap-flex-justify(end);
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+.leftbox{
+    text-align: center;
+    float:left;
+    top: 10%;
+    left: 5%;
+    position:absolute;
+    width: 15%;
+    height: 110%;
+    background: rgb(43, 136, 180);
+    box-shadow: 2px 5px 20px
+    rgba(119,119,119,.5);
+}
+.full__list__content{
+    margin-top: 5%;
+    margin-left: 24%;
+    margin-right: auto;
+    width: 50%;
+}
