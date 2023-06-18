@@ -53,4 +53,8 @@ export class PassengerListComponent {
         this.isInEditMode = !this.isInEditMode;
     }
 
+    removePassenger(index:number){
+        this.passengers.splice(index,index+1);
+    }
+
 }

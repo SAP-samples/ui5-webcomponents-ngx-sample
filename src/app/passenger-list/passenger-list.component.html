@@ -34,6 +34,8 @@
                     {{passenger.name}}
                     <ui5-label>{{passenger.address}}</ui5-label>
                 </div>
+                <ui5-button icon = "edit" design = "Emphasized" ></ui5-button>
+                <ui5-button icon = "decline" (click) = "removePassenger(i)"></ui5-button>
             </div>
         </ui5-card>
     </fd-layout-grid>
