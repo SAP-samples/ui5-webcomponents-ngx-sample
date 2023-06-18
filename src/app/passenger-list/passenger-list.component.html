@@ -1,6 +1,6 @@
 <div *ngIf="isDataAvailable" class="list">
-    <div *ngFor="let passenger of passengers" class="list__child">
-        <div slot="imageContent">
+    <div *ngFor="let passenger of passengers; index as i" class="list__child">
+        <div slot="imageContent" *ngIf = "isInCurrentPage(i)">
             <ui5-avatar class="hidden-at-tablet" size="M">
                 <img src="assets/images/avatar_small.webp" alt="Passenger profile photo">
             </ui5-avatar>
@@ -8,7 +8,7 @@
                 <img src="assets/images/avatar_small.webp" alt="Passenger profile photo">
             </ui5-avatar>
         </div>
-        <div class="list__child__text">
+        <div class="list__child__text" *ngIf = "isInCurrentPage(i)">
             {{passenger.name}}
             <ui5-label>{{passenger.address}}</ui5-label>
         </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 
 import { AppService } from '../services/services';
@@ -16,6 +16,9 @@ export class PassengerListComponent {
 
     passengers!: Passenger[];
 
+    // monitors current passenger list page
+    @Input() passengersIndex:number = 1;      
+
     constructor(private appService: AppService) { }
 
     ngOnInit() {
@@ -30,5 +33,15 @@ export class PassengerListComponent {
     ngOnDestroy() {
         this.componentUnsubscribe.next(true);
         this.componentUnsubscribe.complete();
+    }
+
+    isInCurrentPage(index:number){
+        const numberOfUsersPerPage = 6;
+        const upperLimit = this.passengersIndex*numberOfUsersPerPage;
+        const lowerLimit = upperLimit-numberOfUsersPerPage;
+        if(index >= lowerLimit && index < upperLimit){
+            return true;
+        }
+        return false;
     }
 }
