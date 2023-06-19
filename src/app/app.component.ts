@@ -36,7 +36,7 @@ export class AppComponent {
   arrivalDateTimeString!: string;
 
   // passenger list
-  isPassengerListInEdit:boolean = true;
+  isPassengerListInEdit:boolean = false;
 
   constructor(private appService: AppService) { }
 

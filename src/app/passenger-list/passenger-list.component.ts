@@ -21,6 +21,10 @@ export class PassengerListComponent {
 
     @Input() isInEditMode:boolean = false;
     @Output() isInEditModeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+    isPassengerInEditMode:boolean = false;
+    editPassenger = {firstName:"",lastName:"",Address: "",index:0};
+
+
 
     constructor(private appService: AppService) { }
 
@@ -39,7 +43,7 @@ export class PassengerListComponent {
     }
 
     isInCurrentPage(index:number){
-        const numberOfUsersPerPage = 6;
+        const numberOfUsersPerPage = 5;
         const upperLimit = this.passengersIndex*numberOfUsersPerPage;
         const lowerLimit = upperLimit-numberOfUsersPerPage;
         if(index >= lowerLimit && index < upperLimit){
@@ -49,12 +53,53 @@ export class PassengerListComponent {
     }
 
     onEditExit(){
-        this.isInEditModeChange.emit(!this.isInEditMode);
         this.isInEditMode = !this.isInEditMode;
+        this.isInEditModeChange.emit(this.isInEditMode);
+        
     }
 
     removePassenger(index:number){
         this.passengers.splice(index,index+1);
     }
+
+    onEditPassenger(index:number){
+        this.editPassenger.firstName = this.passengers[index].name
+        .substring(0,this.passengers[index].name.indexOf(" "));
+        this.editPassenger.lastName = this.passengers[index].name
+        .substring(this.passengers[index].name.indexOf(" "));
+        this.editPassenger.Address = this.passengers[index].address;
+        this.editPassenger.index = index;
+        this.isInEditMode = !this.isInEditMode;
+        this.isPassengerInEditMode = !this.isPassengerInEditMode;
+        
+        
+    }
+    onCancelEditPassenger(){
+        this.isPassengerInEditMode = !this.isPassengerInEditMode;
+        this.isInEditMode = !this.isInEditMode;
+    }
+
+    onConfirmEdit(){
+        this.passengers[this.editPassenger.index].name = 
+        this.editPassenger.firstName + " " + this.editPassenger.lastName;
+        this.passengers[this.editPassenger.index].address = this.editPassenger.Address;
+        this.isInEditMode = !this.isInEditMode;
+        this.isPassengerInEditMode = !this.isPassengerInEditMode;
+    }
+
+    onEditClick(event:any,state:string,){
+        if(state === "first-name"){
+            this.editPassenger.firstName = event.target.value;
+
+        }
+        else if(state === "last-name"){
+            this.editPassenger.lastName = event.target.value;
+
+        }
+        else if (state === "address"){
+            this.editPassenger.Address = event.target.value;
+        }
+    }
+ 
 
 }

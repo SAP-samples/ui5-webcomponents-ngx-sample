@@ -52,7 +52,7 @@
                   <ui5-table-cell><span>{{passenger.name}}</span></ui5-table-cell>
                   <ui5-table-cell><span>{{passenger.address}}</span></ui5-table-cell>
                   <ui5-table-cell>
-                    <ui5-button icon = "edit" design = "Emphasized" ></ui5-button>
+                    <ui5-button icon = "edit" design = "Emphasized" (click) = "onEditPassenger(i)"></ui5-button>
                     <ui5-button icon = "decline" (click) = "removePassenger(i)"></ui5-button>
                   </ui5-table-cell>
                   </ui5-table-row>
@@ -62,28 +62,67 @@
 
 
 
-    <!-- <fd-layout-grid>
-        <div class = "leftbox"> </div>
-        <ui5-card class = "full__list__content">
-            <div *ngFor="let passenger of passengers; index as i" class="list__child">
-                <div slot="imageContent">
-                    <ui5-avatar class="hidden-at-tablet" size="M">
-                        <img src="assets/images/avatar_small.webp" alt="Passenger profile photo">
-                    </ui5-avatar>
-                    <ui5-avatar class="show-at-tablet hidden-at-mobile--larger" size="S">
-                        <img src="assets/images/avatar_small.webp" alt="Passenger profile photo">
-                    </ui5-avatar>
-                </div>
-                <div class="list__child__text" *ngIf = "isInCurrentPage(i)">
-                    {{passenger.name}}
-                    <ui5-label>{{passenger.address}}</ui5-label>
-                </div>
-                <ui5-button icon = "edit" design = "Emphasized" ></ui5-button>
-                <ui5-button icon = "decline" (click) = "removePassenger(i)"></ui5-button>
-            </div>
-        </ui5-card>
-    </fd-layout-grid> -->
+   
     <div class = "edit__footer" slot = "footer">
-        <ui5-button class = "edit__footer_button" (click) = "onEditExit()">Exit</ui5-button>
+        <ui5-button (click) = "onEditExit()">Exit</ui5-button>
+    </div>
+</ui5-dialog>
+
+
+
+ <!-- passenger Edit -->
+
+<ui5-dialog [stretch]="true" [header-text]="'PASSENGER EDIT'" [open]="isPassengerInEditMode"
+    [accessible-name]="'Edit Passenger' ">
+
+    <fd-layout-grid>
+        <ui5-shellbar>
+            <ui5-shellbar-item icon="add-equipment" [text]="'PLACEHOLDER'" ></ui5-shellbar-item>
+            <ui5-shellbar-item icon="history" [text]="'PLACEHOLDER'" ></ui5-shellbar-item>
+         </ui5-shellbar>
+    <nav class = "leftbox">
+        <ui5-avatar [size]="'XL'" id = "user__name">
+            <img src= "assets/images/avatar_small.webp" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
+        </ui5-avatar>
+    </nav>
+    <div class = "rightbox">
+        <h1 class = "user__title">EDITING PASSENGER</h1>
+            <hr class = "item__space">
+        <ui5-card isUi5Element = "true" class = "edit__user__main">
+            <tr>
+                <th>
+                    <h2>First Name:</h2>
+                     <ui5-input  slot="searchField" 
+                     [placeholder]="editPassenger.firstName"
+                     (input) = "onEditClick($event,'first-name')" 
+                     >
+                    </ui5-input>
+                </th>
+                <th>
+                    <h2>Last Name:</h2>
+                    <ui5-input slot="searchField" 
+                    [placeholder]="editPassenger.lastName" 
+                    (input) = "onEditClick($event,'last-name')" >
+                </ui5-input>
+                </th>
+            </tr>
+        
+             <tr>
+                <th>
+                    <h2><Address></Address>Address</h2>
+                    <ui5-input slot="searchField" 
+                    [placeholder]="editPassenger.Address" 
+                    (input) = "onEditClick($event,'address')" 
+                    >
+                </ui5-input>   
+                </th>
+            </tr>
+         </ui5-card>
+    </div>
+    </fd-layout-grid>
+    <div class = "edit__footer" slot = "footer">
+        <ui5-button class = "edit__footer__button" design = "Emphasized" 
+        (click) = "onConfirmEdit()">Apply</ui5-button>
+        <ui5-button  (click) = " onCancelEditPassenger()">Cancel</ui5-button>
     </div>
 </ui5-dialog>

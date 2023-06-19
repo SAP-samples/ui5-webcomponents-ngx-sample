@@ -44,10 +44,36 @@
     background: rgb(43, 136, 180);
     box-shadow: 2px 5px 20px
     rgba(119,119,119,.5);
+    ui5-avatar {
+        margin-top: 20%;
+
+    }
 }
+.rightbox{
+    margin-top: 15px;
+    width: 60%;
+    margin-left: 25%;
+
+    th{
+        display: inline-block;
+        margin-left: 40px;
+        margin-right: 75px;
+        margin-bottom: 20px;
+    }
+}
+
 .full__list__content{
     margin-top: 5%;
     margin-left: 24%;
     margin-right: auto;
     width: 60%;
+}
+
+.item__space{
+    margin-bottom: 35px;
+}
+
+.edit__footer__button {
+    margin-right: 10px;
+    @include sap-margin(tiny, begin);
 }
