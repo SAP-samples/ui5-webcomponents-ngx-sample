@@ -116,14 +116,16 @@
                     <h2>First Name:</h2>
                      <ui5-input  slot="searchField" 
                      [placeholder]="newUserData.firstName" 
-                     (input) = "updateValue($event,'first-name')">
+                     (input) = "updateValue($event,'first-name')"
+                     [show-clear-icon] = "true">
                     </ui5-input>
                 </th>
                 <th>
                     <h2>Last Name:</h2>
                     <ui5-input slot="searchField" 
                     [placeholder]="newUserData.lastName" 
-                    (input) = "updateValue($event,'last-name')">
+                    (input) = "updateValue($event,'last-name')"
+                    [show-clear-icon] = "true">
                 </ui5-input>
                 </th>
             </tr>
@@ -133,7 +135,8 @@
                     <ui5-input slot="searchField" 
                     type = "Number" 
                     [placeholder]="newUserData.age.toString()" 
-                    (input) = "updateValue($event,'age')" >
+                    (input) = "updateValue($event,'age')" 
+                    [show-clear-icon] = "true">
                     </ui5-input>
                  </th>
                 <th>
@@ -157,7 +160,8 @@
                     <ui5-input slot="searchField" 
                     [placeholder]="newUserData.email" 
                     type = "Email"
-                    (input) = "updateValue($event,'email')">
+                    (input) = "updateValue($event,'email')"
+                    [show-clear-icon] = "true">
                 </ui5-input>   
                 </th>
                 <th>
@@ -165,7 +169,8 @@
                     <ui5-input slot="searchField" 
                     type = "Number" 
                     [placeholder]="newUserData.telephone.toString()" 
-                    (input) = "updateValue($event,'telephone')">
+                    (input) = "updateValue($event,'telephone')"
+                    [show-clear-icon] = "true">
                 </ui5-input>   
                 </th>
             </tr>

@@ -95,6 +95,7 @@
                      <ui5-input  slot="searchField" 
                      [placeholder]="editPassenger.firstName"
                      (input) = "onEditClick($event,'first-name')" 
+                     [show-clear-icon] = "true"
                      >
                     </ui5-input>
                 </th>
@@ -102,7 +103,8 @@
                     <h2>Last Name:</h2>
                     <ui5-input slot="searchField" 
                     [placeholder]="editPassenger.lastName" 
-                    (input) = "onEditClick($event,'last-name')" >
+                    (input) = "onEditClick($event,'last-name')" 
+                    [show-clear-icon] = "true">
                 </ui5-input>
                 </th>
             </tr>
@@ -112,7 +114,8 @@
                     <h2><Address></Address>Address</h2>
                     <ui5-input slot="searchField" 
                     [placeholder]="editPassenger.Address" 
-                    (input) = "onEditClick($event,'address')" 
+                    (input) = "onEditClick($event,'address')"
+                    [show-clear-icon] = "true" 
                     >
                 </ui5-input>   
                 </th>
