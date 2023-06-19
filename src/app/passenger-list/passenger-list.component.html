@@ -15,10 +15,54 @@
     </div>
 </div>
 
+
+
+<!-- list edit -->
+
 <ui5-dialog [stretch]="true" [header-text]="'PASSENGER LIST'" [open]="isInEditMode"
     [accessible-name]="'Personal Info' ">
 
+
     <fd-layout-grid>
+        <div class = "leftbox"> </div>
+            <ui5-table class = "full__list__content">
+                <ui5-table-column id="column-1" slot="columns">
+                    <ui5-label>Picture</ui5-label>
+                  </ui5-table-column>
+                  <ui5-table-column
+                    id="column-2"
+                    slot="columns"
+                    min-width="500"
+                    popin-text="Picture"
+                  >
+                    <ui5-label>Name</ui5-label>
+                  </ui5-table-column>
+                  <ui5-table-column id="column-3" slot="columns" min-width="500">
+                    <ui5-label>Address</ui5-label>
+                  </ui5-table-column>
+                  <ui5-table-row *ngFor="let passenger of passengers; index as i" >
+                    <ui5-table-cell>
+                            <ui5-avatar class="hidden-at-tablet" size="M">
+                                <img src="assets/images/avatar_small.webp" alt="Passenger profile photo">
+                            </ui5-avatar>
+                            <ui5-avatar class="show-at-tablet hidden-at-mobile--larger" size="S">
+                                <img src="assets/images/avatar_small.webp" alt="Passenger profile photo">
+                            </ui5-avatar>
+                    </ui5-table-cell>
+                  <ui5-table-cell><span>{{passenger.name}}</span></ui5-table-cell>
+                  <ui5-table-cell><span>{{passenger.address}}</span></ui5-table-cell>
+                  <ui5-table-cell>
+                    <ui5-button icon = "edit" design = "Emphasized" ></ui5-button>
+                    <ui5-button icon = "decline" (click) = "removePassenger(i)"></ui5-button>
+                  </ui5-table-cell>
+                  </ui5-table-row>
+            </ui5-table>
+
+    </fd-layout-grid>
+
+
+
+    <!-- <fd-layout-grid>
         <div class = "leftbox"> </div>
         <ui5-card class = "full__list__content">
             <div *ngFor="let passenger of passengers; index as i" class="list__child">
@@ -38,7 +82,7 @@
                 <ui5-button icon = "decline" (click) = "removePassenger(i)"></ui5-button>
             </div>
         </ui5-card>
-    </fd-layout-grid>
+    </fd-layout-grid> -->
     <div class = "edit__footer" slot = "footer">
         <ui5-button class = "edit__footer_button" (click) = "onEditExit()">Exit</ui5-button>
     </div>
