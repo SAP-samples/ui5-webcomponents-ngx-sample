@@ -156,6 +156,7 @@
                     <h2>Email:</h2>
                     <ui5-input slot="searchField" 
                     [placeholder]="newUserData.email" 
+                    type = "Email"
                     (input) = "updateValue($event,'email')">
                 </ui5-input>   
                 </th>
@@ -194,13 +195,13 @@
 	horizontal-align="Right"
 	>
   
-   <div *ngFor = "let item of notificationsTypeArray">
+   <div *ngFor = "let notificationType of notificationsTypeArray">
     <div *ngFor = "let notification of notificationArray; let i =index;">
         <ui5-li-notification 
-        *ngIf = "isPriorityTheSame(item.notificationType,notification.notificationPriority)"
+        *ngIf = "isPriorityTheSame(notificationType,notification.notificationPriority)"
         [show-close] ="true"
-        [priority] = "castToType(item.notificationType)"
-        title-text="Important"
+        [priority] = "castToType(notificationType)"
+        [title-text]="getTitleText(notificationType)"
         (close) = "removeNotification(i)">
         {{notification.notificationInformation}}
         </ui5-li-notification>

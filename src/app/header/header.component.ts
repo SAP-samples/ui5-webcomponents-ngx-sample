@@ -45,10 +45,7 @@ export class HeaderComponent {
     editAccountSelected = false;
     
     @ViewChild('notificationsPopOver',{ read: ElementRef }) notificationsPopOver!: ElementRef;
-    notificationsTypeArray = [{notificationType: "High", notificationMessage:"Important"},
-    {notificationType: "Medium", notificationMessage:"Attention"},
-    {notificationType: "Low", notificationMessage:"Status"},
-    {notificationType: "None", notificationMessage:"General"}];
+    notificationsTypeArray = ["High","Medium","Low","None"];
     notificationArray = [
     {notificationPriority: "HIGH",notificationInformation: "Check in for flight", notificationLink: ""},
     {notificationPriority: "LOW",notificationInformation: "Edit account", notificationLink: ""}];
@@ -129,6 +126,8 @@ export class HeaderComponent {
         if (element.closeOverflow) element.closeOverflow();
     }
 
+
+    // User Account 
 
     setEnterAccount(){
         this.AccountSelected = !this.AccountSelected;
@@ -212,6 +211,7 @@ export class HeaderComponent {
 
     }
 
+// Notifications
 
     viewNotifications(event:any){
         if(this.notificationsPopOver.nativeElement.isOpen() === true){
@@ -242,6 +242,20 @@ export class HeaderComponent {
     
     castToType(item: string){
         return <"None" | "High" | "Medium" | "Low" | undefined>item;
+    }
+
+    getTitleText(item:string){
+        if(item === "High"){
+            return "Important";
+        }
+        else if(item === "Medium"){
+            return "Atention";
+        }
+        else if(item === "Low"){
+            return "Status";
+
+        }
+        return "General";
     }
 
     removeNotification(i:number){
