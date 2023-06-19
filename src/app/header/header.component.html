@@ -186,7 +186,7 @@
 </div>
 <div class="dialog__footer" slot="footer" *ngIf = "editAccountSelected">
     <ui5-button design="Negative" (click)="confirmEdit()">{{'APPLY' | ui5I18n}}</ui5-button>
-    <ui5-button class="dialog__footer__button" design = "Attention" (click)="setEditAccount('UNDO')">{{'UNDO' | ui5I18n}}</ui5-button>
+    <!-- <ui5-button class="dialog__footer__button" design = "Attention" (click)="setEditAccount('UNDO')">{{'UNDO' | ui5I18n}}</ui5-button> -->
     <ui5-button class="dialog__footer__button" (click)="setEditAccount('ACCESS')">{{'CANCEL' | ui5I18n}}</ui5-button>
 </div>
 </ui5-dialog>
