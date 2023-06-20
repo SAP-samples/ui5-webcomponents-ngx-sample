@@ -21,10 +21,16 @@
 
 <ui5-dialog [stretch]="true" [header-text]="'PASSENGER LIST'" [open]="isInEditMode"
     [accessible-name]="'Personal Info' ">
-
-
+    
+    
+    
+    <ui5-shellbar>
+        <ui5-shellbar-item icon="add-employee" [text]="'ADD PASSENGER'" (click) = "onAddPassenger()" ></ui5-shellbar-item>
+    </ui5-shellbar>
+    
     <fd-layout-grid>
-        <div class = "leftbox"> </div>
+       
+        <div class = "leftbox"> <h2 class = "text__right">Passenger List</h2> </div>
             <ui5-table class = "full__list__content" no-data-text="EMPTY LIST">
                 <ui5-table-column id="column-1" slot="columns">
                     <ui5-label>Picture</ui5-label>
@@ -57,9 +63,7 @@
                   </ui5-table-cell>
                   </ui5-table-row>
             </ui5-table>
-
     </fd-layout-grid>
-
 
 
    
@@ -72,60 +76,113 @@
 
  <!-- passenger Edit -->
 
-<ui5-dialog [stretch]="true" [header-text]="'PASSENGER EDIT'" [open]="isPassengerInEditMode"
-    [accessible-name]="'Edit Passenger' ">
+ <ui5-dialog [stretch]="true" [header-text]="'PASSENGER EDIT'" [open]="isPassengerInEditMode"
+ [accessible-name]="'Edit Passenger' ">
 
-    <fd-layout-grid>
-        <ui5-shellbar>
-            <ui5-shellbar-item icon="add-equipment" [text]="'PLACEHOLDER'" ></ui5-shellbar-item>
-            <ui5-shellbar-item icon="history" [text]="'PLACEHOLDER'" ></ui5-shellbar-item>
-         </ui5-shellbar>
-    <nav class = "leftbox">
-        <ui5-avatar [size]="'XL'" id = "user__name">
-            <img src= "assets/images/avatar_small.webp" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
-        </ui5-avatar>
-    </nav>
-    <div class = "rightbox">
-        <h1 class = "user__title">EDITING PASSENGER</h1>
-            <hr class = "item__space">
-        <ui5-card isUi5Element = "true" class = "edit__user__main">
-            <tr>
-                <th>
-                    <h2>First Name:</h2>
-                     <ui5-input  slot="searchField" 
-                     [placeholder]="editPassenger.firstName"
-                     (input) = "onEditClick($event,'first-name')" 
-                     [show-clear-icon] = "true"
-                     >
-                    </ui5-input>
-                </th>
-                <th>
-                    <h2>Last Name:</h2>
-                    <ui5-input slot="searchField" 
-                    [placeholder]="editPassenger.lastName" 
-                    (input) = "onEditClick($event,'last-name')" 
-                    [show-clear-icon] = "true">
-                </ui5-input>
-                </th>
-            </tr>
-        
-             <tr>
-                <th>
-                    <h2><Address></Address>Address</h2>
-                    <ui5-input slot="searchField" 
-                    [placeholder]="editPassenger.Address" 
-                    (input) = "onEditClick($event,'address')"
-                    [show-clear-icon] = "true" 
-                    >
-                </ui5-input>   
-                </th>
-            </tr>
-         </ui5-card>
-    </div>
-    </fd-layout-grid>
-    <div class = "edit__footer" slot = "footer">
-        <ui5-button class = "edit__footer__button" design = "Emphasized" 
-        (click) = "onConfirmEdit()">Apply</ui5-button>
-        <ui5-button  (click) = " onCancelEditPassenger()">Cancel</ui5-button>
-    </div>
+
+ <fd-layout-grid class = "box__down">
+ <nav class = "leftbox">
+     <ui5-avatar [size]="'XL'" id = "user__name">
+         <img src= "assets/images/avatar_small.webp" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
+     </ui5-avatar>
+ </nav>
+ <div class = "rightbox">
+     <h1 class = "user__title">EDITING PASSENGER</h1>
+         <hr class = "item__space">
+     <ui5-card isUi5Element = "true" class = "edit__user__main">
+         <tr>
+             <th>
+                 <h2>First Name:</h2>
+                  <ui5-input  slot="searchField" 
+                  [placeholder]="editPassenger.firstName"
+                  (input) = "onEditClick($event,'first-name')" 
+                  [show-clear-icon] = "true"
+                  >
+                 </ui5-input>
+             </th>
+             <th>
+                 <h2>Last Name:</h2>
+                 <ui5-input slot="searchField" 
+                 [placeholder]="editPassenger.lastName" 
+                 (input) = "onEditClick($event,'last-name')" 
+                 [show-clear-icon] = "true">
+             </ui5-input>
+             </th>
+         </tr>
+     
+          <tr>
+             <th>
+                 <h2><Address></Address>Address</h2>
+                 <ui5-input slot="searchField" 
+                 [placeholder]="editPassenger.address" 
+                 (input) = "onEditClick($event,'address')"
+                 [show-clear-icon] = "true" 
+                 >
+             </ui5-input>   
+             </th>
+         </tr>
+      </ui5-card>
+ </div>
+ </fd-layout-grid>
+ <div class = "edit__footer" slot = "footer">
+     <ui5-button class = "edit__footer__button" design = "Emphasized" 
+     (click) = "onConfirmEdit()">Apply</ui5-button>
+     <ui5-button  (click) = " onCancelEditPassenger()">Cancel</ui5-button>
+ </div>
+</ui5-dialog>
+
+ <!-- Add passenger -->
+
+ <ui5-dialog [stretch]="true" [header-text]="'PASSENGER EDIT'" [open]="isAddingPassenger"
+ [accessible-name]="'Edit Passenger' ">
+
+ <fd-layout-grid>
+ <nav class = "leftbox">
+     <ui5-avatar [size]="'XL'" id = "user__name">
+         <img src= "assets/images/avatar_small.webp" [alt]="'ALT_PROFILE_PIC' | ui5I18n"  />
+     </ui5-avatar>
+ </nav>
+ <div class = "rightbox">
+     <h1 class = "user__title">EDITING PASSENGER</h1>
+         <hr class = "item__space">
+     <ui5-card isUi5Element = "true" class = "edit__user__main">
+         <tr>
+             <th>
+                 <h2>First Name:</h2>
+                  <ui5-input  slot="searchField" 
+                  placeholder="Joe"
+                  (input) = "onAddClick($event,'first-name')" 
+                  [show-clear-icon] = "true"
+                  >
+                 </ui5-input>
+             </th>
+             <th>
+                 <h2>Last Name:</h2>
+                 <ui5-input slot="searchField" 
+                 placeholder="Green" 
+                 (input) = "onAddClick($event,'last-name')" 
+                 [show-clear-icon] = "true">
+             </ui5-input>
+             </th>
+         </tr>
+     
+          <tr>
+             <th>
+                 <h2><Address></Address>Address</h2>
+                 <ui5-input slot="searchField" 
+                 placeholder="42 Wallaby Way, Sydney" 
+                 (input) = "onAddClick($event,'address')"
+                 [show-clear-icon] = "true" 
+                 >
+             </ui5-input>   
+             </th>
+         </tr>
+      </ui5-card>
+ </div>
+ </fd-layout-grid>
+ <div class = "edit__footer" slot = "footer">
+     <ui5-button class = "edit__footer__button" design = "Attention" 
+     (click) = "onAddConfirm()">Apply</ui5-button>
+     <ui5-button  (click) = " onAddPassenger()">Cancel</ui5-button>
+ </div>
 </ui5-dialog>

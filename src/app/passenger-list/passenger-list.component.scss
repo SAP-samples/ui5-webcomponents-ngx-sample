@@ -33,6 +33,10 @@
 
 }
 
+.box__down{
+    margin-top: 50px;
+
+}
 .leftbox{
     text-align: center;
     float:left;
@@ -76,4 +80,10 @@
 .edit__footer__button {
     margin-right: 10px;
     @include sap-margin(tiny, begin);
+}
+
+.text__right{
+    transform: rotate(-90deg);
+    font-size: 35px;
+    margin-top: 300px;
 }

@@ -17,13 +17,16 @@ export class PassengerListComponent {
     passengers!: Passenger[];
 
     // monitors current passenger list page
+    numberOfUsersPerPage = 5;
     @Input() passengersIndex:number = 1;      
 
     @Input() isInEditMode:boolean = false;
     @Output() isInEditModeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
     isPassengerInEditMode:boolean = false;
-    editPassenger = {firstName:"",lastName:"",Address: "",index:0};
+    editPassenger = {firstName:"",lastName:"",address: "",index:0};
 
+    isAddingPassenger:boolean = false;
+    addNewPassenger= {firstName:"",lastName:"",address:""}
 
 
     constructor(private appService: AppService) { }
@@ -43,9 +46,8 @@ export class PassengerListComponent {
     }
 
     isInCurrentPage(index:number){
-        const numberOfUsersPerPage = 5;
-        const upperLimit = this.passengersIndex*numberOfUsersPerPage;
-        const lowerLimit = upperLimit-numberOfUsersPerPage;
+        const upperLimit = this.passengersIndex*this.numberOfUsersPerPage;
+        const lowerLimit = upperLimit-this.numberOfUsersPerPage;
         if(index >= lowerLimit && index < upperLimit){
             return true;
         }
@@ -59,7 +61,13 @@ export class PassengerListComponent {
     }
 
     removePassenger(index:number){
-        this.passengers.splice(index,index+1);
+        if(index === 0){
+            this.passengers.splice(index,index+1);
+        }
+        else{
+            this.passengers.splice(index,index);
+        }
+        
     }
 
     onEditPassenger(index:number){
@@ -67,7 +75,7 @@ export class PassengerListComponent {
         .substring(0,this.passengers[index].name.indexOf(" "));
         this.editPassenger.lastName = this.passengers[index].name
         .substring(this.passengers[index].name.indexOf(" "));
-        this.editPassenger.Address = this.passengers[index].address;
+        this.editPassenger.address = this.passengers[index].address;
         this.editPassenger.index = index;
         this.isInEditMode = !this.isInEditMode;
         this.isPassengerInEditMode = !this.isPassengerInEditMode;
@@ -82,7 +90,7 @@ export class PassengerListComponent {
     onConfirmEdit(){
         this.passengers[this.editPassenger.index].name = 
         this.editPassenger.firstName + " " + this.editPassenger.lastName;
-        this.passengers[this.editPassenger.index].address = this.editPassenger.Address;
+        this.passengers[this.editPassenger.index].address = this.editPassenger.address;
         this.isInEditMode = !this.isInEditMode;
         this.isPassengerInEditMode = !this.isPassengerInEditMode;
     }
@@ -97,9 +105,51 @@ export class PassengerListComponent {
 
         }
         else if (state === "address"){
-            this.editPassenger.Address = event.target.value;
+            this.editPassenger.address = event.target.value;
         }
     }
+
+    onAddPassenger(){
+        this.isInEditMode = !this.isInEditMode;
+        this.isAddingPassenger = !this.isAddingPassenger;
+        
+        this.addNewPassenger.address ="";
+        this.addNewPassenger.firstName ="";
+        this.addNewPassenger.lastName = "";
+
+    }
+
+    onAddClick(event:any,state:string,){
+        if(state === "first-name"){
+            this.addNewPassenger.firstName = event.target.value;
+
+        }
+        else if(state === "last-name"){
+            this.addNewPassenger.lastName = event.target.value;
+
+        }
+        else if (state === "address"){
+            this.addNewPassenger.address = event.target.value;
+        }
+    }
+
+    onAddConfirm(){
+        let tempPassenger:Passenger = {
+            name: (
+                this.addNewPassenger.firstName + " " +  this.addNewPassenger.lastName),
+            address: this.addNewPassenger.address
+        }
+        this.passengers.push(tempPassenger);
+
+        console.log(this.passengers);
+        this.isAddingPassenger = !this.isAddingPassenger;
+        this.isInEditMode = !this.isInEditMode;
+
+        this.addNewPassenger.address ="";
+        this.addNewPassenger.firstName ="";
+        this.addNewPassenger.lastName = "";
+    }
+ 
  
 
 }
