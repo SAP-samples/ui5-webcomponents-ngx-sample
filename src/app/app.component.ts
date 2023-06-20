@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { Subject, takeUntil, zip } from 'rxjs';
 
 import { AppService } from './services/services';
@@ -37,6 +37,8 @@ export class AppComponent {
 
   // passenger list
   isPassengerListInEdit:boolean = false;
+  @Input() numberOfPages = 1;
+  currentPage = 1;
 
   constructor(private appService: AppService) { }
 
@@ -88,6 +90,8 @@ export class AppComponent {
     return minutes == 0 ? "" : `${minutes}`;
   }
 
+
+    // Passenger list
     onPassengerListEditClick(){
       this.isPassengerListInEdit = !this.isPassengerListInEdit;
     }
@@ -95,6 +99,30 @@ export class AppComponent {
     isInEditModeChange(state:boolean){
       this.isPassengerListInEdit = state;
 
+    }
+
+    nextPage(){
+      this.currentPage++;
+    }
+    previousPage(){
+      this.currentPage--;
+    }
+    showArrowNext(){
+      if(this.currentPage < this.numberOfPages){
+        return true;
+      }
+      return false;
+    }
+    showArrowPrevious(){
+      if(this.currentPage > 1){
+        return true;
+      }
+      return false;
+
+    }
+    numberofPagesChange(event:number){
+      this.numberOfPages = event;
+      console.log(this.numberOfPages);
     }
 
 }

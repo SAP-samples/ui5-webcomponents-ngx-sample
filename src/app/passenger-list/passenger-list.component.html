@@ -30,7 +30,7 @@
     
     <fd-layout-grid>
        
-        <div class = "leftbox"> <h2 class = "text__right">Passenger List</h2> </div>
+        <div class = "leftbox"></div>
             <ui5-table class = "full__list__content" no-data-text="EMPTY LIST">
                 <ui5-table-column id="column-1" slot="columns">
                     <ui5-label>Picture</ui5-label>
@@ -134,7 +134,7 @@
  <!-- Add passenger -->
 
  <ui5-dialog [stretch]="true" [header-text]="'PASSENGER EDIT'" [open]="isAddingPassenger"
- [accessible-name]="'Edit Passenger' ">
+ [accessible-name]="'Add Passenger' ">
 
  <fd-layout-grid>
  <nav class = "leftbox">
@@ -143,7 +143,7 @@
      </ui5-avatar>
  </nav>
  <div class = "rightbox">
-     <h1 class = "user__title">EDITING PASSENGER</h1>
+     <h1 class = "user__title">NEW PASSENGER</h1>
          <hr class = "item__space">
      <ui5-card isUi5Element = "true" class = "edit__user__main">
          <tr>
@@ -153,6 +153,7 @@
                   placeholder="Joe"
                   (input) = "onAddClick($event,'first-name')" 
                   [show-clear-icon] = "true"
+                  [required]="true"
                   >
                  </ui5-input>
              </th>
@@ -161,7 +162,8 @@
                  <ui5-input slot="searchField" 
                  placeholder="Green" 
                  (input) = "onAddClick($event,'last-name')" 
-                 [show-clear-icon] = "true">
+                 [show-clear-icon] = "true"
+                 [required]="true">
              </ui5-input>
              </th>
          </tr>
@@ -173,6 +175,7 @@
                  placeholder="42 Wallaby Way, Sydney" 
                  (input) = "onAddClick($event,'address')"
                  [show-clear-icon] = "true" 
+                 [required]="true"
                  >
              </ui5-input>   
              </th>

@@ -18,7 +18,10 @@ export class PassengerListComponent {
 
     // monitors current passenger list page
     numberOfUsersPerPage = 5;
-    @Input() passengersIndex:number = 1;      
+    localNumberOfPages = 1;
+    @Output() numberOfPagesChange:EventEmitter<number> = new EventEmitter<number>();   
+    @Input() currentPage:number = 1; 
+      
 
     @Input() isInEditMode:boolean = false;
     @Output() isInEditModeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -27,6 +30,10 @@ export class PassengerListComponent {
 
     isAddingPassenger:boolean = false;
     addNewPassenger= {firstName:"",lastName:"",address:""}
+
+   
+  
+
 
 
     constructor(private appService: AppService) { }
@@ -46,7 +53,7 @@ export class PassengerListComponent {
     }
 
     isInCurrentPage(index:number){
-        const upperLimit = this.passengersIndex*this.numberOfUsersPerPage;
+        const upperLimit = this.currentPage*this.numberOfUsersPerPage;
         const lowerLimit = upperLimit-this.numberOfUsersPerPage;
         if(index >= lowerLimit && index < upperLimit){
             return true;
@@ -61,11 +68,17 @@ export class PassengerListComponent {
     }
 
     removePassenger(index:number){
-        if(index === 0){
-            this.passengers.splice(index,index+1);
-        }
-        else{
-            this.passengers.splice(index,index);
+        this.passengers.splice(index,1);
+        // if(index === 0){
+        //     this.passengers.splice(index,index+1);
+        // }
+        // else{
+        //     this.passengers.splice(index,index);
+        // }
+        if(Math.ceil(this.passengers.length/this.numberOfUsersPerPage) < this.localNumberOfPages 
+        && this.localNumberOfPages>1){
+            this.localNumberOfPages--;
+            this.numberOfPagesChange.emit(this.localNumberOfPages);
         }
         
     }
@@ -141,14 +154,19 @@ export class PassengerListComponent {
         }
         this.passengers.push(tempPassenger);
 
-        console.log(this.passengers);
         this.isAddingPassenger = !this.isAddingPassenger;
         this.isInEditMode = !this.isInEditMode;
 
         this.addNewPassenger.address ="";
         this.addNewPassenger.firstName ="";
         this.addNewPassenger.lastName = "";
+        if(this.passengers.length > this.numberOfUsersPerPage*this.localNumberOfPages){
+            this.localNumberOfPages++;
+            this.numberOfPagesChange.emit(this.localNumberOfPages);
+        }
     }
+
+
  
  
 

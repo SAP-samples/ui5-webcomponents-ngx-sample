@@ -111,8 +111,25 @@
                         (click) = "onPassengerListEditClick()">
                           <ui5-icon name="edit"></ui5-icon>
                         </ui5-button>
+                        <ui5-button 
+                        design="Transparent" slot="action" 
+                        accessible-name="'PREVIOUS PAGE'"
+                        *ngIf = "showArrowPrevious()"
+                        (click) = "previousPage()">
+                          <ui5-icon name="nav-back"></ui5-icon>
+                        </ui5-button>
+                        <ui5-button 
+                        *ngIf = "showArrowNext()"
+                        design="Transparent" slot="action" 
+                        accessible-name="'NEXT PAGE'"
+                        (click) = "nextPage()">
+                          <ui5-icon name="navigation-right-arrow"></ui5-icon>
+                        </ui5-button>
                       </ui5-card-header>
-                      <app-passenger-list [isInEditMode]="isPassengerListInEdit" (isInEditModeChange)="isInEditModeChange($event)"></app-passenger-list>
+                      <app-passenger-list [isInEditMode]="isPassengerListInEdit" 
+                      (isInEditModeChange)="isInEditModeChange($event)"
+                      [currentPage] = "currentPage"
+                      (numberOfPagesChange)="numberofPagesChange($event)"></app-passenger-list>
                     </ui5-card>
                   </div>
                 </div>
