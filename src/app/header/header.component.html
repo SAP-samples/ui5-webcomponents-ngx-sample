@@ -1,8 +1,4 @@
-<ui5-shellbar id="shellbar" [primary-title]="'SHELLBAR_TITLE' | ui5I18n" [show-notifications]="true"
-    notifications-count="2">
-    <ui5-avatar slot="profile">
-        <img src="assets/images/avatar_small.webp" [alt]="'ALT_PROFILE_PIC' | ui5I18n" />
-    </ui5-avatar>
+<ui5-shellbar id="shellbar" [primary-title]="'SHELLBAR_TITLE' | ui5I18n">
     <img class="logo" slot="logo" src="assets/images/SAP_logo.webp" [alt]="'ALT_LOGO' | ui5I18n" />
     <ui5-input slot="searchField" [placeholder]="'SEARCH_PLACEHOLDER' | ui5I18n"></ui5-input>
     <ui5-shellbar-item icon="palette" (click)="setThemeDialogOpen()"
