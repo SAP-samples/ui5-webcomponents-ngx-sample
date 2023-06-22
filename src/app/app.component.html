@@ -69,7 +69,7 @@
                   </div>
                   <app-seats-chart> </app-seats-chart>
                   <ui5-bar design="Footer">
-                    <ui5-button design="Emphasized" slot="endContent">{{'UPGRADE' | ui5I18n}}</ui5-button>
+                    <ui5-button design="Emphasized" slot="endContent" (click)="openUpgrade()" >{{'UPGRADE' | ui5I18n}} </ui5-button>
                   </ui5-bar>
                 </ui5-card>
               </div>
@@ -192,12 +192,12 @@
                       </span>
                     </div>
                     <ui5-bar design="Footer">
-                      <ui5-button design="Emphasized" slot="endContent">{{'UPGRADE' | ui5I18n}}</ui5-button>
+                      <ui5-button design="Emphasized" slot="endContent" (click)="openUpgrade()"  >{{'UPGRADE' | ui5I18n}} </ui5-button>
                     </ui5-bar>
                   </ui5-card>
                 </div>
               </div>
-
+              
               <!-- Payment Details section -->
               <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12" class="remove-padding">
                 <div class="payment-details-card">
@@ -215,3 +215,9 @@
     </fd-layout-grid>
   </section>
 </div>
+
+
+<app-seats-upgrade 
+[openUpgradeWindow]="upgradeWindow"
+(openUpgradeWindowChange)="onUpgradeChange($event)"
+ ></app-seats-upgrade>

@@ -18,6 +18,8 @@ import { PassengerListComponent } from './passenger-list/passenger-list.componen
 import { SeatsChartComponent } from './seats-chart/seats-chart.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { SeatsUpgradeComponent } from './seats-upgrade/seats-upgrade.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
     PassengerListComponent,
     SeatsChartComponent,
     PaymentDetailsComponent,
-    TripCalendarComponent
+    TripCalendarComponent,
+    SeatsUpgradeComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
           }
         }
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })
