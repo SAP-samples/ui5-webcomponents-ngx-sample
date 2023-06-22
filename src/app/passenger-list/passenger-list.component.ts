@@ -31,4 +31,17 @@ export class PassengerListComponent {
         this.componentUnsubscribe.next(true);
         this.componentUnsubscribe.complete();
     }
+
+    getImage(name:string){
+        let pic = "assets/images/passengers/" 
+        + (name.substring(0,name.indexOf(" "))).toLocaleLowerCase();
+        // used since the image for john uses a different format
+        if(pic === "assets/images/passengers/john"){
+            return pic + ".webp";
+        }
+        return pic + ".png"
+
+    }
+
+
 }
