@@ -9,3 +9,7 @@
     @include sap-font-family(bold);
     color: var(--sapInformativeTextColor);
 }
+
+.message__strip{
+    cursor: pointer;
+}
