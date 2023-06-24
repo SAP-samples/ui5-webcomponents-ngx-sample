@@ -143,20 +143,19 @@
                     </div>
                   </fd-layout-grid>
 
-                  <!-- Daily Flight Status section -->
+                  <!-- in-Fligh activities section -->
                   <fd-layout-grid>
                     <div fdLayoutGridRow class="remove-padding">
                       <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
-                        <ui5-card class="card--bottom daily-flight-card">
-                          <ui5-card-header slot="header" [title-text]="'DAILY_FLIGHT_STATUS' | ui5I18n">
+                        <ui5-card class="card--bottom in-flight-card">
+                          <ui5-card-header slot="header" [title-text]="'In-Flight Services' | ui5I18n">
                           </ui5-card-header>
-                          <div class="progress-bars">
-                            <ui5-progress-indicator [display-value]="'LATE_UPPERCASE' | ui5I18n" value-state="Error"
-                              [value]="20"></ui5-progress-indicator>
-                            <ui5-progress-indicator [display-value]="'EARLY_UPPERCASE' | ui5I18n" value-state="Warning"
-                              [value]="15"></ui5-progress-indicator>
-                            <ui5-progress-indicator class="progress-bars__last" [display-value]="'ON_TIME' | ui5I18n"
-                              value-state="Success" [value]="60"></ui5-progress-indicator>
+                          <div class="activities-list ">
+                            <ui5-list separators="None" >
+                              <ui5-li  class="remove-padding" icon="meal">Dinner</ui5-li>
+                              <ui5-li icon="play">Entertainment</ui5-li>
+                              <ui5-li icon="nutrition-activity">Snacks for Purchase</ui5-li>
+                            </ui5-list>
                           </div>
                         </ui5-card>
                       </div>
@@ -196,14 +195,41 @@
               </div>
               
               <!-- Payment Details section -->
-              <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12" class="remove-padding">
-                <div class="payment-details-card">
-                  <ui5-card class="card--wide">
-                    <ui5-card-header slot="header" [title-text]="'PAYMENT_DETAILS' | ui5I18n"></ui5-card-header>
-                    <app-payment-details></app-payment-details>
-                  </ui5-card>
+              <fd-layout-grid>
+                  <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+                    <div class="baggage--allowance">
+                      <ui5-card>
+                        <ui5-card-header slot="header" [title-text]="'Baggage Allowance' | ui5I18n">
+                        </ui5-card-header>
+                        
+                      </ui5-card>
+                    </div>
+                  </div>
+              </fd-layout-grid>
+
+              
+
+              <fd-layout-grid>
+                <div fdLayoutGridRow class="remove-padding">
+                  <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+                    <ui5-card class="card--bottom in-flight-card">
+                      <ui5-card-header slot="header" [title-text]="'In-Flight Services' | ui5I18n">
+                      </ui5-card-header>
+                      <div class="activities-list ">
+                        <ui5-list separators="None" >
+                          <ui5-li  class="remove-padding" icon="meal">Dinner</ui5-li>
+                          <ui5-li icon="play">Entertainment</ui5-li>
+                          <ui5-li icon="nutrition-activity">Snacks for Purchase</ui5-li>
+                        </ui5-list>
+                      </div>
+                    </ui5-card>
+                  </div>
                 </div>
-              </div>
+              </fd-layout-grid>
+
+
+
+
 
             </div>
           </fd-layout-grid>
@@ -212,6 +238,8 @@
     </fd-layout-grid>
   </section>
 </div>
+
+
 
 
 <app-seats-upgrade 

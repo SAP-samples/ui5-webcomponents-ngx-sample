@@ -27,7 +27,7 @@
 
 .card--bottom {
     @include sap-media-min-width(700px) {
-        @include sap-margin(medium, top);
+        @include sap-margin(small, top);
     }
 
     @include sap-media-max-width(700px) {
@@ -43,8 +43,8 @@
     @include sap-set-margin-y-equal(auto);
 }
 
-.progress-bars {
-    @include sap-margin(small, top);
+.activities-list {
+    @include sap-margin(small, bottom);
     @include sap-margin(small, x);
 }
 
@@ -114,7 +114,7 @@
     text-align: end;
 }
 
-.daily-flight-card {
+.in-flight-card{
     @include sap-media-range-width(600px, 650px) {
         @include sap-margin(small, top);
     }
@@ -208,3 +208,27 @@
     @include sap-margin(tiny, bottom);
     @include sap-set-margin-top(-0.5rem);
 }
+
+
+
+.baggage--allowance {
+    width: 50%;
+
+    @include sap-media-xl() {
+        @include sap-margin(medium, x);
+        @include sap-margin(medium,top);
+    }
+
+    @include sap-media-range-width(600px, 1440px) {
+        width: 45%;
+        @include sap-margin(medium, end);
+        @include sap-margin(medium, top);
+    }
+    @include sap-media-sm() {
+        @include sap-margin(medium, top);
+    }
+
+    
+}
+
+

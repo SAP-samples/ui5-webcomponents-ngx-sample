@@ -11,8 +11,8 @@
     @include sap-flex-align-items(center);
     @include sap-flex-justify(space-around);
     @include sap-set-margin-x(1rem, 2rem);
-    @include sap-set-margin-bottom(0.75rem);
-
+    @include sap-set-margin-bottom(1.30rem);
+   
     @include sap-media-range-width(600px, 650px) {
         @include sap-set-margin-bottom(1.5rem);
     }
@@ -22,4 +22,9 @@
     width: 100%;
     @include sap-display(grid);
     @include sap-set-margin-begin(5%);
+}
+
+.extra__margin{
+    @include sap-margin(medium,top);
+    @include sap-margin(medium,bottom);
 }
