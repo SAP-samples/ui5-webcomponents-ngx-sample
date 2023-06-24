@@ -19,7 +19,8 @@ import { SeatsChartComponent } from './seats-chart/seats-chart.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { SeatsUpgradeComponent } from './seats-upgrade/seats-upgrade.component'
+import { SeatsUpgradeComponent } from './seats-upgrade/seats-upgrade.component';
+import { BaggageAllowanceComponent } from './baggage-allowance/baggage-allowance.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SeatsUpgradeComponent } from './seats-upgrade/seats-upgrade.component'
     SeatsChartComponent,
     PaymentDetailsComponent,
     TripCalendarComponent,
-    SeatsUpgradeComponent
+    SeatsUpgradeComponent,
+    BaggageAllowanceComponent
   ],
   imports: [
     BrowserModule,

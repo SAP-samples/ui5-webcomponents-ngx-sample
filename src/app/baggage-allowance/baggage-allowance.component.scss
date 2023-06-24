@@ -1,0 +1,7 @@
+@import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
+
+.button__footer{
+    @include sap-margin(small,top);
+
+
+}
