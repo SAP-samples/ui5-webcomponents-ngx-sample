@@ -20,7 +20,8 @@ import { PaymentDetailsComponent } from './payment-details/payment-details.compo
 import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SeatsUpgradeComponent } from './seats-upgrade/seats-upgrade.component';
-import { BaggageAllowanceComponent } from './baggage-allowance/baggage-allowance.component'
+import { BaggageAllowanceComponent } from './baggage-allowance/baggage-allowance.component';
+import { UpgradeBaggageComponent } from './baggage-allowance/upgrade-baggage/upgrade-baggage.component'
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { BaggageAllowanceComponent } from './baggage-allowance/baggage-allowance
     PaymentDetailsComponent,
     TripCalendarComponent,
     SeatsUpgradeComponent,
-    BaggageAllowanceComponent
+    BaggageAllowanceComponent,
+    UpgradeBaggageComponent
   ],
   imports: [
     BrowserModule,

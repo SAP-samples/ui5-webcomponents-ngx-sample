@@ -11,5 +11,20 @@ export class BaggageAllowanceComponent {
   numberOfCarryOnItems = 1;
   numberOfCheckdItems = 1;
 
+  onUpgradeClick(){
+    this.isBaggageUpgradeOpen = !this.isBaggageUpgradeOpen;
+  }
+
+  onQuantityChange(event:any){
+    this.numberOfCarryOnItems=event.carryOn;
+    this.numberOfCheckdItems=event.checkedIn
+  }
+
+  onUpgradeBaggageOpenChange(event:boolean){
+    this.isBaggageUpgradeOpen=event;
+    this.numberOfCarryOnItems=this.numberOfCarryOnItems;
+    this.numberOfCheckdItems=this.numberOfCheckdItems; 
+  }
+
 
 }

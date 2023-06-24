@@ -1,0 +1,31 @@
+<ui5-dialog 
+ state="Information"
+ [header-text]="'Confirmation' | ui5I18n" 
+ [open]="isUpgradeBaggageOpen"
+ [accessible-name]="'Confirmation' | ui5I18n"
+ >
+ <div class="box">
+ <ui5-label class="label__text" dissabled="true">Included</ui5-label>
+ <ui5-list separators="None" class="full-width" [indent]="false">
+    <ui5-li icon="message-success" disabled="true">{{numberOfPersonalItem}} x Personal items</ui5-li>
+    <ui5-li icon="message-success" disabled="true">{{includedCarryOnItem}} x Carry-On items</ui5-li>
+</ui5-list>
+<ui5-label class="add__label">Add-On</ui5-label>
+<div class="button__area">
+    <ui5-button class="button__padding" icon="less" [disabled]="isCheckedissabled()" (click)="onCheckedInBaggageRemove()"></ui5-button>
+    <ui5-button class="button__padding" [disabled]="true" >{{numberOfCheckedInBaggage}}</ui5-button>
+    <ui5-button class="button__padding"  icon="add" (click)="onCheckedInBaggageAdd()"></ui5-button>
+    <ui5-label class="button__text">Checked-Bags</ui5-label>
+</div>
+<div class="button__area--last">
+    <ui5-button class="button__padding" icon="less" [disabled]="isCarryOnDissabled()" (click)="onCarryOnInItemRemove()"></ui5-button>
+    <ui5-button class="button__padding" [disabled]="true" >{{numberOfCarryOnItem - includedCarryOnItem }}</ui5-button>
+    <ui5-button class="button__padding"  icon="add" (click)="onCarryOnInItemAdd()"></ui5-button>
+    <ui5-label class="button__text">Additional Carry-On</ui5-label>
+    </div>
+</div>
+ <div class="dialog__footer" slot="footer">
+    <ui5-button class="extra__padding_button" design="Emphasized" (click)="confirmUpgrade()">{{'OK' | ui5I18n}}</ui5-button>
+    <ui5-button class="dialog__footer__button" (click)="exitUpgrade()">{{'CANCEL' | ui5I18n}}</ui5-button>
+</div>
+</ui5-dialog>

@@ -1,0 +1,59 @@
+@import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
+
+.box{
+    width:500px;
+    height: auto;
+}
+
+.dialog__footer {
+    @include sap-display(flex);
+    @include sap-flex-align-items(center);
+    @include sap-flex-justify(end);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dialog__footer__button {
+    @include sap-margin(tiny, begin);
+}
+
+.extra__padding_button{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.label__text{
+    @include sap-margin(tiny,bottom);
+    font-size: 20px;
+    font-family: sans-serif;
+ 
+}
+
+.add__label{
+    display: block;
+    @include sap-margin(small,top);
+    @include sap-margin(small,bottom);
+    font-size:18px;
+    color:black
+}
+
+.button__padding{
+    padding:0;
+    margin:0;
+    width:25px;
+}
+
+.button_text{
+    display:block;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom:16px;
+}
+
+.button__area{
+    @include sap-margin(small,bottom);
+
+    &--last{
+        @include sap-margin(medium,bottom);
+    }
+}

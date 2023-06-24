@@ -190,7 +190,8 @@
     }
 
     @include sap-media-range-width(650px, 1439px) {
-        @include sap-set-margin-top(-1rem);
+        // @include sap-set-margin-top(-1rem);
+        @include sap-margin(small,top);
         @include sap-margin(medium, end);
     }
 
@@ -222,7 +223,7 @@
     @include sap-media-range-width(600px, 1440px) {
         width: 45%;
         @include sap-margin(medium, end);
-        @include sap-margin(medium, top);
+        @include sap-margin(small, top);
     }
     @include sap-media-sm() {
         @include sap-margin(medium, top);

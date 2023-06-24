@@ -4,5 +4,13 @@
     <ui5-li icon="error">{{numberOfCheckdItems}} x Checked Baggage</ui5-li>
 </ui5-list>
 <ui5-bar design="Footer" class="button__footer">
-    <ui5-button design="Emphasized" slot="endContent"  >{{'UPGRADE' | ui5I18n}} </ui5-button>
+    <ui5-button design="Emphasized" slot="endContent" (click)="onUpgradeClick()" >{{'UPGRADE' | ui5I18n}} </ui5-button>
   </ui5-bar>
+
+  <app-upgrade-baggage
+  [isUpgradeBaggageOpen]="isBaggageUpgradeOpen"
+  [numberOfPersonalItem]="numberOfPersonalItems"
+  [numberOfCarryOnItem]="numberOfCarryOnItems"
+  [numberOfCheckedInBaggage]="numberOfCheckdItems"
+  (onUpgradeBaggageOpenChange)="onUpgradeBaggageOpenChange($event)"
+  (onQuantityChange)="onQuantityChange($event)"></app-upgrade-baggage>
