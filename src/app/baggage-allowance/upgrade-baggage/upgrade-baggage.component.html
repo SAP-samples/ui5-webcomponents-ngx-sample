@@ -15,7 +15,8 @@
     <ui5-button class="button__padding" icon="less" [disabled]="isCheckedissabled()" (click)="onCheckedInBaggageRemove()"></ui5-button>
     <ui5-button class="button__padding" [disabled]="true" >{{numberOfCheckedInBaggage}}</ui5-button>
     <ui5-button class="button__padding"  icon="add" (click)="onCheckedInBaggageAdd()"></ui5-button>
-    <ui5-label class="button__text">Checked-Bags</ui5-label>
+   <div class="test">
+    <ui5-label class="button__text">Checked-Bags</ui5-label></div> 
 </div>
 <div class="button__area--last">
     <ui5-button class="button__padding" icon="less" [disabled]="isCarryOnDissabled()" (click)="onCarryOnInItemRemove()"></ui5-button>

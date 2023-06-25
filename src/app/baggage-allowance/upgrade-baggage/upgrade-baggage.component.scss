@@ -43,10 +43,14 @@
     width:25px;
 }
 
+
+
 .button_text{
+    @include sap-margin(large,left);
+    
     display:block;
-    font-size: 20px;
-    text-align: center;
+    font-size: 50px;
+    
     padding-bottom:16px;
 }
 
@@ -56,4 +60,10 @@
     &--last{
         @include sap-margin(medium,bottom);
     }
+}
+
+.test{
+    margin:0;
+    padding:0;
+
 }
