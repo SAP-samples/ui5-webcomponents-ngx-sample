@@ -1,0 +1,40 @@
+@import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
+
+
+
+.image__center{
+    @include sap-margin(small,top);
+    @include sap-margin(medium,bottom);
+    display:block;
+    margin-left:auto;
+    margin-right: auto;
+    width:80%;
+}
+
+.center__buttons{
+    @include sap-display(flex);
+    @include sap-flex-align-items(center);
+    @include sap-flex-justify(end);
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+
+.button__left{
+    @include sap-margin(medium,left);
+    @include sap-margin(small,right);
+
+}
+
+.button__right{
+    @include sap-margin(small,left);
+    @include sap-margin(medium,right);
+    
+}
+
+.test{
+    @include sap-margin(medium,left);
+    @include sap-margin(medium,right);
+
+}

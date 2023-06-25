@@ -21,7 +21,8 @@ import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SeatsUpgradeComponent } from './seats-upgrade/seats-upgrade.component';
 import { BaggageAllowanceComponent } from './baggage-allowance/baggage-allowance.component';
-import { UpgradeBaggageComponent } from './baggage-allowance/upgrade-baggage/upgrade-baggage.component'
+import { UpgradeBaggageComponent } from './baggage-allowance/upgrade-baggage/upgrade-baggage.component';
+import { ExploreMontrealComponent } from './explore-montreal/explore-montreal.component'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UpgradeBaggageComponent } from './baggage-allowance/upgrade-baggage/upg
     TripCalendarComponent,
     SeatsUpgradeComponent,
     BaggageAllowanceComponent,
-    UpgradeBaggageComponent
+    UpgradeBaggageComponent,
+    ExploreMontrealComponent
   ],
   imports: [
     BrowserModule,

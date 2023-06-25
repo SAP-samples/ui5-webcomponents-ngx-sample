@@ -194,10 +194,11 @@
                 </div>
               </div>
               
-              <!-- Payment Details section -->
-              <fd-layout-grid>
+              <!-- Baggage section -->
+              <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+              
                   <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="7" class="remove-padding">
-                    <div class="baggage--allowance">
+                    <div class="cards__row baggage--allowance">
                       <ui5-card>
                         <ui5-card-header slot="header" [title-text]="'Baggage Allowance' | ui5I18n">
                         </ui5-card-header>
@@ -206,11 +207,21 @@
                       </ui5-card>
                     </div>
                   </div>
-              </fd-layout-grid>
+         
 
-              
-
-
+           <!-- Explore section -->
+               <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="7" class="remove-padding">
+                  <div class="cards__row">
+                    <ui5-card>
+                      <ui5-card-header 
+                      slot="header" 
+                      [title-text]="'Explore Montreal' | ui5I18n">
+                      </ui5-card-header>
+                <app-explore-montreal></app-explore-montreal>
+            </ui5-card>
+          </div>
+        </div>
+     </div>
 
             </div>
           </fd-layout-grid>
