@@ -213,7 +213,7 @@
 
 
 .baggage--allowance {
-    width: 50%;
+    // width: 50%;
 
     @include sap-media-xl() {
         @include sap-margin(medium, x);
@@ -221,7 +221,6 @@
     }
 
     @include sap-media-range-width(600px, 1440px) {
-        width: 45%;
         @include sap-margin(medium, end);
         @include sap-margin(small, top);
     }
