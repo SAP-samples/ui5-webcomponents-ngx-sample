@@ -210,6 +210,8 @@
          
 
            <!-- Explore section -->
+           <fd-layout-grid>
+            <div fdLayoutGridRow class="remove-padding">
                <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="7" class="remove-padding">
                   <div class="cards__row">
                     <ui5-card>
@@ -217,11 +219,14 @@
                       slot="header" 
                       [title-text]="'Explore Montreal' | ui5I18n">
                       </ui5-card-header>
-                <app-explore-montreal></app-explore-montreal>
-            </ui5-card>
-          </div>
-        </div>
-     </div>
+                      <app-explore-montreal></app-explore-montreal>
+                    </ui5-card>
+                 </div>
+               </div>
+              </div>
+            </fd-layout-grid>
+
+           </div>
 
             </div>
           </fd-layout-grid>

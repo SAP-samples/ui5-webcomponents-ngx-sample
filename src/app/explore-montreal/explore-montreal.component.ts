@@ -24,7 +24,7 @@ export class ExploreMontrealComponent {
   }
   }
   previousPic(){
-    if(this.currentImageIndex >0){
+    if(this.currentImageIndex > 1){
       this.currentImageIndex--;
     }
     else{
