@@ -7,10 +7,18 @@ import { Component } from '@angular/core';
 })
 export class ExploreMontrealComponent {
   
+
   picCount = 3;
   currentImageIndex = 1;
   picAddress = "assets/images/places/montreal_";
 
+  circleArr:number []= [];
+
+  constructor(){
+    for(let i=0;i<this.picCount;i++){
+      this.circleArr.push(i+1);
+    }
+  }
 
   getPic(){
     return this.picAddress+this.currentImageIndex+".png";
@@ -32,5 +40,12 @@ export class ExploreMontrealComponent {
     }
     
   }
+
+    getCircle(index:number){
+      if(index===this.currentImageIndex){
+        return "circle--on";
+      }
+      return "circle";
+    }
 
 }

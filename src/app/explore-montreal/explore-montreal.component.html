@@ -1,9 +1,16 @@
 
-          <div>
+          <div class="box">
             <img [src]="getPic()" class="image__center">
-            <div>
+            <div class="center__block">
                 <ui5-button icon="nav-back" class="button__left" (click)="previousPic()" ></ui5-button>
-                <label class="test"> 0 0 0</label>
+                <span *ngFor="let circle of circleArr">
+                    <span [class]="getCircle(circle)"></span>
+                    <!-- <div class="element__style">
+                        <div 
+                        [class]="getCircle(circle)">
+                        </div>
+                    </div> -->
+                </span>
                 <ui5-button icon="navigation-right-arrow" class="button__right" (click)="nextPic()" ></ui5-button>
             </div>
         </div>

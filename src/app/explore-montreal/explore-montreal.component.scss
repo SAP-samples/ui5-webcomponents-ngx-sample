@@ -9,6 +9,7 @@
     margin-left:auto;
     margin-right: auto;
     width:80%;
+    text-align: center;
 }
 
 .center__buttons{
@@ -33,8 +34,36 @@
     
 }
 
-.test{
-    @include sap-margin(medium,left);
-    @include sap-margin(medium,right);
-
+.box{
+    width: 400px;
+    height: 300px;
 }
+.center__block{
+    margin: 0 auto;
+    display: block;
+    width:100%;
+}
+
+.bottom__box{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.circle{
+    display: inline-block;
+    width:10px;
+    height:10px;
+    background-color: grey;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+
+    &--on{
+        background-color: rgb(0, 140, 255);
+    }
+}
+
+.element__style{
+    display: flex;
+}
+
