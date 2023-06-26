@@ -226,8 +226,15 @@
     @include sap-media-sm() {
         @include sap-margin(medium, top);
     }
-
     
 }
 
+
+.explore--montreal{
+    margin:0;
+}
+
+.margin__break{
+    margin-top:-2.5rem;
+}
 

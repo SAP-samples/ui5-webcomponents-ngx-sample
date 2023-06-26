@@ -195,7 +195,8 @@
               </div>
               
               <!-- Baggage section -->
-              <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+              <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" 
+              class="remove-padding cards__column">
               
                   <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="7" class="remove-padding">
                     <div class="cards__row baggage--allowance">
@@ -210,11 +211,16 @@
          
 
            <!-- Explore section -->
-           <fd-layout-grid>
+           
+      
+              
+  
+           
+           <fd-layout-grid class="margin__break">
             <div fdLayoutGridRow class="remove-padding">
-               <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="7" class="remove-padding">
-                  <div class="cards__row">
-                    <ui5-card>
+               <div [fdLayoutGridCol]="12" [colMd]="5" [colLg]="5" [colXl]="5" class="remove-padding">
+                  <div class="cards__row flight-status-card ">
+                    <ui5-card class="explore--montreal">
                       <ui5-card-header 
                       slot="header" 
                       [title-text]="'Explore Montreal' | ui5I18n">
