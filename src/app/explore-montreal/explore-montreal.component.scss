@@ -62,15 +62,15 @@
 .left__button--container{
     @extend .button__container;
     float:left;
-        margin-left: 3rem;
-        border: outset;
+    margin-left: 3rem;
+    border: outset;
 
 }
 .right__button--container{
     @extend .button__container;
     float:right;
-        margin-right: 3rem;
-        border: outset;
+    margin-right: 3rem;
+    border: outset;
 }
 
 .extra__margin{
