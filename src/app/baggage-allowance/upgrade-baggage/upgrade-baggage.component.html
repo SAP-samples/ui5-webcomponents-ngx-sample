@@ -1,7 +1,10 @@
 
 
 
-<ui5-dialog 
+<ui5-dialog
+ @fadeIn
+ @fadeOut 
+ *ngIf="isUpgradeBaggageOpen"
  state="Information"
  [header-text]="'Confirmation' | ui5I18n" 
  [open]="isUpgradeBaggageOpen"

@@ -1,9 +1,12 @@
 import { Component,EventEmitter,Input, Output } from '@angular/core';
 
+import { fadeIn,fadeOut } from './animations';
+
 @Component({
   selector: 'app-upgrade-baggage',
   templateUrl: './upgrade-baggage.component.html',
-  styleUrls: ['./upgrade-baggage.component.scss']
+  styleUrls: ['./upgrade-baggage.component.scss'],
+  animations: [fadeIn,fadeOut],
 })
 export class UpgradeBaggageComponent {
   @Output() onUpgradeBaggageOpenChange:EventEmitter<boolean> = new EventEmitter<boolean>();
