@@ -1,18 +1,19 @@
 
-          <div class="box">
-            <img [src]="getPic()" class="image__center">
-            <div class="center__block">
-                <ui5-button icon="nav-back" class="button__left" (click)="previousPic()" ></ui5-button>
-                <span *ngFor="let circle of circleArr">
-                    <span [class]="getCircle(circle)"></span>
-                    <!-- <div class="element__style">
-                        <div 
-                        [class]="getCircle(circle)">
-                        </div>
-                    </div> -->
+<div>
+    <img [src]="getPic()" class="image__center">
+    <div class="extra__margin">
+        <div class="center__content">
+            <div class="left__button--container">
+                <ui5-button icon="sys-back"  design="Transparent" class="button__container" (click)="previousPic()" ></ui5-button>
+            </div>
+            <div class="middle__circles">
+                <span  *ngFor="let circleIndex of circleArr">
+                    <span [ngClass]="getCircle(circleIndex)"></span>
                 </span>
-                <ui5-button icon="navigation-right-arrow" class="button__right" (click)="nextPic()" ></ui5-button>
+            </div>
+            <div class="right__button--container">
+                <ui5-button icon="initiative" design="Transparent" class="button__container" (click)="nextPic()" ></ui5-button>
             </div>
         </div>
-    
-
+    </div>
+</div>

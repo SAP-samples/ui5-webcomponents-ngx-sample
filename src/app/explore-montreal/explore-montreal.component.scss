@@ -3,51 +3,15 @@
 
 
 .image__center{
+    display:block;
+    margin: 0 auto;
     @include sap-margin(small,top);
     @include sap-margin(medium,bottom);
-    display:block;
-    margin-left:auto;
-    margin-right: auto;
     width:80%;
     text-align: center;
 }
 
-.center__buttons{
-    @include sap-display(flex);
-    @include sap-flex-align-items(center);
-    @include sap-flex-justify(end);
-    width: 100%;
-    box-sizing: border-box;
 
-}
-
-
-.button__left{
-    @include sap-margin(medium,left);
-    @include sap-margin(small,right);
-
-}
-
-.button__right{
-    @include sap-margin(small,left);
-    @include sap-margin(medium,right);
-    
-}
-
-.box{
-    width: 400px;
-    height: 300px;
-}
-.center__block{
-    margin: 0 auto;
-    display: block;
-    width:100%;
-}
-
-.bottom__box{
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .circle{
     display: inline-block;
@@ -57,13 +21,59 @@
     border-radius: 5px;
     text-align: center;
     justify-content: center;
+    margin:0 5px;
 
-    &--on{
-        background-color: rgb(0, 140, 255);
+    &--blue{
+        @extend .circle;
+        background-color: rgb(0, 145, 255);
+        width:14px;
+        height:14px;
+        border-radius: 7px;
+        vertical-align: text-bottom;
     }
 }
 
-.element__style{
-    display: flex;
+
+
+.center__content{
+    text-align:center;
+    display:block;
+    margin: 0 auto;
+    width:100%;
+}
+
+.middle__circles{
+    @include sap-margin(0.75rem,top);
+    justify-content: center;
+    text-align:center;
+    vertical-align: baseline;
+    display:inline-block;
+    margin: 0 auto;
+ 
+}
+
+
+.button__container{
+    width:36px;
+    height: 36px;
+    border-radius: 18px;
+}
+
+.left__button--container{
+    @extend .button__container;
+    float:left;
+        margin-left: 3rem;
+        border: outset;
+
+}
+.right__button--container{
+    @extend .button__container;
+    float:right;
+        margin-right: 3rem;
+        border: outset;
+}
+
+.extra__margin{
+    @include sap-margin(large,bottom);
 }
 

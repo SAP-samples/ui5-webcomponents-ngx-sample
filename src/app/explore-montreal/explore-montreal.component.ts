@@ -43,7 +43,7 @@ export class ExploreMontrealComponent {
 
     getCircle(index:number){
       if(index===this.currentImageIndex){
-        return "circle--on";
+        return "circle--blue";
       }
       return "circle";
     }
