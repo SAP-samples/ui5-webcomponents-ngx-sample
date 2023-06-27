@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import {fadeIn} from './animations'
+
 
 @Component({
   selector: 'app-explore-montreal',
   templateUrl: './explore-montreal.component.html',
-  styleUrls: ['./explore-montreal.component.scss']
+  styleUrls: ['./explore-montreal.component.scss'],
+  animations: [fadeIn],
 })
 export class ExploreMontrealComponent {
   
@@ -11,6 +14,7 @@ export class ExploreMontrealComponent {
   picCount = 3;
   currentImageIndex = 1;
   picAddress = "assets/images/places/montreal_";
+  fullAddress = this.picAddress+this.currentImageIndex+".png";
 
   circleArr:number []= [];
 
@@ -30,6 +34,7 @@ export class ExploreMontrealComponent {
   }else{
     this.currentImageIndex=1;
   }
+  this.fullAddress = this.getPic();
   }
   previousPic(){
     if(this.currentImageIndex > 1){
@@ -38,7 +43,7 @@ export class ExploreMontrealComponent {
     else{
       this.currentImageIndex=this.picCount;
     }
-    
+    this.fullAddress = this.getPic();
   }
 
     getCircle(index:number){

@@ -1,6 +1,6 @@
 
 <div>
-    <img [src]="getPic()" class="image__center">
+    <img  [src]="fullAddress" *ngFor="let address of [fullAddress]" [@fadeIn] class="image__center">
     <div class="extra__margin">
         <div class="center__content">
             <div class="left__button--container">
