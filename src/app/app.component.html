@@ -48,7 +48,7 @@
                         <span>{{arrivalMonth | ui5I18n}} {{arrivalDateTimeString}}</span>
                       </span>
                     </div>
-                    <ui5-bar *ngIf="openCheckIn" design="Footer">
+                    <ui5-bar @slideIn *ngIf="openCheckIn" design="Footer">
                       <ui5-button design="Attention" slot="endContent">{{'check-in' | ui5I18n}} </ui5-button>
                     </ui5-bar>
                   </ui5-card>
@@ -72,7 +72,7 @@
                   </div>
                   <app-seats-chart> </app-seats-chart>
                   <ui5-bar design="Footer">
-                    <ui5-button design="Emphasized" slot="endContent" (click)="openUpgrade()" >{{'UPGRADE' | ui5I18n}} </ui5-button>
+                    <ui5-button design="Emphasized" slot="endContent" (click)="openUpgrade()" [disabled]="openCheckIn">{{'UPGRADE' | ui5I18n}} </ui5-button>
                   </ui5-bar>
                 </ui5-card>
               </div>
@@ -194,7 +194,7 @@
                       </span>
                     </div>
                     <ui5-bar design="Footer">
-                      <ui5-button design="Emphasized" slot="endContent" (click)="openUpgrade()"  >{{'UPGRADE' | ui5I18n}} </ui5-button>
+                      <ui5-button design="Emphasized" slot="endContent" (click)="openUpgrade()" [disabled]="openCheckIn" >{{'UPGRADE' | ui5I18n}} </ui5-button>
                     </ui5-bar>
                   </ui5-card>
                 </div>
