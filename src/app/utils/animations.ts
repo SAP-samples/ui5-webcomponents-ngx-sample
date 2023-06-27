@@ -3,23 +3,24 @@ import{animate,style,transition,trigger,state} from '@angular/animations';
 
 export const slideIn =
   trigger('slideIn', [
-    state('*',
-      style({
-        opacity: 1,
-        transform: 'perspective(500px) translateZ(0px)',
-      })
-    ),
+
+    state('*', style({
+  
+    })),
     transition(':enter', [
       style({
-        opacity: 0,
-        transform: 'perspective(500px) translateZ(-400px)',
+        transform: 'translateY(-10%)',
+        opacity: 0
       }),
-      animate('10s ease')
+      animate('.5s ease-in-out', style({
+        transform: 'translateY(0)',
+        opacity: 1
+      }))
     ]),
     transition(':leave', [
-      animate('10s ease', style({
-        opacity: 0,
-        transform: 'perspective(500px) translateZ(-400px)',
+      animate('.5s ease-in-out', style({
+        transform: 'translateY(-10%)',
+        opacity: 0
       }))
     ])
-  ]);
+    ]);
