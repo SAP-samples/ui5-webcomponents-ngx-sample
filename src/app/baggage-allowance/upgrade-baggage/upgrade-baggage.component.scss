@@ -1,5 +1,10 @@
 @import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
 
+.center--text{
+    justify-content: center;
+    text-align: center;
+    vertical-align: bottom;
+}
 .box{
     width:550px;
     height: auto;
@@ -49,7 +54,7 @@
     text-align: center;
     padding: 0;
     border: outset 0.5px;
-    max-height: 40px;
+    max-height: 35px;
 
     
 }
@@ -64,30 +69,25 @@
 
 
 .number__text{
+    @extend .center--text;
     display: inline-block;
     width:25px;
     height:36px;
     font-size: 18px;
-    justify-content: center;
-    text-align: center;
-    vertical-align: bottom;
-
+    
 }
 
 .info__text{
+    @extend .center--text;
     margin-left: 15px;
     font-size:18px;
     margin-top: 20px;
-    justify-content: center;
-    text-align: center;
-    vertical-align: bottom; 
+    line-height: 40px;   
 }
 
-.text__height{
-    line-height: 50px;
-    .text__height--limit{
-        line-height: 40px;
-    }
+.info__text--light{
+    @extend .info__text;
+    line-height: 35px;
 }
 
 

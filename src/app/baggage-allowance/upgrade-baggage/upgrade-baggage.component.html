@@ -1,7 +1,5 @@
 
-
-
-<!-- <ui5-dialog
+<ui5-dialog
  @fadeIn
  @fadeOut 
  *ngIf="isUpgradeBaggageOpen"
@@ -26,7 +24,7 @@
                 <div class="number__text"><span>{{numberOfCheckedInBaggage}}</span></div>
                 <ui5-button class="right__side"  icon="add" design="Transparent" (click)="onCheckedInBaggageAdd()"></ui5-button>
             </div>
-            <div class="text__height--limit">
+            <div class="">
                 <span class="info__text">Checked-Bags</span>
             </div>
         </div>
@@ -36,56 +34,7 @@
                 <div class="number__text"><span>{{numberOfCarryOnItem - includedCarryOnItem }}</span></div>
                 <ui5-button class="right__side"  icon="add" design="Transparent" (click)="onCarryOnInItemAdd()"></ui5-button>
             </div>
-            <div class="text__height">
-                <span class="info__text">Additional Carry-On</span>
-            </div>
-        </div>
-    </div>   
- </div>
- <div class="dialog__footer" slot="footer">
-    <ui5-button class="extra__padding_button" design="Emphasized" (click)="confirmUpgrade()">{{'OK' | ui5I18n}}</ui5-button>
-    <ui5-button class="dialog__footer__button" (click)="exitUpgrade()">{{'CANCEL' | ui5I18n}}</ui5-button>
-</div>
-</ui5-dialog> -->
-
-
-
-<ui5-dialog
- @fadeIn
- @fadeOut 
- *ngIf="isUpgradeBaggageOpen"
- state="Information"
- [header-text]="'Confirmation' | ui5I18n" 
- [open]="isUpgradeBaggageOpen"
- [accessible-name]="'Confirmation' | ui5I18n"
- >
- <div class="box">
-    <div>
-        <ui5-label class="label__text" dissabled="true">Included</ui5-label>
-        <ui5-list separators="None" class="full-width" [indent]="false">
-           <ui5-li icon="message-success" disabled="true">{{numberOfPersonalItem}} x Personal items</ui5-li>
-           <ui5-li icon="message-success" disabled="true">{{includedCarryOnItem}} x Carry-On items</ui5-li>
-       </ui5-list>
-    </div>
-    <div>
-        <ui5-label class="content__label">Add-On</ui5-label>
-        <div class="button__area">
-            <div class="added__border left__side">
-                <ui5-button  icon="less" design="Transparent" [disabled]="isCheckedissabled()" (click)="onCheckedInBaggageRemove()"></ui5-button>
-                <div class="number__text"><span>{{numberOfCheckedInBaggage}}</span></div>
-                <ui5-button class="right__side"  icon="add" design="Transparent" (click)="onCheckedInBaggageAdd()"></ui5-button>
-            </div>
-            <div class="text__height left_side">
-                <span class="info__text">Checked-Bags</span>
-            </div>
-        </div>
-        <div class="button__area--last">
-            <div class="left__side added__border">
-                <ui5-button icon="less" design="Transparent" [disabled]="isCarryOnDissabled()" (click)="onCarryOnInItemRemove()"></ui5-button>
-                <div class="number__text"><span>{{numberOfCarryOnItem - includedCarryOnItem }}</span></div>
-                <ui5-button class="right__side"  icon="add" design="Transparent" (click)="onCarryOnInItemAdd()"></ui5-button>
-            </div>
-            <div class="text__height">
+            <div class="">
                 <span class="info__text">Additional Carry-On</span>
             </div>
         </div>
@@ -96,3 +45,6 @@
     <ui5-button class="dialog__footer__button" (click)="exitUpgrade()">{{'CANCEL' | ui5I18n}}</ui5-button>
 </div>
 </ui5-dialog>
+
+
+
