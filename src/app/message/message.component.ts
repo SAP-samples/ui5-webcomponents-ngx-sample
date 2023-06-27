@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {fadeOut,fadeIn, slideOut} from './animations'
 
 @Component({
@@ -19,7 +19,7 @@ export class MessageComponent {
     onClickMessageText:string = "You have checked-in for your flight ";
     emphasizedOnClickMessage:string = "Download boarding pass."
 
-
+    @Output() OnCheckInModeActive:EventEmitter<boolean> = new EventEmitter<boolean>;
 
 
 
@@ -33,6 +33,7 @@ export class MessageComponent {
         this.isMessageRemoved=!this.isMessageRemoved;
     }
     onMessageClick(){
+        this.OnCheckInModeActive.emit(true);
         if(this.clickedMessage === false){
         this.clickedMessage = !this.clickedMessage;
         setTimeout(() => {

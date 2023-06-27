@@ -6,7 +6,7 @@
 
     <!-- Message Strip section -->
     <section>
-      <app-message [gate]="boardingGate"></app-message>
+      <app-message [gate]="boardingGate" (OnCheckInModeActive)="onCheckInChange($event)"></app-message>
     </section>
 
     <ui5-title level="H4" class="section-title">
@@ -48,6 +48,9 @@
                         <span>{{arrivalMonth | ui5I18n}} {{arrivalDateTimeString}}</span>
                       </span>
                     </div>
+                    <ui5-bar *ngIf="openCheckIn" design="Footer">
+                      <ui5-button design="Attention" slot="endContent">{{'check-in' | ui5I18n}} </ui5-button>
+                    </ui5-bar>
                   </ui5-card>
                 </div>
               </div>
@@ -93,6 +96,9 @@
                 <span>{{arrivalMonth | ui5I18n}} {{arrivalDateTimeString}}</span>
               </span>
             </div>
+            <ui5-bar *ngIf="openCheckIn" design="Footer">
+              <ui5-button design="Attention" slot="endContent"  >{{'check-in' | ui5I18n}} </ui5-button>
+            </ui5-bar>
           </ui5-card>
         </div>
 

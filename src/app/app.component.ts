@@ -38,6 +38,11 @@ export class AppComponent {
 
   upgradeWindow:boolean = false;
 
+  //mesage
+  
+  checkInActive:boolean = false;
+  openCheckIn:boolean = false;
+
 
   constructor(private appService: AppService) { }
 
@@ -92,12 +97,22 @@ export class AppComponent {
   // child methods
 
     openUpgrade(){
-      this.upgradeWindow = !this.upgradeWindow;
+      if(this.checkInActive===false){
+        this.upgradeWindow = !this.upgradeWindow;
+      }else{
+        this.openCheckIn = true;
+      }
+      
     }
     onUpgradeChange(event:boolean){
       this.upgradeWindow = event;
 
     }
+
+      onCheckInChange(event:boolean){
+        this.checkInActive = event;
+      }
+
 
 
 }
