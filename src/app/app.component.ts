@@ -7,10 +7,13 @@ import { addZeroToTime, getDateAsDDTTTT } from './utils/utils';
 import { Trip } from './interfaces/trip';
 import { AircraftStatus } from './interfaces/aircraft-status';
 
+import {slideIn} from "./utils/animations";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [slideIn ],
 })
 export class AppComponent {
 

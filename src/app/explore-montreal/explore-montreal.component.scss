@@ -6,7 +6,7 @@
     display:block;
     margin: 0 auto;
     @include sap-margin(small,top);
-    @include sap-margin(medium,bottom);
+    @include sap-margin(1.2rem,bottom);
     width:80%;
     text-align: center;
 }
@@ -77,3 +77,6 @@
     @include sap-margin(large,bottom);
 }
 
+.rotate{
+    transform: rotate(180deg);
+}

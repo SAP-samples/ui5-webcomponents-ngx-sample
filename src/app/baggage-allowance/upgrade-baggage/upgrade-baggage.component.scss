@@ -49,6 +49,7 @@
     text-align: center;
     padding: 0;
     border: outset 0.5px;
+    max-height: 40px;
 
     
 }
@@ -79,7 +80,15 @@
     margin-top: 20px;
     justify-content: center;
     text-align: center;
-    vertical-align: bottom;
-    
+    vertical-align: bottom; 
 }
+
+.text__height{
+    line-height: 50px;
+    .text__height--limit{
+        line-height: 40px;
+    }
+}
+
+
 
