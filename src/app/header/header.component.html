@@ -11,12 +11,12 @@
   ></ui5-input>
   <ui5-shellbar-item
     icon="palette"
-    (click)="setThemeDialogOpen()"
+    (ui5Click)="setThemeDialogOpen()"
     [text]="'CHOOSE_THEME' | ui5I18n"
   ></ui5-shellbar-item>
   <ui5-shellbar-item
     icon="translate"
-    (click)="setLanguageDialogOpen()"
+    (ui5Click)="setLanguageDialogOpen()"
     [text]="'CHOOSE_LANGUAGE' | ui5I18n"
   ></ui5-shellbar-item>
 </ui5-shellbar>
@@ -41,12 +41,14 @@
     </div>
   </div>
   <div class="dialog__footer" slot="footer">
-    <ui5-button design="Emphasized" (click)="switchTheme()">{{
+    <ui5-button design="Emphasized" (ui5Click)="switchTheme()">{{
       "APPLY" | ui5I18n
     }}</ui5-button>
-    <ui5-button class="dialog__footer__button" (click)="setThemeDialogOpen()">{{
-      "CANCEL" | ui5I18n
-    }}</ui5-button>
+    <ui5-button
+      class="dialog__footer__button"
+      (ui5Click)="setThemeDialogOpen()"
+      >{{ "CANCEL" | ui5I18n }}</ui5-button
+    >
   </div>
 </ui5-dialog>
 
@@ -70,12 +72,12 @@
     </div>
   </div>
   <div class="dialog__footer" slot="footer">
-    <ui5-button design="Emphasized" (click)="switchLanguage()">{{
+    <ui5-button design="Emphasized" (ui5Click)="switchLanguage()">{{
       "APPLY" | ui5I18n
     }}</ui5-button>
     <ui5-button
       class="dialog__footer__button"
-      (click)="setLanguageDialogOpen()"
+      (ui5Click)="setLanguageDialogOpen()"
       >{{ "CANCEL" | ui5I18n }}</ui5-button
     >
   </div>

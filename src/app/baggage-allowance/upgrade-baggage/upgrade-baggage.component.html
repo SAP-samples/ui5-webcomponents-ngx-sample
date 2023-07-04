@@ -27,7 +27,7 @@
             icon="less"
             design="Transparent"
             [disabled]="isCheckedissabled()"
-            (click)="onCheckedInBaggageRemove()"
+            (ui5Click)="onCheckedInBaggageRemove()"
           ></ui5-button>
           <div class="number__text">
             <span>{{ numberOfCheckedInBaggage }}</span>
@@ -36,7 +36,7 @@
             class="right__side"
             icon="add"
             design="Transparent"
-            (click)="onCheckedInBaggageAdd()"
+            (ui5Click)="onCheckedInBaggageAdd()"
           ></ui5-button>
         </div>
         <div class="">
@@ -49,7 +49,7 @@
             icon="less"
             design="Transparent"
             [disabled]="isCarryOnDissabled()"
-            (click)="onCarryOnInItemRemove()"
+            (ui5Click)="onCarryOnInItemRemove()"
           ></ui5-button>
           <div class="number__text">
             <span>{{ numberOfCarryOnItem - includedCarryOnItem }}</span>
@@ -58,7 +58,7 @@
             class="right__side"
             icon="add"
             design="Transparent"
-            (click)="onCarryOnInItemAdd()"
+            (ui5Click)="onCarryOnInItemAdd()"
           ></ui5-button>
         </div>
         <div class="">
@@ -71,7 +71,7 @@
     <ui5-button
       class="extra__padding_button"
       design="Emphasized"
-      (click)="confirmUpgrade()"
+      (ui5Click)="confirmUpgrade()"
       >{{ "OK" | ui5I18n }}</ui5-button
     >
     <ui5-button class="dialog__footer__button" (click)="exitUpgrade()">{{
