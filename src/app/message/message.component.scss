@@ -1,15 +1,15 @@
 @import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
 
 .message {
-    @include sap-set-padding-y-equal(1.5rem);
-    width: 100%;
+  @include sap-set-padding-y-equal(1.5rem);
+  width: 100%;
 }
 
 .message__strip__emphasized {
-    @include sap-font-family(bold);
-    color: var(--sapInformativeTextColor);
+  @include sap-font-family(bold);
+  color: var(--sapInformativeTextColor);
 }
 
-.message__strip{
-    cursor: pointer;
+.message__strip {
+  cursor: pointer;
 }

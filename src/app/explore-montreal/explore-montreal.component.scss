@@ -1,82 +1,73 @@
 @import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
 
-
-
-.image__center{
-    display:block;
-    margin: 0 auto;
-    @include sap-margin(small,top);
-    @include sap-margin(1.2rem,bottom);
-    width:80%;
-    text-align: center;
+.image__center {
+  display: block;
+  margin: 0 auto;
+  @include sap-margin(small, top);
+  @include sap-margin(1.2rem, bottom);
+  width: 80%;
+  text-align: center;
 }
 
+.circle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: grey;
+  border-radius: 5px;
+  text-align: center;
+  justify-content: center;
+  margin: 0 5px;
 
-
-.circle{
-    display: inline-block;
-    width:10px;
-    height:10px;
-    background-color: grey;
-    border-radius: 5px;
-    text-align: center;
-    justify-content: center;
-    margin:0 5px;
-
-    &--blue{
-        @extend .circle;
-        background-color: rgb(0, 145, 255);
-        width:14px;
-        height:14px;
-        border-radius: 7px;
-        vertical-align: text-bottom;
-    }
+  &--blue {
+    @extend .circle;
+    background-color: rgb(0, 145, 255);
+    width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    vertical-align: text-bottom;
+  }
 }
 
-
-
-.center__content{
-    text-align:center;
-    display:block;
-    margin: 0 auto;
-    width:100%;
+.center__content {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
 }
 
-.middle__circles{
-    @include sap-margin(0.75rem,top);
-    justify-content: center;
-    text-align:center;
-    vertical-align: baseline;
-    display:inline-block;
-    margin: 0 auto;
- 
+.middle__circles {
+  @include sap-margin(0.75rem, top);
+  justify-content: center;
+  text-align: center;
+  vertical-align: baseline;
+  display: inline-block;
+  margin: 0 auto;
 }
 
-
-.button__container{
-    width:36px;
-    height: 36px;
-    border-radius: 18px;
+.button__container {
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
 }
 
-.left__button--container{
-    @extend .button__container;
-    float:left;
-    margin-left: 3rem;
-    border: outset;
-
+.left__button--container {
+  @extend .button__container;
+  float: left;
+  margin-left: 3rem;
+  border: outset;
 }
-.right__button--container{
-    @extend .button__container;
-    float:right;
-    margin-right: 3rem;
-    border: outset;
-}
-
-.extra__margin{
-    @include sap-margin(large,bottom);
+.right__button--container {
+  @extend .button__container;
+  float: right;
+  margin-right: 3rem;
+  border: outset;
 }
 
-.rotate{
-    transform: rotate(180deg);
+.extra__margin {
+  @include sap-margin(large, bottom);
+}
+
+.rotate {
+  transform: rotate(180deg);
 }

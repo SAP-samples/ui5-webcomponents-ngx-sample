@@ -1,27 +1,26 @@
 <div class="message">
-    <div *ngIf="!isMessageRemoved" @slideOut>
-        <ui5-message-strip 
-        @slideOut 
-        
-        class="message__strip" 
-        [design]="messageDesign" 
-        (click)="onMessageClick()" 
-        (close)="closeMessage()">
-        <span @fadeOut *ngIf="!clickedMessage">
-            {{"MESSAGE_PART1" | ui5I18n}}
-            {{gate}}
-            {{"MESSAGE_PART2" | ui5I18n}}
-            <span class="message__strip__emphasized">
-                {{"MESSAGE_EMPHASIZED" | ui5I18n}}
-            </span>
+  <div *ngIf="!isMessageRemoved" @slideOut>
+    <ui5-message-strip
+      @slideOut
+      class="message__strip"
+      [design]="messageDesign"
+      (click)="onMessageClick()"
+      (close)="closeMessage()"
+    >
+      <span @fadeOut *ngIf="!clickedMessage">
+        {{ "MESSAGE_PART1" | ui5I18n }}
+        {{ gate }}
+        {{ "MESSAGE_PART2" | ui5I18n }}
+        <span class="message__strip__emphasized">
+          {{ "MESSAGE_EMPHASIZED" | ui5I18n }}
         </span>
-        <span @fadeIn  *ngIf="clickedMessage">
-            {{onClickMessageText}}
-            <span class="message__strip__emphasized">
-                {{emphasizedOnClickMessage}}
-            </span>
+      </span>
+      <span @fadeIn *ngIf="clickedMessage">
+        {{ onClickMessageText }}
+        <span class="message__strip__emphasized">
+          {{ emphasizedOnClickMessage }}
         </span>
-        </ui5-message-strip>
-    </div>
+      </span>
+    </ui5-message-strip>
+  </div>
 </div>
-

@@ -1,4 +1,4 @@
 export interface LanguageValue {
-    displayName: string,
-    usageName: string,
+  displayName: string;
+  usageName: string;
 }

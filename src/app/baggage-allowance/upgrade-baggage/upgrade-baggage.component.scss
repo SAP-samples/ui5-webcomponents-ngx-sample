@@ -1,94 +1,87 @@
 @import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
 
-.center--text{
-    justify-content: center;
-    text-align: center;
-    vertical-align: bottom;
+.center--text {
+  justify-content: center;
+  text-align: center;
+  vertical-align: bottom;
 }
-.box{
-    width:550px;
-    height: auto;
+.box {
+  width: 550px;
+  height: auto;
 }
 
 .dialog__footer {
-    @include sap-display(flex);
-    @include sap-flex-align-items(center);
-    @include sap-flex-justify(end);
-    width: 100%;
-    box-sizing: border-box;
+  @include sap-display(flex);
+  @include sap-flex-align-items(center);
+  @include sap-flex-justify(end);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .dialog__footer__button {
-    @include sap-margin(tiny, begin);
+  @include sap-margin(tiny, begin);
 }
 
-.extra__padding_button{
-    padding-left: 10px;
-    padding-right: 10px;
+.extra__padding_button {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.label__text{
-    @include sap-margin(tiny,bottom);
-    font-size: 22px;
-    font-family: sans-serif;
-    font-weight: bold;
+.label__text {
+  @include sap-margin(tiny, bottom);
+  font-size: 22px;
+  font-family: sans-serif;
+  font-weight: bold;
 }
 
-.content__label{
-    display: block;
-    @include sap-margin(small,top);
-    @include sap-margin(small,bottom);
-    font-size:22px;
-    font-weight:bold;
-    color:black
+.content__label {
+  display: block;
+  @include sap-margin(small, top);
+  @include sap-margin(small, bottom);
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
 }
 
-.button__area{
-    display: flex;
-    @include sap-margin(small,bottom);
-    &--last{
-        @include sap-margin(medium,bottom);
-    }
+.button__area {
+  display: flex;
+  @include sap-margin(small, bottom);
+  &--last {
+    @include sap-margin(medium, bottom);
+  }
 }
-.added__border{
-    text-align: center;
-    padding: 0;
-    border: outset 0.5px;
-    max-height: 35px;
-
-    
+.added__border {
+  text-align: center;
+  padding: 0;
+  border: outset 0.5px;
+  max-height: 35px;
 }
 
-.left__side{
-    float:left;
+.left__side {
+  float: left;
 }
 
-.right__side{
-    float:right;
+.right__side {
+  float: right;
 }
 
-
-.number__text{
-    @extend .center--text;
-    display: inline-block;
-    width:25px;
-    height:36px;
-    font-size: 18px;
-    
+.number__text {
+  @extend .center--text;
+  display: inline-block;
+  width: 25px;
+  height: 36px;
+  font-size: 18px;
 }
 
-.info__text{
-    @extend .center--text;
-    margin-left: 15px;
-    font-size:18px;
-    margin-top: 20px;
-    line-height: 40px;   
+.info__text {
+  @extend .center--text;
+  margin-left: 15px;
+  font-size: 18px;
+  margin-top: 20px;
+  line-height: 40px;
 }
 
-.info__text--light{
-    @extend .info__text;
-    line-height: 35px;
+.info__text--light {
+  @extend .info__text;
+  line-height: 35px;
 }
-
-
-

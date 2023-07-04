@@ -1,22 +1,21 @@
-import { Component } from '@angular/core';
-import { Subject, takeUntil, zip } from 'rxjs';
+import { Component } from "@angular/core";
+import { Subject, takeUntil, zip } from "rxjs";
 
-import { AppService } from './services/services';
-import { MONTHS } from './constants/constants';
-import { addZeroToTime, getDateAsDDTTTT } from './utils/utils';
-import { Trip } from './interfaces/trip';
-import { AircraftStatus } from './interfaces/aircraft-status';
+import { AppService } from "./services/services";
+import { MONTHS } from "./constants/constants";
+import { addZeroToTime, getDateAsDDTTTT } from "./utils/utils";
+import { Trip } from "./interfaces/trip";
+import { AircraftStatus } from "./interfaces/aircraft-status";
 
-import {slideIn} from "./utils/animations";
+import { slideIn } from "./utils/animations";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  animations: [slideIn ],
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
+  animations: [slideIn],
 })
 export class AppComponent {
-
   componentUnsubscribe: Subject<boolean> = new Subject();
   isDataAvailable = false;
 
@@ -39,39 +38,66 @@ export class AppComponent {
 
   //upgrade
 
-  upgradeWindow:boolean = false;
+  upgradeWindow: boolean = false;
 
   //mesage
-  
-  checkInActive:boolean = false;
-  openCheckIn:boolean = false;
 
+  checkInActive: boolean = false;
+  openCheckIn: boolean = false;
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService) {}
 
   ngOnInit() {
-    zip([this.appService.getCurrentTrip(), this.appService.getDepartureAircraftStatus()])
+    zip([
+      this.appService.getCurrentTrip(),
+      this.appService.getDepartureAircraftStatus(),
+    ])
       .pipe(takeUntil(this.componentUnsubscribe))
       .subscribe(([trip, departureAircraftStatus]) => {
         this.trip = trip;
 
         this.departureAircraftStatus = departureAircraftStatus;
-        this.currentBoardingTime = new Date(this.departureAircraftStatus.currentBoardingTime);
-        this.estimatedBoardingTime = new Date(this.departureAircraftStatus.estimatedBoardingTime);
-        this.boardingTimeString = `${this.currentBoardingTime.getHours()}:${addZeroToTime(this.currentBoardingTime.getMinutes())}`;
-        this.boardingTimeDifference = this.getTimeDifference(this.currentBoardingTime, this.estimatedBoardingTime);
-        this.boardingTimeEarlyOrLate = this.earlyOrLate(this.currentBoardingTime, this.estimatedBoardingTime);
-        this.boardingTimeMinOrMins = this.minOrMins(this.currentBoardingTime, this.estimatedBoardingTime)
-        this.boardingLastRefresh = Math.floor((Math.abs(new Date().getTime() - new Date().getTime()) / 1000) / 60);
+        this.currentBoardingTime = new Date(
+          this.departureAircraftStatus.currentBoardingTime
+        );
+        this.estimatedBoardingTime = new Date(
+          this.departureAircraftStatus.estimatedBoardingTime
+        );
+        this.boardingTimeString = `${this.currentBoardingTime.getHours()}:${addZeroToTime(
+          this.currentBoardingTime.getMinutes()
+        )}`;
+        this.boardingTimeDifference = this.getTimeDifference(
+          this.currentBoardingTime,
+          this.estimatedBoardingTime
+        );
+        this.boardingTimeEarlyOrLate = this.earlyOrLate(
+          this.currentBoardingTime,
+          this.estimatedBoardingTime
+        );
+        this.boardingTimeMinOrMins = this.minOrMins(
+          this.currentBoardingTime,
+          this.estimatedBoardingTime
+        );
+        this.boardingLastRefresh = Math.floor(
+          Math.abs(new Date().getTime() - new Date().getTime()) / 1000 / 60
+        );
         this.boardingGate = this.departureAircraftStatus.gate;
 
-        this.departureMonth = MONTHS[new Date(this.departureAircraftStatus.departureTime).getMonth()];
-        this.departureDateTimeString = getDateAsDDTTTT(new Date(this.departureAircraftStatus.departureTime));
-        this.arrivalMonth = MONTHS[new Date(this.departureAircraftStatus.arrivalTime).getMonth()];
-        this.arrivalDateTimeString = getDateAsDDTTTT(new Date(this.departureAircraftStatus.arrivalTime));
+        this.departureMonth =
+          MONTHS[
+            new Date(this.departureAircraftStatus.departureTime).getMonth()
+          ];
+        this.departureDateTimeString = getDateAsDDTTTT(
+          new Date(this.departureAircraftStatus.departureTime)
+        );
+        this.arrivalMonth =
+          MONTHS[new Date(this.departureAircraftStatus.arrivalTime).getMonth()];
+        this.arrivalDateTimeString = getDateAsDDTTTT(
+          new Date(this.departureAircraftStatus.arrivalTime)
+        );
 
         this.isDataAvailable = true;
-      })
+      });
   }
 
   ngOnDestroy() {
@@ -81,8 +107,9 @@ export class AppComponent {
 
   earlyOrLate(actual: Date, estimated: Date): string {
     const difference = actual.getTime() - estimated.getTime();
-    const returnString = `${difference == 0 ? "ON_TIME" :
-      difference < 0 ? "EARLY" : "LATE"}`;
+    const returnString = `${
+      difference == 0 ? "ON_TIME" : difference < 0 ? "EARLY" : "LATE"
+    }`;
     return returnString;
   }
 
@@ -93,29 +120,24 @@ export class AppComponent {
 
   getTimeDifference(actual: Date, estimated: Date): string {
     const difference = actual.getTime() - estimated.getTime();
-    const minutes = Math.floor((Math.abs(difference) / 1000) / 60);
+    const minutes = Math.floor(Math.abs(difference) / 1000 / 60);
     return minutes == 0 ? "" : `${minutes}`;
   }
 
   // child methods
 
-    openUpgrade(){
-      if(this.checkInActive===false){
-        this.upgradeWindow = !this.upgradeWindow;
-      }else{
-        this.openCheckIn = true;
-      }
-      
+  openUpgrade() {
+    if (this.checkInActive === false) {
+      this.upgradeWindow = !this.upgradeWindow;
+    } else {
+      this.openCheckIn = true;
     }
-    onUpgradeChange(event:boolean){
-      this.upgradeWindow = event;
+  }
+  onUpgradeChange(event: boolean) {
+    this.upgradeWindow = event;
+  }
 
-    }
-
-      onCheckInChange(event:boolean){
-        this.checkInActive = event;
-      }
-
-
-
+  onCheckInChange(event: boolean) {
+    this.checkInActive = event;
+  }
 }

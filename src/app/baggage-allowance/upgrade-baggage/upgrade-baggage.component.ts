@@ -1,21 +1,20 @@
-import { Component,EventEmitter,Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
-import { fadeIn,fadeOut } from './animations';
+import { fadeIn, fadeOut } from "./animations";
 
 @Component({
-  selector: 'app-upgrade-baggage',
-  templateUrl: './upgrade-baggage.component.html',
-  styleUrls: ['./upgrade-baggage.component.scss'],
-  animations: [fadeIn,fadeOut],
+  selector: "app-upgrade-baggage",
+  templateUrl: "./upgrade-baggage.component.html",
+  styleUrls: ["./upgrade-baggage.component.scss"],
+  animations: [fadeIn, fadeOut],
 })
 export class UpgradeBaggageComponent {
-  @Output() onUpgradeBaggageOpenChange:EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() onQuantityChange:EventEmitter<object> = new EventEmitter<object>();
+  @Output() onUpgradeBaggageOpenChange: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
+  @Output() onQuantityChange: EventEmitter<object> = new EventEmitter<object>();
 
   @Input() isUpgradeBaggageOpen = false;
 
-
-  
   includedCarryOnItem = 1;
   @Input() numberOfPersonalItem = 1;
 
@@ -23,53 +22,45 @@ export class UpgradeBaggageComponent {
   @Input() numberOfCarryOnItem = 1;
   @Input() numberOfCheckedInBaggage = 1;
 
-
-
-  confirmUpgrade(){
+  confirmUpgrade() {
     this.isUpgradeBaggageOpen = !this.isUpgradeBaggageOpen;
     this.onQuantityChange.emit({
       checkedIn: this.numberOfCheckedInBaggage,
-      carryOn: this.numberOfCarryOnItem
-    })
+      carryOn: this.numberOfCarryOnItem,
+    });
     this.onUpgradeBaggageOpenChange.emit(this.isUpgradeBaggageOpen);
-    
   }
 
-  exitUpgrade(){
+  exitUpgrade() {
     this.isUpgradeBaggageOpen = !this.isUpgradeBaggageOpen;
     this.onUpgradeBaggageOpenChange.emit(this.isUpgradeBaggageOpen);
-    
-
   }
 
-  onCheckedInBaggageAdd(){
+  onCheckedInBaggageAdd() {
     this.numberOfCheckedInBaggage++;
   }
-  onCheckedInBaggageRemove(){
+  onCheckedInBaggageRemove() {
     this.numberOfCheckedInBaggage--;
-
   }
-  onCarryOnInItemAdd(){
+  onCarryOnInItemAdd() {
     this.numberOfCarryOnItem++;
   }
 
-  onCarryOnInItemRemove(){
+  onCarryOnInItemRemove() {
     this.numberOfCarryOnItem--;
-
   }
 
-  isCarryOnDissabled(){
-    if(this.numberOfCarryOnItem === 1){
+  isCarryOnDissabled() {
+    if (this.numberOfCarryOnItem === 1) {
       return true;
     }
     return false;
   }
 
-  isCheckedissabled(){
-    if(this.numberOfCheckedInBaggage === 1){
+  isCheckedissabled() {
+    if (this.numberOfCheckedInBaggage === 1) {
       return true;
     }
     return false;
   }
-  
 }

@@ -1,32 +1,36 @@
-<ui5-dialog 
- @fadeIn @fadeOut *ngIf="openUpgradeWindow" 
- state="Information" 
- [header-text]="'Information' | ui5I18n" 
- [open]="openUpgradeWindow"
- [accessible-name]="'Information' | ui5I18n">
+<ui5-dialog
+  @fadeIn
+  @fadeOut
+  *ngIf="openUpgradeWindow"
+  state="Information"
+  [header-text]="'Information' | ui5I18n"
+  [open]="openUpgradeWindow"
+  [accessible-name]="'Information' | ui5I18n"
+>
+  <div class="box">
+    <img class="image__center" src="./assets/images/upgrade/highfive.png" />
 
-    <div class="box" >
-        <img class="image__center" 
-        src="./assets/images/upgrade/highfive.png">
-    
-        <div class = "information__text">
-            <label >
-             Looks like you have
-             <br>
-             the best seats!
-         </label>
-        </div>
-        <div class = "contact__text">
-            <span >
-                Not the answer you were looking for?
-                <br>
-                Call us, and we'll be happy to help!
-            </span>
-        </div>
+    <div class="information__text">
+      <label>
+        Looks like you have
+        <br />
+        the best seats!
+      </label>
     </div>
-    <div class="footer" slot="footer">
-        <ui5-button class ="footer__button" design="Emphasized" (click)="exitUpgrade()">{{'OK' | ui5I18n}}</ui5-button>
+    <div class="contact__text">
+      <span>
+        Not the answer you were looking for?
+        <br />
+        Call us, and we'll be happy to help!
+      </span>
     </div>
+  </div>
+  <div class="footer" slot="footer">
+    <ui5-button
+      class="footer__button"
+      design="Emphasized"
+      (click)="exitUpgrade()"
+      >{{ "OK" | ui5I18n }}</ui5-button
+    >
+  </div>
 </ui5-dialog>
-
-

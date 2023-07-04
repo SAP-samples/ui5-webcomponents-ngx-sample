@@ -1,4 +1,4 @@
 export interface ThemeValue {
-    displayName: string,
-    usageName: string,
+  displayName: string;
+  usageName: string;
 }
