@@ -22,7 +22,7 @@ export class MessageComponent {
   onClickMessageText: string = "You have checked-in for your flight ";
   emphasizedOnClickMessage: string = "Download boarding pass.";
 
-  @Output() OnCheckInModeActive: EventEmitter<boolean> =
+  @Output() onCheckInModeActive: EventEmitter<boolean> =
     new EventEmitter<boolean>();
 
   constructor() {}
@@ -33,7 +33,7 @@ export class MessageComponent {
     this.isMessageRemoved = !this.isMessageRemoved;
   }
   onMessageClick() {
-    this.OnCheckInModeActive.emit(true);
+    this.onCheckInModeActive.emit(true);
     if (this.clickedMessage === false) {
       this.clickedMessage = !this.clickedMessage;
       setTimeout(() => {
