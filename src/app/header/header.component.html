@@ -1,4 +1,15 @@
-<ui5-shellbar id="shellbar" [primary-title]="'SHELLBAR_TITLE' | ui5I18n">
+<ui5-shellbar
+  id="shellbar"
+  [primary-title]="'SHELLBAR_TITLE' | ui5I18n"
+  [show-notifications]="true"
+  notifications-count="2"
+>
+  <ui5-avatar slot="profile">
+    <img
+      src="assets/images/passengers/janice.png"
+      [alt]="'ALT_PROFILE_PIC' | ui5I18n"
+    />
+  </ui5-avatar>
   <img
     class="logo"
     slot="logo"
