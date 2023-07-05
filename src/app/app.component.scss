@@ -210,7 +210,7 @@
   @include sap-set-margin-top(-0.5rem);
 }
 
-.baggage--allowance {
+.baggage-allowance-card {
   @include sap-media-xl() {
     @include sap-margin(medium, x);
     @include sap-margin(medium, top);
@@ -225,10 +225,12 @@
   }
 }
 
-.explore--montreal {
-  margin: 0;
+.explore-montreal-card {
+  @include sap-media-max-width(1440px) {
+    @include sap-margin(medium, top);
+  }
 }
 
-.margin__break {
-  margin-top: -2.5rem;
+.remove-margin--top {
+  @include sap-set-margin-top(-2.5rem);
 }
