@@ -1,11 +1,12 @@
 @import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
 
 .center--text {
+  // @include sap-position-inherit-center();
   justify-content: center;
   text-align: center;
   vertical-align: bottom;
 }
-.box {
+.dialog__container {
   width: 550px;
   height: auto;
 }
@@ -22,66 +23,33 @@
   @include sap-margin(tiny, begin);
 }
 
-.extra__padding_button {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.label__text {
+.container__label {
   @include sap-margin(tiny, bottom);
   font-size: 22px;
-  font-family: sans-serif;
   font-weight: bold;
+  &--mid {
+    @extend .container__label;
+    @include sap-margin(small, top);
+    @include sap-margin(small, bottom);
+    color: black;
+  }
 }
 
-.content__label {
-  display: block;
-  @include sap-margin(small, top);
-  @include sap-margin(small, bottom);
-  font-size: 22px;
-  font-weight: bold;
-  color: black;
+.button__size {
+  width: 1rem;
 }
 
-.button__area {
-  display: flex;
+.button__container {
   @include sap-margin(small, bottom);
   &--last {
     @include sap-margin(medium, bottom);
   }
 }
-.added__border {
-  text-align: center;
-  padding: 0;
-  border: outset 0.5px;
-  max-height: 35px;
-}
-
-.left__side {
-  float: left;
-}
-
-.right__side {
-  float: right;
-}
-
-.number__text {
-  @extend .center--text;
-  display: inline-block;
-  width: 25px;
-  height: 36px;
-  font-size: 18px;
-}
 
 .info__text {
   @extend .center--text;
-  margin-left: 15px;
+  @include sap-set-margin-top(20px);
+  @include sap-set-margin-begin(15px);
   font-size: 18px;
-  margin-top: 20px;
-  line-height: 40px;
-}
-
-.info__text--light {
-  @extend .info__text;
   line-height: 35px;
 }

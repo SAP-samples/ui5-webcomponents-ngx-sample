@@ -36,31 +36,21 @@ export class UpgradeBaggageComponent {
     this.onUpgradeBaggageOpenChange.emit(this.isUpgradeBaggageOpen);
   }
 
-  onCheckedInBaggageAdd() {
-    this.numberOfCheckedInBaggage++;
-  }
-  onCheckedInBaggageRemove() {
-    this.numberOfCheckedInBaggage--;
-  }
-  onCarryOnInItemAdd() {
-    this.numberOfCarryOnItem++;
-  }
-
-  onCarryOnInItemRemove() {
-    this.numberOfCarryOnItem--;
-  }
-
-  isCarryOnDissabled() {
-    if (this.numberOfCarryOnItem === 1) {
-      return true;
+  getCarryOnBaggage() {
+    if (this.numberOfCarryOnItem - this.includedCarryOnItem <= 0) {
+      return 0;
     }
-    return false;
+    return this.numberOfCarryOnItem - this.includedCarryOnItem;
   }
 
-  isCheckedissabled() {
-    if (this.numberOfCheckedInBaggage === 1) {
-      return true;
+  onCheckedInBaggageChange(value: any) {
+    console.log(value.value);
+    this.numberOfCheckedInBaggage = value.value;
+  }
+  onCarryOnItemChange(value: any) {
+    console.log(value.value);
+    if (value.value > 0) {
+      this.numberOfCarryOnItem = value.value + this.includedCarryOnItem;
     }
-    return false;
   }
 }
