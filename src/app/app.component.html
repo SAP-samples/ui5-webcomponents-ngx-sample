@@ -299,82 +299,88 @@
           </div>
 
           <fd-layout-grid>
-            <div fdLayoutGridRow class="remove-padding">
-              <!-- Your Seats section tablet and mobile-->
+            <!-- Your Seats section tablet and mobile-->
+            <div
+              [fdLayoutGridCol]="12"
+              [colMd]="6"
+              [colLg]="12"
+              [colXl]="12"
+              class="hidden-at-desktop remove-padding"
+            >
+              <div class="your-seats-card">
+                <ui5-card>
+                  <ui5-card-header
+                    slot="header"
+                    [title-text]="'YOUR_SEATS' | ui5I18n"
+                  >
+                  </ui5-card-header>
+                  <div class="your-seats-card__content__subheader">
+                    <ui5-label>
+                      {{ "FROM" | ui5I18n }} {{ trip.departureAbb }}
+                      {{ "TO" | ui5I18n }} {{ trip.arrivalAbb }}
+                    </ui5-label>
+                  </div>
+                  <div class="text-column">
+                    <span class="large-text large-text--blue">
+                      {{ trip.seats }}
+                    </span>
+                  </div>
+                  <ui5-bar design="Footer">
+                    <ui5-button
+                      design="Emphasized"
+                      slot="endContent"
+                      (ui5Click)="openUpgrade()"
+                      [disabled]="openCheckIn"
+                      >{{ "UPGRADE" | ui5I18n }}
+                    </ui5-button>
+                  </ui5-bar>
+                </ui5-card>
+              </div>
+            </div>
+
+            <div
+              [fdLayoutGridCol]="12"
+              [colMd]="12"
+              [colLg]="12"
+              [colXl]="12"
+              class="remove-padding cards__column"
+            >
+              <!-- Baggage section -->
               <div
                 [fdLayoutGridCol]="12"
                 [colMd]="6"
-                [colLg]="12"
-                [colXl]="12"
-                class="hidden-at-desktop remove-padding"
+                [colLg]="6"
+                [colXl]="7"
+                class="remove-padding"
               >
-                <div class="your-seats-card">
+                <div class="cards__row baggage--allowance">
                   <ui5-card>
                     <ui5-card-header
                       slot="header"
-                      [title-text]="'YOUR_SEATS' | ui5I18n"
+                      [title-text]="'Baggage Allowance' | ui5I18n"
                     >
                     </ui5-card-header>
-                    <div class="your-seats-card__content__subheader">
-                      <ui5-label>
-                        {{ "FROM" | ui5I18n }} {{ trip.departureAbb }}
-                        {{ "TO" | ui5I18n }} {{ trip.arrivalAbb }}
-                      </ui5-label>
-                    </div>
-                    <div class="text-column">
-                      <span class="large-text large-text--blue">
-                        {{ trip.seats }}
-                      </span>
-                    </div>
-                    <ui5-bar design="Footer">
-                      <ui5-button
-                        design="Emphasized"
-                        slot="endContent"
-                        (ui5Click)="openUpgrade()"
-                        [disabled]="openCheckIn"
-                        >{{ "UPGRADE" | ui5I18n }}
-                      </ui5-button>
-                    </ui5-bar>
+                    <app-baggage-allowance></app-baggage-allowance>
                   </ui5-card>
                 </div>
               </div>
 
-              <!-- Baggage section -->
+              <!-- Explore section -->
+
               <div
                 [fdLayoutGridCol]="12"
-                [colMd]="12"
-                [colLg]="12"
-                [colXl]="12"
+                [colMd]="6"
+                [colLg]="6"
+                [colXl]="5"
                 class="remove-padding cards__column"
               >
-                <div
-                  [fdLayoutGridCol]="12"
-                  [colMd]="6"
-                  [colLg]="6"
-                  [colXl]="7"
-                  class="remove-padding"
-                >
-                  <div class="cards__row baggage--allowance">
-                    <ui5-card>
-                      <ui5-card-header
-                        slot="header"
-                        [title-text]="'Baggage Allowance' | ui5I18n"
-                      >
-                      </ui5-card-header>
-                      <app-baggage-allowance></app-baggage-allowance>
-                    </ui5-card>
-                  </div>
-                </div>
-
-                <!-- Explore section -->
-
-                <fd-layout-grid class="margin__break">
+                <fd-layout-grid class="margin__break six">
                   <div fdLayoutGridRow class="remove-padding">
                     <div
                       [fdLayoutGridCol]="12"
-                      [colMd]="5"
-                      [colLg]="5"
-                      [colXl]="5"
+                      [colMd]="12"
+                      [colLg]="12"
+                      [colXl]="12"
                       class="remove-padding"
                     >
                       <div class="cards__row flight-status-card">
