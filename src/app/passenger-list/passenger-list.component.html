@@ -3,10 +3,18 @@
     <div *ngFor="let passenger of passengers" class="list__child">
       <div slot="imageContent">
         <ui5-avatar class="hidden-at-tablet" size="M">
-          <img [src]="getImage(passenger.name)" alt="Passenger profile photo" />
+          <img
+            [src]="getImage(passenger.name)"
+            alt="Passenger profile photo"
+            loading="lazy"
+          />
         </ui5-avatar>
         <ui5-avatar class="show-at-tablet hidden-at-mobile--larger" size="S">
-          <img [src]="getImage(passenger.name)" alt="Passenger profile photo" />
+          <img
+            [src]="getImage(passenger.name)"
+            alt="Passenger profile photo"
+            loading="lazy"
+          />
         </ui5-avatar>
       </div>
       <div class="list__child__text">
