@@ -3,25 +3,25 @@
   @fadeOut
   *ngIf="openUpgradeWindow"
   state="Information"
-  [header-text]="'Information' | ui5I18n"
+  [header-text]="'INFORMATION' | ui5I18n"
   [open]="openUpgradeWindow"
-  [accessible-name]="'Information' | ui5I18n"
+  [accessible-name]="'INFORMATION' | ui5I18n"
 >
-  <div class="box">
-    <img class="image__center" src="./assets/images/upgrade/highfive.png" />
+  <div class="dialog__container">
+    <img class="image__container" src="./assets/images/upgrade/highfive.png" />
 
     <div class="information__text">
       <span>
-        Looks like you have
+        {{ "UPGRADE_BOLD_PART1" | ui5I18n }}
         <br />
-        the best seats!
+        {{ "UPGRADE_BOLD_PART2" | ui5I18n }}
       </span>
     </div>
     <div class="contact__text">
       <span>
-        Not the answer you were looking for?
+        {{ "CALL_US_1" | ui5I18n }}
         <br />
-        Call us, and we'll be happy to help!
+        {{ "CALL_US_2" | ui5I18n }}
       </span>
     </div>
   </div>

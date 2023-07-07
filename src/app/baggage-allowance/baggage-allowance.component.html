@@ -1,11 +1,19 @@
 <ui5-list separators="None" class="full-width extra__margin">
   <ui5-li icon="message-success"
-    >{{ numberOfPersonalItems }} x Personal items</ui5-li
+    >{{ numberOfPersonalItems }}
+    x
+    {{ ("PERSONAL" | ui5I18n) + " " + ("BAGGAGE" | ui5I18n) }}</ui5-li
   >
   <ui5-li icon="message-success"
-    >{{ numberOfCarryOnItems }} x Carry-On items</ui5-li
+    >{{ numberOfCarryOnItems }}
+    x
+    {{ ("CARRY_ON" | ui5I18n) + " " + ("ITEM" | ui5I18n) }}</ui5-li
   >
-  <ui5-li icon="error">{{ numberOfCheckdItems }} x Checked Baggage</ui5-li>
+  <ui5-li icon="error"
+    >{{ numberOfCheckdItems }}
+    x
+    {{ ("CHECKED" | ui5I18n) + " " + ("ITEM" | ui5I18n) }}
+  </ui5-li>
 </ui5-list>
 <ui5-bar design="Footer" class="button__footer">
   <ui5-button

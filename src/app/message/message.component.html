@@ -16,9 +16,11 @@
         </span>
       </span>
       <span @fadeIn *ngIf="clickedMessage">
-        {{ onClickMessageText }}
+        {{ "MESSAGE_2_PART1" | ui5I18n }}
+        {{ gate }}
+        {{ "MESSAGE_2_PART2" | ui5I18n }}
         <span class="message__strip__emphasized">
-          {{ emphasizedOnClickMessage }}
+          {{ "MESSAGE_2_EMPHASIZED" | ui5I18n }}
         </span>
       </span>
     </ui5-message-strip>

@@ -3,24 +3,32 @@
   @fadeOut
   *ngIf="isUpgradeBaggageOpen"
   state="Information"
-  [header-text]="'Confirmation' | ui5I18n"
+  [header-text]="'CONFIRMATION' | ui5I18n"
   [open]="isUpgradeBaggageOpen"
-  [accessible-name]="'Confirmation' | ui5I18n"
+  [accessible-name]="'CONFIRMATION' | ui5I18n"
 >
   <div class="dialog__container">
     <div>
-      <ui5-label class="container__label" dissabled="true">Included</ui5-label>
+      <ui5-label class="container__label" dissabled="true">
+        {{ "INCLUDED" | ui5I18n }}</ui5-label
+      >
       <ui5-list separators="None" class="full-width" [indent]="false">
         <ui5-li icon="message-success" disabled="true"
-          >{{ numberOfPersonalItem }} x Personal items</ui5-li
+          >{{ numberOfPersonalItem }}
+          x
+          {{ ("PERSONAL" | ui5I18n) + " " + ("ITEM" | ui5I18n) }}</ui5-li
         >
         <ui5-li icon="message-success" disabled="true"
-          >{{ includedCarryOnItem }} x Carry-On items</ui5-li
+          >{{ includedCarryOnItem }}
+          x
+          {{ ("CARRY_ON" | ui5I18n) + " " + ("ITEM" | ui5I18n) }}</ui5-li
         >
       </ui5-list>
     </div>
     <div>
-      <ui5-label class="container__label--mid">Add-On</ui5-label>
+      <ui5-label class="container__label--mid">
+        {{ "ADD_ON" | ui5I18n }}</ui5-label
+      >
       <div>
         <div class="button__container">
           <ui5-step-input
@@ -31,7 +39,7 @@
             (change)="onCheckedInBaggageChange(valueOne)"
             #valueOne
           ></ui5-step-input>
-          <span class="info__text">Checked-Bag</span>
+          <span class="info__text">{{ "CHECKED_BAG" | ui5I18n }}</span>
         </div>
         <div class="button__container--last">
           <ui5-step-input
@@ -42,7 +50,9 @@
             (change)="onCarryOnItemChange(valueTwo)"
             #valueTwo
           ></ui5-step-input>
-          <span class="info__text">Additional Carry-On</span>
+          <span class="info__text">{{
+            ("ADDITIONAL" | ui5I18n) + " " + ("CARRY_ON" | ui5I18n)
+          }}</span>
         </div>
       </div>
     </div>
