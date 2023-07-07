@@ -1,11 +1,11 @@
 @import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
 
-.box {
+.dialog__container {
   width: 500px;
   height: 500px;
 }
 
-.image__center {
+.image__container {
   @include sap-margin(small, top);
   @include sap-margin(medium, bottom);
   display: block;
@@ -15,11 +15,11 @@
 }
 
 .information__text {
+  text-align: center;
   margin: auto;
   @include sap-font-family(bold);
   @include sap-margin(medium, bottom);
   font-size: 35px;
-  text-align: center;
 }
 
 .contact__text {
@@ -33,11 +33,4 @@
   @include sap-flex-justify(end);
   width: 100%;
   box-sizing: border-box;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.footer__button {
-  padding-left: 10px;
-  padding-right: 10px;
 }
