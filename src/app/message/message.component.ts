@@ -19,8 +19,6 @@ export class MessageComponent {
     | "Positive"
     | "Warning"
     | undefined = "Information";
-  onClickMessageText: string = "You have checked-in for your flight ";
-  emphasizedOnClickMessage: string = "Download boarding pass.";
 
   @Output() onCheckInModeActive: EventEmitter<boolean> =
     new EventEmitter<boolean>();
@@ -38,7 +36,6 @@ export class MessageComponent {
       this.clickedMessage = !this.clickedMessage;
       setTimeout(() => {
         this.messageDesign = "Positive";
-        this.onClickMessageText = this.onClickMessageText + this.gate + ". ";
       }, 200);
     }
   }
