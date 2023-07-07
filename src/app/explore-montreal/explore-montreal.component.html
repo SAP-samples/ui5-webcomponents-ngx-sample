@@ -1,33 +1,17 @@
-<div>
+<ui5-carousel arrows-placement="Navigation" [cyclic]="true">
   <img
-    [src]="fullAddress"
-    *ngFor="let address of [fullAddress]"
-    [@fadeIn]
-    class="image__center"
+    class="image__container"
+    src="assets/images/places/montreal_1.png"
+    alt="pic_1"
   />
-  <div class="extra__margin">
-    <div class="center__content">
-      <div class="left__button--container">
-        <ui5-button
-          icon="initiative"
-          design="Transparent"
-          class="button__container rotate"
-          (ui5Click)="previousPic()"
-        ></ui5-button>
-      </div>
-      <div class="middle__circles">
-        <span *ngFor="let circleIndex of circleArr">
-          <span [ngClass]="getCircle(circleIndex)"></span>
-        </span>
-      </div>
-      <div class="right__button--container">
-        <ui5-button
-          icon="initiative"
-          design="Transparent"
-          class="button__container"
-          (ui5Click)="nextPic()"
-        ></ui5-button>
-      </div>
-    </div>
-  </div>
-</div>
+  <img
+    class="image__container"
+    src="assets/images/places/montreal_2.png"
+    alt="pic_2"
+  />
+  <img
+    class="image__container"
+    src="assets/images/places/montreal_3.png"
+    alt="pic_3"
+  />
+</ui5-carousel>
