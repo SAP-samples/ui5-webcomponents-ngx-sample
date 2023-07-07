@@ -233,4 +233,10 @@
 
 .remove-margin--top {
   @include sap-set-margin-top(-2.5rem);
+  @include sap-media-range-width(600px, 1000px) {
+    @include sap-set-margin-top(-13rem);
+  }
+  @include sap-media-range-width(1000px, 1440px) {
+    @include sap-set-margin-top(-5rem);
+  }
 }
