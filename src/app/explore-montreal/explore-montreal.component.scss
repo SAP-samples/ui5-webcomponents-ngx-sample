@@ -1,11 +1,8 @@
 @import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
 
-.box {
-  //   height: 100px;
-}
-
 .image__container {
   width: 90%;
   @include sap-margin(1.35rem, top);
   @include sap-margin(2rem, bottom);
 }
+
