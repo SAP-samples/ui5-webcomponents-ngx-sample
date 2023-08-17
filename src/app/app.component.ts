@@ -34,6 +34,9 @@ export class AppComponent {
   arrivalMonth!: string;
   arrivalDateTimeString!: string;
 
+   //upgrade
+   upgradeWindow: boolean = false;
+
   constructor(private appService: AppService) { }
 
   ngOnInit() {
@@ -82,5 +85,14 @@ export class AppComponent {
     const difference = actual.getTime() - estimated.getTime();
     const minutes = Math.floor((Math.abs(difference) / 1000) / 60);
     return minutes == 0 ? "" : `${minutes}`;
+  }
+
+  // upgrade seats
+  openUpgrade() {
+    this.upgradeWindow = !this.upgradeWindow;
+  }
+
+  onUpgradeChange(event: boolean) {
+    this.upgradeWindow = event;
   }
 }
