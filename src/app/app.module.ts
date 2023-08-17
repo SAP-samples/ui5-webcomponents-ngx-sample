@@ -18,6 +18,8 @@ import { PassengerListComponent } from './passenger-list/passenger-list.componen
 import { SeatsChartComponent } from './seats-chart/seats-chart.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
+import { BaggageAllowanceComponent } from './baggage-allowance/baggage-allowance.component';
+import { UpgradeBaggageComponent } from './baggage-allowance/upgrade-baggage/upgrade-baggage.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
     PassengerListComponent,
     SeatsChartComponent,
     PaymentDetailsComponent,
-    TripCalendarComponent
+    TripCalendarComponent,
+    BaggageAllowanceComponent,
+    UpgradeBaggageComponent
   ],
   imports: [
     BrowserModule,

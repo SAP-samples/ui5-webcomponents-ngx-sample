@@ -1,0 +1,66 @@
+<ui5-dialog
+  *ngIf="isUpgradeBaggageOpen"
+  state="Information"
+  [header-text]="'CONFIRMATION' | ui5I18n"
+  [open]="isUpgradeBaggageOpen"
+  [accessible-name]="'CONFIRMATION' | ui5I18n"
+>
+  <div class="dialog__container">
+    <div>
+      <ui5-label class="container__label" dissabled="true">
+        {{ "INCLUDED" | ui5I18n }}</ui5-label
+      >
+      <ui5-list separators="None" class="full-width" [indent]="false">
+        <ui5-li icon="message-success" disabled="true"
+          >{{ numberOfPersonalItem }}
+          x
+          {{ ("PERSONAL" | ui5I18n) + " " + ("ITEM" | ui5I18n) }}</ui5-li
+        >
+        <ui5-li icon="message-success" disabled="true"
+          >{{ includedCarryOnItem }}
+          x
+          {{ ("CARRY_ON" | ui5I18n) + " " + ("ITEM" | ui5I18n) }}</ui5-li
+        >
+      </ui5-list>
+    </div>
+    <div>
+      <ui5-label class="container__label--mid">
+        {{ "ADD_ON" | ui5I18n }}</ui5-label
+      >
+      <div>
+        <div class="button__container">
+          <ui5-step-input
+            class="button__size"
+            [min]="1"
+            [max]="5"
+            [value]="numberOfCheckedInBaggage"
+            (change)="onCheckedInBaggageChange(valueOne)"
+            #valueOne
+          ></ui5-step-input>
+          <span class="info__text">{{ "CHECKED_BAG" | ui5I18n }}</span>
+        </div>
+        <div class="button__container--last">
+          <ui5-step-input
+            class="button__size"
+            [min]="0"
+            [max]="4"
+            [value]="getCarryOnBaggage()"
+            (change)="onCarryOnItemChange(valueTwo)"
+            #valueTwo
+          ></ui5-step-input>
+          <span class="info__text">{{
+            ("ADDITIONAL" | ui5I18n) + " " + ("CARRY_ON" | ui5I18n)
+          }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dialog__footer" slot="footer">
+    <ui5-button design="Emphasized" (ui5Click)="confirmUpgrade()">{{
+      "OK" | ui5I18n
+    }}</ui5-button>
+    <ui5-button class="dialog__footer__button" (click)="exitUpgrade()">{{
+      "CANCEL" | ui5I18n
+    }}</ui5-button>
+  </div>
+</ui5-dialog>

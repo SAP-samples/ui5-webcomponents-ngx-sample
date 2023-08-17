@@ -198,15 +198,35 @@
                 </div>
               </div>
 
-              <!-- Payment Details section -->
-              <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12" class="remove-padding">
-                <div class="payment-details-card">
-                  <ui5-card class="card--wide">
-                    <ui5-card-header slot="header" [title-text]="'PAYMENT_DETAILS' | ui5I18n"></ui5-card-header>
-                    <app-payment-details></app-payment-details>
+            <div
+            [fdLayoutGridCol]="12"
+            [colMd]="12"
+            [colLg]="12"
+            [colXl]="12"
+            class="remove-padding cards__column"
+          >
+            <!-- Baggage section -->
+              <div
+                [fdLayoutGridCol]="12"
+                [colMd]="6"
+                [colLg]="6"
+                [colXl]="7"
+                class="remove-padding"
+              >
+                <div class="cards__row baggage-allowance-card">
+                  <ui5-card>
+                    <ui5-card-header
+                      slot="header"
+                      [title-text]="
+                        ('BAGGAGE' | ui5I18n) + ' ' + ('ALLOWANCE' | ui5I18n)
+                      "
+                    >
+                    </ui5-card-header>
+                    <app-baggage-allowance></app-baggage-allowance>
                   </ui5-card>
                 </div>
               </div>
+          </div>
 
             </div>
           </fd-layout-grid>
