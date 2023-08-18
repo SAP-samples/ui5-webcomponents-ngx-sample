@@ -198,15 +198,35 @@
                 </div>
               </div>
 
-              <!-- Payment Details section -->
-              <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12" class="remove-padding">
-                <div class="payment-details-card">
-                  <ui5-card class="card--wide">
-                    <ui5-card-header slot="header" [title-text]="'PAYMENT_DETAILS' | ui5I18n"></ui5-card-header>
-                    <app-payment-details></app-payment-details>
+              <div
+              [fdLayoutGridCol]="12"
+              [colMd]="12"
+              [colLg]="12"
+              [colXl]="12"
+              class="remove-padding cards__column"
+            >
+
+              <!-- Explore section -->
+  
+              <div
+                [fdLayoutGridCol]="12"
+                [colMd]="6"
+                [colLg]="6"
+                [colXl]="5"
+                class="remove-padding remove-margin--top"
+              >
+                <div class="explore-montreal-card">
+                  <ui5-card>
+                    <ui5-card-header
+                      slot="header"
+                      [title-text]="'EXPLORE_MONTREAL' | ui5I18n"
+                    >
+                    </ui5-card-header>
+                    <app-explore-montreal></app-explore-montreal>
                   </ui5-card>
                 </div>
               </div>
+            </div>
 
             </div>
           </fd-layout-grid>

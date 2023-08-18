@@ -18,6 +18,7 @@ import { PassengerListComponent } from './passenger-list/passenger-list.componen
 import { SeatsChartComponent } from './seats-chart/seats-chart.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
+import { ExploreMontrealComponent } from './explore-montreal/explore-montreal.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
     PassengerListComponent,
     SeatsChartComponent,
     PaymentDetailsComponent,
-    TripCalendarComponent
+    TripCalendarComponent,
+    ExploreMontrealComponent
   ],
   imports: [
     BrowserModule,

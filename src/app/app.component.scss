@@ -208,3 +208,28 @@
     @include sap-margin(tiny, bottom);
     @include sap-set-margin-top(-0.5rem);
 }
+
+.explore-montreal-card {
+    @include sap-media-max-width(1440px) {
+      @include sap-margin(medium, top);
+    }
+  }
+
+  .remove-margin--top {
+    @include sap-set-margin-top(-2.5rem);
+    @include sap-media-range-width(100px, 600px) {
+      @include sap-set-margin-top(1rem);
+    }
+    @include sap-media-range-width(600px, 1000px) {
+      @include sap-set-margin-top(-13rem);
+    }
+    @include sap-media-range-width(1000px, 1100px) {
+      @include sap-set-margin-top(-5rem);
+      @include sap-media-range-width(1000px, 1024px) {
+        @include sap-set-margin-top(-13rem);
+      }
+    }
+    @include sap-media-range-width(1100px, 1440px) {
+      @include sap-set-margin-top(-5rem);
+    }
+}
