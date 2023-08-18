@@ -23,3 +23,8 @@
     @include sap-display(grid);
     @include sap-set-margin-begin(5%);
 }
+
+.extra__margin {
+    @include sap-margin(medium, top);
+    @include sap-margin(medium, bottom);
+  }
