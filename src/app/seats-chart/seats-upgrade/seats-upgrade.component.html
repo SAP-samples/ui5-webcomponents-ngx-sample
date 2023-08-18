@@ -1,0 +1,36 @@
+<ui5-dialog
+  *ngIf="openUpgradeWindow"
+  state="Information"
+  [header-text]="'INFORMATION' | ui5I18n"
+  [open]="openUpgradeWindow"
+  [accessible-name]="'INFORMATION' | ui5I18n"
+>
+  <div class="dialog__container">
+    <img
+      class="image__container"
+      src="./assets/images/seat-upgrade/highfive.png"
+    />
+    <div class="information__text">
+      <span>
+        {{ "UPGRADE_BOLD_PART1" | ui5I18n }}
+        <br />
+        {{ "UPGRADE_BOLD_PART2" | ui5I18n }}
+      </span>
+    </div>
+    <div class="contact__text">
+      <span>
+        {{ "CALL_US_1" | ui5I18n }}
+        <br />
+        {{ "CALL_US_2" | ui5I18n }}
+      </span>
+    </div>
+  </div>
+  <div class="footer" slot="footer">
+    <ui5-button
+      class="footer__button"
+      design="Emphasized"
+      (ui5Click)="exitUpgrade()"
+      >{{ "OK" | ui5I18n }}</ui5-button
+    >
+  </div>
+</ui5-dialog>

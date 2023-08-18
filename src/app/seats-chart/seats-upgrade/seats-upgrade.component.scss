@@ -1,0 +1,36 @@
+@import "node_modules/@fundamental-styles/common-css/dist/sass/common-mixins";
+
+.dialog__container {
+  width: 500px;
+  height: 500px;
+}
+
+.image__container {
+  @include sap-margin(small, top);
+  @include sap-margin(medium, bottom);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.information__text {
+  text-align: center;
+  margin: auto;
+  @include sap-font-family(bold);
+  @include sap-margin(medium, bottom);
+  font-size: 35px;
+}
+
+.contact__text {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.footer {
+  @include sap-display(flex);
+  @include sap-flex-align-items(center);
+  @include sap-flex-justify(end);
+  width: 100%;
+  box-sizing: border-box;
+}
