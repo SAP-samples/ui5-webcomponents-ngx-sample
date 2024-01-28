@@ -1,0 +1,25 @@
+@import 'node_modules/@fundamental-styles/common-css/dist/sass/common-mixins';
+
+.list {
+  @include sap-display(grid);
+  height: 100%;
+}
+
+.list__child {
+  @include sap-display(flex);
+  @include sap-flex(row);
+  @include sap-flex-align-items(center);
+  @include sap-flex-justify(space-around);
+  @include sap-set-margin-x(1rem, 2rem);
+  @include sap-set-margin-bottom(0.75rem);
+
+  @include sap-media-range-width(600px, 650px) {
+    @include sap-set-margin-bottom(1.5rem);
+  }
+}
+
+.list__child__text {
+  width: 100%;
+  @include sap-display(grid);
+  @include sap-set-margin-begin(5%);
+}

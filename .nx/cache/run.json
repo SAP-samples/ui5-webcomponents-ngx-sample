@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx serve mock-project",
+    "startTime": "2024-01-27T16:36:35.786Z",
+    "endTime": "2024-01-27T16:36:36.062Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "mock-project:serve:development",
+      "target": "serve",
+      "projectName": "mock-project",
+      "hash": "15735001856929723313",
+      "startTime": "2024-01-27T16:36:35.788Z",
+      "endTime": "2024-01-27T16:36:36.062Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}

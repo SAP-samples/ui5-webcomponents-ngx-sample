@@ -1,0 +1,433 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.2.8",
+  "deps": {
+    "@angular/animations": "^16.2.0",
+    "@angular/cdk": "^16.2.0",
+    "@angular/common": "^16.2.0",
+    "@angular/compiler": "^16.2.0",
+    "@angular/core": "^16.2.0",
+    "@angular/forms": "^16.2.0",
+    "@angular/platform-browser": "^16.2.0",
+    "@angular/platform-browser-dynamic": "^16.2.0",
+    "@angular/router": "^16.2.0",
+    "@fundamental-ngx/core": "^0.45.0",
+    "@fundamental-styles/common-css": "^0.28.3",
+    "@ui5/theming-ngx": "0.2.2",
+    "@ui5/webcomponents": "1.16.0",
+    "@ui5/webcomponents-base": "1.16.0",
+    "@ui5/webcomponents-fiori": "1.16.0",
+    "@ui5/webcomponents-icons": "^1.16.0",
+    "@ui5/webcomponents-icons-business-suite": "1.16.0",
+    "@ui5/webcomponents-icons-tnt": "1.16.0",
+    "@ui5/webcomponents-ngx": "0.2.2",
+    "@ui5/webcomponents-theming": "^1.16.0",
+    "fast-deep-equal": "^3.1.3",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.13.1",
+    "@angular-devkit/build-angular": "^16.2.0",
+    "@angular-devkit/core": "~16.2.0",
+    "@angular-devkit/schematics": "~16.2.0",
+    "@angular-devkit/architect": "~0.1602.12",
+    "@angular/cli": "~16.2.0",
+    "@angular/compiler-cli": "^16.2.0",
+    "@nx/angular": "17.2.8",
+    "@nx/js": "17.2.8",
+    "@nx/workspace": "17.2.8",
+    "@schematics/angular": "~16.2.0",
+    "@swc-node/register": "~1.6.7",
+    "@swc/core": "~1.3.85",
+    "@types/jasmine": "~4.3.0",
+    "angular-cli-ghpages": "^1.0.5",
+    "jasmine-core": "~4.5.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "nx": "17.2.8",
+    "prettier": "^2.6.2",
+    "typescript": "~4.9.4"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".reuse/dep5",
+        "hash": "8291761792858708886"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "12649885980860800067"
+      },
+      {
+        "file": "karma.conf.js",
+        "hash": "9656364725710720620"
+      },
+      {
+        "file": "README.md",
+        "hash": "16691223919246193912"
+      },
+      {
+        "file": "tools/generators/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "package.json",
+        "hash": "12898292246972682999"
+      },
+      {
+        "file": "CODE_OF_CONDUCT.md",
+        "hash": "7174353338186141602"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "LICENSES/Apache-2.0.txt",
+        "hash": "12649885980860800067"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "16448050467312557263"
+      },
+      {
+        "file": "libs/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "nx.json",
+        "hash": "7347409615633827121"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "12117552421756640534"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE",
+        "hash": "15922763446704180467"
+      },
+      {
+        "file": "CONTRIBUTING.md",
+        "hash": "14150866962118766446"
+      },
+      {
+        "file": "tools/tsconfig.tools.json",
+        "hash": "16088922570277978783"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "5315049095766871385"
+      }
+    ],
+    "projectFileMap": {
+      "mock-project": [
+        {
+          "file": "apps/mock-project/project.json",
+          "hash": "17044233967609434456"
+        },
+        {
+          "file": "apps/mock-project/src/app/app-routing.module.ts",
+          "hash": "15311033602264864270",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/mock-project/src/app/app.component.html",
+          "hash": "17989455096547340795"
+        },
+        {
+          "file": "apps/mock-project/src/app/app.component.scss",
+          "hash": "15180044024691562115"
+        },
+        {
+          "file": "apps/mock-project/src/app/app.component.spec.ts",
+          "hash": "5874970041602844357",
+          "deps": [
+            "npm:@angular/core/testing",
+            "npm:@angular/router/testing"
+          ]
+        },
+        {
+          "file": "apps/mock-project/src/app/app.component.ts",
+          "hash": "15431631853059255333",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/mock-project/src/app/app.module.ts",
+          "hash": "12431755395353899428",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser",
+            "npm:@angular/common/http",
+            "npm:@ui5/theming-ngx",
+            "npm:@fundamental-ngx/core/layout-grid",
+            "npm:@ui5/webcomponents-ngx",
+            "npm:@ui5/webcomponents-ngx/i18n",
+            "npm:@ui5/webcomponents-icons/dist/AllIcons.js",
+            "npm:@ui5/webcomponents/dist/features/InputElementsFormSupport.js"
+          ]
+        },
+        {
+          "file": "apps/mock-project/src/app/constants/constants.ts",
+          "hash": "6546844270428728404"
+        },
+        {
+          "file": "apps/mock-project/src/app/header/header.component.html",
+          "hash": "1391430919571415634"
+        },
+        {
+          "file": "apps/mock-project/src/app/header/header.component.scss",
+          "hash": "273894883362829249"
+        },
+        {
+          "file": "apps/mock-project/src/app/header/header.component.ts",
+          "hash": "11786848504072109014",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs",
+            "npm:@ui5/theming-ngx",
+            "npm:@ui5/webcomponents-ngx/i18n",
+            "npm:@ui5/webcomponents-ngx"
+          ]
+        },
+        {
+          "file": "apps/mock-project/src/app/interfaces/aircraft-status.ts",
+          "hash": "9594094591954286723"
+        },
+        {
+          "file": "apps/mock-project/src/app/interfaces/language-value.ts",
+          "hash": "12049385574546317168"
+        },
+        {
+          "file": "apps/mock-project/src/app/interfaces/legend-item.ts",
+          "hash": "13465878914127916388"
+        },
+        {
+          "file": "apps/mock-project/src/app/interfaces/passenger.ts",
+          "hash": "7474646971935174689"
+        },
+        {
+          "file": "apps/mock-project/src/app/interfaces/payment-details.ts",
+          "hash": "12896126522436407614"
+        },
+        {
+          "file": "apps/mock-project/src/app/interfaces/theme-value.ts",
+          "hash": "7025451802457024876"
+        },
+        {
+          "file": "apps/mock-project/src/app/interfaces/trip.ts",
+          "hash": "15127247070517215692"
+        },
+        {
+          "file": "apps/mock-project/src/app/interfaces/user.ts",
+          "hash": "1290917514017544903"
+        },
+        {
+          "file": "apps/mock-project/src/app/legend-item/legend-item.component.html",
+          "hash": "602995601651306088"
+        },
+        {
+          "file": "apps/mock-project/src/app/legend-item/legend-item.component.scss",
+          "hash": "4305593132159858615"
+        },
+        {
+          "file": "apps/mock-project/src/app/legend-item/legend-item.component.ts",
+          "hash": "10012405729250862585",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/mock-project/src/app/message/message.component.html",
+          "hash": "111478515999038767"
+        },
+        {
+          "file": "apps/mock-project/src/app/message/message.component.scss",
+          "hash": "16103323386491528559"
+        },
+        {
+          "file": "apps/mock-project/src/app/message/message.component.ts",
+          "hash": "12825191999889490787",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/mock-project/src/app/passenger-list/passenger-list.component.html",
+          "hash": "1610027950025928821"
+        },
+        {
+          "file": "apps/mock-project/src/app/passenger-list/passenger-list.component.scss",
+          "hash": "5512192654479041296"
+        },
+        {
+          "file": "apps/mock-project/src/app/passenger-list/passenger-list.component.ts",
+          "hash": "12041592311993404537",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/mock-project/src/app/payment-details/payment-details.component.html",
+          "hash": "11116351439817807113"
+        },
+        {
+          "file": "apps/mock-project/src/app/payment-details/payment-details.component.scss",
+          "hash": "7604239196335648839"
+        },
+        {
+          "file": "apps/mock-project/src/app/payment-details/payment-details.component.ts",
+          "hash": "1857064890230305997",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/mock-project/src/app/seats-chart/seats-chart.component.html",
+          "hash": "3913115580912813271"
+        },
+        {
+          "file": "apps/mock-project/src/app/seats-chart/seats-chart.component.scss",
+          "hash": "11202408284579668807"
+        },
+        {
+          "file": "apps/mock-project/src/app/seats-chart/seats-chart.component.ts",
+          "hash": "1016002339222281862",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs",
+            "npm:@ui5/webcomponents-ngx/i18n"
+          ]
+        },
+        {
+          "file": "apps/mock-project/src/app/services/services.ts",
+          "hash": "15036802203501251777",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common/http",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/mock-project/src/app/trip-calendar/trip-calendar.component.html",
+          "hash": "12899028476848293334"
+        },
+        {
+          "file": "apps/mock-project/src/app/trip-calendar/trip-calendar.component.scss",
+          "hash": "10923455710706893077"
+        },
+        {
+          "file": "apps/mock-project/src/app/trip-calendar/trip-calendar.component.ts",
+          "hash": "491650799861445127",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/mock-project/src/app/utils/utils.ts",
+          "hash": "14180458885278224775"
+        },
+        {
+          "file": "apps/mock-project/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/mock-project/src/assets/i18n/messages_bg.json",
+          "hash": "12674451075601927225"
+        },
+        {
+          "file": "apps/mock-project/src/assets/i18n/messages_en.json",
+          "hash": "12671947981275948861"
+        },
+        {
+          "file": "apps/mock-project/src/assets/i18n/messages_zh_TW.json",
+          "hash": "775880589714850485"
+        },
+        {
+          "file": "apps/mock-project/src/assets/images/SAP_logo.webp",
+          "hash": "1258860395987132144"
+        },
+        {
+          "file": "apps/mock-project/src/assets/images/avatar_small.webp",
+          "hash": "14094606333811464473"
+        },
+        {
+          "file": "apps/mock-project/src/assets/mock-data/mockCurrentTrip.json",
+          "hash": "16634033900514608866"
+        },
+        {
+          "file": "apps/mock-project/src/assets/mock-data/mockDepartureAircraftStatus.json",
+          "hash": "18408730239697107192"
+        },
+        {
+          "file": "apps/mock-project/src/assets/mock-data/mockPassengers.json",
+          "hash": "16260304483600945432"
+        },
+        {
+          "file": "apps/mock-project/src/assets/mock-data/mockPastDomesticTrips.json",
+          "hash": "15159269902458074095"
+        },
+        {
+          "file": "apps/mock-project/src/assets/mock-data/mockPastInternationalTrips.json",
+          "hash": "14000513685563774239"
+        },
+        {
+          "file": "apps/mock-project/src/assets/mock-data/mockPaymentDetails.json",
+          "hash": "16766665911340109896"
+        },
+        {
+          "file": "apps/mock-project/src/assets/mock-data/mockReturnAircraftStatus.json",
+          "hash": "11922598950152068665"
+        },
+        {
+          "file": "apps/mock-project/src/assets/mock-data/mockReturnTrip.json",
+          "hash": "15361851127174387612"
+        },
+        {
+          "file": "apps/mock-project/src/assets/mock-data/mockUser.json",
+          "hash": "6098988959330983836"
+        },
+        {
+          "file": "apps/mock-project/src/favicon.ico",
+          "hash": "10980350494130740787"
+        },
+        {
+          "file": "apps/mock-project/src/index.html",
+          "hash": "3830739033342665029"
+        },
+        {
+          "file": "apps/mock-project/src/main.ts",
+          "hash": "1509293090407484430",
+          "deps": [
+            "npm:@angular/platform-browser-dynamic",
+            "npm:@ui5/webcomponents-fiori/dist/Assets.js",
+            "npm:@ui5/webcomponents-icons/dist/AllIcons.js"
+          ]
+        },
+        {
+          "file": "apps/mock-project/src/styles.scss",
+          "hash": "3505584449139123711"
+        },
+        {
+          "file": "apps/mock-project/tsconfig.app.json",
+          "hash": "2381145790002888757"
+        },
+        {
+          "file": "apps/mock-project/tsconfig.spec.json",
+          "hash": "17700927949365452100"
+        }
+      ]
+    }
+  }
+}
