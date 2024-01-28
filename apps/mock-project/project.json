@@ -1,0 +1,104 @@
+{
+  "name": "mock-project",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "sourceRoot": "apps/mock-project/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/mock-project",
+        "index": "apps/mock-project/src/index.html",
+        "main": "apps/mock-project/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/mock-project/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/mock-project/src/favicon.ico",
+          "apps/mock-project/src/assets"
+        ],
+        "styles": [
+          "apps/mock-project/src/styles.scss",
+          "node_modules/@fundamental-styles/common-css/dist/sap-normalize.css",
+          "node_modules/@fundamental-styles/common-css/dist/sap-padding.css",
+          "node_modules/@fundamental-styles/common-css/dist/sap-typography.css",
+          "node_modules/@fundamental-styles/common-css/dist/sap-elevation.css",
+          "node_modules/@fundamental-styles/common-css/dist/sap-shadow.css",
+          "node_modules/@fundamental-styles/common-css/dist/sap-display.css",
+          "node_modules/@fundamental-styles/common-css/dist/sap-margin.css",
+          "node_modules/@fundamental-styles/common-css/dist/sap-flex.css",
+          "node_modules/@fundamental-styles/common-css/dist/sap-colors.css",
+          "node_modules/@fundamental-styles/common-css/dist/sap-border-radius.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "3mb",
+              "maximumError": "6mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "10kb",
+              "maximumError": "20kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "mock-project:build:production"
+        },
+        "development": {
+          "buildTarget": "mock-project:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "mock-project:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/mock-project/tsconfig.spec.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/mock-project/src/favicon.ico",
+          "apps/mock-project/src/assets"
+        ],
+        "styles": ["apps/mock-project/src/styles.scss"],
+        "scripts": []
+      }
+    },
+    "deploy": {
+      "executor": "angular-cli-ghpages:deploy"
+    }
+  }
+}

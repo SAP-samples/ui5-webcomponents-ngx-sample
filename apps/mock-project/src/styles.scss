@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'node_modules/@fundamental-styles/common-css/dist/sass/common-mixins';
+
+.app-content {
+  height: 100%;
+  @include sap-padding-responsive();
+  background-color: var(--sapBackgroundColor);
+}
+
+.show-at-mobile {
+  display: none;
+
+  @include sap-media-sm() {
+    display: block;
+  }
+}
+
+.show-at-tablet {
+  display: none;
+
+  @include sap-media-range-width(600px, 1023px) {
+    display: block;
+  }
+}
+
+.show-at-desktop {
+  display: none;
+
+  @include sap-media-min-width(1023px) {
+    display: block;
+  }
+}
+
+.hidden-at-mobile {
+  @include sap-media-max-width(500px) {
+    display: none;
+  }
+}
+
+.hidden-at-mobile--larger {
+  @include sap-media-range-width(600px, 650px) {
+    display: none;
+  }
+}
+
+.hidden-at-tablet {
+  @include sap-media-md() {
+    display: none;
+  }
+}
+
+.hidden-at-desktop {
+  @include sap-media-min-width(1024px) {
+    display: none;
+  }
+}

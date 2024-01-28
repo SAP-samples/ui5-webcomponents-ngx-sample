@@ -1,0 +1,60 @@
+<div *ngIf="isDataAvailable">
+  <section class="calendar">
+    <ui5-calendar
+      selection-mode="Range"
+      timestamp="1903046400"
+      format-pattern="dd/MM/yyyy"
+      date="04/04/2030"
+    >
+      <ui5-date
+        *ngFor="let date of datesBetween"
+        [value]="formatDate(date)"
+        aria-selected="true"
+      ></ui5-date>
+    </ui5-calendar>
+  </section>
+
+  <section class="calendar-card-content">
+    <div *ngFor="let legendItem of legendItems">
+      <app-legend-item
+        [icon]="legendItem.icon"
+        [color]="legendItem.color"
+        [text]="legendItem.text"
+      ></app-legend-item>
+    </div>
+    <ui5-timeline>
+      <ui5-timeline-item
+        [title-text]="'GATE_OPENS' | ui5I18n"
+        subtitle-text="{{ departureBoardingMonth | ui5I18n }} {{
+          departureBoardingDateTimeString
+        }} - {{ 'GATE' | ui5I18n }} {{ departureGate }}"
+        icon="calendar"
+      >
+      </ui5-timeline-item>
+      <ui5-timeline-item
+        [title-text]="'FLIGHT_LEAVES' | ui5I18n"
+        subtitle-text="{{ departureMonth | ui5I18n }} {{
+          departureDateTimeString
+        }} - {{ 'GATE' | ui5I18n }} {{ departureGate }}"
+        icon="travel-itinerary"
+      >
+      </ui5-timeline-item>
+      <ui5-timeline-item
+        [title-text]="'RETURN_GATE_OPENS' | ui5I18n"
+        subtitle-text="{{ returnBoardingMonth | ui5I18n }} {{
+          returnBoardingDateTimeString
+        }} - {{ 'GATE' | ui5I18n }} {{ returnGate }}"
+        icon="calendar"
+      >
+      </ui5-timeline-item>
+      <ui5-timeline-item
+        [title-text]="'RETURN_FLIGHT_LEAVES' | ui5I18n"
+        subtitle-text="{{ returnMonth | ui5I18n }} {{
+          returnDateTimeString
+        }} - {{ 'GATE' | ui5I18n }} {{ returnGate }}"
+        icon="travel-itinerary"
+      >
+      </ui5-timeline-item>
+    </ui5-timeline>
+  </section>
+</div>

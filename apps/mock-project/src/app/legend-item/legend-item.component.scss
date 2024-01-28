@@ -1,0 +1,41 @@
+@import 'node_modules/@fundamental-styles/common-css/dist/sass/common-mixins';
+
+.legend-item {
+  @include sap-margin(tiny, bottom);
+  @include sap-display(flex);
+  @include sap-flex-align-items(center);
+}
+
+.legend-item__icon {
+  width: 16px;
+  height: 16px;
+  @include sap-margin(tiny, end);
+}
+
+.legend-item__icon__border {
+  stroke-width: 50;
+}
+
+.legend-item__icon__border--selected {
+  stroke: var(--sapContent_Selected_TextColor);
+}
+
+.legend-item__icon__border--now {
+  stroke: var(--_ui5_daypicker_item_now_border_color);
+}
+
+.legend-item__icon--background {
+  color: var(--sapLegend_WorkingBackground);
+}
+
+.legend-item__icon--selected {
+  color: var(--sapContent_Selected_Background);
+}
+
+.legend-item__icon--message {
+  color: var(--sapCriticalElementColor);
+}
+
+.legend-item__icon--informative {
+  color: var(--sapInformativeColor);
+}

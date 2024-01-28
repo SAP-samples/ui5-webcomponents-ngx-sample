@@ -1,0 +1,38 @@
+@import 'node_modules/@fundamental-styles/common-css/dist/sass/common-mixins';
+
+.your-seats-card-content {
+  @include sap-set-margin-x(2rem, 1rem);
+  @include sap-margin(small, y);
+}
+
+.your-seats-card-content-layout {
+  @include sap-display(flex);
+  @include sap-flex(row);
+  @include sap-flex-justify(space-around);
+}
+
+.your-seats-card-content-layout__row {
+  @include sap-display(flex);
+  @include sap-flex(row);
+  @include sap-flex-align-items(center);
+  @include sap-flex-justify(space-around);
+  @include sap-margin(small, bottom);
+}
+
+.your-seats-card-content-layout__column {
+  @include sap-display(grid);
+  column-gap: 7%;
+}
+
+.your-seats-card-content-layout__column--wide {
+  width: 30%;
+  @include sap-set-margin-end(0.7rem);
+}
+
+.seat--available {
+  color: var(--sapCriticalElementColor);
+}
+
+.seat--yours {
+  color: var(--sapInformativeTextColor);
+}
