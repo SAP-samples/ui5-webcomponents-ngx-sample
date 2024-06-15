@@ -208,3 +208,9 @@
     @include sap-margin(tiny, bottom);
     @include sap-set-margin-top(-0.5rem);
 }
+
+.in-flight-card {
+    @include sap-media-range-width(600px, 650px) {
+      @include sap-margin(small, top);
+    }
+}
