@@ -1,6 +1,9 @@
+// Angular Modules & more...
 import { inject, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +18,8 @@ import "@ui5/webcomponents/dist/Assets.js";
 import "@ui5/webcomponents-fiori/dist/Assets.js";
 import { FundamentalNgxCoreModule } from '@fundamental-ngx/core';
 
+
+// Custom Components
 import { HeaderComponent } from './header/header.component';
 import { MessageComponent } from './message/message.component';
 import { LegendItemComponent } from './legend-item/legend-item.component';
@@ -25,6 +30,15 @@ import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideTheming, themingInitializer } from '@fundamental-ngx/core/theming';
 
+
+// FOR FD CALENDAR
+import {
+    DATE_TIME_FORMATS,
+    DatetimeAdapter,
+    FD_DATETIME_FORMATS,
+    FdDatetimeAdapter,
+    FdDatetimeModule
+  } from '@fundamental-ngx/core/datetime';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -39,8 +53,11 @@ import { provideTheming, themingInitializer } from '@fundamental-ngx/core/themin
     bootstrap: [AppComponent], 
     imports: [BrowserModule,
         AppRoutingModule,
+        CommonModule,
+        FormsModule,
+        FdDatetimeModule,
         Ui5ThemingModule.forRoot({
-            defaultTheme: "sap_horizon_hcb"
+            defaultTheme: "sap_horizon"
         }),
         Ui5WebcomponentsModule,
         Ui5WebcomponentsIconsModule.forRoot([

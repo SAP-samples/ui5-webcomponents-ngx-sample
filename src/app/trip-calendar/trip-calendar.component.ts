@@ -7,12 +7,18 @@ import { MONTHS } from '../constants/constants';
 import { getDatesArray, getDateAsddMMyyyy, getDateAsDDTTTT } from '../utils/utils';
 import { AircraftStatus } from '../interfaces/aircraft-status';
 
+import { DateRange } from '@fundamental-ngx/core';
+import { FdDate } from '@fundamental-ngx/core';
+
 @Component({
     selector: 'app-trip-calendar',
     templateUrl: './trip-calendar.component.html',
     styleUrls: ['./trip-calendar.component.scss']
 })
 export class TripCalendarComponent {
+    start: FdDate = new FdDate(2024, 10, 5);
+    end: FdDate = new FdDate(2024,10,10);
+    rangeDate = new DateRange(this.start, this.end);
 
     componentUnsubscribe: Subject<boolean> = new Subject();
     isDataAvailable = false;

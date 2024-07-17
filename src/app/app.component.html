@@ -42,7 +42,8 @@
                         <ui5-label>{{'DEPARTURE' | ui5I18n}}</ui5-label>
                         <span>{{departureMonth | ui5I18n}} {{departureDateTimeString}} </span>
                       </span>
-                      <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar>
+                      <!-- <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar> -->
+                       <fd-avatar glyph="journey-change" [colorAccent]="10" size="s" [circle]="true"/>
                       <span class="flight-details__content__text">
                         <ui5-label>{{'ARRIVAL' | ui5I18n}}</ui5-label>
                         <span>{{arrivalMonth | ui5I18n}} {{arrivalDateTimeString}}</span>
@@ -80,7 +81,7 @@
         <!-- Flight Details section tablet and mobile-->
         <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="show-at-tablet remove-padding">
           <ui5-card class="">
-            <ui5-card-header slot="header" [titleText]="'FLIGHT_DETAILS' | ui5I18n" attr.status="1 of 2">
+            <ui5-card-header slot="header" [titleText]="'FLIGHT_DETAILS' | ui5I18n" status="1 of 2">
             </ui5-card-header>
             <div class="flight-details__content">
               <span class="flight-details__content__text flight-details__content__text--left">
@@ -121,9 +122,9 @@
                   <fd-layout-grid>
                     <div fdLayoutGridRow class="remove-padding">
                       <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
-                        <div class="flight-attr.status-card">
+                        <div class="flight-status-card">
                           <ui5-card>
-                            <ui5-card-header slot="header" [titleText]="'YOUR_FLIGHT_attr.status' | ui5I18n"
+                            <ui5-card-header slot="header" [titleText]="'YOUR_FLIGHT_STATUS' | ui5I18n"
                               [subtitleText]="'BOARDING_AT' | ui5I18n">
                             </ui5-card-header>
                             <div class="text-column text-column--tall">
@@ -146,21 +147,14 @@
                     </div>
                   </fd-layout-grid>
 
-                  <!-- Daily Flight attr.status section -->
+                  <!-- Daily Flight status section -->
                   <fd-layout-grid>
                     <div fdLayoutGridRow class="remove-padding">
                       <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
                         <ui5-card class="card--bottom daily-flight-card">
-                          <ui5-card-header slot="header" [titleText]="'DAILY_FLIGHT_attr.status' | ui5I18n">
+                          <ui5-card-header slot="header" [titleText]="'DAILY_FLIGHT_STATUS' | ui5I18n">
                           </ui5-card-header>
                           <div class="progress-bars">
-                            <!-- <ui5-progress-indicator [displayValue]="'LATE_UPPERCASE' | ui5I18n" value-state="Error"
-                              [value]="20"></ui5-progress-indicator>
-                            <ui5-progress-indicator [displayValue]="'EARLY_UPPERCASE' | ui5I18n" value-state="Warning"
-                              [value]="15"></ui5-progress-indicator>
-                            <ui5-progress-indicator class="progress-bars__last" [displayValue]="'ON_TIME' | ui5I18n"
-                              value-state="Success" [value]="60"></ui5-progress-indicator>
-                               -->
                               <fd-progress-indicator [valueText]="'LATE_UPPERCASE' | ui5I18n" state="negative" [valueNow]="20"></fd-progress-indicator>
                               <fd-progress-indicator [valueText]="'EARLY_UPPERCASE' | ui5I18n"  state="critical" [valueNow]="15"></fd-progress-indicator>
                               <fd-progress-indicator class="progress-bars__last" [valueText]="'ON_TIME' | ui5I18n" state="positive" [valueNow]="60"></fd-progress-indicator>

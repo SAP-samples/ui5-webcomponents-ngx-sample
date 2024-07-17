@@ -1,8 +1,9 @@
 <div *ngIf="isDataAvailable">
     <section class="calendar">
-        <ui5-calendar selection-mode="Range" timestamp="1903046400" format-pattern="dd/MM/yyyy" date="04/04/2030">
+        <!-- <ui5-calendar selection-mode="Range" timestamp="1903046400" format-pattern="dd/MM/yyyy" date="04/04/2030">
             <ui5-date *ngFor="let date of datesBetween" [value]="formatDate(date)" aria-selected="true"></ui5-date>
-        </ui5-calendar>
+        </ui5-calendar> -->
+        <fd-calendar [rangeHoverEffect]="true" calType="range" [(ngModel)]="rangeDate"/>
     </section>
 
     <section class="calendar-card-content">

@@ -61,7 +61,7 @@ export class HeaderComponent {
         this.i18nService.setLanguage(this.selectedLanguage ? this.selectedLanguage : 'en');
         this.currentLanguage = this.selectedLanguage;
         this.setLanguageDialogOpen();
-        // this.shellbarMenuClicked();
+        this.shellbarMenuClicked();
     }
 
     setLanguageDialogOpen() {
@@ -76,12 +76,12 @@ export class HeaderComponent {
     }
 
     switchTheme() {
-        // this.ui5ThemingService.setTheme('ui-5-webcomponents-fiori-theming-service').pipe(takeUntil(this.componentUnsubscribe)).subscribe();
+        // this.ui5ThemingService.setTheme('ui-5-webcomponents-fiori-theming-service');
         setTheme(this.selectedTheme);
         this.currentTheme = this.selectedTheme;
         this.setThemeDialogOpen();
-        this.ui5ThemingService.getAvailableThemes().subscribe((data)=>console.log(data))
-        // this.shellbarMenuClicked();
+        // this.ui5ThemingService.getAvailableThemes().subscribe((data)=>console.log(data))
+        this.shellbarMenuClicked();
     }
 
     setThemeDialogOpen() {
@@ -95,8 +95,8 @@ export class HeaderComponent {
         }
     }
 
-    // shellbarMenuClicked() {
-    //     var element = document.getElementById('shellbar') as ShellBarComponent;
-    //     if (element.closeOverflow) element.closeOverflow();
-    // }
+    shellbarMenuClicked() {
+        var element = document.getElementById('shellbar') as unknown as ShellBarComponent;
+        if (element && (element as any).closeOverflow) (element as any).closeOverflow();
+    }
 }
