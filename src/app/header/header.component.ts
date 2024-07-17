@@ -9,6 +9,9 @@ import { THEMES, LANGUAGES } from '../constants/constants';
 import { User } from '../interfaces/user';
 import { Trip } from '../interfaces/trip';
 
+
+import { setTheme } from "@ui5/webcomponents-base/dist/config/Theme.js";
+
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -58,7 +61,7 @@ export class HeaderComponent {
         this.i18nService.setLanguage(this.selectedLanguage ? this.selectedLanguage : 'en');
         this.currentLanguage = this.selectedLanguage;
         this.setLanguageDialogOpen();
-        this.shellbarMenuClicked();
+        // this.shellbarMenuClicked();
     }
 
     setLanguageDialogOpen() {
@@ -73,10 +76,12 @@ export class HeaderComponent {
     }
 
     switchTheme() {
-        this.ui5ThemingService.setTheme(this.selectedTheme).pipe(takeUntil(this.componentUnsubscribe)).subscribe();
+        // this.ui5ThemingService.setTheme('ui-5-webcomponents-fiori-theming-service').pipe(takeUntil(this.componentUnsubscribe)).subscribe();
+        setTheme(this.selectedTheme);
         this.currentTheme = this.selectedTheme;
         this.setThemeDialogOpen();
-        this.shellbarMenuClicked();
+        this.ui5ThemingService.getAvailableThemes().subscribe((data)=>console.log(data))
+        // this.shellbarMenuClicked();
     }
 
     setThemeDialogOpen() {
@@ -90,8 +95,8 @@ export class HeaderComponent {
         }
     }
 
-    shellbarMenuClicked() {
-        var element = document.getElementById('shellbar') as ShellBarComponent;
-        if (element.closeOverflow) element.closeOverflow();
-    }
+    // shellbarMenuClicked() {
+    //     var element = document.getElementById('shellbar') as ShellBarComponent;
+    //     if (element.closeOverflow) element.closeOverflow();
+    // }
 }

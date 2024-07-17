@@ -11,20 +11,20 @@
                 [text]="legendItem.text"></app-legend-item>
         </div>
         <ui5-timeline>
-            <ui5-timeline-item [title-text]="'GATE_OPENS' | ui5I18n"
-                subtitle-text="{{departureBoardingMonth | ui5I18n}} {{departureBoardingDateTimeString}} - {{'GATE' | ui5I18n}} {{departureGate}}"
+            <ui5-timeline-item [titleText]="'GATE_OPENS' | ui5I18n"
+                subtitleText="{{departureBoardingMonth | ui5I18n}} {{departureBoardingDateTimeString}} - {{'GATE' | ui5I18n}} {{departureGate}}"
                 icon="calendar">
             </ui5-timeline-item>
-            <ui5-timeline-item [title-text]="'FLIGHT_LEAVES' | ui5I18n"
-                subtitle-text="{{departureMonth | ui5I18n}} {{departureDateTimeString}} - {{'GATE' | ui5I18n}} {{departureGate}}"
+            <ui5-timeline-item [titleText]="'FLIGHT_LEAVES' | ui5I18n"
+                subtitleText="{{departureMonth | ui5I18n}} {{departureDateTimeString}} - {{'GATE' | ui5I18n}} {{departureGate}}"
                 icon="travel-itinerary">
             </ui5-timeline-item>
-            <ui5-timeline-item [title-text]="'RETURN_GATE_OPENS' | ui5I18n"
-                subtitle-text="{{returnBoardingMonth | ui5I18n}} {{returnBoardingDateTimeString}} - {{'GATE' | ui5I18n}} {{returnGate}}"
+            <ui5-timeline-item [titleText]="'RETURN_GATE_OPENS' | ui5I18n"
+                subtitleText="{{returnBoardingMonth | ui5I18n}} {{returnBoardingDateTimeString}} - {{'GATE' | ui5I18n}} {{returnGate}}"
                 icon="calendar">
             </ui5-timeline-item>
-            <ui5-timeline-item [title-text]="'RETURN_FLIGHT_LEAVES' | ui5I18n"
-                subtitle-text="{{returnMonth | ui5I18n}} {{returnDateTimeString}} - {{'GATE' | ui5I18n}} {{returnGate}}"
+            <ui5-timeline-item [titleText]="'RETURN_FLIGHT_LEAVES' | ui5I18n"
+                subtitleText="{{returnMonth | ui5I18n}} {{returnDateTimeString}} - {{'GATE' | ui5I18n}} {{returnGate}}"
                 icon="travel-itinerary">
             </ui5-timeline-item>
         </ui5-timeline>

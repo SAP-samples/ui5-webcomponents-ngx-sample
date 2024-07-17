@@ -1,6 +1,6 @@
 import { inject, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,8 +8,12 @@ import { Ui5ThemingModule } from '@ui5/theming-ngx';
 import { LayoutGridModule } from '@fundamental-ngx/core/layout-grid';
 import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { Ui5I18nModule } from '@ui5/webcomponents-ngx/i18n';
-import '@ui5/webcomponents-icons/dist/AllIcons.js';
-import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
+// import '@ui5/webcomponents-icons/dist/AllIcons.js';x
+// import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
+import {Ui5WebcomponentsIconsModule} from '@ui5/webcomponents-ngx';
+import "@ui5/webcomponents/dist/Assets.js";
+import "@ui5/webcomponents-fiori/dist/Assets.js";
+import { FundamentalNgxCoreModule } from '@fundamental-ngx/core';
 
 import { HeaderComponent } from './header/header.component';
 import { MessageComponent } from './message/message.component';
@@ -18,45 +22,54 @@ import { PassengerListComponent } from './passenger-list/passenger-list.componen
 import { SeatsChartComponent } from './seats-chart/seats-chart.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideTheming, themingInitializer } from '@fundamental-ngx/core/theming';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    MessageComponent,
-    LegendItemComponent,
-    PassengerListComponent,
-    SeatsChartComponent,
-    PaymentDetailsComponent,
-    TripCalendarComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    Ui5ThemingModule.forRoot({
-      defaultTheme: "sap_horizon"
-    }),
-    Ui5WebcomponentsModule,
-    LayoutGridModule,
-    HttpClientModule,
-    Ui5I18nModule.forRoot({
-      language: 'en',
-      fetchDefaultLanguage: true,
-      bundle: {
-        name: 'i18n_bundle',
-        translations: {
-          useFactory: () => {
-            const http = inject(HttpClient);
-            return {
-              en: http.get('assets/i18n/messages_en.json', { responseType: 'json' }),
-              zh_TW: http.get('assets/i18n/messages_zh_TW.json', { responseType: 'json' }),
-              bg: http.get('assets/i18n/messages_bg.json', { responseType: 'json' })
+
+@NgModule({ declarations: [
+        AppComponent,
+        HeaderComponent,
+        MessageComponent,
+        LegendItemComponent,
+        PassengerListComponent,
+        SeatsChartComponent,
+        PaymentDetailsComponent,
+        TripCalendarComponent
+    ],
+    bootstrap: [AppComponent], 
+    imports: [BrowserModule,
+        AppRoutingModule,
+        Ui5ThemingModule.forRoot({
+            defaultTheme: "sap_horizon_hcb"
+        }),
+        Ui5WebcomponentsModule,
+        Ui5WebcomponentsIconsModule.forRoot([
+            "sap-icons",
+            "tnt-icons",
+            "business-suite-icons"
+          ]),
+        LayoutGridModule,
+        Ui5I18nModule.forRoot({
+            language: 'en',
+            fetchDefaultLanguage: true,
+            bundle: {
+                name: 'i18n_bundle',
+                translations: {
+                    useFactory: () => {
+                        const http = inject(HttpClient);
+                        return {
+                            en: http.get('assets/i18n/messages_en.json', { responseType: 'json' }),
+                            zh_TW: http.get('assets/i18n/messages_zh_TW.json', { responseType: 'json' }),
+                            bg: http.get('assets/i18n/messages_bg.json', { responseType: 'json' })
+                        };
+                    }
+                }
             }
-          }
-        }
-      }
-    })
-  ],
-  bootstrap: [AppComponent]
-})
+        }),
+        BrowserAnimationsModule,
+        FundamentalNgxCoreModule
+    ]
+        
+        
+        , providers: [provideHttpClient(withInterceptorsFromDi()), provideTheming({ defaultTheme: 'sap_horizon', changeThemeOnQueryParamChange: false }), themingInitializer()] })
 export class AppModule { }

@@ -27,7 +27,17 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/css_variables.css",
+                "input": "./node_modules/@sap-theming/theming-base-content/content/Base/baseLib/",
+                "output": "./assets/theming-base/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/fundamental-styles/dist/theming/",
+                "output": "./assets/fundamental-styles-theming/"
+              }
             ],
             "styles": [
               "src/styles.scss",
@@ -40,9 +50,22 @@
               "node_modules/@fundamental-styles/common-css/dist/sap-margin.css",
               "node_modules/@fundamental-styles/common-css/dist/sap-flex.css",
               "node_modules/@fundamental-styles/common-css/dist/sap-colors.css",
-              "node_modules/@fundamental-styles/common-css/dist/sap-border-radius.css"
+              "node_modules/@fundamental-styles/common-css/dist/sap-border-radius.css",
+              "./node_modules/@fundamental-ngx/core/styles/fundamental-ngx-core.css",
+              "./node_modules/fundamental-styles/dist/fonts/sap_fonts.css",
+              {
+                "input": "./node_modules/fundamental-styles/dist/fonts/sap_fiori_3_fonts.css",
+                "inject": false,
+                "bundleName": "sap_fiori_3_fonts"
+              },
+              {
+                "input": "./node_modules/fundamental-styles/dist/fonts/sap_horizon_fonts.css",
+                "inject": false,
+                "bundleName": "sap_horizon_fonts"
+              }
             ],
-            "scripts": []
+            "scripts": [],
+            "outputHashing": "all"
           },
           "configurations": {
             "production": {
@@ -75,10 +98,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "mock-project:build:production"
+              "buildTarget": "mock-project:build:production"
             },
             "development": {
-              "browserTarget": "mock-project:build:development"
+              "buildTarget": "mock-project:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +109,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mock-project:build"
+            "buildTarget": "mock-project:build"
           }
         },
         "test": {

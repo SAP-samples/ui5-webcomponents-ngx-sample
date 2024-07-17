@@ -1,4 +1,4 @@
-<ui5-shellbar id="shellbar" [primary-title]="'SHELLBAR_TITLE' | ui5I18n" [show-notifications]="true"
+<ui5-shellbar id="shellbar" [primaryTitle]="'SHELLBAR_TITLE' | ui5I18n" [showNotifications]="true"
     notifications-count="2">
     <ui5-avatar slot="profile">
         <img src="assets/images/avatar_small.webp" [alt]="'ALT_PROFILE_PIC' | ui5I18n" />
@@ -12,8 +12,8 @@
 </ui5-shellbar>
 
 <!-- Theme select dialog -->
-<ui5-dialog [header-text]="'CHOOSE_THEME' | ui5I18n" [open]="themeDialogOpen"
-    [accessible-name]="'CHOOSE_THEME' | ui5I18n">
+<ui5-dialog [headerText]="'CHOOSE_THEME' | ui5I18n" [open]="themeDialogOpen"
+    [accessibleName]="'CHOOSE_THEME' | ui5I18n">
     <div id="themeRadioGroup">
         <div *ngFor="let theme of themes">
             <ui5-radio-button #themeRadioValue [text]="theme.displayName" [value]="theme.usageName" value-state="None"
@@ -28,8 +28,8 @@
 </ui5-dialog>
 
 <!-- Language select dialog -->
-<ui5-dialog [header-text]="'CHOOSE_LANGUAGE' | ui5I18n" [open]="languageDialogOpen"
-    [accessible-name]="'CHOOSE_LANGUAGE' | ui5I18n">
+<ui5-dialog [headerText]="'CHOOSE_LANGUAGE' | ui5I18n" [open]="languageDialogOpen"
+    [accessibleName]="'CHOOSE_LANGUAGE' | ui5I18n">
     <div id="languageRadioGroup">
         <div *ngFor="let language of languages">
             <ui5-radio-button #languageRadioValue [text]="language.displayName" [value]="language.usageName"
@@ -50,7 +50,7 @@
 </ui5-title>
 
 <ui5-tabcontainer class="show-at-desktop hidden-at-tablet hidden-at-mobile" header-background-design="Solid"
-    content-background-design="Solid" [fixed]="true" [collapsed]="true">
+    content-background-design="Solid" [attr.fixed]="true" [collapsed]="true">
     <ui5-tab [text]="'FLIGHT_INFO' | ui5I18n"></ui5-tab>
     <ui5-tab [text]="'PLAN_A_TRIP' | ui5I18n"></ui5-tab>
     <ui5-tab [text]="'PAST_TRIPS' | ui5I18n"></ui5-tab>
@@ -58,8 +58,8 @@
     <ui5-tab [text]="'CONTACTS' | ui5I18n"></ui5-tab>
 </ui5-tabcontainer>
 
-<ui5-tabcontainer class="hidden-at-desktop show-at-tablet hidden-at-mobile" [collapsed]=" true" [fixed]="true">
-    <ui5-tab [text]="'FLIGHT_INFO' | ui5I18n"></ui5-tab>
+<ui5-tabcontainer class="hidden-at-desktop show-at-tablet hidden-at-mobile" [collapsed]=" true" [attr.fixed]="true">
+    <!-- <ui5-tab [text]="'FLIGHT_INFO' | ui5I18n"></ui5-tab>
     <ui5-tab [text]="'PLAN_A_TRIP' | ui5I18n">
         <ui5-tab slot="subTabs" [text]="'FIND_A_DESTINATION' | ui5I18n"></ui5-tab>
     </ui5-tab>
@@ -73,11 +73,11 @@
                 text="{{trip.departureAbb}} - {{trip.arrivalAbb}}">
             </ui5-tab>
         </ui5-tab>
-    </ui5-tab>
+    </ui5-tab> -->
 </ui5-tabcontainer>
 
 <ui5-tabcontainer class="hidden-at-desktop hidden-at-tablet show-at-mobile" header-background-design="Solid"
-    content-background-design="Solid" [fixed]="true" [collapsed]="true">
+    content-background-design="Solid" [attr.fixed]="true" [collapsed]="true">
     <ui5-tab [text]="'FLIGHT_INFO' | ui5I18n"></ui5-tab>
     <ui5-tab [text]="'PLAN_A_TRIP' | ui5I18n"></ui5-tab>
 </ui5-tabcontainer>
