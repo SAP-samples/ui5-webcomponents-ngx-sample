@@ -65,5 +65,9 @@ export const LANGUAGES: LanguageValue[] = [
     {
         displayName: "Български",
         usageName: "bg"
+    },
+    {
+        displayName: "العربية",
+        usageName: "ar"
     }
 ];

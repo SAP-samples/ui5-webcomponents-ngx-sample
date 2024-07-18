@@ -44,9 +44,13 @@ export class TripCalendarComponent {
     returnGate!: string;
 
     legendItems: LegendItem[] = [
-        { icon: "color-fill", color: "legend-item__icon--background legend-item__icon__border legend-item__icon__border--now", text: "TODAY" },
-        { icon: "color-fill", color: "legend-item__icon--selected legend-item__icon__border legend-item__icon__border--selected", text: "TRIP_DATES" }
+        { id: 1, icon: "color-fill", color: "legend-item__icon--background legend-item__icon__border legend-item__icon__border--now", text: "TODAY" },
+        { id: 2, icon: "color-fill", color: "legend-item__icon--selected legend-item__icon__border legend-item__icon__border--selected", text: "TRIP_DATES" }
     ];
+
+    trackByLegendItem(index: number, item: LegendItem): any{
+        return item.id;
+    }
 
     constructor(private appService: AppService) { }
 

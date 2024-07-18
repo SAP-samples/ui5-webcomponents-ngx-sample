@@ -1,6 +1,6 @@
 // Angular Modules & more...
 import { inject, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -32,13 +32,7 @@ import { provideTheming, themingInitializer } from '@fundamental-ngx/core/themin
 
 
 // FOR FD CALENDAR
-import {
-    DATE_TIME_FORMATS,
-    DatetimeAdapter,
-    FD_DATETIME_FORMATS,
-    FdDatetimeAdapter,
-    FdDatetimeModule
-  } from '@fundamental-ngx/core/datetime';
+import { FdDatetimeModule } from '@fundamental-ngx/core/datetime';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -56,9 +50,7 @@ import {
         CommonModule,
         FormsModule,
         FdDatetimeModule,
-        Ui5ThemingModule.forRoot({
-            defaultTheme: "sap_horizon"
-        }),
+        Ui5ThemingModule.forRoot({defaultTheme: 'sap_horizon'}),
         Ui5WebcomponentsModule,
         Ui5WebcomponentsIconsModule.forRoot([
             "sap-icons",
@@ -77,7 +69,8 @@ import {
                         return {
                             en: http.get('assets/i18n/messages_en.json', { responseType: 'json' }),
                             zh_TW: http.get('assets/i18n/messages_zh_TW.json', { responseType: 'json' }),
-                            bg: http.get('assets/i18n/messages_bg.json', { responseType: 'json' })
+                            bg: http.get('assets/i18n/messages_bg.json', { responseType: 'json' }),
+                            ar: http.get('assets/i18n/messages_ar.json', { responseType: 'json' })
                         };
                     }
                 }
@@ -88,5 +81,12 @@ import {
     ]
         
         
-        , providers: [provideHttpClient(withInterceptorsFromDi()), provideTheming({ defaultTheme: 'sap_horizon', changeThemeOnQueryParamChange: false }), themingInitializer()] })
+        , providers: [provideHttpClient(withInterceptorsFromDi()), 
+                    provideTheming({ defaultTheme: 'sap_horizon', changeThemeOnQueryParamChange: false }), 
+                    themingInitializer(), 
+                ] 
+            
+})
+
+
 export class AppModule { }

@@ -9,7 +9,6 @@ import { THEMES, LANGUAGES } from '../constants/constants';
 import { User } from '../interfaces/user';
 import { Trip } from '../interfaces/trip';
 
-
 import { setTheme } from "@ui5/webcomponents-base/dist/config/Theme.js";
 
 @Component({
@@ -18,7 +17,7 @@ import { setTheme } from "@ui5/webcomponents-base/dist/config/Theme.js";
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-
+    
     componentUnsubscribe: Subject<boolean> = new Subject();
     isDataAvailable = false;
 
@@ -32,6 +31,7 @@ export class HeaderComponent {
     currentLanguage = this.i18nService.currentLanguage();
     languageDialogOpen = false;
     languages = LANGUAGES;
+    isRTL: Boolean = false;
 
     user!: User;
 
@@ -59,6 +59,8 @@ export class HeaderComponent {
 
     switchLanguage() {
         this.i18nService.setLanguage(this.selectedLanguage ? this.selectedLanguage : 'en');
+        this.isRTL = this.selectedLanguage == 'ar' ? true : false;
+        console.log(this.isRTL);
         this.currentLanguage = this.selectedLanguage;
         this.setLanguageDialogOpen();
         this.shellbarMenuClicked();
@@ -80,7 +82,7 @@ export class HeaderComponent {
         setTheme(this.selectedTheme);
         this.currentTheme = this.selectedTheme;
         this.setThemeDialogOpen();
-        // this.ui5ThemingService.getAvailableThemes().subscribe((data)=>console.log(data))
+        // this.ui5ThemingService.getAvailableThemes().subscribe((info) => console.log(info))
         this.shellbarMenuClicked();
     }
 
