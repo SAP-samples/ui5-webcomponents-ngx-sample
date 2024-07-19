@@ -38,15 +38,18 @@
         </div>
       </ui5-wizard-step>
   
-      <ui5-wizard-step icon="hint" title-text="Product Information">
-        <div style="display: flex;flex-direction: column; gap: 1rem;">
-          <ui5-title>2. Vacation Days</ui5-title>
-          <ui5-daterange-picker></ui5-daterange-picker>
-          <ui5-calendar></ui5-calendar>
+      <ui5-wizard-step icon="hint" title-text="Vacation Days Picker">
+        <div style="display: flex; gap: 3rem;">
+            <div style="display: flex;flex-direction: column; gap: 1rem;">
+                <ui5-title>2. Vacation Days</ui5-title>
+                <ui5-daterange-picker></ui5-daterange-picker>
+                <fd-calendar [rangeHoverEffect]="true" calType="range" [(ngModel)]="rangeDate"></fd-calendar>
+              </div>
+        <fd-time></fd-time>
         </div>
       </ui5-wizard-step>
   
-      <ui5-wizard-step icon="action-settings" title-text="Options">
+      <ui5-wizard-step icon="action-settings" title-text="Extra Data">
         <div style="display: flex; flex-direction: column;">
           <ui5-title>3. Options</ui5-title>
         </div>

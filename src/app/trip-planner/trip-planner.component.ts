@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Trip } from '../interfaces/trip';
-import { GridListItemType } from '@fundamental-ngx/core/grid-list';
+import { DatePipe } from '@angular/common';
 import { CountryListItem } from '../interfaces/country-details';
 import { AppService } from '../services/services';
 import { Subject, takeUntil } from 'rxjs';
-
+import { FdDate } from '@fundamental-ngx/core';
+import { DateRange } from '@fundamental-ngx/core';
 
 
 @Component({
@@ -22,15 +23,16 @@ export class TripPlannerComponent {
   componentUnsubscribe: Subject<boolean> = new Subject();
 
   tripData: Trip;
+  
+
+  rangeDate = new DateRange(new FdDate(2020, 10, 25), new FdDate(2020, 10, 26));
+
 
   ngOnInit(){
     this.appService.getCountryDetails().pipe(takeUntil(this.componentUnsubscribe)).subscribe((data) => {
         this.CountryDetails = data;
     });
-
-    console.log(this.CountryDetails);
     this.isDataAvailable = true;
-
   }
 
 
@@ -77,12 +79,6 @@ export class TripPlannerComponent {
       this.destination = suggestion;
       this.suggestionItems = [];
     }
-
-
-    planningTrip(){
-
-    }
-
 
     ngOnDestroy() {
       this.componentUnsubscribe.next(true);
