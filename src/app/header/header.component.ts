@@ -1,5 +1,5 @@
-import { Component, inject, signal, Signal } from '@angular/core';
-import { Observable, Subject, takeUntil, zip } from 'rxjs';
+import { Component, inject } from '@angular/core';
+import { Subject, takeUntil, zip } from 'rxjs';
 import { Ui5ThemingService } from '@ui5/theming-ngx';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
 import { ShellBarComponent } from '@ui5/webcomponents-ngx';

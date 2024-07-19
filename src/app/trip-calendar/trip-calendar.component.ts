@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subject, takeUntil, zip } from 'rxjs';
 
 import { AppService } from '../services/services';
@@ -18,8 +18,6 @@ import { RtlService } from '@fundamental-ngx/core';
     styleUrls: ['./trip-calendar.component.scss']
 })
 export class TripCalendarComponent {
-
-    @ViewChild('calendar') calendar: ElementRef;
 
     start: FdDate = new FdDate(2024, 10, 5);
     end: FdDate = new FdDate(2024,10,10);
@@ -49,13 +47,9 @@ export class TripCalendarComponent {
     returnGate!: string;
 
     legendItems: LegendItem[] = [
-        { id: 1, icon: "color-fill", color: "legend-item__icon--background legend-item__icon__border legend-item__icon__border--now", text: "TODAY" },
-        { id: 2, icon: "color-fill", color: "legend-item__icon--selected legend-item__icon__border legend-item__icon__border--selected", text: "TRIP_DATES" }
+        { icon: "color-fill", color: "legend-item__icon--background legend-item__icon__border legend-item__icon__border--now", text: "TODAY" },
+        { icon: "color-fill", color: "legend-item__icon--selected legend-item__icon__border legend-item__icon__border--selected", text: "TRIP_DATES" }
     ];
-
-    trackByLegendItem(index: number, item: LegendItem): any{
-        return item.id;
-    }
 
     constructor(private appService: AppService, private rtlService: RtlService) {}
 

@@ -1,4 +1,4 @@
-import { Component, ViewChildren, ViewChild, QueryList, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Subject, takeUntil, zip } from 'rxjs';
 
 import { AppService } from './services/services';
@@ -15,7 +15,6 @@ import { RtlService } from '@fundamental-ngx/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild('child') children: ElementRef;
 
   componentUnsubscribe: Subject<boolean> = new Subject();
   isDataAvailable = false;

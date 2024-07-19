@@ -1,6 +1,6 @@
 // Angular Modules & more...
 import { inject, NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -90,7 +90,6 @@ import { AppService } from './services/services';
                     provideTheming({ defaultTheme: 'sap_horizon', changeThemeOnQueryParamChange: false }), 
                     themingInitializer(),
                     RtlService,
-                    {provide: RTL_LANGUAGE, useValue: ['ar']}, 
                     AppService
                 ] 
             
