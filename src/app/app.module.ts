@@ -10,13 +10,12 @@ import { AppComponent } from './app.component';
 import { Ui5ThemingModule } from '@ui5/theming-ngx';
 import { LayoutGridModule } from '@fundamental-ngx/core/layout-grid';
 import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import "@ui5/webcomponents/dist/features/InputSuggestions.js";
 import { Ui5I18nModule } from '@ui5/webcomponents-ngx/i18n';
-// import '@ui5/webcomponents-icons/dist/AllIcons.js';x
-// import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import {Ui5WebcomponentsIconsModule} from '@ui5/webcomponents-ngx';
 import "@ui5/webcomponents/dist/Assets.js";
 import "@ui5/webcomponents-fiori/dist/Assets.js";
-import { FundamentalNgxCoreModule, RTL_LANGUAGE, RtlService } from '@fundamental-ngx/core';
+import { FundamentalNgxCoreModule, RtlService } from '@fundamental-ngx/core';
 
 
 // Custom Components
@@ -28,6 +27,8 @@ import { SeatsChartComponent } from './seats-chart/seats-chart.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
 import { LoginComponent } from './login/login.component';
+import { TripPlannerComponent } from './trip-planner/trip-planner.component';
+// import { FlightInfoComponent } from './flight-info/flight-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideTheming, themingInitializer } from '@fundamental-ngx/core/theming';
 
@@ -47,7 +48,9 @@ import { AppService } from './services/services';
         SeatsChartComponent,
         PaymentDetailsComponent,
         TripCalendarComponent,
-        LoginComponent
+        LoginComponent,
+        TripPlannerComponent,
+        // FlightInfoComponent
     ],
     bootstrap: [AppComponent], 
     imports: [BrowserModule,

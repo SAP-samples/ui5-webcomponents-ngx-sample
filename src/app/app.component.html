@@ -2,217 +2,228 @@
 
   <app-header></app-header>
 
-  <section class="app-content">
+  <ui5-tabcontainer class="show-at-desktop hidden-at-tablet hidden-at-mobile" header-background-design="Solid"
+    content-background-design="Solid" [attr.fixed]="true">
+    <ui5-tab [text]="'FLIGHT_INFO' | ui5I18n">
+      <section class="app-content">
 
-    <!-- Message Strip section -->
-    <section>        
-      <app-message [gate]="boardingGate"></app-message>        
-    </section>
-
-    <ui5-title level="H4" class="section-title">
-      {{'SECTION_TITLE' | ui5I18n}}
-    </ui5-title>
-
-    <fd-layout-grid class="remove-padding">
-      <div fdLayoutGridRow class="cards remove-padding">
-
-        <!-- Your Itinerary /  Calendar section -->
-        <div class="remove-padding show-at-desktop hidden-at-tablet hidden-at-mobile" [fdLayoutGridCol]="12"
-          [colMd]="12" [colLg]="6" [colXl]="3">
-          <div class="calendar-card">
-            <ui5-card>
-              <ui5-card-header slot="header" [titleText]="'YOUR_ITINERARY' | ui5I18n"></ui5-card-header>
-              <app-trip-calendar></app-trip-calendar>
-            </ui5-card>
-          </div>
-        </div>
-
-        <!-- Flight Details section desktop-->
-        <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="6" [colXl]="4" class="hidden-at-tablet remove-padding">
-          <fd-layout-grid>
-            <div fdLayoutGridRow>
-              <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
-                <div class="flight-details-card">
-                  <ui5-card>
-                    <ui5-card-header slot="header" [titleText]="'FLIGHT_DETAILS' | ui5I18n"
-                      attr.status="1 {{'OF' | ui5I18n}} 2">
-                    </ui5-card-header>
-                    <div class="flight-details__content">
-                      <span class="flight-details__content__text flight-details__content__text--left">
-                        <ui5-label>{{'DEPARTURE' | ui5I18n}}</ui5-label>
-                        <span>{{departureMonth | ui5I18n}} {{departureDateTimeString}} </span>
-                      </span>
-                      <!-- <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar> -->
-                       <fd-avatar glyph="journey-change" [colorAccent]="10" size="s" [circle]="true"/>
-                      <span class="flight-details__content__text">
-                        <ui5-label>{{'ARRIVAL' | ui5I18n}}</ui5-label>
-                        <span>{{arrivalMonth | ui5I18n}} {{arrivalDateTimeString}}</span>
-                      </span>
-                    </div>
-                  </ui5-card>
-                </div>
-              </div>
-            </div>
-
-            <!-- Your Seats section desktop -->
-            <div fdLayoutGridRow>
-              <div [fdLayoutGridCol]="12" [colMd]="0" [colLg]="12" [colXl]="12"
-                class="remove-padding show-at-desktop hidden-at-tablet hidden-at-mobile">
+        <!-- Message Strip section -->
+        <section>        
+          <app-message [gate]="boardingGate"></app-message>        
+        </section>
+    
+        <ui5-title level="H4" class="section-title">
+          {{'SECTION_TITLE' | ui5I18n}}
+        </ui5-title>
+    
+        <fd-layout-grid class="remove-padding">
+          <div fdLayoutGridRow class="cards remove-padding">
+    
+            <!-- Your Itinerary /  Calendar section -->
+            <div class="remove-padding show-at-desktop hidden-at-tablet hidden-at-mobile" [fdLayoutGridCol]="12"
+              [colMd]="12" [colLg]="6" [colXl]="3">
+              <div class="calendar-card">
                 <ui5-card>
-                  <ui5-card-header slot="header" [titleText]="'YOUR_SEATS' | ui5I18n"
-                    attr.status="{{'FLIGHT' | ui5I18n}} 1 {{'OF' | ui5I18n}} 2">
-                  </ui5-card-header>
-                  <div class="your-seats-card__content">
-                    <ui5-label>
-                      {{'FROM'| ui5I18n}} {{trip.departureFrom}} ({{trip.departureAbb}})
-                      {{'TO' | ui5I18n}} {{trip.arrivalTo}} ({{trip.arrivalAbb}})
-                    </ui5-label>
-                  </div>
-                  <app-seats-chart> </app-seats-chart>
-                  <ui5-bar design="Footer">
-                    <ui5-button design="Emphasized" slot="endContent">{{'UPGRADE' | ui5I18n}}</ui5-button>
-                  </ui5-bar>
+                  <ui5-card-header slot="header" [titleText]="'YOUR_ITINERARY' | ui5I18n"></ui5-card-header>
+                  <app-trip-calendar></app-trip-calendar>
                 </ui5-card>
               </div>
             </div>
-          </fd-layout-grid>
-        </div>
-
-        <!-- Flight Details section tablet and mobile-->
-        <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="show-at-tablet remove-padding">
-          <ui5-card class="">
-            <ui5-card-header slot="header" [titleText]="'FLIGHT_DETAILS' | ui5I18n" status="1 of 2">
-            </ui5-card-header>
-            <div class="flight-details__content">
-              <span class="flight-details__content__text flight-details__content__text--left">
-                <ui5-label>{{'DEPARTURE' | ui5I18n}}</ui5-label>
-                <span> {{departureMonth | ui5I18n}} {{departureDateTimeString}}</span>
-              </span>
-              <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar>
-              <span class="flight-details__content__text">
-                <ui5-label>{{'ARRIVAL' | ui5I18n}}</ui5-label>
-                <span>{{arrivalMonth | ui5I18n}} {{arrivalDateTimeString}}</span>
-              </span>
-            </div>
-          </ui5-card>
-        </div>
-
-        <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="5" class="remove-padding">
-          <div class="cards__column--whole">
-            <fd-layout-grid>
-              <div fdLayoutGridRow class="remove-padding">
-
-                <!-- Passenger Details card -->
-                <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="7" class="remove-padding">
-                  <div class="cards__row passenger-details-card">
+    
+            <!-- Flight Details section desktop-->
+            <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="6" [colXl]="4" class="hidden-at-tablet remove-padding">
+              <fd-layout-grid>
+                <div fdLayoutGridRow>
+                  <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+                    <div class="flight-details-card">
+                      <ui5-card>
+                        <ui5-card-header slot="header" [titleText]="'FLIGHT_DETAILS' | ui5I18n"
+                          attr.status="1 {{'OF' | ui5I18n}} 2">
+                        </ui5-card-header>
+                        <div class="flight-details__content">
+                          <span class="flight-details__content__text flight-details__content__text--left">
+                            <ui5-label>{{'DEPARTURE' | ui5I18n}}</ui5-label>
+                            <span>{{departureMonth | ui5I18n}} {{departureDateTimeString}} </span>
+                          </span>
+                          <!-- <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar> -->
+                           <fd-avatar glyph="journey-change" [colorAccent]="10" size="s" [circle]="true"/>
+                          <span class="flight-details__content__text">
+                            <ui5-label>{{'ARRIVAL' | ui5I18n}}</ui5-label>
+                            <span>{{arrivalMonth | ui5I18n}} {{arrivalDateTimeString}}</span>
+                          </span>
+                        </div>
+                      </ui5-card>
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- Your Seats section desktop -->
+                <div fdLayoutGridRow>
+                  <div [fdLayoutGridCol]="12" [colMd]="0" [colLg]="12" [colXl]="12"
+                    class="remove-padding show-at-desktop hidden-at-tablet hidden-at-mobile">
                     <ui5-card>
-                      <ui5-card-header slot="header" [titleText]="'PASSENGER_DETAILS' | ui5I18n">
-                        <ui5-button design="Transparent" slot="action" [accessibleName]="'ALT_EDIT' | ui5I18n">
-                          <!-- <ui5-icon name="edit"></ui5-icon> -->
-                          <fd-avatar glyph="edit" size="xs" [transparent]="true"></fd-avatar>
-                        </ui5-button>
+                      <ui5-card-header slot="header" [titleText]="'YOUR_SEATS' | ui5I18n"
+                        attr.status="{{'FLIGHT' | ui5I18n}} 1 {{'OF' | ui5I18n}} 2">
                       </ui5-card-header>
-                      <app-passenger-list></app-passenger-list>
+                      <div class="your-seats-card__content">
+                        <ui5-label>
+                          {{'FROM'| ui5I18n}} {{trip.departureFrom}} ({{trip.departureAbb}})
+                          {{'TO' | ui5I18n}} {{trip.arrivalTo}} ({{trip.arrivalAbb}})
+                        </ui5-label>
+                      </div>
+                      <app-seats-chart> </app-seats-chart>
+                      <ui5-bar design="Footer">
+                        <ui5-button design="Emphasized" slot="endContent">{{'UPGRADE' | ui5I18n}}</ui5-button>
+                      </ui5-bar>
                     </ui5-card>
                   </div>
                 </div>
-
-                <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="5" class="remove-padding">
-
-                  <!-- Your Flight status card -->
-                  <fd-layout-grid>
-                    <div fdLayoutGridRow class="remove-padding">
-                      <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
-                        <div class="flight-status-card">
-                          <ui5-card>
-
-                            <ui5-card-header slot="header" [titleText]="'YOUR_FLIGHT_STATUS' | ui5I18n"
-                              [subtitleText]="'BOARDING_AT' | ui5I18n">
-                            </ui5-card-header>
-
-                            <div class="text-column text-column--tall">
-                              <span class="text-row">
-                                <span class="large-text large-text--green">
-                                  {{boardingTimeString}}
-                                </span>
-                                <ui5-label class="hidden-at-mobile">{{boardingTimeDifference}} {{boardingTimeMinOrMins |
-                                  ui5I18n}}
-                                  {{boardingTimeEarlyOrLate | ui5I18n}}</ui5-label>
-                              </span>
-                              <span class="refresh text-row">
-                                <ui5-icon class="refresh-icon" name="refresh" design="Information"></ui5-icon>
-                                {{boardingLastRefresh}} {{'MIN' | ui5I18n}} {{'AGO' | ui5I18n}}
-                              </span>
-                            </div>
-                          </ui5-card>
-                        </div>
-                      </div>
-                    </div>
-                  </fd-layout-grid>
-
-                  <!-- Daily Flight status section -->
-                  <fd-layout-grid>
-                    <div fdLayoutGridRow class="remove-padding">
-                      <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
-                        <ui5-card class="card--bottom daily-flight-card">
-                          <ui5-card-header slot="header" [titleText]="'DAILY_FLIGHT_STATUS' | ui5I18n">
+              </fd-layout-grid>
+            </div>
+    
+            <!-- Flight Details section tablet and mobile-->
+            <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="show-at-tablet remove-padding">
+              <ui5-card class="">
+                <ui5-card-header slot="header" [titleText]="'FLIGHT_DETAILS' | ui5I18n" status="1 of 2">
+                </ui5-card-header>
+                <div class="flight-details__content">
+                  <span class="flight-details__content__text flight-details__content__text--left">
+                    <ui5-label>{{'DEPARTURE' | ui5I18n}}</ui5-label>
+                    <span> {{departureMonth | ui5I18n}} {{departureDateTimeString}}</span>
+                  </span>
+                  <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar>
+                  <span class="flight-details__content__text">
+                    <ui5-label>{{'ARRIVAL' | ui5I18n}}</ui5-label>
+                    <span>{{arrivalMonth | ui5I18n}} {{arrivalDateTimeString}}</span>
+                  </span>
+                </div>
+              </ui5-card>
+            </div>
+    
+            <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="5" class="remove-padding">
+              <div class="cards__column--whole">
+                <fd-layout-grid>
+                  <div fdLayoutGridRow class="remove-padding">
+    
+                    <!-- Passenger Details card -->
+                    <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="7" class="remove-padding">
+                      <div class="cards__row passenger-details-card">
+                        <ui5-card>
+                          <ui5-card-header slot="header" [titleText]="'PASSENGER_DETAILS' | ui5I18n">
+                            <ui5-button design="Transparent" slot="action" [accessibleName]="'ALT_EDIT' | ui5I18n">
+                              <fd-avatar glyph="edit" size="xs" [transparent]="true"></fd-avatar>
+                            </ui5-button>
                           </ui5-card-header>
-                          <div class="progress-bars">
-                              <fd-progress-indicator [valueText]="'LATE_UPPERCASE' | ui5I18n" state="negative" [valueNow]="20"></fd-progress-indicator>
-                              <fd-progress-indicator [valueText]="'EARLY_UPPERCASE' | ui5I18n"  state="critical" [valueNow]="15"></fd-progress-indicator>
-                              <fd-progress-indicator class="progress-bars__last" [valueText]="'ON_TIME' | ui5I18n" state="positive" [valueNow]="60"></fd-progress-indicator>
-                          </div>
+                          <app-passenger-list></app-passenger-list>
                         </ui5-card>
                       </div>
                     </div>
-                  </fd-layout-grid>
-
-                </div>
-              </div>
-            </fd-layout-grid>
-          </div>
-
-          <fd-layout-grid>
-            <div fdLayoutGridRow class="remove-padding">
-
-              <!-- Your Seats section tablet and mobile-->
-              <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12"
-                class="hidden-at-desktop remove-padding">
-                <div class="your-seats-card">
-                  <ui5-card>
-                    <ui5-card-header slot="header" [titleText]="'YOUR_SEATS'| ui5I18n">
-                    </ui5-card-header>
-                    <div class="your-seats-card__content__subheader">
-                      <ui5-label>
-                        {{'FROM' | ui5I18n}} {{trip.departureAbb}} {{'TO' | ui5I18n}} {{trip.arrivalAbb}}
-                      </ui5-label>
+    
+                    <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="6" [colXl]="5" class="remove-padding">
+    
+                      <!-- Your Flight status card -->
+                      <fd-layout-grid>
+                        <div fdLayoutGridRow class="remove-padding">
+                          <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+                            <div class="flight-status-card">
+                              <ui5-card>
+    
+                                <ui5-card-header slot="header" [titleText]="'YOUR_FLIGHT_STATUS' | ui5I18n"
+                                  [subtitleText]="'BOARDING_AT' | ui5I18n">
+                                </ui5-card-header>
+    
+                                <div class="text-column text-column--tall">
+                                  <span class="text-row">
+                                    <span class="large-text large-text--green">
+                                      {{boardingTimeString}}
+                                    </span>
+                                    <ui5-label class="hidden-at-mobile">{{boardingTimeDifference}} {{boardingTimeMinOrMins |
+                                      ui5I18n}}
+                                      {{boardingTimeEarlyOrLate | ui5I18n}}</ui5-label>
+                                  </span>
+                                  <span class="refresh text-row">
+                                    <ui5-icon class="refresh-icon" name="refresh" design="Information"></ui5-icon>
+                                    {{boardingLastRefresh}} {{'MIN' | ui5I18n}} {{'AGO' | ui5I18n}}
+                                  </span>
+                                </div>
+                              </ui5-card>
+                            </div>
+                          </div>
+                        </div>
+                      </fd-layout-grid>
+    
+                      <!-- Daily Flight status section -->
+                      <fd-layout-grid>
+                        <div fdLayoutGridRow class="remove-padding">
+                          <div [fdLayoutGridCol]="12" [colMd]="12" [colLg]="12" [colXl]="12" class="remove-padding">
+                            <ui5-card class="card--bottom daily-flight-card">
+                              <ui5-card-header slot="header" [titleText]="'DAILY_FLIGHT_STATUS' | ui5I18n">
+                              </ui5-card-header>
+                              <div class="progress-bars">
+                                  <fd-progress-indicator [valueText]="'LATE_UPPERCASE' | ui5I18n" state="negative" [valueNow]="20"></fd-progress-indicator>
+                                  <fd-progress-indicator [valueText]="'EARLY_UPPERCASE' | ui5I18n"  state="critical" [valueNow]="15"></fd-progress-indicator>
+                                  <fd-progress-indicator class="progress-bars__last" [valueText]="'ON_TIME' | ui5I18n" state="positive" [valueNow]="60"></fd-progress-indicator>
+                              </div>
+                            </ui5-card>
+                          </div>
+                        </div>
+                      </fd-layout-grid>
+    
                     </div>
-                    <div class="text-column">
-                      <span class="large-text large-text--blue">
-                        {{trip.seats}}
-                      </span>
+                  </div>
+                </fd-layout-grid>
+              </div>
+    
+              <fd-layout-grid>
+                <div fdLayoutGridRow class="remove-padding">
+    
+                  <!-- Your Seats section tablet and mobile-->
+                  <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12"
+                    class="hidden-at-desktop remove-padding">
+                    <div class="your-seats-card">
+                      <ui5-card>
+                        <ui5-card-header slot="header" [titleText]="'YOUR_SEATS'| ui5I18n">
+                        </ui5-card-header>
+                        <div class="your-seats-card__content__subheader">
+                          <ui5-label>
+                            {{'FROM' | ui5I18n}} {{trip.departureAbb}} {{'TO' | ui5I18n}} {{trip.arrivalAbb}}
+                          </ui5-label>
+                        </div>
+                        <div class="text-column">
+                          <span class="large-text large-text--blue">
+                            {{trip.seats}}
+                          </span>
+                        </div>
+                        <ui5-bar design="Footer">
+                          <ui5-button design="Emphasized" slot="endContent">{{'UPGRADE' | ui5I18n}}</ui5-button>
+                        </ui5-bar>
+                      </ui5-card>
                     </div>
-                    <ui5-bar design="Footer">
-                      <ui5-button design="Emphasized" slot="endContent">{{'UPGRADE' | ui5I18n}}</ui5-button>
-                    </ui5-bar>
-                  </ui5-card>
+                  </div>
+    
+                  <!-- Payment Details section -->
+                  <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12" class="remove-padding">
+                    <div class="payment-details-card">
+                      <ui5-card class="card--wide">
+                        <ui5-card-header slot="header" [titleText]="'PAYMENT_DETAILS' | ui5I18n"></ui5-card-header>
+                        <app-payment-details></app-payment-details>
+                      </ui5-card>
+                    </div>
+                  </div>
+    
                 </div>
-              </div>
-
-              <!-- Payment Details section -->
-              <div [fdLayoutGridCol]="12" [colMd]="6" [colLg]="12" [colXl]="12" class="remove-padding">
-                <div class="payment-details-card">
-                  <ui5-card class="card--wide">
-                    <ui5-card-header slot="header" [titleText]="'PAYMENT_DETAILS' | ui5I18n"></ui5-card-header>
-                    <app-payment-details></app-payment-details>
-                  </ui5-card>
-                </div>
-              </div>
-
+              </fd-layout-grid>
             </div>
-          </fd-layout-grid>
-        </div>
-      </div>
-    </fd-layout-grid>
-  </section>
-</div>
+          </div>
+        </fd-layout-grid>
+      </section>
+    </ui5-tab>
+
+    <ui5-tab [text]="'PLAN_A_TRIP' | ui5I18n">
+      <app-trip-planner style="height: 100%;"></app-trip-planner>
+    </ui5-tab>
+    
+    <ui5-tab [text]="'PAST_TRIPS' | ui5I18n"></ui5-tab>
+    <ui5-tab [text]="'ABOUT_US' | ui5I18n"></ui5-tab>
+    <ui5-tab [text]="'CONTACTS' | ui5I18n"></ui5-tab>
+  </ui5-tabcontainer>

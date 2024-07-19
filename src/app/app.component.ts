@@ -12,7 +12,7 @@ import { RtlService } from '@fundamental-ngx/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
 
@@ -36,7 +36,7 @@ export class AppComponent {
   arrivalMonth!: string;
   arrivalDateTimeString!: string;
 
-  constructor(private appService: AppService, private rtlService: RtlService, private renderer: Renderer2) {}
+  constructor(private appService: AppService, private renderer: Renderer2) {}
 
   ngOnInit() {
     zip([this.appService.getCurrentTrip(), this.appService.getDepartureAircraftStatus()])

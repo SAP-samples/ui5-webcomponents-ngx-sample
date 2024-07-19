@@ -1,0 +1,168 @@
+[
+    {
+      "name": "Argentina",
+      "flag": "https://flagsapi.com/AR/flat/64.png",
+      "continent": "South America"
+    },
+    {
+      "name": "Albania",
+      "flag": "https://flagsapi.com/AL/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Algeria",
+      "flag": "https://flagsapi.com/DZ/flat/64.png",
+      "continent": "Africa"
+    },
+    {
+      "name": "Angola",
+      "flag": "https://flagsapi.com/AO/flat/64.png",
+      "continent": "Africa"
+    },
+    {
+      "name": "Austria",
+      "flag": "https://flagsapi.com/AT/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Australia",
+      "flag": "https://flagsapi.com/AU/flat/64.png",
+      "continent": "Oceania"
+    },
+    {
+      "name": "Bulgaria",
+      "flag": "https://flagsapi.com/BG/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Canada",
+      "flag": "https://flagsapi.com/CA/flat/64.png",
+      "continent": "North America"
+    },
+    {
+      "name": "Columbia",
+      "flag": "https://flagsapi.com/CO/flat/64.png",
+      "continent": "South America"
+    },
+    {
+      "name": "Croatia",
+      "flag": "https://flagsapi.com/HR/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Denmark",
+      "flag": "https://flagsapi.com/DK/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "England",
+      "flag": "https://flagsapi.com/GB-ENG/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Finland",
+      "flag": "https://flagsapi.com/FI/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "France",
+      "flag": "https://flagsapi.com/FR/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Germany",
+      "flag": "https://flagsapi.com/DE/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Hungary",
+      "flag": "https://flagsapi.com/HU/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Ireland",
+      "flag": "https://flagsapi.com/IE/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Italy",
+      "flag": "https://flagsapi.com/IT/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Kuwait",
+      "flag": "https://flagsapi.com/KW/flat/64.png",
+      "continent": "Asia"
+    },
+    {
+      "name": "Luxembourg",
+      "flag": "https://flagsapi.com/LU/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Mexico",
+      "flag": "https://flagsapi.com/MX/flat/64.png",
+      "continent": "North America"
+    },
+    {
+      "name": "Morocco",
+      "flag": "https://flagsapi.com/MA/flat/64.png",
+      "continent": "Africa"
+    },
+    {
+      "name": "Norway",
+      "flag": "https://flagsapi.com/NO/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Paraguay",
+      "flag": "https://flagsapi.com/PY/flat/64.png",
+      "continent": "South America"
+    },
+    {
+      "name": "Philippines",
+      "flag": "https://flagsapi.com/PH/flat/64.png",
+      "continent": "Asia"
+    },
+    {
+      "name": "Portugal",
+      "flag": "https://flagsapi.com/PT/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Spain",
+      "flag": "https://flagsapi.com/ES/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Sweden",
+      "flag": "https://flagsapi.com/SE/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "Sri Lanka",
+      "flag": "https://flagsapi.com/LK/flat/64.png",
+      "continent": "Asia"
+    },
+    {
+      "name": "Senegal",
+      "flag": "https://flagsapi.com/SN/flat/64.png",
+      "continent": "Africa"
+    },
+    {
+      "name": "Thailand",
+      "flag": "https://flagsapi.com/TH/flat/64.png",
+      "continent": "Asia"
+    },
+    {
+      "name": "The United Kingdom of Great Britain and Northern Ireland",
+      "flag": "https://flagsapi.com/GB/flat/64.png",
+      "continent": "Europe"
+    },
+    {
+      "name": "USA",
+      "flag": "https://flagsapi.com/US/flat/64.png",
+      "continent": "North America"
+    }
+  ]
+  

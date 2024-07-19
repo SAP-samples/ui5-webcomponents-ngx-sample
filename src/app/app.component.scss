@@ -208,3 +208,7 @@
     @include sap-margin(tiny, bottom);
     @include sap-set-margin-top(-0.5rem);
 }
+
+ui5-tab {
+    cursor: pointer;
+}
