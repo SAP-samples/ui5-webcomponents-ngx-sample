@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
-import { Subject, takeUntil, zip } from 'rxjs';
+import { Component, inject, signal, Signal } from '@angular/core';
+import { Observable, Subject, takeUntil, zip } from 'rxjs';
 import { Ui5ThemingService } from '@ui5/theming-ngx';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
 import { ShellBarComponent } from '@ui5/webcomponents-ngx';
 
 import { AppService } from '../services/services';
+import { RtlService } from '@fundamental-ngx/cdk';
 import { THEMES, LANGUAGES } from '../constants/constants';
 import { User } from '../interfaces/user';
 import { Trip } from '../interfaces/trip';
@@ -17,7 +18,7 @@ import { setTheme } from "@ui5/webcomponents-base/dist/config/Theme.js";
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-    
+
     componentUnsubscribe: Subject<boolean> = new Subject();
     isDataAvailable = false;
 
@@ -31,14 +32,15 @@ export class HeaderComponent {
     currentLanguage = this.i18nService.currentLanguage();
     languageDialogOpen = false;
     languages = LANGUAGES;
-    isRTL: Boolean = false;
+
+    isRTL:Boolean = false;
 
     user!: User;
 
     domestic!: Trip[];
     international!: Trip[];
 
-    constructor(private appService: AppService, private ui5ThemingService: Ui5ThemingService) { }
+    constructor(private appService: AppService, private ui5ThemingService: Ui5ThemingService, private rtlService: RtlService) {}
 
     ngOnInit() {
         zip([this.appService.getDomesticTrips(), this.appService.getInternationalTrips(), this.appService.getUser()])
@@ -60,7 +62,14 @@ export class HeaderComponent {
     switchLanguage() {
         this.i18nService.setLanguage(this.selectedLanguage ? this.selectedLanguage : 'en');
         this.isRTL = this.selectedLanguage == 'ar' ? true : false;
-        console.log(this.isRTL);
+        
+        this.isRTL ? Array.from(document.getElementsByTagName('div')).forEach(el => {
+            el.dir = 'rtl'
+        }) : Array.from(document.getElementsByTagName('div')).forEach(el => {
+            el.dir = 'ltr'
+        })
+
+        this.rtlService;
         this.currentLanguage = this.selectedLanguage;
         this.setLanguageDialogOpen();
         this.shellbarMenuClicked();
@@ -78,11 +87,9 @@ export class HeaderComponent {
     }
 
     switchTheme() {
-        // this.ui5ThemingService.setTheme('ui-5-webcomponents-fiori-theming-service');
         setTheme(this.selectedTheme);
         this.currentTheme = this.selectedTheme;
         this.setThemeDialogOpen();
-        // this.ui5ThemingService.getAvailableThemes().subscribe((info) => console.log(info))
         this.shellbarMenuClicked();
     }
 
@@ -100,5 +107,9 @@ export class HeaderComponent {
     shellbarMenuClicked() {
         var element = document.getElementById('shellbar') as unknown as ShellBarComponent;
         if (element && (element as any).closeOverflow) (element as any).closeOverflow();
+    }
+
+    logIn(){
+        console.log('logged')
     }
 }

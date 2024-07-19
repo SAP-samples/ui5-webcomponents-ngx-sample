@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Subject, takeUntil, zip } from 'rxjs';
 
 import { AppService } from '../services/services';
@@ -10,12 +10,17 @@ import { AircraftStatus } from '../interfaces/aircraft-status';
 import { DateRange } from '@fundamental-ngx/core';
 import { FdDate } from '@fundamental-ngx/core';
 
+import { RtlService } from '@fundamental-ngx/core';
+
 @Component({
     selector: 'app-trip-calendar',
     templateUrl: './trip-calendar.component.html',
     styleUrls: ['./trip-calendar.component.scss']
 })
 export class TripCalendarComponent {
+
+    @ViewChild('calendar') calendar: ElementRef;
+
     start: FdDate = new FdDate(2024, 10, 5);
     end: FdDate = new FdDate(2024,10,10);
     rangeDate = new DateRange(this.start, this.end);
@@ -52,7 +57,7 @@ export class TripCalendarComponent {
         return item.id;
     }
 
-    constructor(private appService: AppService) { }
+    constructor(private appService: AppService, private rtlService: RtlService) {}
 
     async ngOnInit() {
         zip([this.appService.getCurrentTrip(), this.appService.getReturnTrip(), this.appService.getDepartureAircraftStatus(), this.appService.getReturnAircraftStatus()])

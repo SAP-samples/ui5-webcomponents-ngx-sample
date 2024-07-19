@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChildren, ViewChild, QueryList, ElementRef, Renderer2 } from '@angular/core';
 import { Subject, takeUntil, zip } from 'rxjs';
 
 import { AppService } from './services/services';
@@ -7,12 +7,15 @@ import { addZeroToTime, getDateAsDDTTTT } from './utils/utils';
 import { Trip } from './interfaces/trip';
 import { AircraftStatus } from './interfaces/aircraft-status';
 
+import { RtlService } from '@fundamental-ngx/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChild('child') children: ElementRef;
 
   componentUnsubscribe: Subject<boolean> = new Subject();
   isDataAvailable = false;
@@ -34,7 +37,7 @@ export class AppComponent {
   arrivalMonth!: string;
   arrivalDateTimeString!: string;
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private rtlService: RtlService, private renderer: Renderer2) {}
 
   ngOnInit() {
     zip([this.appService.getCurrentTrip(), this.appService.getDepartureAircraftStatus()])

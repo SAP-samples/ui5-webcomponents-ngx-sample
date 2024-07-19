@@ -16,7 +16,7 @@ import { Ui5I18nModule } from '@ui5/webcomponents-ngx/i18n';
 import {Ui5WebcomponentsIconsModule} from '@ui5/webcomponents-ngx';
 import "@ui5/webcomponents/dist/Assets.js";
 import "@ui5/webcomponents-fiori/dist/Assets.js";
-import { FundamentalNgxCoreModule } from '@fundamental-ngx/core';
+import { FundamentalNgxCoreModule, RTL_LANGUAGE, RtlService } from '@fundamental-ngx/core';
 
 
 // Custom Components
@@ -27,12 +27,16 @@ import { PassengerListComponent } from './passenger-list/passenger-list.componen
 import { SeatsChartComponent } from './seats-chart/seats-chart.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
+import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideTheming, themingInitializer } from '@fundamental-ngx/core/theming';
 
 
 // FOR FD CALENDAR
 import { FdDatetimeModule } from '@fundamental-ngx/core/datetime';
+
+// Custom Directives
+import { AppService } from './services/services';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -42,7 +46,8 @@ import { FdDatetimeModule } from '@fundamental-ngx/core/datetime';
         PassengerListComponent,
         SeatsChartComponent,
         PaymentDetailsComponent,
-        TripCalendarComponent
+        TripCalendarComponent,
+        LoginComponent
     ],
     bootstrap: [AppComponent], 
     imports: [BrowserModule,
@@ -83,7 +88,10 @@ import { FdDatetimeModule } from '@fundamental-ngx/core/datetime';
         
         , providers: [provideHttpClient(withInterceptorsFromDi()), 
                     provideTheming({ defaultTheme: 'sap_horizon', changeThemeOnQueryParamChange: false }), 
-                    themingInitializer(), 
+                    themingInitializer(),
+                    RtlService,
+                    {provide: RTL_LANGUAGE, useValue: ['ar']}, 
+                    AppService
                 ] 
             
 })
