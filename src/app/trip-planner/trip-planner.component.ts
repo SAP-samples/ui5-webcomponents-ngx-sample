@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Trip } from '../interfaces/trip';
 import { CountryListItem } from '../interfaces/country-details';
 import { AppService } from '../services/services';
@@ -60,13 +60,6 @@ export class TripPlannerComponent {
       this.appService.getCountryDetails().pipe(takeUntil(this.componentUnsubscribe)).subscribe((data) => {
           this.CountryDetails = data;
       });
-
-      // this.appService.getPassengers()
-      //       .pipe(takeUntil(this.componentUnsubscribe))
-      //       .subscribe((passengers) => {
-      //           this.listOfPassengers = passengers;
-      //           this.isDataAvailable = true;
-      //   })
 
       this.isDataAvailable = true;
     }
@@ -134,7 +127,8 @@ export class TripPlannerComponent {
         this.randomCountry = country;
       }
       
-      this.randomPrice = Math.floor(Math.random()*1000)
+      this.randomPrice = Math.floor(Math.random()*1250)
+      this.randomPrice = this.randomPrice < 400 ? 1500 : this.randomPrice;
 
 
       this.month = Math.floor(Math.random()*12);
@@ -162,6 +156,10 @@ export class TripPlannerComponent {
       this.packageSelected = this.randomPackageDeals[this.indexChosen];
     }
 
+    openToast: boolean = false;
+    finalize(){
+      this.openToast = true;
+    }
 
     ngOnDestroy() {
       this.componentUnsubscribe.next(true);

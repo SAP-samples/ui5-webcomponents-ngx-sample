@@ -8,6 +8,7 @@ import { User } from '../interfaces/user';
 import { Passenger } from '../interfaces/passenger';
 import { PaymentDetails } from '../interfaces/payment-details';
 import { CountryListItem } from '../interfaces/country-details';
+import { pastTrip } from '../interfaces/past-trips';
 
 @Injectable({
     providedIn: 'root',
@@ -54,6 +55,10 @@ export class AppService {
     }
 
     getCountryDetails(): Observable<CountryListItem[]> {
-        return this.http.get<CountryListItem[]>(`${this._baseUrl}/mockCountryDetails.json`)
+        return this.http.get<CountryListItem[]>(`${this._baseUrl}/mockCountryDetails.json`);
+    }
+
+    getPastTrips(): Observable<pastTrip[]>{
+        return this.http.get<pastTrip[]>(`${this._baseUrl}/mockPastTrips.json`);
     }
 }
