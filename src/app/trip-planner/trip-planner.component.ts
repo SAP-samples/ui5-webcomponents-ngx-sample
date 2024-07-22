@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { Trip } from '../interfaces/trip';
-import { DatePipe } from '@angular/common';
 import { CountryListItem } from '../interfaces/country-details';
 import { AppService } from '../services/services';
 import { Subject, takeUntil } from 'rxjs';
 import { FdDate } from '@fundamental-ngx/core';
 import { DateRange } from '@fundamental-ngx/core';
-
+import { Passenger } from '../interfaces/passenger';
+import { packageDeals } from '../interfaces/package-deals';
+import { GridListSelectionEvent } from '@fundamental-ngx/core';
 
 @Component({
   selector: 'app-trip-planner',
@@ -18,22 +19,25 @@ export class TripPlannerComponent {
   constructor(private appService: AppService){}
 
   isDataAvailable: Boolean = false;
+  
+  // Country Data
   CountryDetails!: CountryListItem[];
   CountryDetailsSuggested!: CountryListItem[];
+  
+  
   componentUnsubscribe: Subject<boolean> = new Subject();
 
+  // Trip Data
   tripData: Trip;
-  
-
   rangeDate = new DateRange(new FdDate(2020, 10, 25), new FdDate(2020, 10, 26));
-
-
-  ngOnInit(){
-    this.appService.getCountryDetails().pipe(takeUntil(this.componentUnsubscribe)).subscribe((data) => {
-        this.CountryDetails = data;
-    });
-    this.isDataAvailable = true;
-  }
+  randomPackageDeals: packageDeals[] = [];
+  currId: number = 0;
+  packageSelected: packageDeals;
+  
+  // Passenger Data
+  listOfPassengers: Passenger[] = [];
+  passengerToAddName: string;
+  passengerToAddAddress: string;
 
 
   listOfCountries: string[] = ["Argentina", "Albania", "Algeria", "Angola",
@@ -47,6 +51,26 @@ export class TripPlannerComponent {
     
     destination: string = '';
 
+    ngOnInit(){
+      
+      for (let j = 0; j < 12; j++){
+        this.randomPackageDeals.push(this.generateRandomPackageDeals());
+      }
+
+      this.appService.getCountryDetails().pipe(takeUntil(this.componentUnsubscribe)).subscribe((data) => {
+          this.CountryDetails = data;
+      });
+
+      // this.appService.getPassengers()
+      //       .pipe(takeUntil(this.componentUnsubscribe))
+      //       .subscribe((passengers) => {
+      //           this.listOfPassengers = passengers;
+      //           this.isDataAvailable = true;
+      //   })
+
+      this.isDataAvailable = true;
+    }
+
     showSuggestions(){
       if (this.countryInput){
         this.suggestionItems = this.listOfCountries.filter(
@@ -58,30 +82,92 @@ export class TripPlannerComponent {
         this.CountryDetailsSuggested = this.CountryDetails.filter(
           (item) => {
             return item.name.toUpperCase().indexOf(this.countryInput.toUpperCase()) === 0
-          }
-          
-    )
-    console.log(this.CountryDetailsSuggested);
+          }     
+        )
       }
-
-      
-
       if (!this.countryInput){
         this.suggestionItems = [];
       }
-
-
     }
-
 
     selectCountry(suggestion: string){
       this.countryInput = suggestion;
       this.destination = suggestion;
       this.suggestionItems = [];
+
+      this.randomPackageDeals = [];
+
+      for (let i = 0; i<6; i++){
+        this.randomPackageDeals.push(this.generateRandomPackageDeals(this.destination));
+      }
+      
     }
+
+    removeItem(index: number){
+      this.listOfPassengers.splice(index,1);
+    }
+
+    addPassenger(){
+      if (!(this.passengerToAddName in this.listOfPassengers)){
+        this.listOfPassengers.push(
+          {
+            name: this.passengerToAddName,
+            address: this.passengerToAddAddress
+          }
+        )
+      }
+    }
+
+
+    randomCountry: string;
+    randomPrice: number;
+    randomStartDate: FdDate;
+    randomEndDate: FdDate;
+    month: number;
+    day: number;
+    endDay: number;
+
+    generateRandomPackageDeals(country?: string){
+      if (!(country)){
+        this.randomCountry = this.listOfCountries[Math.floor(Math.random() * this.listOfCountries.length)];
+      } else {
+        this.randomCountry = country;
+      }
+      
+      this.randomPrice = Math.floor(Math.random()*1000)
+
+
+      this.month = Math.floor(Math.random()*12);
+      this.day = Math.floor(Math.random()*30)
+      this.endDay = (this.day+1) + Math.floor(Math.random()*7);
+
+      this.randomStartDate = new FdDate(2024, this.month, this.day);
+      this.randomEndDate = new FdDate(2024, (this.endDay > 30) ? (this.month+1, this.endDay-=30) : this.month , this.endDay);
+      this.currId++;
+
+      return {
+        id: this.currId,
+        country: this.randomCountry,
+        price: this.randomPrice,
+        vacationStart: this.randomStartDate,
+        vacationEnd: this.randomEndDate,
+        selected: false
+      }
+    }
+
+    indexChosen: number;
+    changeDesiredPackage(event: GridListSelectionEvent<number>){
+      console.log(event.index)
+      this.indexChosen = Array.from(event.index)[0];
+      this.packageSelected = this.randomPackageDeals[this.indexChosen];
+    }
+
 
     ngOnDestroy() {
       this.componentUnsubscribe.next(true);
       this.componentUnsubscribe.complete();
   }
+
+
 }
+

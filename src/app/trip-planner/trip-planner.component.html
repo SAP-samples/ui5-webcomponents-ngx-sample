@@ -21,7 +21,12 @@
                             [description]="item.continent"
                         >
                         <fd-avatar fd-grid-list-item-image image={{item.flag}} size="s" [transparent]="true"></fd-avatar>
-                        </fd-grid-list-item>
+                        
+                        <fd-grid-list-item-footer-bar> 
+                          <ui5-button (ui5Click)="selectCountry(item.name)">Select</ui5-button>
+                        </fd-grid-list-item-footer-bar>
+                      
+                      </fd-grid-list-item>
                     }
                 } @else {
                     @for (item of CountryDetailsSuggested; track item) {
@@ -30,6 +35,9 @@
                             [description]="item.continent"
                         >
                         <fd-avatar fd-grid-list-item-image image={{item.flag}} size="s" [transparent]="true"></fd-avatar>
+                        <fd-grid-list-item-footer-bar> 
+                          <ui5-button (ui5Click)="selectCountry(item.name)">Select</ui5-button>
+                        </fd-grid-list-item-footer-bar>
                         </fd-grid-list-item>
                     }
                 }
@@ -38,28 +46,65 @@
         </div>
       </ui5-wizard-step>
   
-      <ui5-wizard-step icon="hint" title-text="Vacation Days Picker">
+      <ui5-wizard-step icon="calendar" title-text="Vacation Days Picker">
         <div style="display: flex; gap: 3rem;">
             <div style="display: flex;flex-direction: column; gap: 1rem;">
                 <ui5-title>2. Vacation Days</ui5-title>
                 <ui5-daterange-picker></ui5-daterange-picker>
                 <fd-calendar [rangeHoverEffect]="true" calType="range" [(ngModel)]="rangeDate"></fd-calendar>
               </div>
-        <fd-time></fd-time>
+              <fd-grid-list selectionMode="singleSelectRight" (selectionChange)="changeDesiredPackage($event)">
+                @for (package of randomPackageDeals; track package){
+                  <fd-grid-list-item
+                    [title]="package.country"
+                    [value]="package.id"
+                    [selected]="package.selected"
+                    *ngIf="package.vacationStart.toDateString() != 'Invalid Date'"
+                  >
+
+                  <ng-template fd-grid-list-item-body>
+                    <p>Start Date: {{package.vacationStart.toDateString()}}</p>
+                    <p>End Date: {{package.vacationEnd.toDateString()}}</p>
+                    <p>{{package.price}}$</p>
+                  </ng-template>
+
+                  </fd-grid-list-item>
+                }
+              </fd-grid-list>
+
         </div>
       </ui5-wizard-step>
   
-      <ui5-wizard-step icon="action-settings" title-text="Extra Data">
+      <ui5-wizard-step icon="information" title-text="Passengers & Final Price">
         <div style="display: flex; flex-direction: column;">
-          <ui5-title>3. Options</ui5-title>
+          <ui5-title>3. Passengers & Final Price</ui5-title>
+          <br>
+          <div fd-form-item style="width: 50%;">
+            <label fd-form-label for="input-1">Add new Passenger</label>
+            <input fd-form-control type="text" placeholder="Full Name"  aria-required="true" [(ngModel)]="passengerToAddName"/>
+            <input fd-form-control type="text" placeholder="Address" aria-required="true" [(ngModel)]="passengerToAddAddress"/>
+            <button fd-button type="submit" (click)="addPassenger()" style="width: 10%;">Add</button>
+          </div>
+          <br>
+          <ul fd-list>
+            
+            @for (item of listOfPassengers; track item; let index = $index) {
+              <li fd-list-item>
+                <span fd-list-title>{{item.name}}</span>
+                <span fd-list-secondary>
+                  <button ariaLabel="Remove" title="Remove" fd-button glyph="delete" (click)="removeItem(index)"></button>
+                </span>
+              </li>
+            }
+
+          </ul>
         </div>
-      </ui5-wizard-step>
-  
-      <ui5-wizard-step icon="lead" title-text="Pricing">
-        <div style="display: flex; flex-direction: column;">
+        <br>
+        <div *ngIf="packageSelected">
+          <ui5-message-strip design="Information" [hideCloseButton]="true">Total Price: {{listOfPassengers.length * packageSelected.price}}$</ui5-message-strip>
+          <br>
+          <ui5-button id="finalize" design="Emphasized">Finalize</ui5-button>
         </div>
-  
-        <ui5-button id="finalize" design="Emphasized">Finalize</ui5-button>
       </ui5-wizard-step>
     </ui5-wizard>
   </div>
