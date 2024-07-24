@@ -11,11 +11,12 @@ import { User } from '../interfaces/user';
 import { Trip } from '../interfaces/trip';
 
 import { setTheme } from "@ui5/webcomponents-base/dist/config/Theme.js";
+import { CompleteThemeDefinition, ThemingService } from '@fundamental-ngx/core/theming';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss'],
+    styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
 
@@ -40,7 +41,10 @@ export class HeaderComponent {
     domestic!: Trip[];
     international!: Trip[];
 
-    constructor(private appService: AppService, private ui5ThemingService: Ui5ThemingService, private rtlService: RtlService) {}
+    fd_themes: CompleteThemeDefinition[];
+    constructor(private appService: AppService, private ui5ThemingService: Ui5ThemingService, private rtlService: RtlService, private fd_theming_service: ThemingService) {
+        this.fd_themes = this.fd_theming_service.getThemes()
+    }
 
     ngOnInit() {
         zip([this.appService.getDomesticTrips(), this.appService.getInternationalTrips(), this.appService.getUser()])
@@ -87,6 +91,7 @@ export class HeaderComponent {
     }
 
     switchTheme() {
+        this.ui5ThemingService.setTheme('sap_fiori_3');
         setTheme(this.selectedTheme);
         this.currentTheme = this.selectedTheme;
         this.setThemeDialogOpen();

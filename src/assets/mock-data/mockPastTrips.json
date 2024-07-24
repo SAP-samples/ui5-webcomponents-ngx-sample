@@ -1,5 +1,6 @@
 [
-    {
+    {   
+        
         "country": "Italy",
         "city": "Rome",
         "price": 1200,
@@ -10,6 +11,7 @@
         "flagUrl": "https://flagsapi.com/IT/flat/64.png"
     },
     {
+        
         "country": "Japan",
         "city": "Tokyo",
         "price": 1500,
@@ -20,6 +22,7 @@
         "flagUrl": "https://flagsapi.com/JP/flat/64.png"
     },
     {
+        
         "country": "USA",
         "city": "New York",
         "price": 900,
@@ -30,6 +33,7 @@
         "flagUrl": "https://flagsapi.com/US/flat/64.png"
     },
     {
+        
         "country": "France",
         "city": "Paris",
         "price": 1100,
@@ -40,6 +44,7 @@
         "flagUrl": "https://flagsapi.com/FR/flat/64.png"
     },
     {
+        
         "country": "Australia",
         "city": "Sydney",
         "price": 2000,
@@ -50,6 +55,7 @@
         "flagUrl": "https://flagsapi.com/AU/flat/64.png"
     },
     {
+        
         "country": "Brazil",
         "city": "Rio de Janeiro",
         "price": 1300,
@@ -60,6 +66,7 @@
         "flagUrl": "https://flagsapi.com/BR/flat/64.png"
     },
     {
+        
         "country": "Canada",
         "city": "Vancouver",
         "price": 1000,
@@ -70,6 +77,7 @@
         "flagUrl": "https://flagsapi.com/CA/flat/64.png"
     },
     {
+        
         "country": "Spain",
         "city": "Barcelona",
         "price": 950,
@@ -80,6 +88,7 @@
         "flagUrl": "https://flagsapi.com/ES/flat/64.png"
     },
     {
+        
         "country": "Germany",
         "city": "Berlin",
         "price": 1050,
@@ -90,6 +99,7 @@
         "flagUrl": "https://flagsapi.com/DE/flat/64.png"
     },
     {
+        
         "country": "Mexico",
         "city": "Cancun",
         "price": 850,
@@ -100,6 +110,7 @@
         "flagUrl": "https://flagsapi.com/MX/flat/64.png"
     },
     {
+        
         "country": "China",
         "city": "Beijing",
         "price": 1400,
@@ -110,6 +121,7 @@
         "flagUrl": "https://flagsapi.com/CN/flat/64.png"
     },
     {
+        
         "country": "Greece",
         "city": "Athens",
         "price": 1100,
@@ -120,6 +132,7 @@
         "flagUrl": "https://flagsapi.com/GR/flat/64.png"
     },
     {
+        
         "country": "Russia",
         "city": "Moscow",
         "price": 1300,
@@ -130,6 +143,7 @@
         "flagUrl": "https://flagsapi.com/RU/flat/64.png"
     },
     {
+        
         "country": "South Africa",
         "city": "Cape Town",
         "price": 1600,
@@ -140,6 +154,7 @@
         "flagUrl": "https://flagsapi.com/ZA/flat/64.png"
     },
     {
+        
         "country": "India",
         "city": "Mumbai",
         "price": 800,
@@ -150,6 +165,7 @@
         "flagUrl": "https://flagsapi.com/IN/flat/64.png"
     },
     {
+        
         "country": "Turkey",
         "city": "Istanbul",
         "price": 950,

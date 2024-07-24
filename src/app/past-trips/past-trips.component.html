@@ -1,86 +1,90 @@
-<ul>
-    @for (trip of listOfVacations; track trip; let idx = $index){
-        <fd-facet-group ariaLabel="Facet Group">
-            <fd-facet type="form" facetTitle="Vacation {{idx+1}}" id="facet1">
-                <fd-facet-content>
-                    <label fd-form-label [colon]="true" for="form-value-10">Country</label>
-                    <fd-text text="{{trip.country}}" id="form-value-10"></fd-text>
-                </fd-facet-content>
-                <fd-facet-content>
-                    <label fd-form-label [colon]="true" for="form-value-11">City</label>
-                    <fd-text text="{{trip.city}}" id="form-value-11"></fd-text>
-                </fd-facet-content>
-                <fd-facet-content>
-                    <label fd-form-label [colon]="true" for="form-value-12">Vacation Length</label>
-                    <fd-text text="{{trip.vacationLength}}" id="form-value-12"></fd-text>
-                </fd-facet-content>
-            </fd-facet>
-        
-            <fd-facet type="rating-indicator" facetTitle="Rating Indicator" subtitle="Personal Review" id="facet2">
-                <fd-facet-content>
-                    <fd-rating-indicator size="md" dynamicTextIndicator="of" [value]='trip.review/2'></fd-rating-indicator>
-                </fd-facet-content>
-            </fd-facet>
-            <fd-facet type="image" id="facet3">
-                <fd-avatar fd-grid-list-item-image image={{trip.flagUrl}} size="l" [transparent]="true"></fd-avatar>
-                 
-            </fd-facet>
-            <fd-facet type="key-value" facetTitle="Would I Redo It?" id="facet4">
-                @if (trip.wouldRedoIt == 'positive') {
-                    <span
-                    fd-object-status
-                    status="positive"
-                    label="{{trip.wouldRedoIt}}"
-                    glyph="{{mapStatusToGlyph[trip.wouldRedoIt] }}"
-                    [large]="true"
-                    title="Would Redo It?"
-                    aria-label="Would Redo It?"
-                ></span>
-                } @else if (trip.wouldRedoIt == 'negative') {
-                    <span
-                    fd-object-status
-                    status="negative"
-                    label="{{trip.wouldRedoIt}}"
-                    glyph="{{mapStatusToGlyph[trip.wouldRedoIt] }}"
-                    [large]="true"
-                    title="Would Redo It?"
-                    aria-label="Would Redo It?"
-                ></span>
-                } @else {
-                    <span
-                    fd-object-status
-                    status="neutral"
-                    label="{{trip.wouldRedoIt}}"
-                    glyph="{{mapStatusToGlyph[trip.wouldRedoIt] }}"
-                    [large]="true"
-                    title="Would Redo It?"
-                    aria-label="Would Redo It?"
-                ></span>
-                }
-            </fd-facet>
+
+<div>
+    <!-- <ui5-title level="H2" class="title" style="margin: 1rem;">All My Previous Vacations!</ui5-title> -->
+    <ul>
+        @for (trip of listOfVacations; track $index;let idx = $index;){
+            <fd-facet-group ariaLabel="Facet Group" class="vacationsFacet">
+                <fd-facet type="form" facetTitle="Vacation {{idx+1}}" id="facet1">
+                    <fd-facet-content>
+                        <label fd-form-label [colon]="true">Country</label>
+                        <fd-text text="{{trip.country}}"></fd-text>
+                    </fd-facet-content>
+                    <fd-facet-content>
+                        <label fd-form-label [colon]="true">City</label>
+                        <fd-text text="{{trip.city}}"></fd-text>
+                    </fd-facet-content>
+                    <fd-facet-content>
+                        <label fd-form-label [colon]="true">Vacation Length</label>
+                        <fd-text text="{{trip.vacationLength}} days"></fd-text>
+                    </fd-facet-content>
+                </fd-facet>
             
-            <fd-facet type="key-value" facetTitle="Transport" id="facet5">
-                <span
-                    fd-object-status
-                    status="critical"
-                    label="{{trip.transport}}"
-                    glyph="{{mapTransportToGlyph[trip.transport]}}"
-                    [large]="true"
-                    title="{{trip.transport}}"
-                    aria-label="12 days"
-                ></span>
-            </fd-facet>
-        
-            <fd-facet type="key-value" facetTitle="Pricing" id="facet7">
-                <fd-object-number
-                    [number]="trip.price"
-                    [large]="true"
-                    unit="CAD"
-                    status="informative"
-                    [decimal]="2"
-                ></fd-object-number>
-            </fd-facet>
-        </fd-facet-group>
-        <hr>
-    }
-</ul>
+                <fd-facet type="rating-indicator" facetTitle="Rating Indicator" subtitle="Personal Review" id="facet2">
+                    <fd-facet-content>
+                        <fd-rating-indicator size="md" dynamicTextIndicator="of" [value]='trip.review/2'></fd-rating-indicator>
+                    </fd-facet-content>
+                </fd-facet>
+                <fd-facet type="image" id="facet3">
+                    <fd-avatar fd-grid-list-item-image image={{trip.flagUrl}} size="l" [transparent]="true"></fd-avatar>
+                    
+                </fd-facet>
+                <fd-facet type="key-value" facetTitle="Would I Redo It?" id="facet4">
+                    @if (trip.wouldRedoIt == 'positive') {
+                        <span
+                        fd-object-status
+                        status="positive"
+                        label="{{trip.wouldRedoIt}}"
+                        glyph="{{mapStatusToGlyph[trip.wouldRedoIt] }}"
+                        [large]="true"
+                        title="Would Redo It?"
+                        aria-label="Would Redo It?"
+                    ></span>
+                    } @else if (trip.wouldRedoIt == 'negative') {
+                        <span
+                        fd-object-status
+                        status="negative"
+                        label="{{trip.wouldRedoIt}}"
+                        glyph="{{mapStatusToGlyph[trip.wouldRedoIt] }}"
+                        [large]="true"
+                        title="Would Redo It?"
+                        aria-label="Would Redo It?"
+                    ></span>
+                    } @else {
+                        <span
+                        fd-object-status
+                        status="neutral"
+                        label="{{trip.wouldRedoIt}}"
+                        glyph="{{mapStatusToGlyph[trip.wouldRedoIt] }}"
+                        [large]="true"
+                        title="Would Redo It?"
+                        aria-label="Would Redo It?"
+                    ></span>
+                    }
+                </fd-facet>
+                
+                <fd-facet type="key-value" facetTitle="Transport" id="facet5">
+                    <span
+                        fd-object-status
+                        status="critical"
+                        label="{{trip.transport}}"
+                        glyph="{{mapTransportToGlyph[trip.transport]}}"
+                        [large]="true"
+                        title="{{trip.transport}}"
+                        aria-label="12 days"
+                    ></span>
+                </fd-facet>
+            
+                <fd-facet type="key-value" facetTitle="Pricing" id="facet7">
+                    <fd-object-number
+                        [number]="trip.price"
+                        [large]="true"
+                        unit="CAD"
+                        status="informative"
+                        [decimal]="2"
+                    ></fd-object-number>
+                </fd-facet>
+            </fd-facet-group>
+            <hr>
+        }
+    </ul>
+</div>

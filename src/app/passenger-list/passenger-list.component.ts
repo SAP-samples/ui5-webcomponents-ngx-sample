@@ -25,6 +25,7 @@ export class PassengerListComponent {
                 this.passengers = passengers;
                 this.isDataAvailable = true;
             })
+
     }
 
     ngOnDestroy() {

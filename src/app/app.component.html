@@ -1,5 +1,4 @@
 <div *ngIf="isDataAvailable"> 
-
   <app-header></app-header>
 
   <ui5-tabcontainer class="show-at-desktop hidden-at-tablet hidden-at-mobile" header-background-design="Solid"
@@ -226,6 +225,7 @@
     <ui5-tab [text]="'PAST_TRIPS' | ui5I18n">
       <app-past-trips></app-past-trips>
     </ui5-tab>
-    <ui5-tab [text]="'ABOUT_US' | ui5I18n"></ui5-tab>
-    <ui5-tab [text]="'CONTACTS' | ui5I18n"></ui5-tab>
+    <ui5-tab [text]="'ABOUT_US' | ui5I18n">
+      <app-contact></app-contact>
+    </ui5-tab>
   </ui5-tabcontainer>

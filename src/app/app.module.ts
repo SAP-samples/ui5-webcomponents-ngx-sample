@@ -17,7 +17,6 @@ import "@ui5/webcomponents/dist/Assets.js";
 import "@ui5/webcomponents-fiori/dist/Assets.js";
 import { FundamentalNgxCoreModule, RtlService } from '@fundamental-ngx/core';
 
-
 // Custom Components
 import { HeaderComponent } from './header/header.component';
 import { MessageComponent } from './message/message.component';
@@ -29,6 +28,8 @@ import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
 import { LoginComponent } from './login/login.component';
 import { TripPlannerComponent } from './trip-planner/trip-planner.component';
 import { PastTripsComponent } from './past-trips/past-trips.component';
+import { ContactComponent } from './contact/contact.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideTheming, themingInitializer } from '@fundamental-ngx/core/theming';
 
@@ -38,6 +39,7 @@ import { FdDatetimeModule } from '@fundamental-ngx/core/datetime';
 
 // Custom Directives
 import { AppService } from './services/services';
+
 
 @NgModule({ declarations: [
         AppComponent,
@@ -50,7 +52,8 @@ import { AppService } from './services/services';
         TripCalendarComponent,
         LoginComponent,
         TripPlannerComponent,
-        PastTripsComponent
+        PastTripsComponent,
+        ContactComponent
     ],
     bootstrap: [AppComponent], 
     imports: [BrowserModule,
@@ -89,8 +92,9 @@ import { AppService } from './services/services';
     ]
         
         
-        , providers: [provideHttpClient(withInterceptorsFromDi()), 
-                    provideTheming({ defaultTheme: 'sap_horizon', changeThemeOnQueryParamChange: false }), 
+        , providers: [
+                    provideHttpClient(withInterceptorsFromDi()), 
+                    provideTheming({ defaultTheme: 'sap_horizon' }), 
                     themingInitializer(),
                     RtlService,
                     AppService

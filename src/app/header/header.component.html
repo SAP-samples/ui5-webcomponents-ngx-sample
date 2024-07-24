@@ -10,7 +10,7 @@
     <ui5-shellbar-item icon="translate" (click)="setLanguageDialogOpen()"
         [text]="'CHOOSE_LANGUAGE' | ui5I18n"></ui5-shellbar-item>
 </ui5-shellbar>
-
+    
 <!-- Theme select dialog -->
 <ui5-dialog [headerText]="'CHOOSE_THEME' | ui5I18n" [open]="themeDialogOpen"
     [accessibleName]="'CHOOSE_THEME' | ui5I18n">
@@ -42,9 +42,3 @@
         <ui5-button class="dialog__footer__button" (click)="setLanguageDialogOpen()">{{'CANCEL' | ui5I18n}}</ui5-button>
     </div>
 </ui5-dialog>
-
-<!-- <ui5-tabcontainer class="hidden-at-desktop hidden-at-tablet show-at-mobile" header-background-design="Solid"
-    content-background-design="Solid" [attr.fixed]="true" [collapsed]="true">
-    <ui5-tab [text]="'FLIGHT_INFO' | ui5I18n"></ui5-tab>
-    <ui5-tab [text]="'PLAN_A_TRIP' | ui5I18n"></ui5-tab>
-</ui5-tabcontainer> -->

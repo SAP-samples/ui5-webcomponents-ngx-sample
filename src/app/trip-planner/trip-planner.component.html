@@ -5,7 +5,7 @@
             <div style="display: flex; flex-direction: column; gap: 1rem;">
             <ui5-title>1. Destination</ui5-title>
                 <div>
-                    <ui5-input #CountryInput placeholder="Input a Country..." (ui5Input)="showSuggestions()" [(ngModel)]="countryInput"></ui5-input>
+                    <ui5-input #CountryInput placeholder="Enter a Country..." (ui5Input)="showSuggestions()" [(ngModel)]="countryInput"></ui5-input>
                     <ul fd-list>
                         <li fd-list-item *ngFor="let suggestion of suggestionItems" (click)="selectCountry(suggestion)">
                             {{suggestion}}
@@ -47,32 +47,19 @@
       </ui5-wizard-step>
   
       <ui5-wizard-step icon="calendar" title-text="Vacation Days Picker">
+
         <div style="display: flex; gap: 3rem;">
-            <div style="display: flex;flex-direction: column; gap: 1rem;">
-                <ui5-title>2. Vacation Days</ui5-title>
-                <ui5-daterange-picker></ui5-daterange-picker>
-                <fd-calendar [rangeHoverEffect]="true" calType="range" [(ngModel)]="rangeDate"></fd-calendar>
-              </div>
-              <fd-grid-list selectionMode="singleSelectRight" (selectionChange)="changeDesiredPackage($event)">
-                <fd-grid-list-title-bar title="List of Available Vacation Packages"></fd-grid-list-title-bar>
-                @for (package of randomPackageDeals; track package){
-                  <fd-grid-list-item
-                    [title]="package.country"
-                    [value]="package.id"
-                    [selected]="package.selected"
-                    *ngIf="package.vacationStart.toDateString() != 'Invalid Date'"
-                  >
-
-                  <ng-template fd-grid-list-item-body>
-                    <p>Start Date: {{package.vacationStart.toDateString()}}</p>
-                    <p>End Date: {{package.vacationEnd.toDateString()}}</p>
-                    <p>{{package.price}}$</p>
-                  </ng-template>
-
-                  </fd-grid-list-item>
-                }
-              </fd-grid-list>
-
+          <div style="display: flex;flex-direction: column; gap: 1rem;">
+            <ui5-title>2. Vacation Days</ui5-title>
+            <ui5-daterange-picker></ui5-daterange-picker>
+            <fd-calendar [rangeHoverEffect]="true" calType="range" [(ngModel)]="rangeDate"></fd-calendar>
+          </div>
+            <ui5-list style="height: 400px;" selectionMode="Single" growing="Scroll" loading-delay="0" (ui5ItemClick)="changeDesiredPackage($event)" headerText="List of Available Package Deals">
+              @for (package of randomPackageDeals; track $index) {
+                <ui5-li *ngIf="package.vacationStart.toDateString() != 'Invalid Date'" id="{{package.country}}_{{package.id}}" icon="paper-plane" description="{{package.vacationStart | dateTimeFormat}} - {{package.vacationEnd | dateTimeFormat }}" additionalText="{{package.price}}$"
+                  additionalTextState="Positive">{{package.country}}</ui5-li>
+              }
+            </ui5-list>
         </div>
       </ui5-wizard-step>
   
@@ -81,10 +68,11 @@
           <ui5-title>3. Passengers & Final Price</ui5-title>
           <br>
           <div fd-form-item style="width: 50%;">
-            <label fd-form-label for="input-1">Add new Passenger</label>
-            <input fd-form-control type="text" placeholder="Full Name"  aria-required="true" [(ngModel)]="passengerToAddName"/>
-            <input fd-form-control type="text" placeholder="Address" aria-required="true" [(ngModel)]="passengerToAddAddress"/>
+            <label fd-form-label>Add new Passenger</label>
+            <input fd-form-control type="text" placeholder="Full Name"  aria-required="true" [(ngModel)]="passengerToAddName" [required]="true"/>
+            <input fd-form-control type="text" placeholder="Address" aria-required="true" [(ngModel)]="passengerToAddAddress" [required]="true"/>
             <button fd-button type="submit" (click)="addPassenger()" style="width: 10%;">Add</button>
+            
           </div>
           <br>
           <ul fd-list>

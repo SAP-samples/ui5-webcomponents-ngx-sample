@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ViewChild, ElementRef, Renderer2, ChangeDetectionStrategy } from '@angular/core';
 import { Subject, takeUntil, zip } from 'rxjs';
 
 import { AppService } from './services/services';
@@ -7,7 +7,7 @@ import { addZeroToTime, getDateAsDDTTTT } from './utils/utils';
 import { Trip } from './interfaces/trip';
 import { AircraftStatus } from './interfaces/aircraft-status';
 
-import { RtlService } from '@fundamental-ngx/core';
+
 
 @Component({
   selector: 'app-root',

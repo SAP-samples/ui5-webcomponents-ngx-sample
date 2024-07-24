@@ -1,0 +1,54 @@
+<div *ngIf="isDataAvailable" style="height: 100vh;">
+  <div>
+    <div>
+        <ui5-title level="H2">Welcome to SAP Airline</ui5-title>
+        <ui5-text style="margin: 0.5rem;">
+            At SAP Airline, we strive to provide the best travel experience to our passengers. Our mission is to connect people across the globe with safe, reliable, and affordable air travel services. With a dedicated team of professionals, state-of-the-art aircraft, and a commitment to excellence, we ensure that your journey is comfortable and memorable.
+            Founded in 2014, SAP Airline has quickly grown to become a trusted name in the airline industry. We believe in fostering a culture of safety, innovation, and exceptional customer service. Our team works tirelessly to bring you the best in-flight and on-ground services, making sure that every aspect of your travel is seamless and enjoyable.
+        </ui5-text>
+  </div>
+  <br>
+  <div>
+    <ui5-title level="H2">Our Team</ui5-title>
+    <br>
+    <div style="display: flex;">
+      <ui5-side-navigation>
+        
+          @for (item of navigationItemObject; track $index) {
+            <ui5-side-navigation-item text="{{item.text}}" icon="{{item.icon}}" (ui5Click)="expandThis(item.text)"></ui5-side-navigation-item>
+          }
+        
+      </ui5-side-navigation>
+      
+      <div [ngSwitch]="currentExpandedItem">
+        @for (item of navigationItemObject; track $index) {
+          <div fd-card-list style="margin-left: 1rem;" *ngSwitchCase="item.text">
+            @for (member of team; track $index) {
+              <ui5-card style="width: 40%; margin: 0.5rem;" *ngIf="member.positionType==item.text">
+                <ui5-card-header slot="header" titleText="{{member.name}}" subtitleText="{{member.position}}">
+                     <fd-avatar label="{{member.name}}" slot="avatar" size="s" [circle]="true"/>
+                </ui5-card-header>
+                <div class="content content-padding">
+                    <ui5-title level="H5" style="padding-block-end: 1rem;">Contact details</ui5-title>
+                    <div class="content-group">
+                      <ui5-label show-colon>Phone Number</ui5-label>
+                      <ui5-text>
+                        <a href="tel:514-123-1234">514-123-1234</a>
+                      </ui5-text>
+                  </div>
+                    <div class="content-group">
+                        <ui5-label show-colon>Email</ui5-label>
+                        <ui5-link target="_blank">{{member.name.replace(' ', '_').toLowerCase()}}&#64;airlines.sap.com</ui5-link>
+                    </div>
+                </div>
+              </ui5-card>
+            }
+          </div>
+        }
+      </div>
+
+    </div>
+  
+  </div>
+
+</div>

@@ -10,18 +10,19 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class PastTripsComponent {
 
-  mapStatusToGlyph: any = {
+  mapStatusToGlyph: any = Object.freeze({
     'neutral' : 'sys-help',
     'positive' : 'thumb-up',
     'negative' : 'thumb-down'
 
-  }
+  })
 
-  mapTransportToGlyph: any = {
+  mapTransportToGlyph: any = Object.freeze({
     'plane': 'travel-itinerary',
     'car': 'car-rental',
-    'train': 'passenger-train'
-  }
+    'train': 'passenger-train',
+    'boat': 'blur'
+  })
 
   listOfVacations: pastTrip[];
   componentUnsubscribe: Subject<boolean> = new Subject();
@@ -35,8 +36,7 @@ export class PastTripsComponent {
         this.listOfVacations = data;
       }
     )
-  }  
-
+  }
 
 
   ngOnDestroy() {

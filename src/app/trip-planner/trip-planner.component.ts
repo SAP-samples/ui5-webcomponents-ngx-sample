@@ -7,7 +7,7 @@ import { FdDate } from '@fundamental-ngx/core';
 import { DateRange } from '@fundamental-ngx/core';
 import { Passenger } from '../interfaces/passenger';
 import { packageDeals } from '../interfaces/package-deals';
-import { GridListSelectionEvent } from '@fundamental-ngx/core';
+import { ListItemClickEventDetail } from '@ui5/webcomponents/dist/List';
 
 @Component({
   selector: 'app-trip-planner',
@@ -32,7 +32,7 @@ export class TripPlannerComponent {
   rangeDate = new DateRange(new FdDate(2020, 10, 25), new FdDate(2020, 10, 26));
   randomPackageDeals: packageDeals[] = [];
   currId: number = 0;
-  packageSelected: packageDeals;
+  packageSelected!: packageDeals;
   
   // Passenger Data
   listOfPassengers: Passenger[] = [];
@@ -148,12 +148,14 @@ export class TripPlannerComponent {
         selected: false
       }
     }
+    
+    changeDesiredPackage(p: ListItemClickEventDetail){
+      this.packageSelected = Array.from(this.randomPackageDeals).filter(item => item.id == Number.parseInt(p.item.id.split('_')[1]))[0];
+      console.log(this.packageSelected);
+    }
 
-    indexChosen: number;
-    changeDesiredPackage(event: GridListSelectionEvent<number>){
-      console.log(event.index)
-      this.indexChosen = Array.from(event.index)[0];
-      this.packageSelected = this.randomPackageDeals[this.indexChosen];
+    test(e: ListItemClickEventDetail){
+      console.log(e.item.id);
     }
 
     openToast: boolean = false;
