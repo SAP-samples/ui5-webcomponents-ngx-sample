@@ -25,11 +25,9 @@ import { PassengerListComponent } from './passenger-list/passenger-list.componen
 import { SeatsChartComponent } from './seats-chart/seats-chart.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
-import { LoginComponent } from './login/login.component';
 import { TripPlannerComponent } from './trip-planner/trip-planner.component';
 import { PastTripsComponent } from './past-trips/past-trips.component';
 import { ContactComponent } from './contact/contact.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideTheming, themingInitializer } from '@fundamental-ngx/core/theming';
 
@@ -50,7 +48,6 @@ import { AppService } from './services/services';
         SeatsChartComponent,
         PaymentDetailsComponent,
         TripCalendarComponent,
-        LoginComponent,
         TripPlannerComponent,
         PastTripsComponent,
         ContactComponent
