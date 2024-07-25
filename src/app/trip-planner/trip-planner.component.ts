@@ -19,11 +19,11 @@ export class TripPlannerComponent {
   constructor(private appService: AppService){}
 
   isDataAvailable: Boolean = false;
+  isMobile: boolean = window.screen.availHeight<=932 && window.screen.availWidth<=430 ? true : false;
   
   // Country Data
   CountryDetails!: CountryListItem[];
   CountryDetailsSuggested!: CountryListItem[];
-  
   
   componentUnsubscribe: Subject<boolean> = new Subject();
 
@@ -38,6 +38,7 @@ export class TripPlannerComponent {
   listOfPassengers: Passenger[] = [];
   passengerToAddName: string;
   passengerToAddAddress: string;
+  passengerToAddPassNumber: string;
 
 
   listOfCountries: string[] = ["Argentina", "Albania", "Algeria", "Angola",
@@ -62,6 +63,7 @@ export class TripPlannerComponent {
       });
 
       this.isDataAvailable = true;
+      console.log(this.isMobile);
     }
 
     showSuggestions(){
@@ -105,7 +107,8 @@ export class TripPlannerComponent {
         this.listOfPassengers.push(
           {
             name: this.passengerToAddName,
-            address: this.passengerToAddAddress
+            address: this.passengerToAddAddress,
+            passportNumber: this.passengerToAddPassNumber
           }
         )
       }
@@ -152,15 +155,6 @@ export class TripPlannerComponent {
     changeDesiredPackage(p: ListItemClickEventDetail){
       this.packageSelected = Array.from(this.randomPackageDeals).filter(item => item.id == Number.parseInt(p.item.id.split('_')[1]))[0];
       console.log(this.packageSelected);
-    }
-
-    test(e: ListItemClickEventDetail){
-      console.log(e.item.id);
-    }
-
-    openToast: boolean = false;
-    finalize(){
-      this.openToast = true;
     }
 
     ngOnDestroy() {

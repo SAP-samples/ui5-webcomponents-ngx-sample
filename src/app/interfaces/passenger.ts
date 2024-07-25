@@ -1,4 +1,5 @@
 export interface Passenger {
-    name: string;
-    address: string;
+    name: string,
+    address: string,
+    passportNumber: string
 }

@@ -1,7 +1,8 @@
-<div *ngIf="isDataAvailable"> 
+<div *ngIf="isDataAvailable">
   <app-header></app-header>
 
-  <ui5-tabcontainer class="show-at-desktop hidden-at-tablet hidden-at-mobile" header-background-design="Solid"
+  <!-- class="show-at-desktop hidden-at-tablet hidden-at-mobile"  -->
+  <ui5-tabcontainer header-background-design="Solid"
     content-background-design="Solid" [attr.fixed]="true">
     <ui5-tab [text]="'FLIGHT_INFO' | ui5I18n">
       <section class="app-content">

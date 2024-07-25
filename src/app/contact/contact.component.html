@@ -24,7 +24,7 @@
         @for (item of navigationItemObject; track $index) {
           <div fd-card-list style="margin-left: 1rem;" *ngSwitchCase="item.text">
             @for (member of team; track $index) {
-              <ui5-card style="width: 40%; margin: 0.5rem;" *ngIf="member.positionType==item.text">
+              <ui5-card style="width: 40%; margin: 0.5rem; min-width: 400px;" *ngIf="member.positionType==item.text">
                 <ui5-card-header slot="header" titleText="{{member.name}}" subtitleText="{{member.position}}">
                      <fd-avatar label="{{member.name}}" slot="avatar" size="s" [circle]="true"/>
                 </ui5-card-header>
