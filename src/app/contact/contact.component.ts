@@ -13,6 +13,7 @@ export class ContactComponent {
   team: teamMemberInterface[];
   isDataAvailable: boolean = false;
   currentExpandedItem: string = 'Customer Service';
+  isMobile: boolean = window.screen.availHeight <= 932 && window.screen.availWidth <= 430 ? true : false;
 
   navigationItemObject = [
     {

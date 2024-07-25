@@ -1,6 +1,6 @@
 export interface pastTrip{
     country: string,
-    city?: string,
+    city: string,
     price: number,
     vacationLength: number,
     review: number,

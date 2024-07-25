@@ -1,9 +1,9 @@
 <div *ngIf="isDataAvailable" style="height: 100%">
     <ui5-wizard id="wiz">
-      <ui5-wizard-step icon="travel-itinerary" titleText="Travel Destination" selected>
+      <ui5-wizard-step icon="travel-itinerary" titleText="{{'TRAVEL_DESTINATION' | ui5I18n}}" selected>
         <div style="display: flex; gap: 2rem;" [ngStyle]="isMobile ? {'flex-direction': 'column'} : {'flex-direction': 'row'}">
             <div style="display: flex; flex-direction: column; gap: 1rem;">
-            <ui5-title>1. Destination</ui5-title>
+            <ui5-title>1. {{'DESTINATION' | ui5I18n}}</ui5-title>
                 <div>
                     <ui5-input #CountryInput placeholder="Enter a Country..." (ui5Input)="showSuggestions()" [(ngModel)]="countryInput"></ui5-input>
                     <ul fd-list>
@@ -17,8 +17,8 @@
                 @if (!this.countryInput) {
                     @for (item of CountryDetails | slice:0:(isMobile ? 3 : 8) ; track item) {
                         <fd-grid-list-item
-                            [title]="item.name"
-                            [description]="item.continent"
+                            [title]="item.name | ui5I18n"
+                            [description]="item.continent.toUpperCase().replaceAll(' ', '_') | ui5I18n"
                         >
                         <fd-avatar fd-grid-list-item-image image={{item.flag}} size="s" [transparent]="true"></fd-avatar>
                         
@@ -30,9 +30,9 @@
                     }
                 } @else {
                     @for (item of CountryDetailsSuggested; track item) {
-                        <fd-grid-list-item
-                            [title]="item.name"
-                            [description]="item.continent"
+                            <fd-grid-list-item
+                            [title]="item.name | ui5I18n"
+                            [description]="item.continent.toUpperCase()| ui5I18n"
                         >
                         <fd-avatar fd-grid-list-item-image image={{item.flag}} size="s" [transparent]="true"></fd-avatar>
                         <fd-grid-list-item-footer-bar> 
@@ -46,39 +46,39 @@
         </div>
       </ui5-wizard-step>
   
-      <ui5-wizard-step icon="calendar" titleText="Vacation Days Picker">
+      <ui5-wizard-step icon="calendar" titleText="{{'VACATION_DAYS_PICKER' | ui5I18n}}">
 
         <div style="display: flex; gap: 3rem;" [ngStyle]="isMobile ? {'flex-direction': 'column'} : {'flex-direction': 'row'}">
             <div style="display: flex;flex-direction: column; gap: 1rem;">
-              <ui5-title>2. Vacation Days</ui5-title>
-              <ui5-daterange-picker style="position: relative; width: 50%; margin: auto;"></ui5-daterange-picker>
+              <ui5-title>2. {{'VACATION_DAYS' | ui5I18n}}</ui5-title>
+              <ui5-daterange-picker></ui5-daterange-picker>
               <fd-calendar [rangeHoverEffect]="true" calType="range"  [(ngModel)]="rangeDate"></fd-calendar>
             </div>
-            <ui5-list style="height: 400px;" selectionMode="Single" growing="Scroll" loading-delay="0" (ui5ItemClick)="changeDesiredPackage($event)" headerText="List of Available Package Deals">
+            <ui5-list style="height: 400px;" selectionMode="Single" growing="Scroll" loading-delay="0" (ui5ItemClick)="changeDesiredPackage($event)" headerText="{{'LIST_OF_PACKAGES' | ui5I18n}}">
                 @for (package of randomPackageDeals; track $index) {
                   <ui5-li *ngIf="package.vacationStart.toDateString() != 'Invalid Date'" id="{{package.country}}_{{package.id}}" icon="paper-plane" description="{{package.vacationStart | dateTimeFormat}} - {{package.vacationEnd | dateTimeFormat }}" additionalText="{{package.price}}$"
-                    additionalTextState="Positive">{{package.country}}</ui5-li>
+                    additionalTextState="Positive">{{package.country | ui5I18n}}</ui5-li>
                 }
             </ui5-list>
           </div>
       </ui5-wizard-step>
   
-      <ui5-wizard-step icon="information" titleText="Passengers & Final Price">
+      <ui5-wizard-step icon="information" titleText="{{'PASSENGERS_AND_PRICE' | ui5I18n}}">
         <div style="display: flex; flex-direction: column;">
-          <ui5-title>3. Passengers & Final Price</ui5-title>
+          <ui5-title>3. {{'PASSENGERS_AND_PRICE' | ui5I18n}}</ui5-title>
           <br>
 
-          <ui5-form headerText="Add New Passengers:">
+          <ui5-form headerText="{{'ADD_NEW_PASSENGERS' | ui5I18n}}">
             <ui5-form-item>
-              <ui5-label for="nameInp" slot="labelContent">Full Name:</ui5-label>
+              <ui5-label for="nameInp" slot="labelContent" [showColon]="true">{{'FULL_NAME' | ui5I18n}}</ui5-label>
               <ui5-input id="nameInp" [(ngModel)]="passengerToAddName"></ui5-input>
             </ui5-form-item>
             <ui5-form-item>
-              <ui5-label for="addressInp" slot="labelContent">Address:</ui5-label>
+              <ui5-label for="addressInp" slot="labelContent" [showColon]="true">{{'ADDRESS' | ui5I18n}}</ui5-label>
               <ui5-input id="addressInp" [(ngModel)]="passengerToAddAddress"></ui5-input>
             </ui5-form-item>
             <ui5-form-item>
-              <ui5-label for="passNumberInp" slot="labelContent">Passport Number:</ui5-label>
+              <ui5-label for="passNumberInp" slot="labelContent" [showColon]="true">{{'PASSPORT_NUMBER' | ui5I18n}}</ui5-label>
               <ui5-input id="passNumberInp" [(ngModel)]="passengerToAddPassNumber"></ui5-input>
             </ui5-form-item>
           </ui5-form>
