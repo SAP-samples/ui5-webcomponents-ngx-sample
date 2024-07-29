@@ -1,13 +1,10 @@
-import { Component, ViewChild, ElementRef, Renderer2, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subject, takeUntil, zip } from 'rxjs';
-
 import { AppService } from './services/services';
 import { MONTHS } from './constants/constants';
 import { addZeroToTime, getDateAsDDTTTT } from './utils/utils';
 import { Trip } from './interfaces/trip';
 import { AircraftStatus } from './interfaces/aircraft-status';
-
-
 
 @Component({
   selector: 'app-root',
@@ -35,8 +32,9 @@ export class AppComponent {
   departureDateTimeString!: string;
   arrivalMonth!: string;
   arrivalDateTimeString!: string;
+  
 
-  constructor(private appService: AppService, private renderer: Renderer2) {}
+  constructor(private appService: AppService) {}
 
   ngOnInit() {
     zip([this.appService.getCurrentTrip(), this.appService.getDepartureAircraftStatus()])

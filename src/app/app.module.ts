@@ -1,6 +1,6 @@
 // Angular Modules & more...
 import { inject, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -85,7 +85,8 @@ import { AppService } from './services/services';
             }
         }),
         BrowserAnimationsModule,
-        FundamentalNgxCoreModule
+        FundamentalNgxCoreModule,
+        
     ]
         
         

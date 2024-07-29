@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject, signal } from '@angular/core';
 import { Subject, takeUntil, zip } from 'rxjs';
-import { Ui5ThemingService } from '@ui5/theming-ngx';
 import { I18nService } from '@ui5/webcomponents-ngx/i18n';
 import { ShellBarComponent } from '@ui5/webcomponents-ngx';
 
@@ -34,7 +33,7 @@ export class HeaderComponent {
     languageDialogOpen = false;
     languages = LANGUAGES;
 
-    isRTL:Boolean = false;
+    isRTL:boolean = false;
 
     user!: User;
 
@@ -42,9 +41,7 @@ export class HeaderComponent {
     international!: Trip[];
 
     fd_themes: CompleteThemeDefinition[];
-    constructor(private appService: AppService, private ui5ThemingService: Ui5ThemingService, private rtlService: RtlService, private fd_theming_service: ThemingService) {
-        this.fd_themes = this.fd_theming_service.getThemes()
-    }
+    constructor(private appService: AppService, private rtlService: RtlService) {}
 
     ngOnInit() {
         zip([this.appService.getDomesticTrips(), this.appService.getInternationalTrips(), this.appService.getUser()])
@@ -63,6 +60,7 @@ export class HeaderComponent {
         this.componentUnsubscribe.complete();
     }
 
+    _dir: string = 'ltr';
     switchLanguage() {
         this.i18nService.setLanguage(this.selectedLanguage ? this.selectedLanguage : 'en');
         this.isRTL = this.selectedLanguage == 'ar' ? true : false;
@@ -73,7 +71,20 @@ export class HeaderComponent {
             el.dir = 'ltr'
         })
 
-        this.rtlService;
+
+        // With RxJS
+        // this.rtlService.rtl.next(this.isRTL);
+        // this.rtlService.rtl.subscribe((isThisRtl) => this._dir = isThisRtl ? 'rtl' : 'ltr');
+
+        // With Signals
+        // this.rtlService.rtlSignal = signal(false);
+        // this.rtlService.rtlSignal.update((value) => value = this.isRTL)
+        // this._dir = this.rtlService.rtlSignal() ? 'rtl' : 'ltr';
+     
+        
+        // With Constructor
+
+
         this.currentLanguage = this.selectedLanguage;
         this.setLanguageDialogOpen();
         this.shellbarMenuClicked();
@@ -91,7 +102,6 @@ export class HeaderComponent {
     }
 
     switchTheme() {
-        this.ui5ThemingService.setTheme('sap_fiori_3');
         setTheme(this.selectedTheme);
         this.currentTheme = this.selectedTheme;
         this.setThemeDialogOpen();
@@ -112,9 +122,5 @@ export class HeaderComponent {
     shellbarMenuClicked() {
         var element = document.getElementById('shellbar') as unknown as ShellBarComponent;
         if (element && (element as any).closeOverflow) (element as any).closeOverflow();
-    }
-
-    logIn(){
-        console.log('logged')
     }
 }

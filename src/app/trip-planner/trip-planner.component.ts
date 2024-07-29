@@ -1,18 +1,19 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Trip } from '../interfaces/trip';
 import { CountryListItem } from '../interfaces/country-details';
 import { AppService } from '../services/services';
 import { Subject, takeUntil } from 'rxjs';
-import { FdDate } from '@fundamental-ngx/core';
+import { DateTimeFormatPipe, FdDate, FdDatetimeModule } from '@fundamental-ngx/core';
 import { DateRange } from '@fundamental-ngx/core';
 import { Passenger } from '../interfaces/passenger';
 import { packageDeals } from '../interfaces/package-deals';
 import { ListItemClickEventDetail } from '@ui5/webcomponents/dist/List';
 
+
 @Component({
   selector: 'app-trip-planner',
   templateUrl: './trip-planner.component.html',
-  styleUrl: './trip-planner.component.scss'
+  styleUrl: './trip-planner.component.scss',
 })
 export class TripPlannerComponent {
 
@@ -63,7 +64,6 @@ export class TripPlannerComponent {
       });
 
       this.isDataAvailable = true;
-      console.log(this.isMobile);
     }
 
     showSuggestions(){
