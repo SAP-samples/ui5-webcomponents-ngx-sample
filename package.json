@@ -1,5 +1,5 @@
 {
-  "name": "mock-project",
+  "name": "ui5-demo-v17",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,8 @@
     "build": "ng build",
     "deploy": "ng deploy",
     "watch": "ng build",
-    "test": "ng test"
+    "test": "ng test",
+    "optimize": "google-closure-compiler --config ./closure-config.json"
   },
   "private": true,
   "dependencies": {
@@ -21,12 +22,12 @@
     "@angular/platform-browser-dynamic": "^17.3.8",
     "@angular/platform-server": "^17.3.8",
     "@angular/router": "^17.3.8",
-    "@fundamental-ngx/cdk": "0.51.1",
-    "@fundamental-ngx/core": "^0.51.1",
-    "@fundamental-ngx/i18n": "0.51.1",
+    "@fundamental-ngx/cdk": "0.50.3",
+    "@fundamental-ngx/core": "^0.50.3",
+    "@fundamental-ngx/i18n": "0.50.3",
     "@fundamental-styles/common-css": "^0.30.2",
     "@sap-theming/theming-base-content": "^11.15.0",
-    "@sap-ui/common-css": "0.37.3",
+    "@sap-ui/common-css": "0.37.1",
     "@ui5/theming-ngx": "^0.3.0-rc.10",
     "@ui5/webcomponents": "2.0.1",
     "@ui5/webcomponents-base": "2.0.1",
@@ -39,9 +40,9 @@
     "axios": "^1.7.2",
     "express": "^4.18.2",
     "fast-deep-equal": "^3.1.3",
-    "fundamental-styles": "0.37.3",
+    "fundamental-styles": "0.37.1",
     "rxjs": "7.8.1",
-    "tslib": "^2.3.0",
+    "tslib": "^2.6.3",
     "zone.js": "~0.14.7"
   },
   "devDependencies": {
