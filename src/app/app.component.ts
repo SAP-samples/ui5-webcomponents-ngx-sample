@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy } from "@angular/core";
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   componentUnsubscribe: Subject<boolean> = new Subject();
@@ -88,6 +88,7 @@ export class AppComponent {
           new Date(this.departureAircraftStatus.arrivalTime)
         );
         this.isDataAvailable = true;
+        this.changeDetectorRef.detectChanges();
       });
   }
 
