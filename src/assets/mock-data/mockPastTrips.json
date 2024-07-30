@@ -8,7 +8,7 @@
     "wouldRedoIt": "positive",
     "transport": "plane",
     "flagUrl": "https://flagsapi.com/IT/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/Italy_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Italy_flag.webp"
   },
   {
     "country": "Japan",
@@ -19,7 +19,7 @@
     "wouldRedoIt": "positive",
     "transport": "plane",
     "flagUrl": "https://flagsapi.com/JP/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/Japan_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Japan_flag.webp"
   },
   {
     "country": "USA",
@@ -30,7 +30,7 @@
     "wouldRedoIt": "neutral",
     "transport": "plane",
     "flagUrl": "https://flagsapi.com/US/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/USA_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/USA_flag.webp"
   },
   {
     "country": "France",
@@ -41,7 +41,7 @@
     "wouldRedoIt": "positive",
     "transport": "train",
     "flagUrl": "https://flagsapi.com/FR/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/France_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/France_flag.webp"
   },
   {
     "country": "Australia",
@@ -52,7 +52,7 @@
     "wouldRedoIt": "positive",
     "transport": "plane",
     "flagUrl": "https://flagsapi.com/AU/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/Australia_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Australia_flag.webp"
   },
   {
     "country": "Brazil",
@@ -63,7 +63,7 @@
     "wouldRedoIt": "neutral",
     "transport": "plane",
     "flagUrl": "https://flagsapi.com/BR/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/Brazil_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Brazil_flag.webp"
   },
   {
     "country": "Canada",
@@ -74,7 +74,7 @@
     "wouldRedoIt": "positive",
     "transport": "car",
     "flagUrl": "https://flagsapi.com/CA/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/Canada_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Canada_flag.webp"
   },
   {
     "country": "Spain",
@@ -85,7 +85,7 @@
     "wouldRedoIt": "negative",
     "transport": "train",
     "flagUrl": "https://flagsapi.com/ES/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/Spain_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Spain_flag.webp"
   },
   {
     "country": "Germany",
@@ -96,7 +96,7 @@
     "wouldRedoIt": "positive",
     "transport": "plane",
     "flagUrl": "https://flagsapi.com/DE/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/Germany_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Germany_flag.webp"
   },
   {
     "country": "Mexico",
@@ -107,7 +107,7 @@
     "wouldRedoIt": "neutral",
     "transport": "plane",
     "flagUrl": "https://flagsapi.com/MX/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/Mexico_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Mexico_flag.webp"
   },
   {
     "country": "China",
@@ -118,7 +118,7 @@
     "wouldRedoIt": "positive",
     "transport": "plane",
     "flagUrl": "https://flagsapi.com/CN/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/China_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/China_flag.webp"
   },
   {
     "country": "Greece",
@@ -129,7 +129,7 @@
     "wouldRedoIt": "negative",
     "transport": "boat",
     "flagUrl": "https://flagsapi.com/GR/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/Greece_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Greece_flag.webp"
   },
   {
     "country": "Russia",
@@ -140,7 +140,7 @@
     "wouldRedoIt": "neutral",
     "transport": "plane",
     "flagUrl": "https://flagsapi.com/RU/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/Russia_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Russia_flag.webp"
   },
   {
     "country": "South Africa",
@@ -151,7 +151,7 @@
     "wouldRedoIt": "positive",
     "transport": "plane",
     "flagUrl": "https://flagsapi.com/ZA/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/South_Africa_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/South_Africa_flag.webp"
   },
   {
     "country": "India",
@@ -162,7 +162,7 @@
     "wouldRedoIt": "negative",
     "transport": "plane",
     "flagUrl": "https://flagsapi.com/IN/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/India_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/India_flag.webp"
   },
   {
     "country": "Turkey",
@@ -173,6 +173,6 @@
     "wouldRedoIt": "positive",
     "transport": "plane",
     "flagUrl": "https://flagsapi.com/TR/flat/64.png",
-    "flagLocationLocal": "../../assets/mock-data/country-flags/Turkey_flag.png"
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Turkey_flag.webp"
   }
 ]

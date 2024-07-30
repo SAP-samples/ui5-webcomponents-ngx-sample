@@ -39,6 +39,10 @@ export class PastTripsComponent {
       });
   }
 
+  trackByTrip(index: number, trip: any): string {
+    return trip.id;
+  }
+
   ngOnDestroy() {
     this.componentUnsubscribe.next(true);
     this.componentUnsubscribe.complete();

@@ -11,7 +11,7 @@ async function downloadFlag(flagUrl, countryName) {
     const response = await axios.get(flagUrl, { responseType: "arraybuffer" });
     const flagData = Buffer.from(response.data, "binary");
     countryName = countryName.replaceAll(" ", "_");
-    fs.writeFileSync(countryName + "_flag.png", flagData);
+    fs.writeFileSync(countryName + "_flag.webp", flagData);
     console.log("Flag downloaded successfully!");
   } catch (error) {
     console.error("Error downloading flag:", error.message);

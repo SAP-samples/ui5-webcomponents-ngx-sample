@@ -1,11 +1,10 @@
 <ng-container *ngIf="isDataAvailable">
   <app-header></app-header>
 
-  <!-- class="show-at-desktop hidden-at-tablet hidden-at-mobile"  -->
   <ui5-tabcontainer
     header-background-design="Solid"
     content-background-design="Solid"
-    [attr.fixed]="true"
+    fixed
   >
     <ui5-tab [text]="'FLIGHT_INFO' | ui5I18n">
       <section class="app-content">
@@ -69,12 +68,11 @@
                             class="flight-details__content__text flight-details__content__text--left"
                           >
                             <ui5-label>{{ "DEPARTURE" | ui5I18n }}</ui5-label>
-                            <span
-                              >{{ departureMonth | ui5I18n }}
+                            <span>
+                              {{ departureMonth | ui5I18n }}
                               {{ departureDateTimeString }}
                             </span>
                           </span>
-                          <!-- <ui5-avatar icon="journey-change" color-scheme="Accent10"></ui5-avatar> -->
                           <fd-avatar
                             glyph="journey-change"
                             [colorAccent]="10"
@@ -83,8 +81,8 @@
                           />
                           <span class="flight-details__content__text">
                             <ui5-label>{{ "ARRIVAL" | ui5I18n }}</ui5-label>
-                            <span
-                              >{{ arrivalMonth | ui5I18n }}
+                            <span>
+                              {{ arrivalMonth | ui5I18n }}
                               {{ arrivalDateTimeString }}</span
                             >
                           </span>
@@ -121,7 +119,7 @@
                           }})
                         </ui5-label>
                       </div>
-                      <app-seats-chart> </app-seats-chart>
+                      <app-seats-chart></app-seats-chart>
                       <ui5-bar design="Footer">
                         <ui5-button design="Emphasized" slot="endContent">{{
                           "UPGRADE" | ui5I18n
@@ -141,7 +139,7 @@
               [colXl]="12"
               class="show-at-tablet remove-padding"
             >
-              <ui5-card class="">
+              <ui5-card>
                 <ui5-card-header
                   slot="header"
                   [titleText]="'FLIGHT_DETAILS' | ui5I18n"
@@ -164,8 +162,8 @@
                   ></ui5-avatar>
                   <span class="flight-details__content__text">
                     <ui5-label>{{ "ARRIVAL" | ui5I18n }}</ui5-label>
-                    <span
-                      >{{ arrivalMonth | ui5I18n }}
+                    <span>
+                      {{ arrivalMonth | ui5I18n }}
                       {{ arrivalDateTimeString }}</span
                     >
                   </span>
@@ -376,26 +374,30 @@
     </ui5-tab>
 
     <ui5-tab [text]="'PLAN_A_TRIP' | ui5I18n">
-      @defer (on viewport) {
-      <app-trip-planner style="height: 100%"></app-trip-planner>
-      } @placeholder {
-      <p>placeholder</p>
-      }
+      <ng-container *ngIf="isInViewport">
+        <app-trip-planner style="height: 100%"></app-trip-planner>
+      </ng-container>
+      <ng-template #isInViewport>
+        <p>Loading...</p>
+      </ng-template>
     </ui5-tab>
 
     <ui5-tab [text]="'PAST_TRIPS' | ui5I18n">
-      @defer (on viewport) {
-      <app-past-trips></app-past-trips>
-      } @placeholder {
-      <p>placeholder</p>
-      }
+      <ng-container *ngIf="isInViewport">
+        <app-past-trips></app-past-trips>
+      </ng-container>
+      <ng-template #isInViewport>
+        <p>Loading...</p>
+      </ng-template>
     </ui5-tab>
+
     <ui5-tab [text]="'ABOUT_US' | ui5I18n">
-      @defer (on viewport) {
-      <app-contact></app-contact>
-      } @placeholder {
-      <p>placeholder</p>
-      }
+      <ng-container *ngIf="isInViewport">
+        <app-contact></app-contact>
+      </ng-container>
+      <ng-template #isInViewport>
+        <p>Loading...</p>
+      </ng-template>
     </ui5-tab>
   </ui5-tabcontainer>
 </ng-container>
