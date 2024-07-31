@@ -1,9 +1,7 @@
 // Angular Modules & more...
 import { inject, NgModule } from "@angular/core";
-import {
-  BrowserModule,
-  provideClientHydration,
-} from "@angular/platform-browser";
+import { BrowserModule } from "@angular/platform-browser";
+import { ScrollingModule } from "@angular/cdk/scrolling";
 import {
   HttpClient,
   provideHttpClient,
@@ -68,6 +66,7 @@ import { AppService } from "./services/services";
     AppRoutingModule,
     CommonModule,
     FormsModule,
+    ScrollingModule,
     FdDatetimeModule,
     Ui5ThemingModule.forRoot({ defaultTheme: "sap_horizon" }),
     Ui5WebcomponentsModule,

@@ -25,6 +25,7 @@ export class PastTripsComponent {
   });
 
   listOfVacations: pastTrip[];
+  itemSize: number;
   componentUnsubscribe: Subject<boolean> = new Subject();
 
   constructor(private appService: AppService, private cdr: ChangeDetectorRef) {}
@@ -35,6 +36,7 @@ export class PastTripsComponent {
       .pipe(takeUntil(this.componentUnsubscribe))
       .subscribe((data) => {
         this.listOfVacations = data;
+        this.itemSize = this.listOfVacations.length;
         this.cdr.markForCheck();
       });
   }

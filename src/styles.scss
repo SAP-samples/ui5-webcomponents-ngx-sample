@@ -1,6 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "@fundamental-styles/common-css/dist/sass/common-mixins";
 
+@font-face {
+  font-family: "72";
+  src: url("~@sap-theming/theming-base-content/content/Base/baseLib/baseTheme/fonts/72-Regular-full.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .app-content {
   height: 100%;
   @include sap-padding-responsive();
