@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/mock-project/browser",
+            "outputPath": "dist/mock-project",
             "index": "src/index.html",
             "main": "src/main.ts",
             "allowedCommonJsDependencies": ["fast-deep-equal", "@zxing/library/umd/index.min.js"],
