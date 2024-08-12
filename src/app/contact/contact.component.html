@@ -1,0 +1,53 @@
+<div *ngIf="isDataAvailable" style="height: 100vh;">
+  <div>
+    <div>
+        <ui5-title level="H2">{{"ABOUT_US_TITLE" | ui5I18n}}</ui5-title>
+        <ui5-text style="margin: 0.5rem;">
+            {{"ABOUT_US_TEXT" | ui5I18n}}
+        </ui5-text>
+  </div>
+  <br>
+  <div>
+    <ui5-title level="H2">{{"OUR_TEAM" | ui5I18n}}</ui5-title>
+    <br>
+    <div style="display: flex;" [ngStyle]="isMobile ? {'flex-direction': 'column'} : {'flex-direction': 'row'}">
+      <ui5-side-navigation [ngStyle]="isMobile ? {'margin': 'auto'} : {}">
+        
+          @for (item of navigationItemObject; track $index) {
+            <ui5-side-navigation-item text="{{item.text.replaceAll(' ', '_').toUpperCase()| ui5I18n}}" icon="{{item.icon}}" (ui5Click)="expandThis(item.text)"></ui5-side-navigation-item>
+          }
+        
+      </ui5-side-navigation>
+      
+      <div [ngSwitch]="currentExpandedItem">
+        @for (item of navigationItemObject; track $index) {
+          <div fd-card-list style="margin-left: 1rem;" *ngSwitchCase="item.text">
+            @for (member of team; track $index) {
+              <ui5-card *ngIf="member.positionType==item.text" [ngStyle]="isMobile ? {'width': '100%', 'margin-top':'1rem'} : {'width': '40%', 'margin': '0.5rem', 'min-width': '400px'}">
+                <ui5-card-header slot="header" titleText="{{member.name}}" subtitleText="{{member.position}}">
+                     <fd-avatar label="{{member.name}}" slot="avatar" size="s" [circle]="true"/>
+                </ui5-card-header>
+                <div class="content content-padding">
+                    <ui5-title level="H5" style="padding-block-end: 1rem;">Contact details</ui5-title>
+                    <div class="content-group">
+                      <ui5-label show-colon>Phone Number</ui5-label>
+                      <ui5-text>
+                        <a href="tel:514-123-1234">514-123-1234</a>
+                      </ui5-text>
+                  </div>
+                    <div class="content-group">
+                        <ui5-label show-colon>Email</ui5-label>
+                        <ui5-link target="_blank">{{member.name.replace(' ', '_').toLowerCase()}}&#64;airlines.sap.com</ui5-link>
+                    </div>
+                </div>
+              </ui5-card>
+            }
+          </div>
+        }
+      </div>
+
+    </div>
+  
+  </div>
+
+</div>

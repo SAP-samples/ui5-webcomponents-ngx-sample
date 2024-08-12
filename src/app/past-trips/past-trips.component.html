@@ -1,0 +1,89 @@
+
+<div>
+    <ul>
+        @for (trip of listOfVacations; track $index;let idx = $index;){
+            <fd-facet-group ariaLabel="Facet Group" class="vacationsFacet">
+                <fd-facet type="form" facetTitle="{{'VACATION' | ui5I18n}} {{idx+1}}" id="facet1">
+                    <fd-facet-content>
+                        <label fd-form-label [colon]="true">{{"COUNTRY" | ui5I18n}}</label>
+                        <fd-text text="{{trip.country | ui5I18n}}"></fd-text>
+                    </fd-facet-content>
+                    <fd-facet-content>
+                        <label fd-form-label [colon]="true">{{"CITY" | ui5I18n}}</label>
+                        <fd-text text="{{trip.city| ui5I18n}}"></fd-text>
+                    </fd-facet-content>
+                    <fd-facet-content>
+                        <label fd-form-label [colon]="true">{{"VACATION_LENGTH" | ui5I18n}}</label>
+                        <fd-text text="{{trip.vacationLength}} {{'DAYS' | ui5I18n}}"></fd-text>
+                    </fd-facet-content>
+                </fd-facet>
+            
+                <fd-facet type="rating-indicator" facetTitle="{{'RATING_INDICATOR' | ui5I18n}}" subtitle="{{'PERSONAL_REVIEW' | ui5I18n}}" id="facet2">
+                    <fd-facet-content>
+                        <fd-rating-indicator size="md" dynamicTextIndicator="of" [value]='trip.review/2'></fd-rating-indicator>
+                    </fd-facet-content>
+                </fd-facet>
+                <fd-facet type="image" id="facet3">
+                    <fd-avatar fd-grid-list-item-image image={{trip.flagUrl}} size="l" [transparent]="true"></fd-avatar>
+                    
+                </fd-facet>
+                <fd-facet type="key-value" facetTitle="{{'WOULD_REDO_IT' | ui5I18n}}" id="facet4">
+                    @if (trip.wouldRedoIt == 'positive') {
+                        <span
+                        fd-object-status
+                        status="positive"
+                        label="{{trip.wouldRedoIt.toUpperCase() | ui5I18n}}"
+                        glyph="{{mapStatusToGlyph[trip.wouldRedoIt] }}"
+                        [large]="true"
+                        title="{{'WOULD_REDO_IT' | ui5I18n}}"
+                        aria-label="Would Redo It?"
+                    ></span>
+                    } @else if (trip.wouldRedoIt == 'negative') {
+                        <span
+                        fd-object-status
+                        status="negative"
+                        label="{{trip.wouldRedoIt.toUpperCase() | ui5I18n}}"
+                        glyph="{{mapStatusToGlyph[trip.wouldRedoIt] }}"
+                        [large]="true"
+                        title="Would Redo It?"
+                        aria-label="Would Redo It?"
+                    ></span>
+                    } @else {
+                        <span
+                        fd-object-status
+                        status="neutral"
+                        label="{{trip.wouldRedoIt.toUpperCase() | ui5I18n}}"
+                        glyph="{{mapStatusToGlyph[trip.wouldRedoIt] }}"
+                        [large]="true"
+                        title="Would Redo It?"
+                        aria-label="Would Redo It?"
+                    ></span>
+                    }
+                </fd-facet>
+                
+                <fd-facet type="key-value" facetTitle="{{'TRANSPORT' | ui5I18n}}" id="facet5">
+                    <span
+                        fd-object-status
+                        status="critical"
+                        label="{{trip.transport.toUpperCase() | ui5I18n}}"
+                        glyph="{{mapTransportToGlyph[trip.transport]}}"
+                        [large]="true"
+                        title="{{trip.transport.toUpperCase() | ui5I18n}}"
+                        aria-label="12 days"
+                    ></span>
+                </fd-facet>
+            
+                <fd-facet type="key-value" facetTitle="Pricing" id="facet7">
+                    <fd-object-number
+                        [number]="trip.price"
+                        [large]="true"
+                        unit="CAD"
+                        status="informative"
+                        [decimal]="2"
+                    ></fd-object-number>
+                </fd-facet>
+            </fd-facet-group>
+            <hr>
+        }
+    </ul>
+</div>

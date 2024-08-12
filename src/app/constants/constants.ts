@@ -38,18 +38,6 @@ export const THEMES: ThemeValue[] = [
     {
         displayName: "Quartz High Contrast White",
         usageName: "sap_fiori_3_hcw"
-    },
-    {
-        displayName: "Belize",
-        usageName: "sap_belize"
-    },
-    {
-        displayName: "High Contrast Black",
-        usageName: "sap_belize_hcb"
-    },
-    {
-        displayName: "High Contrast White",
-        usageName: "sap_belize_hcw"
     }
 ];
 
@@ -65,5 +53,9 @@ export const LANGUAGES: LanguageValue[] = [
     {
         displayName: "Български",
         usageName: "bg"
+    },
+    {
+        displayName: "العربية",
+        usageName: "ar"
     }
 ];
