@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ui5-demo-v17": {
+    "mock-project": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ui5-demo-v17/browser",
+            "outputPath": "dist/mock-project",
             "index": "src/index.html",
             "main": "src/main.ts",
             "allowedCommonJsDependencies": [
@@ -100,10 +100,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ui5-demo-v17:build:production"
+              "buildTarget": "mock-project:build:production"
             },
             "development": {
-              "buildTarget": "ui5-demo-v17:build:development"
+              "buildTarget": "mock-project:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -111,7 +111,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ui5-demo-v17:build"
+            "buildTarget": "mock-project:build"
           }
         },
         "test": {
