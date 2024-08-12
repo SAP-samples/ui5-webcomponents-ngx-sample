@@ -7,6 +7,10 @@ import { Trip } from '../interfaces/trip';
 import { User } from '../interfaces/user';
 import { Passenger } from '../interfaces/passenger';
 import { PaymentDetails } from '../interfaces/payment-details';
+import { CountryListItem } from '../interfaces/country-details';
+import { pastTrip } from '../interfaces/past-trips';
+
+import { teamMemberInterface } from '../interfaces/team';
 
 @Injectable({
     providedIn: 'root',
@@ -50,5 +54,17 @@ export class AppService {
 
     getPaymentDetails(): Observable<PaymentDetails> {
         return this.http.get<PaymentDetails>(`${this._baseUrl}/mockPaymentDetails.json`);
+    }
+
+    getCountryDetails(): Observable<CountryListItem[]> {
+        return this.http.get<CountryListItem[]>(`${this._baseUrl}/mockCountryDetails.json`);
+    }
+
+    getPastTrips(): Observable<pastTrip[]>{
+        return this.http.get<pastTrip[]>(`${this._baseUrl}/mockPastTrips.json`);
+    }
+
+    getSapTeam(): Observable<teamMemberInterface[]>{
+        return this.http.get<teamMemberInterface[]>(`${this._baseUrl}/mockSapAirlineTeam.json`);
     }
 }

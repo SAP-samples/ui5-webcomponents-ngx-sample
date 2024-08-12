@@ -1,0 +1,178 @@
+[
+  {
+    "country": "Italy",
+    "city": "Rome",
+    "price": 1200,
+    "vacationLength": 7,
+    "review": 8.5,
+    "wouldRedoIt": "positive",
+    "transport": "plane",
+    "flagUrl": "https://flagsapi.com/IT/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Italy_flag.webp"
+  },
+  {
+    "country": "Japan",
+    "city": "Tokyo",
+    "price": 1500,
+    "vacationLength": 10,
+    "review": 9.0,
+    "wouldRedoIt": "positive",
+    "transport": "plane",
+    "flagUrl": "https://flagsapi.com/JP/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Japan_flag.webp"
+  },
+  {
+    "country": "USA",
+    "city": "New York",
+    "price": 900,
+    "vacationLength": 5,
+    "review": 7.0,
+    "wouldRedoIt": "neutral",
+    "transport": "plane",
+    "flagUrl": "https://flagsapi.com/US/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/USA_flag.webp"
+  },
+  {
+    "country": "France",
+    "city": "Paris",
+    "price": 1100,
+    "vacationLength": 6,
+    "review": 8.0,
+    "wouldRedoIt": "positive",
+    "transport": "train",
+    "flagUrl": "https://flagsapi.com/FR/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/France_flag.webp"
+  },
+  {
+    "country": "Australia",
+    "city": "Sydney",
+    "price": 2000,
+    "vacationLength": 12,
+    "review": 9.5,
+    "wouldRedoIt": "positive",
+    "transport": "plane",
+    "flagUrl": "https://flagsapi.com/AU/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Australia_flag.webp"
+  },
+  {
+    "country": "Brazil",
+    "city": "Rio de Janeiro",
+    "price": 1300,
+    "vacationLength": 8,
+    "review": 7.5,
+    "wouldRedoIt": "neutral",
+    "transport": "plane",
+    "flagUrl": "https://flagsapi.com/BR/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Brazil_flag.webp"
+  },
+  {
+    "country": "Canada",
+    "city": "Vancouver",
+    "price": 1000,
+    "vacationLength": 6,
+    "review": 8.3,
+    "wouldRedoIt": "positive",
+    "transport": "car",
+    "flagUrl": "https://flagsapi.com/CA/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Canada_flag.webp"
+  },
+  {
+    "country": "Spain",
+    "city": "Barcelona",
+    "price": 950,
+    "vacationLength": 7,
+    "review": 6.5,
+    "wouldRedoIt": "negative",
+    "transport": "train",
+    "flagUrl": "https://flagsapi.com/ES/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Spain_flag.webp"
+  },
+  {
+    "country": "Germany",
+    "city": "Berlin",
+    "price": 1050,
+    "vacationLength": 8,
+    "review": 7.8,
+    "wouldRedoIt": "positive",
+    "transport": "plane",
+    "flagUrl": "https://flagsapi.com/DE/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Germany_flag.webp"
+  },
+  {
+    "country": "Mexico",
+    "city": "Cancun",
+    "price": 850,
+    "vacationLength": 6,
+    "review": 7.0,
+    "wouldRedoIt": "neutral",
+    "transport": "plane",
+    "flagUrl": "https://flagsapi.com/MX/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Mexico_flag.webp"
+  },
+  {
+    "country": "China",
+    "city": "Beijing",
+    "price": 1400,
+    "vacationLength": 9,
+    "review": 8.0,
+    "wouldRedoIt": "positive",
+    "transport": "plane",
+    "flagUrl": "https://flagsapi.com/CN/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/China_flag.webp"
+  },
+  {
+    "country": "Greece",
+    "city": "Athens",
+    "price": 1100,
+    "vacationLength": 7,
+    "review": 6.0,
+    "wouldRedoIt": "negative",
+    "transport": "boat",
+    "flagUrl": "https://flagsapi.com/GR/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Greece_flag.webp"
+  },
+  {
+    "country": "Russia",
+    "city": "Moscow",
+    "price": 1300,
+    "vacationLength": 8,
+    "review": 7.5,
+    "wouldRedoIt": "neutral",
+    "transport": "plane",
+    "flagUrl": "https://flagsapi.com/RU/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Russia_flag.webp"
+  },
+  {
+    "country": "South Africa",
+    "city": "Cape Town",
+    "price": 1600,
+    "vacationLength": 10,
+    "review": 8.9,
+    "wouldRedoIt": "positive",
+    "transport": "plane",
+    "flagUrl": "https://flagsapi.com/ZA/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/South_Africa_flag.webp"
+  },
+  {
+    "country": "India",
+    "city": "Mumbai",
+    "price": 800,
+    "vacationLength": 5,
+    "review": 5.5,
+    "wouldRedoIt": "negative",
+    "transport": "plane",
+    "flagUrl": "https://flagsapi.com/IN/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/India_flag.webp"
+  },
+  {
+    "country": "Turkey",
+    "city": "Istanbul",
+    "price": 950,
+    "vacationLength": 6,
+    "review": 7.8,
+    "wouldRedoIt": "positive",
+    "transport": "plane",
+    "flagUrl": "https://flagsapi.com/TR/flat/64.png",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Turkey_flag.webp"
+  }
+]

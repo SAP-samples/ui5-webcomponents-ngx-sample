@@ -1,0 +1,200 @@
+[
+  {
+    "name": "Argentina",
+    "flag": "https://flagsapi.com/AR/flat/64.png",
+    "continent": "South America",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Argentina_flag.webp"
+  },
+  {
+    "name": "Albania",
+    "flag": "https://flagsapi.com/AL/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Albania_flag.webp"
+  },
+  {
+    "name": "Algeria",
+    "flag": "https://flagsapi.com/DZ/flat/64.png",
+    "continent": "Africa",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Algeria_flag.webp"
+  },
+  {
+    "name": "Angola",
+    "flag": "https://flagsapi.com/AO/flat/64.png",
+    "continent": "Africa",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Angola_flag.webp"
+  },
+  {
+    "name": "Austria",
+    "flag": "https://flagsapi.com/AT/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Austria_flag.webp"
+  },
+  {
+    "name": "Australia",
+    "flag": "https://flagsapi.com/AU/flat/64.png",
+    "continent": "Oceania",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Australia_flag.webp"
+  },
+  {
+    "name": "Bulgaria",
+    "flag": "https://flagsapi.com/BG/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Bulgaria_flag.webp"
+  },
+  {
+    "name": "Canada",
+    "flag": "https://flagsapi.com/CA/flat/64.png",
+    "continent": "North America",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Canada_flag.webp"
+  },
+  {
+    "name": "Columbia",
+    "flag": "https://flagsapi.com/CO/flat/64.png",
+    "continent": "South America",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Columbia_flag.webp"
+  },
+  {
+    "name": "Croatia",
+    "flag": "https://flagsapi.com/HR/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Croatia_flag.webp"
+  },
+  {
+    "name": "Denmark",
+    "flag": "https://flagsapi.com/DK/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Denmark_flag.webp"
+  },
+  {
+    "name": "England",
+    "flag": "https://flagsapi.com/GB-ENG/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/England_flag.webp"
+  },
+  {
+    "name": "Finland",
+    "flag": "https://flagsapi.com/FI/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Finland_flag.webp"
+  },
+  {
+    "name": "France",
+    "flag": "https://flagsapi.com/FR/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/France_flag.webp"
+  },
+  {
+    "name": "Germany",
+    "flag": "https://flagsapi.com/DE/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Germany_flag.webp"
+  },
+  {
+    "name": "Hungary",
+    "flag": "https://flagsapi.com/HU/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Hungary_flag.webp"
+  },
+  {
+    "name": "Ireland",
+    "flag": "https://flagsapi.com/IE/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Ireland_flag.webp"
+  },
+  {
+    "name": "Italy",
+    "flag": "https://flagsapi.com/IT/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Italy_flag.webp"
+  },
+  {
+    "name": "Kuwait",
+    "flag": "https://flagsapi.com/KW/flat/64.png",
+    "continent": "Asia",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Kuwait_flag.webp"
+  },
+  {
+    "name": "Luxembourg",
+    "flag": "https://flagsapi.com/LU/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Luxembourg_flag.webp"
+  },
+  {
+    "name": "Mexico",
+    "flag": "https://flagsapi.com/MX/flat/64.png",
+    "continent": "North America",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Mexico_flag.webp"
+  },
+  {
+    "name": "Morocco",
+    "flag": "https://flagsapi.com/MA/flat/64.png",
+    "continent": "Africa",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Morocco_flag.webp"
+  },
+  {
+    "name": "Norway",
+    "flag": "https://flagsapi.com/NO/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Norway_flag.webp"
+  },
+  {
+    "name": "Paraguay",
+    "flag": "https://flagsapi.com/PY/flat/64.png",
+    "continent": "South America",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Paraguay_flag.webp"
+  },
+  {
+    "name": "Philippines",
+    "flag": "https://flagsapi.com/PH/flat/64.png",
+    "continent": "Asia",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Philippines_flag.webp"
+  },
+  {
+    "name": "Portugal",
+    "flag": "https://flagsapi.com/PT/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Portugal_flag.webp"
+  },
+  {
+    "name": "Spain",
+    "flag": "https://flagsapi.com/ES/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Spain_flag.webp"
+  },
+  {
+    "name": "Sweden",
+    "flag": "https://flagsapi.com/SE/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Sweden_flag.webp"
+  },
+  {
+    "name": "Sri Lanka",
+    "flag": "https://flagsapi.com/LK/flat/64.png",
+    "continent": "Asia",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Sri_Lanka_flag.webp"
+  },
+  {
+    "name": "Senegal",
+    "flag": "https://flagsapi.com/SN/flat/64.png",
+    "continent": "Africa",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Senegal_flag.webp"
+  },
+  {
+    "name": "Thailand",
+    "flag": "https://flagsapi.com/TH/flat/64.png",
+    "continent": "Asia",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/Thailand_flag.webp"
+  },
+  {
+    "name": "The United Kingdom of Great Britain and Northern Ireland",
+    "flag": "https://flagsapi.com/GB/flat/64.png",
+    "continent": "Europe",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/UK_flag.webp"
+  },
+  {
+    "name": "USA",
+    "flag": "https://flagsapi.com/US/flat/64.png",
+    "continent": "North America",
+    "flagLocationLocal": "../../assets/mock-data/country-flags/USA_flag.webp"
+  }
+]
