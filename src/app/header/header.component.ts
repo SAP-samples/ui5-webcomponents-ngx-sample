@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 import { ThemingService } from '@fundamental-ngx/core/theming';
 
 import { AppService } from '../services/services';
+import { I18nService } from '../services/i18n.service';
 import { THEMES, LANGUAGES } from '../constants/constants';
 import { User } from '../interfaces/user';
 import { Trip } from '../interfaces/trip';
@@ -35,6 +36,7 @@ export class HeaderComponent {
 
     private appService = inject(AppService);
     private themingService = inject(ThemingService);
+    private i18nService = inject(I18nService);
 
     ngOnInit() {
         zip([this.appService.getDomesticTrips(), this.appService.getInternationalTrips(), this.appService.getUser()])
@@ -54,6 +56,7 @@ export class HeaderComponent {
 
     switchLanguage() {
         this.currentLanguage = this.selectedLanguage || 'en';
+        this.i18nService.setLanguage(this.currentLanguage);
         this.setLanguageDialogOpen();
         this.shellbarMenuClicked();
     }
