@@ -32,7 +32,6 @@ import { ShellBarItem } from '@fundamental-ngx/ui5-webcomponents-fiori/shell-bar
 import { Timeline } from '@fundamental-ngx/ui5-webcomponents-fiori/timeline';
 import { TimelineItem } from '@fundamental-ngx/ui5-webcomponents-fiori/timeline-item';
 
-import '@ui5/webcomponents-icons/dist/AllIcons.js';
 
 import { Ui5I18nPipe } from './pipes/ui5-i18n.pipe';
 import { HeaderComponent } from './header/header.component';
