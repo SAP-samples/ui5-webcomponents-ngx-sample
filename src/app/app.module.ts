@@ -1,12 +1,11 @@
-import { inject, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ThemingModule } from '@fundamental-ngx/core/theming';
 import { LayoutGridModule } from '@fundamental-ngx/core/layout-grid';
-import { I18nModule } from '@fundamental-ngx/i18n';
 import { provideUi5LanguageBridge } from '@fundamental-ngx/ui5-webcomponents-base/i18n';
 
 // UI5 web component wrappers from @fundamental-ngx
@@ -67,7 +66,6 @@ const UI5_COMPONENTS = [
         AppRoutingModule,
         ThemingModule.withConfig({ defaultTheme: 'sap_horizon' }),
         LayoutGridModule,
-        I18nModule,
         ...UI5_COMPONENTS
     ],
     providers: [
