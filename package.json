@@ -26,7 +26,7 @@
     "@fundamental-ngx/ui5-webcomponents": "^0.62.3",
     "@fundamental-ngx/ui5-webcomponents-base": "^0.62.3",
     "@fundamental-ngx/ui5-webcomponents-fiori": "^0.62.3",
-    "@fundamental-styles/common-css": "^0.28.3",
+    "@fundamental-styles/common-css": "^0.41.6",
     "@sap-theming/theming-base-content": "^11.36.3",
     "@ui5/webcomponents-fiori": "^2.22.0",
     "@ui5/webcomponents-icons": "^2.22.0",
