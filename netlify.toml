@@ -1,0 +1,6 @@
+[build]
+  command = "ng build --configuration=production"
+  publish = "dist/mock-project"
+
+[build.environment]
+  NODE_VERSION = "22.12.0"
