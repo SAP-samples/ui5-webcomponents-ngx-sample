@@ -7,7 +7,8 @@ import { Passenger } from '../interfaces/passenger';
 @Component({
     selector: 'app-passenger-list',
     templateUrl: './passenger-list.component.html',
-    styleUrls: ['./passenger-list.component.scss']
+    styleUrls: ['./passenger-list.component.scss'],
+    standalone: false
 })
 export class PassengerListComponent {
 

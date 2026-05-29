@@ -27,9 +27,23 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/css_variables.css",
+                "input": "./node_modules/@sap-theming/theming-base-content/content/Base/baseLib/",
+                "output": "./assets/theming-base/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/fundamental-styles/dist/theming/",
+                "output": "./assets/fundamental-styles-theming/"
+              }
             ],
             "styles": [
+              "node_modules/@sap-theming/theming-base-content/content/Base/baseLib/sap_horizon/css_variables.css",
+              "node_modules/fundamental-styles/dist/theming/sap_horizon.css",
+              "node_modules/fundamental-styles/dist/fundamental-styles.css",
+              "node_modules/@fundamental-ngx/core/styles/fundamental-ngx-core.css",
               "src/styles.scss",
               "node_modules/@fundamental-styles/common-css/dist/sap-normalize.css",
               "node_modules/@fundamental-styles/common-css/dist/sap-padding.css",
@@ -49,13 +63,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "6mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "10kb",
-                  "maximumError": "20kb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 }
               ],
               "outputHashing": "all"
@@ -75,10 +89,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "mock-project:build:production"
+              "buildTarget": "mock-project:build:production"
             },
             "development": {
-              "browserTarget": "mock-project:build:development"
+              "buildTarget": "mock-project:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +100,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mock-project:build"
+            "buildTarget": "mock-project:build"
           }
         },
         "test": {
@@ -112,6 +126,32 @@
           "builder": "angular-cli-ghpages:deploy"
         }
       }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "type": "component"
+    },
+    "@schematics/angular:directive": {
+      "type": "directive"
+    },
+    "@schematics/angular:service": {
+      "type": "service"
+    },
+    "@schematics/angular:guard": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:interceptor": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:module": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:pipe": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:resolver": {
+      "typeSeparator": "."
     }
   }
 }

@@ -10,7 +10,8 @@ import { AircraftStatus } from '../interfaces/aircraft-status';
 @Component({
     selector: 'app-trip-calendar',
     templateUrl: './trip-calendar.component.html',
-    styleUrls: ['./trip-calendar.component.scss']
+    styleUrls: ['./trip-calendar.component.scss'],
+    standalone: false
 })
 export class TripCalendarComponent {
 
