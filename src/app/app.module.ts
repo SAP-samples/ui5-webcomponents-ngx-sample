@@ -1,16 +1,38 @@
-import { inject, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Ui5ThemingModule } from '@ui5/theming-ngx';
+import { ThemingModule } from '@fundamental-ngx/core/theming';
 import { LayoutGridModule } from '@fundamental-ngx/core/layout-grid';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
-import { Ui5I18nModule } from '@ui5/webcomponents-ngx/i18n';
-import '@ui5/webcomponents-icons/dist/AllIcons.js';
-import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
+import { provideUi5LanguageBridge } from '@fundamental-ngx/ui5-webcomponents-base/i18n';
 
+// UI5 web component wrappers from @fundamental-ngx
+import { Avatar } from '@fundamental-ngx/ui5-webcomponents/avatar';
+import { Bar } from '@fundamental-ngx/ui5-webcomponents/bar';
+import { Button } from '@fundamental-ngx/ui5-webcomponents/button';
+import { Calendar } from '@fundamental-ngx/ui5-webcomponents/calendar';
+import { CalendarDate } from '@fundamental-ngx/ui5-webcomponents/calendar-date';
+import { Card } from '@fundamental-ngx/ui5-webcomponents/card';
+import { CardHeader } from '@fundamental-ngx/ui5-webcomponents/card-header';
+import { Dialog } from '@fundamental-ngx/ui5-webcomponents/dialog';
+import { Icon } from '@fundamental-ngx/ui5-webcomponents/icon';
+import { Input } from '@fundamental-ngx/ui5-webcomponents/input';
+import { Label } from '@fundamental-ngx/ui5-webcomponents/label';
+import { MessageStrip } from '@fundamental-ngx/ui5-webcomponents/message-strip';
+import { ProgressIndicator } from '@fundamental-ngx/ui5-webcomponents/progress-indicator';
+import { RadioButton } from '@fundamental-ngx/ui5-webcomponents/radio-button';
+import { Tab } from '@fundamental-ngx/ui5-webcomponents/tab';
+import { TabContainer } from '@fundamental-ngx/ui5-webcomponents/tab-container';
+import { Title } from '@fundamental-ngx/ui5-webcomponents/title';
+import { ShellBar } from '@fundamental-ngx/ui5-webcomponents-fiori/shell-bar';
+import { ShellBarItem } from '@fundamental-ngx/ui5-webcomponents-fiori/shell-bar-item';
+import { Timeline } from '@fundamental-ngx/ui5-webcomponents-fiori/timeline';
+import { TimelineItem } from '@fundamental-ngx/ui5-webcomponents-fiori/timeline-item';
+
+
+import { Ui5I18nPipe } from './pipes/ui5-i18n.pipe';
 import { HeaderComponent } from './header/header.component';
 import { MessageComponent } from './message/message.component';
 import { LegendItemComponent } from './legend-item/legend-item.component';
@@ -19,44 +41,36 @@ import { SeatsChartComponent } from './seats-chart/seats-chart.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { TripCalendarComponent } from './trip-calendar/trip-calendar.component';
 
+const UI5_COMPONENTS = [
+    Avatar, Bar, Button, Calendar, CalendarDate, Card, CardHeader, Dialog,
+    Icon, Input, Label, MessageStrip, ProgressIndicator, RadioButton,
+    Tab, TabContainer, Title,
+    ShellBar, ShellBarItem, Timeline, TimelineItem
+];
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    MessageComponent,
-    LegendItemComponent,
-    PassengerListComponent,
-    SeatsChartComponent,
-    PaymentDetailsComponent,
-    TripCalendarComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    Ui5ThemingModule.forRoot({
-      defaultTheme: "sap_horizon"
-    }),
-    Ui5WebcomponentsModule,
-    LayoutGridModule,
-    HttpClientModule,
-    Ui5I18nModule.forRoot({
-      language: 'en',
-      fetchDefaultLanguage: true,
-      bundle: {
-        name: 'i18n_bundle',
-        translations: {
-          useFactory: () => {
-            const http = inject(HttpClient);
-            return {
-              en: http.get('assets/i18n/messages_en.json', { responseType: 'json' }),
-              zh_TW: http.get('assets/i18n/messages_zh_TW.json', { responseType: 'json' }),
-              bg: http.get('assets/i18n/messages_bg.json', { responseType: 'json' })
-            }
-          }
-        }
-      }
-    })
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        MessageComponent,
+        LegendItemComponent,
+        PassengerListComponent,
+        SeatsChartComponent,
+        PaymentDetailsComponent,
+        TripCalendarComponent,
+        Ui5I18nPipe
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ThemingModule.withConfig({ defaultTheme: 'sap_horizon' }),
+        LayoutGridModule,
+        ...UI5_COMPONENTS
+    ],
+    providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideUi5LanguageBridge()
+    ]
 })
 export class AppModule { }

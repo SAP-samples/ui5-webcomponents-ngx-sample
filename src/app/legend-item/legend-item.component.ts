@@ -3,7 +3,8 @@ import { Component, Input } from '@angular/core';
 @Component({
     selector: 'app-legend-item',
     templateUrl: './legend-item.component.html',
-    styleUrls: ['./legend-item.component.scss']
+    styleUrls: ['./legend-item.component.scss'],
+    standalone: false
 })
 export class LegendItemComponent {
     constructor() { }

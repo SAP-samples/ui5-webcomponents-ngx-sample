@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subject, takeUntil, zip } from 'rxjs';
-import { I18nService } from '@ui5/webcomponents-ngx/i18n';
 
 import { AppService } from '../services/services';
 import { ALPHABETS } from '../constants/constants';
@@ -10,13 +9,12 @@ import { AircraftStatus } from '../interfaces/aircraft-status';
 @Component({
     selector: 'app-seats-chart',
     templateUrl: './seats-chart.component.html',
-    styleUrls: ['./seats-chart.component.scss']
+    styleUrls: ['./seats-chart.component.scss'],
+    standalone: false
 })
 export class SeatsChartComponent {
     componentUnsubscribe: Subject<boolean> = new Subject();
     isDataAvailable = false;
-
-    i18nService = inject(I18nService);
 
     departureAircraftStatus!: AircraftStatus;
     rows!: number;
