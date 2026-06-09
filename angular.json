@@ -128,7 +128,10 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/ui5-webcomponents-ngx-sample/"
+          }
         }
       }
     }
