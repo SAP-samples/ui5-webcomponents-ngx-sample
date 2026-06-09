@@ -1,0 +1,32 @@
+[
+    {
+        "departureFrom": "Toronto",
+        "arrivalTo": "Munich",
+        "departureAbb": "YYZ",
+        "arrivalAbb": "MUC",
+        "departureTime": "2030-04-22T20:20",
+        "arrivalTime": "2030-04-22T20:20",
+        "seats": "",
+        "seatsSelected": []
+    },
+    {
+        "departureFrom": "Montreal",
+        "arrivalTo": "Boston",
+        "departureAbb": "YUL",
+        "arrivalAbb": "BOS",
+        "departureTime": "2030-04-22T20:20",
+        "arrivalTime": "2030-04-22T20:20",
+        "seats": "",
+        "seatsSelected": []
+    },
+    {
+        "departureFrom": "Boston",
+        "arrivalTo": "Vancouver",
+        "departureAbb": "BOS",
+        "arrivalAbb": "YVR",
+        "departureTime": "2030-04-22T20:20",
+        "arrivalTime": "2030-04-22T20:20",
+        "seats": "",
+        "seatsSelected": []
+    }
+]

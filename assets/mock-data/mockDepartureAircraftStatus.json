@@ -1,0 +1,40 @@
+{
+    "rows": 8,
+    "columns": [
+        3,
+        4,
+        3
+    ],
+    "availableSeats": [
+        [
+            0,
+            9
+        ],
+        [
+            0,
+            8
+        ],
+        [
+            2,
+            2
+        ],
+        [
+            2,
+            6
+        ],
+        [
+            4,
+            0
+        ],
+        [
+            6,
+            3
+        ]
+    ],
+    "estimatedBoardingTime": "2030-04-17T12:00:00",
+    "currentBoardingTime": "2030-04-17T11:58:00",
+    "departureTime": "2030-04-17T12:00",
+    "arrivalTime": "2030-04-17T17:30",
+    "gate": "E8",
+    "gateOpenTime": "2030-04-17T10:00:00"
+}

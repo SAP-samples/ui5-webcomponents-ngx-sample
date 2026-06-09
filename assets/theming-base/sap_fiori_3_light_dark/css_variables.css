@@ -1,0 +1,2 @@
+@import url("../sap_fiori_3/css_variables.css") only screen and (prefers-color-scheme: light);
+@import url("../sap_fiori_3_dark/css_variables.css") only screen and (prefers-color-scheme: dark);
